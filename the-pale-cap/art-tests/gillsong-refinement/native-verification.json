@@ -1,0 +1,29 @@
+{
+  "uniqueTiles": 206,
+  "bank": 0,
+  "tileBytes": 3296,
+  "mapBytes": 360,
+  "attributeBytes": 360,
+  "palettesPerTheme": 8,
+  "retainedForkTilesExactlyIdentical": 105,
+  "variants": [
+    {
+      "name": "01-vermilion",
+      "maxTileColors": 4,
+      "all23040PixelsMatchDecodedSource": true,
+      "all23040EmulatorPixelsMatchRGB555Times8": true
+    },
+    {
+      "name": "02-saffron",
+      "maxTileColors": 4,
+      "all23040PixelsMatchDecodedSource": true,
+      "all23040EmulatorPixelsMatchRGB555Times8": true
+    },
+    {
+      "name": "03-rose",
+      "maxTileColors": 4,
+      "all23040PixelsMatchDecodedSource": true,
+      "all23040EmulatorPixelsMatchRGB555Times8": true
+    }
+  ]
+}

@@ -61,10 +61,10 @@ void ff_controls(SCRIPT_CTX *THIS) OLDCALL BANKED {
         if (closed) { OUTPUT(4) = 4; return; }
         x = OUTPUT(9); y = OUTPUT(8);
         if (cell(x,y) == 65535) return;
-        if (kind == 1) {
+        if (kind == 1 || kind == 4) {
             for (i=0;i<count;++i) {
                 if (orders[i].kind == kind && orders[i].target == target) {
-                    if (i == 0 && active) { OUTPUT(4) = 5; return; }
+                    if (kind == 4 || (i == 0 && active)) { OUTPUT(4) = 5; return; }
                     for (;i+1<count;++i) orders[i] = orders[i+1];
                     --count; OUTPUT(4) = 2; return;
                 }
@@ -74,13 +74,13 @@ void ff_controls(SCRIPT_CTX *THIS) OLDCALL BANKED {
         orders[count].kind=kind; orders[count].target=target;
         orders[count].x=x; orders[count].y=y;
         ++count;
-        if (kind == 3) closed = 1;
+        if (kind == 3 || kind == 5) closed = 1;
         OUTPUT(3) = closed; OUTPUT(4) = 1;
         return;
     }
     if (op == 4) {
         if (count) {
-            if (orders[0].kind == 3) closed = 0;
+            if (orders[0].kind == 3 || orders[0].kind == 5) closed = 0;
             for (i=0;i+1<count;++i) orders[i]=orders[i+1];
             --count;
         }

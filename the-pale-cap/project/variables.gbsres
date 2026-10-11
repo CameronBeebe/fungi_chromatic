@@ -235,6 +235,66 @@
       "id": "47",
       "name": "Boot menu choice",
       "symbol": "var_boot_menu_choice"
+    },
+    {
+      "id": "48",
+      "name": "At hideout",
+      "symbol": "var_at_hideout"
+    },
+    {
+      "id": "49",
+      "name": "Gillsong location",
+      "symbol": "var_gillsong_location"
+    },
+    {
+      "id": "50",
+      "name": "Gillsong equipped",
+      "symbol": "var_gillsong_equipped"
+    },
+    {
+      "id": "51",
+      "name": "Expedition menu choice",
+      "symbol": "var_expedition_menu_choice"
+    },
+    {
+      "id": "53",
+      "name": "Stored fungi",
+      "symbol": "var_stored_fungi"
+    },
+    {
+      "id": "54",
+      "name": "Home save status",
+      "symbol": "var_home_save_status"
+    },
+    {
+      "id": "55",
+      "name": "Session initialized",
+      "symbol": "var_session_initialized"
+    },
+    {
+      "id": "56",
+      "name": "Inspect returning",
+      "symbol": "var_inspect_returning"
+    },
+    {
+      "id": "57",
+      "name": "Inspect dwarf x",
+      "symbol": "var_inspect_dwarf_x"
+    },
+    {
+      "id": "58",
+      "name": "Inspect dwarf y",
+      "symbol": "var_inspect_dwarf_y"
+    },
+    {
+      "id": "59",
+      "name": "Inspect cursor x",
+      "symbol": "var_inspect_cursor_x"
+    },
+    {
+      "id": "60",
+      "name": "Inspect cursor y",
+      "symbol": "var_inspect_cursor_y"
     }
   ],
   "constants": []

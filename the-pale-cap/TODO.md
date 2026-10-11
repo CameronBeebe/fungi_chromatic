@@ -1,9 +1,22 @@
 # The Pale Cap — living TODO
 
-Updated October 10, 2026. This is the GBC adaptation's backlog; the terminal
+Updated October 11, 2026. This is the GBC adaptation's backlog; the terminal
 repository keeps its own TODO. The order below is a recommendation, not a set
 of settled design decisions. Keep experiments small and playable, update this
 file after each pass, and record verified behavior in PLAYTEST.md.
+
+## Checkpoint before rendering overhaul — October 11
+
+- [x] Preserve integrated home/extraction/save work, source concepts and separate
+  Hi-Color study in a draft PR before replacing rendering or production assets.
+- [x] Refresh READMEs and preserve GB Studio, GBVM, Binjgb and Hi-Color notices;
+  see `../THIRD_PARTY_NOTICES.md`.
+- [ ] Confirm the GBDK example license explicitly covers Toxa's Hi-Color ISR
+  before promoting the copied renderer into a release.
+- [ ] Select a project-wide license for original code and art; the existing
+  GB Studio MIT notice is an attribution, not a blanket licensing decision.
+- [ ] Integrate richer rendering only after checking functional menus, input,
+  music, sprite timing and bank budgets together, then test on the Chromatic.
 
 ## Design anchors
 
@@ -25,9 +38,30 @@ file after each pass, and record verified behavior in PLAYTEST.md.
 - MVP is offline. Live LLM/Jev generation and proposed Wi-Fi/firmware work are later.
 - Current controls, queue policy, spell costs and progression are experiments.
 
-## Current priorities (user direction, October 10)
+## Current priorities (user direction, October 11)
 
-### Priority 1. Establish visual direction with concept art and native assets
+Immediate order: illustrated Bag -> Inspect using approved Vermilion; dark/cyan
+menu styling; hideout-only saving and direct-to-home boot; then home improvement
+and a useful fork effect. The extraction foundation already exists.
+See [EXPEDITION-SLICE.md](EXPEDITION-SLICE.md) for a concrete proposal and acceptance
+checks. Numeric limits, loss rules and the fork effect are provisional test choices.
+The earlier encounter work remains valuable but is no longer the immediate first
+implementation task. Preserve existing assets; review replacements individually.
+
+- [x] Draft carrying, return, storage, save boundaries and one improvement proposal.
+- [x] Prove one detailed item inspection image in a separate native GBC ROM.
+- [ ] Restore richer frame ornament and explore brighter native palettes separately.
+- [ ] Explore three illustrated hideout concepts with functional hotspot composition.
+- [ ] Implement stable item ownership and safe persistence before adding variants.
+- [ ] Implement one pickup -> use -> return -> deposit -> reload loop.
+- [ ] Test one home improvement and resource tradeoff.
+- [ ] Resolve fork pulse overlap with Reveal through play, not additional terminology.
+- [ ] Keep a shared fork-family overworld icon as sufficient for the first slice;
+  leave visible equipped items undecided.
+
+## Continuing art and encounter work
+
+### Establish visual direction with concept art and native assets
 
 - [ ] Explore a small set of original concept directions for fungal architecture,
   desirable spore materials, dwarf equipment and language-bearing intelligences.
@@ -49,7 +83,7 @@ file after each pass, and record verified behavior in PLAYTEST.md.
 Acceptance: a clear art reference and native-size proof guide subsequent pixel
 work; detail, characters and altered perception belong to the same world.
 
-### Priority 2. Prototype one exposure-and-language encounter
+### Prototype one exposure-and-language encounter
 
 Develop alongside the art direction, ahead of order-interface polish. See
 DESIGN.md, “Proposed encounter: The Unfinished Word”; details are proposals.
@@ -70,7 +104,7 @@ encounter is enough for the experiment; no live AI or full language parser.
 
 ## Extraction, hideout and item design (new direction)
 
-- [ ] Outline the smallest expedition -> extraction -> hideout loop, with one
+- [x] Outline the smallest expedition -> extraction -> hideout loop, with one
   functional collectible and one useful hideout improvement.
 - [ ] Define carrying, extraction, failure/loss and safe-storage rules; none are settled.
 - [ ] Decide how view-specific item availability maps to persistent core identities.
@@ -271,3 +305,64 @@ encounter priorities. See DESIGN.md, “Trade discovery.” No ranking is implem
 Acceptance: a player can explain why an offer might help in one short sentence,
 inspect the tradeoff and choose any available offer. Ranking weights remain open
 until functional item and affinity rules support meaningful comparisons.
+
+## October 11 implementation checkpoint
+
+- [x] Session-only native pickup -> equip -> queued return -> stash -> withdrawal.
+- [x] Separate locked bag/home overlays and resource deposit/withdrawal.
+- [x] Transfer conservation/equip-ownership checks against native implementation.
+- [x] Implement home-only semantic saves; omit mid-run resume and queue serialization.
+- [x] Valid save boots straight into hideout; no save retains startup/New Game.
+- [x] Reject incompatible/corrupt saves clearly and preserve recoverable data.
+- [x] Connect approved Vermilion artwork to Bag -> Inspect.
+- [x] Replace pale menu treatment with dark/cyan styling; verify native readability.
+- [x] Replace temporary home overlay with a reviewed illustrated home scene.
+- [x] Remove player-facing coordinates and remote Collect fork shortcut in v2.
+- [x] Grant the first fork through Luma's queued conversation; native gift dialogue checked.
+- [ ] Future ground pickups need visible reviewed icons and the same ownership path.
+- [ ] Add general item slots/capacity; current implementation proves one instance only.
+- [ ] Add extraction confirmation and one home improvement, then fork effect.
+- [ ] Resolve old preview recording-close acknowledgement before switching player.
+
+See PLAYTEST.md for exact build, checks and remaining limitations.
+
+## Home integration v1 completed
+
+- [x] Root Hearth concept adapted into a native illustrated home scene.
+- [x] Vermilion inspection reachable from Bag and Stash; source art preserved.
+- [x] Dark/cyan/cream shared menu and dialogue palette.
+- [x] Home-only explicit saving of semantic state, without queued work.
+- [x] Valid save boots directly home; no save shows startup choices.
+- [x] Version/checksum/commit validation with a recoverable previous record.
+- [x] Native cold boot from battery data retains the stored fork.
+- [ ] Verify browser persistence independently and physical cartridge retention.
+- [ ] Improve hotspot placement/selection visuals after reviewing the home scene.
+- [ ] Implement one useful home improvement and the fork's distinct active effect.
+- [ ] Decide departure-loss bookkeeping and home autosave policy; neither is implicit.
+
+See the remaining unchecked tasks above for broader systems;
+PLAYTEST.md distinguishes native checks from outstanding browser/hardware checks.
+
+### Gillsong inspection flow — October 11
+
+Integrated the Vermilion study’s cyan ornament pulse into item inspection. It starts automatically; B returns as before. The fork, text, and other palettes remain static. Native emulator checked all 192 frames: exactly 245 ornament pixels animate, followed by the original rest interval. Save/load and both inspection return paths pass. Browser export rebuilt; refresh the preview to load it. Hardware animation remains untested.
+
+### Native art pipeline — October 11
+
+- [x] Diagnose tile-by-tile palette discontinuities in Root Hearth.
+- [x] Produce a separate coherent conversion candidate with repeatable RGB555,
+  continuity-aware palette assignment, frozen-palette support and encoded-data audit.
+- [ ] Review Root Hearth candidate before replacing the individual game asset.
+- [ ] Author clean native pixel clusters and separated interactive room objects.
+- [x] Add explicit material-region constraints and reviewed palette locks to the
+  converter, plus a tile-edge contrast diagnostic and a repo-local workflow skill.
+- [ ] Author the chest light pool's native pixel transitions and review partial
+  floor-region boundary tiles before replacing the background.
+- [ ] Verify approved replacement in a cartridge build, with menus and on hardware.
+
+See ART-PIPELINE.md and art-tests/root-hearth-conversion/README.md.
+
+- [ ] Compare an authored standard Hearth background, a sprite-augmented version,
+  and an isolated scanline-palette/Hi-Color rendering study using the same source.
+- [ ] For Hi-Color, verify menu/text stability, LCD interrupt coexistence, scene
+  exit restoration, music/input timing, and physical Chromatic output before integration.

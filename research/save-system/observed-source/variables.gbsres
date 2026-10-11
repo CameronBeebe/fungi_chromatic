@@ -1,0 +1,266 @@
+{
+  "_resourceType": "variables",
+  "variables": [
+    {
+      "id": "0",
+      "name": "Fungi",
+      "symbol": "var_fungi"
+    },
+    {
+      "id": "1",
+      "name": "Spore gift",
+      "symbol": "var_spore_gift"
+    },
+    {
+      "id": "2",
+      "name": "Spore view",
+      "symbol": "var_spore_view"
+    },
+    {
+      "id": "3",
+      "name": "Ending",
+      "symbol": "var_ending"
+    },
+    {
+      "id": "4",
+      "name": "Choice",
+      "symbol": "var_choice"
+    },
+    {
+      "id": "5",
+      "name": "Selected spell",
+      "symbol": "var_selected_spell"
+    },
+    {
+      "id": "6",
+      "name": "Reveal lifetime",
+      "symbol": "var_reveal_lifetime"
+    },
+    {
+      "id": "7",
+      "name": "Connected roots",
+      "symbol": "var_connected_roots"
+    },
+    {
+      "id": "8",
+      "name": "Pulse phase",
+      "symbol": "var_pulse_phase"
+    },
+    {
+      "id": "9",
+      "name": "Pool root connected",
+      "symbol": "var_pool_root_connected"
+    },
+    {
+      "id": "10",
+      "name": "Forge root connected",
+      "symbol": "var_forge_root_connected"
+    },
+    {
+      "id": "11",
+      "name": "Crown root connected",
+      "symbol": "var_crown_root_connected"
+    },
+    {
+      "id": "12",
+      "name": "Cast tile X",
+      "symbol": "var_cast_tile_x"
+    },
+    {
+      "id": "13",
+      "name": "Cast tile Y",
+      "symbol": "var_cast_tile_y"
+    },
+    {
+      "id": "14",
+      "name": "Signal head",
+      "symbol": "var_signal_head"
+    },
+    {
+      "id": "15",
+      "name": "Signal repeats",
+      "symbol": "var_signal_repeats"
+    },
+    {
+      "id": "16",
+      "name": "Signal requested",
+      "symbol": "var_signal_requested"
+    },
+    {
+      "id": "17",
+      "name": "Played dwarf spore exposure",
+      "symbol": "var_spore_exposure"
+    },
+    {
+      "id": "18",
+      "name": "Unused 18",
+      "symbol": "var_unused_18"
+    },
+    {
+      "id": "19",
+      "name": "Unused 19",
+      "symbol": "var_unused_19"
+    },
+    {
+      "id": "20",
+      "name": "Unused 20",
+      "symbol": "var_unused_20"
+    },
+    {
+      "id": "21",
+      "name": "Harvest 1 state",
+      "symbol": "var_harvest_1_state"
+    },
+    {
+      "id": "22",
+      "name": "Harvest 2 state",
+      "symbol": "var_harvest_2_state"
+    },
+    {
+      "id": "23",
+      "name": "Harvest 3 state",
+      "symbol": "var_harvest_3_state"
+    },
+    {
+      "id": "24",
+      "name": "Harvest 4 state",
+      "symbol": "var_harvest_4_state"
+    },
+    {
+      "id": "25",
+      "name": "Harvest 5 state",
+      "symbol": "var_harvest_5_state"
+    },
+    {
+      "id": "26",
+      "name": "Harvest 6 state",
+      "symbol": "var_harvest_6_state"
+    },
+    {
+      "id": "27",
+      "name": "Harvest 7 state",
+      "symbol": "var_harvest_7_state"
+    },
+    {
+      "id": "29",
+      "name": "Queued orders",
+      "symbol": "var_pending_work"
+    },
+    {
+      "id": "30",
+      "name": "Worker last site",
+      "symbol": "var_worker_last_site"
+    },
+    {
+      "id": "28",
+      "name": "Harvest 8 state",
+      "symbol": "var_harvest_8_state"
+    },
+    {
+      "id": "31",
+      "name": "Current job",
+      "symbol": "var_current_job"
+    },
+    {
+      "id": "32",
+      "name": "Regrowth possible",
+      "symbol": "var_regrowth_possible"
+    },
+    {
+      "id": "34",
+      "name": "Cursor X",
+      "symbol": "var_cursor_x"
+    },
+    {
+      "id": "35",
+      "name": "Cursor Y",
+      "symbol": "var_cursor_y"
+    },
+    {
+      "id": "36",
+      "name": "Worker step X",
+      "symbol": "var_worker_step_x"
+    },
+    {
+      "id": "37",
+      "name": "Worker step Y",
+      "symbol": "var_worker_step_y"
+    },
+    {
+      "id": "38",
+      "name": "Worker order kind",
+      "symbol": "var_worker_order_kind"
+    },
+    {
+      "id": "39",
+      "name": "Worker target",
+      "symbol": "var_worker_target"
+    },
+    {
+      "id": "40",
+      "name": "Worker step state",
+      "symbol": "var_worker_step_state"
+    },
+    {
+      "id": "41",
+      "name": "Order result",
+      "symbol": "var_order_result"
+    },
+    {
+      "id": "42",
+      "name": "Talk closes queue",
+      "symbol": "var_talk_closes_queue"
+    },
+    {
+      "id": "43",
+      "name": "Order X",
+      "symbol": "var_order_x"
+    },
+    {
+      "id": "44",
+      "name": "Order Y",
+      "symbol": "var_order_y"
+    },
+    {
+      "id": "45",
+      "name": "Spell menu choice",
+      "symbol": "var_spell_menu_choice"
+    },
+    {
+      "id": "46",
+      "name": "Atmosphere phase",
+      "symbol": "var_atmosphere_phase"
+    },
+    {
+      "id": "47",
+      "name": "Boot menu choice",
+      "symbol": "var_boot_menu_choice"
+    },
+    {
+      "id": "48",
+      "name": "At hideout",
+      "symbol": "var_at_hideout"
+    },
+    {
+      "id": "49",
+      "name": "Gillsong location",
+      "symbol": "var_gillsong_location"
+    },
+    {
+      "id": "50",
+      "name": "Gillsong equipped",
+      "symbol": "var_gillsong_equipped"
+    },
+    {
+      "id": "51",
+      "name": "Expedition menu choice",
+      "symbol": "var_expedition_menu_choice"
+    },
+    {
+      "id": "53",
+      "name": "Stored fungi",
+      "symbol": "var_stored_fungi"
+    }
+  ],
+  "constants": []
+}

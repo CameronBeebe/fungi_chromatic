@@ -1,0 +1,13 @@
+{
+  "_resourceType": "background",
+  "id": "gillsong-inspect",
+  "name": "gillsong-inspect",
+  "symbol": "bg_gillsong_inspect",
+  "tileColors": "0729+00!04!012+00!01!04!004+05!078+04!00!024+04!002+05!002+078+01!025+03!04!013+04!078+04!024+002+01!023+01!078+003+02!032+003+023+078+004+04!032+05!00!023+078+03!052+00!034+02!00!01!00!078+063+034+003+063+077+063+00!05!005+063+077+063+032+052+003+063+077e+",
+  "filename": "gillsong-inspect.png",
+  "width": 20,
+  "height": 18,
+  "imageWidth": 160,
+  "imageHeight": 144,
+  "autoColor": false
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "path": "/Users/sciphi/src/fungi_chromatic/the-pale-cap/project/variables.gbsres",
+    "snapshot": "/Users/sciphi/src/fungi_chromatic/research/save-system/observed-source/variables.gbsres",
+    "sha256": "25fc4e76067514f8e5eefd4bf833e187996522d468f9745fc2559fd8b24db044"
+  },
+  {
+    "path": "/Users/sciphi/src/fungi_chromatic/the-pale-cap/plugins/colony-controls/engine/src/ff_controls.c",
+    "snapshot": "/Users/sciphi/src/fungi_chromatic/research/save-system/observed-source/ff_controls.c",
+    "sha256": "2bdbab9df531b1fec330e8e7766b42aa614e917109420fa192ae312f9cac467c"
+  },
+  {
+    "path": "/Users/sciphi/src/fungi_chromatic/the-pale-cap/plugins/colony-controls/events/eventExpedition.js",
+    "snapshot": "/Users/sciphi/src/fungi_chromatic/research/save-system/observed-source/eventExpedition.js",
+    "sha256": "d5fc3c5b64c44fb2f186fb42737e0c0acb89ef0a8ed3967b7a4775cad5355511"
+  }
+]

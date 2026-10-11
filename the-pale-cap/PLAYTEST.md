@@ -151,3 +151,80 @@ The old run was captured as state
 was attempted. The user subsequently authorized discarding its progress.
 
 No physical Chromatic test, save/load test, or audio-quality test was performed.
+
+## October 11 — first expedition ownership slice
+
+Native ROM: `build/rom/the-pale-cap-expedition-v1.gbc`, 256 KiB, GBC-only,
+SHA256 `ec649720ec13eac1eeff105dd74709b63fed2cd34ddb8bddfeb7daabdb8093d6`.
+Official build passed; existing event/Node deprecation warnings remain.
+Recording: `artifacts/expedition-v1-final` (PyBoy 2.7.0).
+
+Exercised through ordinary emulator inputs: boot -> temporary hideout -> depart
+-> Start -> Collect fork -> worker travel -> Bag -> Equip -> Return home ->
+Store all -> Stash -> Withdraw -> Bag. The carried/equipped/stored labels changed
+correctly, and withdrawal returned the fork unequipped. Home return completes
+and clears its native queue order before opening the locked overlay.
+
+`python3 tests/test_inventory.py` compiles and exercises the actual native
+transfer function with a host VM adapter. Checks passed for repeated deposits
+and withdrawals, equip restrictions, fungible resource conservation, overflow
+retention, and bounds protection. These are state tests, not cartridge save tests.
+
+The fork is an authored single instance (location variable 49: world/bag/stash),
+with equip flag 50, home state 48, menu choice 51, and stored fungi 53. Pickup is
+a queued order to walkable tile 26,14. The Start-menu shortcut was exercised;
+A-at-target was added but has not yet been separately input-playtested. The
+world pickup still needs an approved sprite. No existing artwork was replaced.
+
+Limits: session-only; no cartridge saving, fork ability, capacity-based bag,
+hideout improvement, extraction confirmation/loss, or illustrated hideout yet.
+The screen explicitly labels session-only state and pending ability. Returning
+home opens a temporary home overlay in the same scene, not a new illustrated room.
+
+Official web export succeeded at `build/web-expedition-v1`. Opening it through
+web_preview was blocked by the older listener's unresolved recording-close
+acknowledgement. A close attempt also returned UNKNOWN; no force reset or server
+replacement was performed. Browser gameplay for this export and physical hardware
+remain unverified. The separate Gillsong art preview was not changed.
+
+### NPC gift revision
+
+`the-pale-cap-expedition-v2.gbc` SHA256
+`29e0cc410f2636b796ef4cde0fd7a0ce661961da080ec19bab4907ea1e71642b`.
+Removed Collect fork and tile coordinates from the expedition overlay. Luma's
+first completed queued conversation now grants the single fork only when its
+location is still unclaimed. Removed the invisible A-at-ground pickup branch.
+Native emulator inputs reached Luma and displayed the gift dialogue. The existing
+pickup mutation is reused as acquisition; ground pickups can later use it too.
+Illustrated inspection and the save wrapper remain unintegrated. Existing preview
+still serves v1 until explicitly updated; no live refresh performed in this pass.
+
+## Integrated Root Hearth / Vermilion / home saves
+
+Native ROM `build/rom/the-pale-cap-home-v1.gbc`, SHA256
+`b709fae343d145399595a8ed161a6c7b5ef02047b6f6050836581a69e0a61ade`.
+Native build passed; only pre-existing deprecation warnings. Normal GBC assets:
+Root Hearth 283 unique tiles, Vermilion inspection 192, eight palettes each,
+maximum four colors per tile. Sources are preserved; conversion is reproducible
+with `tools/prepare_home.py`. Normal scene rendering reserves UI tile space.
+
+`tests/playtest_home.py` ran the actual ROM with PyBoy: New Game -> illustrated
+home -> depart -> Luma gift -> Bag inspection -> B back -> queued return -> stash
+deposit -> Save. It stopped the emulator, retained only battery SRAM, created a
+fresh emulator, and verified the home scene appears without the title menu.
+Saved ownership was checked in the record; the restored stash and inspection
+were visually checked. Evidence: `artifacts/home-v1-evidence/verification.json`
+and numbered real framebuffers. No emulator state snapshot was used.
+
+`tests/test_home_save.py` exercised the native record implementation with a host
+SRAM adapter: roundtrip, all 55 interrupted prefixes, corruption at all 55 byte
+positions, previous-record recovery, blank records and invalid ownership.
+`tests/test_inventory.py` continues to cover transfer conservation and equipment
+ownership. Logical recovery tests are not physical flash/power-loss guarantees.
+
+No cartridge flash performed. Browser save/reload and physical retention require
+separate checks; native cold-boot behavior is verified above.
+
+### Gillsong inspection flow — October 11
+
+Integrated the Vermilion study’s cyan ornament pulse into item inspection. It starts automatically; B returns as before. The fork, text, and other palettes remain static. Native emulator checked all 192 frames: exactly 245 ornament pixels animate, followed by the original rest interval. Save/load and both inspection return paths pass. Browser export rebuilt; refresh the preview to load it. Hardware animation remains untested.
