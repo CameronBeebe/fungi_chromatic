@@ -1,0 +1,260 @@
+{
+  "candidate": "/Users/sciphi/src/fungi_chromatic/the-pale-cap/art-tests/root-hearth-conversion/coherent/candidate.png",
+  "flaggedBoundaryPixels": 513,
+  "threshold": 12,
+  "edges": [
+    {
+      "axis": "vertical",
+      "coordinate": 136,
+      "meanResidualJump": 12.123573396248196,
+      "meanAddedContrast": 7.083007270137858,
+      "worstPixel": 43
+    },
+    {
+      "axis": "horizontal",
+      "coordinate": 96,
+      "meanResidualJump": 9.919561536767386,
+      "meanAddedContrast": 5.15002460091094,
+      "worstPixel": 16
+    },
+    {
+      "axis": "horizontal",
+      "coordinate": 64,
+      "meanResidualJump": 12.188492389218293,
+      "meanAddedContrast": 5.0369590634018735,
+      "worstPixel": 150
+    },
+    {
+      "axis": "horizontal",
+      "coordinate": 56,
+      "meanResidualJump": 12.652950026314041,
+      "meanAddedContrast": 4.781495364392887,
+      "worstPixel": 141
+    },
+    {
+      "axis": "horizontal",
+      "coordinate": 40,
+      "meanResidualJump": 12.280046669568145,
+      "meanAddedContrast": 4.680314280913459,
+      "worstPixel": 55
+    },
+    {
+      "axis": "horizontal",
+      "coordinate": 32,
+      "meanResidualJump": 12.46464781032326,
+      "meanAddedContrast": 4.468676484903628,
+      "worstPixel": 146
+    },
+    {
+      "axis": "horizontal",
+      "coordinate": 72,
+      "meanResidualJump": 13.257329727562459,
+      "meanAddedContrast": 4.363395484911068,
+      "worstPixel": 123
+    },
+    {
+      "axis": "horizontal",
+      "coordinate": 24,
+      "meanResidualJump": 12.49958756803936,
+      "meanAddedContrast": 4.2058471407433835,
+      "worstPixel": 39
+    },
+    {
+      "axis": "horizontal",
+      "coordinate": 48,
+      "meanResidualJump": 11.393214064549728,
+      "meanAddedContrast": 4.187376205626899,
+      "worstPixel": 136
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 96,
+      "meanResidualJump": 9.063638816909897,
+      "meanAddedContrast": 3.9209647726831767,
+      "worstPixel": 1
+    },
+    {
+      "axis": "horizontal",
+      "coordinate": 88,
+      "meanResidualJump": 10.223460260530647,
+      "meanAddedContrast": 3.8962167043150906,
+      "worstPixel": 7
+    },
+    {
+      "axis": "horizontal",
+      "coordinate": 16,
+      "meanResidualJump": 10.82921727779665,
+      "meanAddedContrast": 3.868146310229686,
+      "worstPixel": 11
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 72,
+      "meanResidualJump": 9.281449456593101,
+      "meanAddedContrast": 3.611029357238154,
+      "worstPixel": 36
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 40,
+      "meanResidualJump": 8.323436958056384,
+      "meanAddedContrast": 3.3752108814302413,
+      "worstPixel": 17
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 48,
+      "meanResidualJump": 8.372242392262196,
+      "meanAddedContrast": 3.2473496444859395,
+      "worstPixel": 47
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 24,
+      "meanResidualJump": 9.183789811768754,
+      "meanAddedContrast": 3.22383659310509,
+      "worstPixel": 43
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 112,
+      "meanResidualJump": 8.320792107489016,
+      "meanAddedContrast": 3.1455077296802787,
+      "worstPixel": 68
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 64,
+      "meanResidualJump": 8.461789206931847,
+      "meanAddedContrast": 2.9926805562022145,
+      "worstPixel": 35
+    },
+    {
+      "axis": "horizontal",
+      "coordinate": 8,
+      "meanResidualJump": 9.263528627028597,
+      "meanAddedContrast": 2.9605503569148994,
+      "worstPixel": 36
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 56,
+      "meanResidualJump": 7.616858219533372,
+      "meanAddedContrast": 2.7690957135406538,
+      "worstPixel": 39
+    },
+    {
+      "axis": "horizontal",
+      "coordinate": 80,
+      "meanResidualJump": 12.087605409103361,
+      "meanAddedContrast": 2.7679536654314303,
+      "worstPixel": 131
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 152,
+      "meanResidualJump": 7.984679401711444,
+      "meanAddedContrast": 2.7341814704594793,
+      "worstPixel": 66
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 32,
+      "meanResidualJump": 7.373038863583878,
+      "meanAddedContrast": 2.697759678992257,
+      "worstPixel": 50
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 16,
+      "meanResidualJump": 8.468872936861853,
+      "meanAddedContrast": 2.5494584848369573,
+      "worstPixel": 21
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 128,
+      "meanResidualJump": 6.684049578625565,
+      "meanAddedContrast": 2.5241245585266237,
+      "worstPixel": 76
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 8,
+      "meanResidualJump": 9.845973449589142,
+      "meanAddedContrast": 2.4932731515333266,
+      "worstPixel": 21
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 80,
+      "meanResidualJump": 6.691362544971604,
+      "meanAddedContrast": 2.026308003717139,
+      "worstPixel": 16
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 88,
+      "meanResidualJump": 5.958499713953156,
+      "meanAddedContrast": 1.7435701662850775,
+      "worstPixel": 28
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 144,
+      "meanResidualJump": 7.692502796677295,
+      "meanAddedContrast": 1.6472203859603045,
+      "worstPixel": 61
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 120,
+      "meanResidualJump": 6.691031071216488,
+      "meanAddedContrast": 1.5952282926264554,
+      "worstPixel": 87
+    },
+    {
+      "axis": "vertical",
+      "coordinate": 104,
+      "meanResidualJump": 7.372942671167394,
+      "meanAddedContrast": 1.3056835645240201,
+      "worstPixel": 78
+    },
+    {
+      "axis": "horizontal",
+      "coordinate": 104,
+      "meanResidualJump": 3.4728545775616126,
+      "meanAddedContrast": 1.1455944136861878,
+      "worstPixel": 35
+    },
+    {
+      "axis": "horizontal",
+      "coordinate": 112,
+      "meanResidualJump": 2.82109905581114,
+      "meanAddedContrast": 0.967794682195392,
+      "worstPixel": 56
+    },
+    {
+      "axis": "horizontal",
+      "coordinate": 136,
+      "meanResidualJump": 3.5103294604122928,
+      "meanAddedContrast": 0.7208933183841654,
+      "worstPixel": 106
+    },
+    {
+      "axis": "horizontal",
+      "coordinate": 128,
+      "meanResidualJump": 1.822854593414457,
+      "meanAddedContrast": 0.36545990339939594,
+      "worstPixel": 4
+    },
+    {
+      "axis": "horizontal",
+      "coordinate": 120,
+      "meanResidualJump": 1.7333717649667109,
+      "meanAddedContrast": 0.26123797744263544,
+      "worstPixel": 156
+    }
+  ],
+  "note": "Flags require visual interpretation; intentional stepped shading can also be flagged."
+}

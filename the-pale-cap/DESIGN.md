@@ -18,6 +18,37 @@ to a later expansion, subject to the proposed Wi-Fi hardware/firmware work. No
 network or model dependency belongs in the order-processing loop. Prepared
 content can be authored or generated ahead of time and compiled into the ROM.
 
+## Current implementation focus — October 11
+
+The next proposed playable slice is extraction, an illustrated hideout, one useful
+fork and clear item menus. [EXPEDITION-SLICE.md](EXPEDITION-SLICE.md) records its
+working rules, unresolved choices and acceptance checks. These are test defaults,
+not implemented behavior. Existing assets require individual review before replacement.
+A shared fork-family overworld icon is sufficient initially; visible equipment is
+undecided. Detailed inspection art and fixed hideout scenes are distinct opportunities
+for visual richness. Current art-test ROMs are separate from the game.
+
+## Approved save, boot and presentation rules — October 11
+
+- Save only at the hideout, after extraction. No mid-run save or resumed run.
+- New Game begins at home. With a valid compatible save, power-on loads straight
+  into the hideout, bypassing the title menu and Continue prompt.
+- With no save, show startup options. Invalid or incompatible saves require a
+  clear recovery/error state; never silently overwrite them.
+- Do not serialize queued work. Finish extraction and clear the queue before
+  saving settled home state; restore an idle dwarf.
+- Quitting mid-run loses progress since the last home save. Departure-record
+  rules for equipment loss and home autosave timing remain undecided.
+- Vermilion Gillsong inspection art is approved for integration.
+- General menus should adopt its dark blue/violet ground, cyan framing and warm
+  light text. Prefer restrained list borders and richer inspection ornament over
+  the current papyrus-like presentation. Preserve legibility and clear selection.
+
+These decisions supersede the earlier mid-expedition save proposal, including
+that requirement in the independent save research handoff. Its engine findings
+remain useful; its expedition-resume acceptance criteria no longer apply.
+Implementation is still pending unless explicitly recorded in PLAYTEST.md.
+
 ## Design framework
 
 The inspirations are a vocabulary for an original game, not a requirement to
@@ -450,3 +481,56 @@ item fills a gap, a duplicate adds little, and no offer is useful. Do not force
 three positive recommendations when fewer qualify. This is future trading UI;
 it is not a prerequisite for the current art and encounter priorities and does
 not require a live LLM/Jev service.
+
+### First ownership slice implemented — October 11
+
+The game now starts in a temporary home overlay after New Game. Depart enters
+the existing grotto. Start opens Bag, Collect fork and Go home. Collection queues
+travel to 26,14; return queues travel to Bram's original 25,13 entry point and
+closes subsequent order admission, like talk. Home opens after completing the
+return order. Bag supports equipping; stash supports deposit and withdrawal.
+The single fork's location has one authoritative value, with no separate copy
+for equipment. Resource transfers preserve overflow rather than discarding it.
+
+This is a session-only functional foundation. The detailed concept illustration
+is not integrated, no existing art is replaced, and home is not yet a new scene.
+The fork's active effect, generalized carrying capacity, save/load, failure/loss,
+return confirmation and upgrades remain unimplemented. Menus state the pending
+ability and session-only limitation. The earlier full slice specification remains
+the intended next work, not a description of completed features.
+
+## Integrated home/inspection/save v1 — October 11
+
+Root Hearth is now a native, illustrated home scene, adapted from hideout concept
+S01 without changing its source. Left/right selects Bag, Home or Exit below the
+room. Home provides stash, resource transfers and explicit Save. Luma grants the
+single fork; Bag and Stash open the approved Vermilion illustration. B exits
+inspection. Expedition inspection requires queued orders to finish first and
+restores the dwarf/cursor positions on return. The dark/cyan/cream UI palette is
+shared across menus and dialogue. Other concept directions remain separate.
+
+Saving is home-only. Fresh SRAM shows New Game/Controls; valid compatible home
+data boots directly into Root Hearth. A save records twenty explicitly ordered
+semantic variables, never VM stacks, actor continuations or queue state. The
+home-only rule makes this smaller than the snapshot approach proposed in the
+research handoff. Two independent logical SRAM-bank records use versioned magic,
+a sequence, CRC16, readback verification and a last-written commit marker. A bad
+new record falls back to a valid older one. Unrecognized/damaged data is reported;
+New Game leaves it untouched until an explicit Save. On-disk schema changes must
+increment the version. Banks 0 and 1 are reserved for this system; do not also use
+stock engine snapshot saves in these banks.
+
+Persisted editor IDs, in stable disk order: 0,1,3,5,7,9,10,11,17,21–28,49,50,53.
+Aliases are resolved by the compiler at the call boundary, so addresses are not
+stored on disk. The fixed Gillsong instance remains defined by ROM content and
+its location/equipped fields. A future change to its intrinsic definition needs
+an explicit compatibility/migration decision.
+
+This v1 has no active fork ability, construction upgrade, general item-slot
+capacity, or departure-loss ledger. Unsaved run progress is lost on cold restart;
+previously saved equipment is restored. Physical save retention and interrupted
+power behavior are not established by the emulator or host tests.
+
+### Gillsong inspection flow — October 11
+
+Integrated the Vermilion study’s cyan ornament pulse into item inspection. It starts automatically; B returns as before. The fork, text, and other palettes remain static. Native emulator checked all 192 frames: exactly 245 ornament pixels animate, followed by the original rest interval. Save/load and both inspection return paths pass. Browser export rebuilt; refresh the preview to load it. Hardware animation remains untested.

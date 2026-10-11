@@ -1,0 +1,54 @@
+{
+  "_resourceType": "scene",
+  "id": "root-hearth",
+  "_index": 1,
+  "type": "TOPDOWN",
+  "name": "root-hearth",
+  "symbol": "scene_root_hearth",
+  "x": 400,
+  "y": 0,
+  "width": 20,
+  "height": 18,
+  "backgroundId": "root-hearth",
+  "tilesetId": "",
+  "colorModeOverride": "none",
+  "paletteIds": [
+    "root-hearth-0",
+    "root-hearth-1",
+    "root-hearth-2",
+    "root-hearth-3",
+    "root-hearth-4",
+    "root-hearth-5",
+    "root-hearth-6",
+    "default-ui"
+  ],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": "00168+",
+  "script": [
+    {
+      "id": "f246272d-c182-4c57-be84-e1088e775ef4",
+      "command": "EVENT_ACTOR_HIDE",
+      "args": {
+        "actorId": "player"
+      }
+    },
+    {
+      "id": "60283df9-ad79-48e5-b0b3-68de83b08892",
+      "command": "EVENT_FADE_IN",
+      "args": {
+        "speed": 1
+      }
+    },
+    {
+      "id": "cbb0561f-5c7f-438f-8239-0a47cb2fe34b",
+      "command": "EVENT_EXPEDITION",
+      "args": {
+        "mode": "home"
+      }
+    }
+  ]
+}

@@ -427,6 +427,35 @@
             "children": {
               "true": [
                 {
+                  "id": "d854162e-cbc7-42ca-bce2-58317e8fcef7",
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "eq",
+                      "valueA": {
+                        "type": "variable",
+                        "value": "38"
+                      },
+                      "valueB": {
+                        "type": "number",
+                        "value": 4
+                      }
+                    }
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "id": "1a8a6c30-12d1-4ab0-9071-aeebf3fc7148",
+                        "command": "EVENT_EXPEDITION",
+                        "args": {
+                          "mode": "pickup"
+                        }
+                      }
+                    ],
+                    "false": []
+                  }
+                },
+                {
                   "id": "controls-v4-354",
                   "command": "EVENT_IF",
                   "args": {
@@ -1773,6 +1802,45 @@
                         "children": {
                           "true": [
                             {
+                              "id": "6cd7fe7b-5c43-42e4-b7f8-7c5bb4575ab8",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "eq",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "49"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 0
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "8d87b6e5-6ef3-47bd-a659-67fe1cbab4d7",
+                                    "command": "EVENT_EXPEDITION",
+                                    "args": {
+                                      "mode": "pickup"
+                                    }
+                                  },
+                                  {
+                                    "id": "d1a5a2c0-b4a9-4283-988c-737bdaa2501f",
+                                    "command": "EVENT_TEXT",
+                                    "args": {
+                                      "text": [
+                                        "LUMA\nTake this fork.\nIt hums before\nrain.",
+                                        "GILLSONG received.\nFind it in your\nbag with START."
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "false": []
+                              }
+                            },
+                            {
                               "id": "controls-v4-319",
                               "command": "EVENT_TEXT",
                               "args": {
@@ -1969,6 +2037,35 @@
                   "command": "EVENT_DEC_VALUE",
                   "args": {
                     "variable": "29"
+                  }
+                },
+                {
+                  "id": "23dee25d-4985-43ee-948c-c812ffc0fd37",
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "eq",
+                      "valueA": {
+                        "type": "variable",
+                        "value": "38"
+                      },
+                      "valueB": {
+                        "type": "number",
+                        "value": 5
+                      }
+                    }
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "id": "a86ab111-f6f3-44cc-a7bc-1091a1e01b47",
+                        "command": "EVENT_EXPEDITION",
+                        "args": {
+                          "mode": "arrive"
+                        }
+                      }
+                    ],
+                    "false": []
                   }
                 }
               ],

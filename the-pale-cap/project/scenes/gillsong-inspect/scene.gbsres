@@ -1,0 +1,54 @@
+{
+  "_resourceType": "scene",
+  "id": "gillsong-inspect",
+  "_index": 2,
+  "type": "TOPDOWN",
+  "name": "gillsong-inspect",
+  "symbol": "scene_gillsong_inspect",
+  "x": 800,
+  "y": 0,
+  "width": 20,
+  "height": 18,
+  "backgroundId": "gillsong-inspect",
+  "tilesetId": "",
+  "colorModeOverride": "none",
+  "paletteIds": [
+    "gillsong-inspect-0",
+    "gillsong-inspect-1",
+    "gillsong-inspect-2",
+    "gillsong-inspect-3",
+    "gillsong-inspect-4",
+    "gillsong-inspect-5",
+    "gillsong-inspect-6",
+    "default-ui"
+  ],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": "00168+",
+  "script": [
+    {
+      "id": "2dad000b-1a59-4694-bc0b-3eda6ec64009",
+      "command": "EVENT_ACTOR_HIDE",
+      "args": {
+        "actorId": "player"
+      }
+    },
+    {
+      "id": "6c4e94f0-def6-4e51-b65c-8cad14c75824",
+      "command": "EVENT_FADE_IN",
+      "args": {
+        "speed": 1
+      }
+    },
+    {
+      "id": "90ceb01c-b5ad-41d6-b5d1-c2cc20afbadb",
+      "command": "EVENT_EXPEDITION",
+      "args": {
+        "mode": "inspect"
+      }
+    }
+  ]
+}
