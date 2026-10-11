@@ -1,0 +1,13 @@
+{
+  "_resourceType": "background",
+  "id": "74017d1b-6a0d-5497-abf2-dad6c3ca4484",
+  "name": "Pale Cap Bed",
+  "symbol": "bg_tilemap_74017d1b6a0d5497abf2dad6c3ca4484",
+  "tileColors": "0040+01c+008+01c+008+01c+008+01c+008+01c+00cc+",
+  "filename": "pale-bed.png",
+  "width": 20,
+  "height": 18,
+  "imageWidth": 160,
+  "imageHeight": 144,
+  "autoColor": false
+}

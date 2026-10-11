@@ -1,0 +1,18 @@
+{
+  "_resourceType": "palette",
+  "id": "thread-v2",
+  "name": "thread-v2",
+  "colors": [
+    "C0FFD3",
+    "62BFAD",
+    "2D6670",
+    "152D3B"
+  ],
+  "defaultName": "thread-v2",
+  "defaultColors": [
+    "C0FFD3",
+    "62BFAD",
+    "2D6670",
+    "152D3B"
+  ]
+}

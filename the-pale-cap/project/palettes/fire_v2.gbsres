@@ -1,0 +1,18 @@
+{
+  "_resourceType": "palette",
+  "id": "fire-v2",
+  "name": "fire-v2",
+  "colors": [
+    "FFDF8A",
+    "D88951",
+    "734448",
+    "2C2038"
+  ],
+  "defaultName": "fire-v2",
+  "defaultColors": [
+    "FFDF8A",
+    "D88951",
+    "734448",
+    "2C2038"
+  ]
+}

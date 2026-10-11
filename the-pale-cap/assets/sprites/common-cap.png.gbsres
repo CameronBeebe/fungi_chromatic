@@ -1,0 +1,129 @@
+{
+  "_resourceType": "sprite",
+  "id": "d56e85d1-cec7-53df-a1f6-081aa115f609",
+  "name": "Common Cap",
+  "symbol": "sprite_common_cap",
+  "states": [
+    {
+      "id": "2ac16b15-55eb-5319-8d69-8cf57b58fdf5",
+      "name": "",
+      "animationType": "fixed",
+      "flipLeft": false,
+      "animations": [
+        {
+          "id": "7dfa3a30-5068-5e02-82c4-32e517e083a4",
+          "frames": [
+            {
+              "id": "3e6379d1-af7e-5681-ace1-fa7afc83310e",
+              "tiles": [
+                {
+                  "id": "10a886ac-f95e-5b61-a4e8-392c60b6a932",
+                  "x": 0,
+                  "y": 0,
+                  "sliceX": 0,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                },
+                {
+                  "id": "6c8c7b0a-1a49-5e23-9bbd-10fe6c92dd2a",
+                  "x": 8,
+                  "y": 0,
+                  "sliceX": 8,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3f742e76-24df-5c63-bde6-dbf6cd38bafe",
+          "frames": [
+            {
+              "id": "12079b19-1b28-5c7b-ae12-9abe83e97010",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "0cc7b447-5273-5459-a5fc-2a3ae036332a",
+          "frames": [
+            {
+              "id": "a1156091-4a74-585a-94db-2a7ed8bcfc1f",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "f7b3b377-060b-51b4-80b4-319de1840339",
+          "frames": [
+            {
+              "id": "1a7b8ff9-7aa5-572f-9c3e-f4d0cb4864af",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "8eba37bc-f96f-5a2a-b150-2d9f165ddfd1",
+          "frames": [
+            {
+              "id": "6635e46b-e5f1-53df-97e2-37779bb20d23",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "f612d8e0-cadd-579f-948a-7a69babeaaa4",
+          "frames": [
+            {
+              "id": "99acd27b-42c0-5025-bab4-7eb4d108db29",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "5136d18a-dcc9-50f6-a9cf-101010aa490c",
+          "frames": [
+            {
+              "id": "fd616289-f57e-5713-b38b-dec41b324039",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "32ed705f-3848-54ca-8f7d-2b146733ba89",
+          "frames": [
+            {
+              "id": "2f73a2e5-8e45-566f-a673-33b6ece6f1e9",
+              "tiles": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "numTiles": 2,
+  "canvasOriginX": 0,
+  "canvasOriginY": 0,
+  "canvasWidth": 16,
+  "canvasHeight": 16,
+  "boundsX": 0,
+  "boundsY": -8,
+  "boundsWidth": 16,
+  "boundsHeight": 16,
+  "animSpeed": 15,
+  "filename": "common-cap.png",
+  "width": 16,
+  "height": 16,
+  "checksum": "dd9be034ebb80960e8139746c5f599204bb0032e"
+}

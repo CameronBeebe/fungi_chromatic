@@ -1,0 +1,18 @@
+{
+  "_resourceType": "palette",
+  "id": "fungus-colors",
+  "name": "Common Fungus",
+  "colors": [
+    "FFE0AB",
+    "E88078",
+    "E88078",
+    "302139"
+  ],
+  "defaultName": "Common Fungus",
+  "defaultColors": [
+    "000000",
+    "F8F8F0",
+    "C8D0B0",
+    "203028"
+  ]
+}

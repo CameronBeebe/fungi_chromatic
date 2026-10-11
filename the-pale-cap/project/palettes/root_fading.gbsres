@@ -1,0 +1,18 @@
+{
+  "_resourceType": "palette",
+  "id": "root-fading",
+  "name": "root-fading",
+  "colors": [
+    "788898",
+    "586878",
+    "405068",
+    "201830"
+  ],
+  "defaultName": "root-fading",
+  "defaultColors": [
+    "788898",
+    "586878",
+    "405068",
+    "201830"
+  ]
+}

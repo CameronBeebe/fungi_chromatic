@@ -1,0 +1,18 @@
+{
+  "_resourceType": "palette",
+  "id": "deep-water",
+  "name": "deep-water",
+  "colors": [
+    "30F8E0",
+    "008898",
+    "202860",
+    "080818"
+  ],
+  "defaultName": "deep-water",
+  "defaultColors": [
+    "A0FFE0",
+    "50B8D0",
+    "486898",
+    "182838"
+  ]
+}

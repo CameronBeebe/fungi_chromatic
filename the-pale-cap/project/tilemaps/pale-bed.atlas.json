@@ -1,0 +1,188 @@
+{
+  "format": "gb-studio-tile-atlas",
+  "version": 1,
+  "id": "f0af335a-2453-5558-b610-1ce6c859af49",
+  "sourcePath": "project/tilemaps/pale-bed.png",
+  "sourceSha256": "95e500df5dda8031f78c15516d862abbb3fe23a413dc5db63e653720ba5b9dc8",
+  "name": "Pale Cap Bed",
+  "tiles": [
+    {
+      "id": "floor",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "id": "wall",
+      "x": 1,
+      "y": 0
+    },
+    {
+      "id": "soil",
+      "x": 2,
+      "y": 0
+    },
+    {
+      "id": "cap",
+      "x": 3,
+      "y": 0
+    },
+    {
+      "id": "stem",
+      "x": 4,
+      "y": 0
+    },
+    {
+      "id": "chalk",
+      "x": 5,
+      "y": 0
+    },
+    {
+      "id": "pebble",
+      "x": 6,
+      "y": 0
+    },
+    {
+      "id": "moss",
+      "x": 7,
+      "y": 0
+    }
+  ],
+  "primitives": [
+    {
+      "id": "floor",
+      "role": "surface",
+      "width": 1,
+      "height": 1,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "cells": [
+        {
+          "tileId": "floor",
+          "paletteSlot": 0,
+          "collision": {
+            "mask": 15,
+            "value": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "wall",
+      "role": "surface",
+      "width": 1,
+      "height": 1,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "cells": [
+        {
+          "tileId": "wall",
+          "paletteSlot": 0,
+          "collision": {
+            "mask": 15,
+            "value": 15
+          }
+        }
+      ]
+    },
+    {
+      "id": "soil",
+      "role": "decoration",
+      "width": 1,
+      "height": 1,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "cells": [
+        {
+          "tileId": "soil",
+          "paletteSlot": 1
+        }
+      ]
+    },
+    {
+      "id": "cap",
+      "role": "decoration",
+      "width": 1,
+      "height": 1,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "cells": [
+        {
+          "tileId": "cap",
+          "paletteSlot": 1
+        }
+      ]
+    },
+    {
+      "id": "stem",
+      "role": "decoration",
+      "width": 1,
+      "height": 1,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "cells": [
+        {
+          "tileId": "stem",
+          "paletteSlot": 1
+        }
+      ]
+    },
+    {
+      "id": "chalk",
+      "role": "decoration",
+      "width": 1,
+      "height": 1,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "cells": [
+        {
+          "tileId": "chalk",
+          "paletteSlot": 0
+        }
+      ]
+    },
+    {
+      "id": "pebble",
+      "role": "decoration",
+      "width": 1,
+      "height": 1,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "cells": [
+        {
+          "tileId": "pebble",
+          "paletteSlot": 0
+        }
+      ]
+    },
+    {
+      "id": "moss",
+      "role": "decoration",
+      "width": 1,
+      "height": 1,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "cells": [
+        {
+          "tileId": "moss",
+          "paletteSlot": 0
+        }
+      ]
+    }
+  ]
+}

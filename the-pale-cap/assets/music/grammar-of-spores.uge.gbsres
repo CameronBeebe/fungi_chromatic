@@ -1,0 +1,9 @@
+{
+  "_resourceType": "music",
+  "id": "grammar-of-spores",
+  "name": "A Grammar of Spores",
+  "symbol": "music_grammar_of_spores",
+  "filename": "grammar-of-spores.uge",
+  "type": "uge",
+  "settings": {}
+}

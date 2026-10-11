@@ -1,0 +1,11 @@
+{
+  "_resourceType": "tileset",
+  "id": "atmosphere-cels",
+  "name": "Atmosphere cels",
+  "symbol": "tileset_atmosphere_cels",
+  "filename": "atmosphere-cels.png",
+  "width": 16,
+  "height": 6,
+  "imageWidth": 128,
+  "imageHeight": 48
+}

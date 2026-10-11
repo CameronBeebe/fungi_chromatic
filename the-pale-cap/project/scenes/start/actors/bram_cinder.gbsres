@@ -1,0 +1,1985 @@
+{
+  "_resourceType": "actor",
+  "id": "bram",
+  "_index": 10,
+  "symbol": "actor_bram_cinder",
+  "prefabId": "",
+  "name": "Bram Cinder",
+  "coordinateType": "tiles",
+  "x": 25,
+  "y": 13,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "f61d998a-4bbe-5280-9ec6-bb515c38bfbd",
+  "paletteId": "dwarf-colors",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "isPinned": false,
+  "persistent": true,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "work-v3-1465",
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "BRAM\nA marks a cap.\nI do the work.",
+          "I take the next\nnearest job.\nKeep exploring."
+        ]
+      }
+    }
+  ],
+  "startScript": [
+    {
+      "id": "work-v3-1463",
+      "command": "EVENT_ACTOR_COLLISIONS_DISABLE",
+      "args": {
+        "actorId": "$self$"
+      }
+    }
+  ],
+  "updateScript": [
+    {
+      "id": "controls-v4-349",
+      "command": "EVENT_ACTOR_GET_POSITION",
+      "args": {
+        "actorId": "$self$",
+        "vectorX": "36",
+        "vectorY": "37",
+        "units": "tiles"
+      }
+    },
+    {
+      "id": "controls-v4-350",
+      "command": "EVENT_COLONY_CONTROLS",
+      "args": {
+        "operation": 3,
+        "kind": 0,
+        "target": 0
+      }
+    },
+    {
+      "id": "controls-v4-352",
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "gt",
+          "valueA": {
+            "type": "variable",
+            "value": "40"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
+        }
+      },
+      "children": {
+        "true": [
+          {
+            "id": "controls-v4-351",
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "eq",
+                "valueA": {
+                  "type": "variable",
+                  "value": "38"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 1
+                }
+              }
+            },
+            "children": {
+              "true": [
+                {
+                  "id": "controls-v4-334",
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "eq",
+                      "valueA": {
+                        "type": "variable",
+                        "value": "39"
+                      },
+                      "valueB": {
+                        "type": "number",
+                        "value": 1
+                      }
+                    }
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "id": "controls-v4-333",
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "21",
+                          "value": {
+                            "type": "number",
+                            "value": 2
+                          }
+                        }
+                      }
+                    ],
+                    "false": []
+                  }
+                },
+                {
+                  "id": "controls-v4-336",
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "eq",
+                      "valueA": {
+                        "type": "variable",
+                        "value": "39"
+                      },
+                      "valueB": {
+                        "type": "number",
+                        "value": 2
+                      }
+                    }
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "id": "controls-v4-335",
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "22",
+                          "value": {
+                            "type": "number",
+                            "value": 2
+                          }
+                        }
+                      }
+                    ],
+                    "false": []
+                  }
+                },
+                {
+                  "id": "controls-v4-338",
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "eq",
+                      "valueA": {
+                        "type": "variable",
+                        "value": "39"
+                      },
+                      "valueB": {
+                        "type": "number",
+                        "value": 3
+                      }
+                    }
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "id": "controls-v4-337",
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "23",
+                          "value": {
+                            "type": "number",
+                            "value": 2
+                          }
+                        }
+                      }
+                    ],
+                    "false": []
+                  }
+                },
+                {
+                  "id": "controls-v4-340",
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "eq",
+                      "valueA": {
+                        "type": "variable",
+                        "value": "39"
+                      },
+                      "valueB": {
+                        "type": "number",
+                        "value": 4
+                      }
+                    }
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "id": "controls-v4-339",
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "24",
+                          "value": {
+                            "type": "number",
+                            "value": 2
+                          }
+                        }
+                      }
+                    ],
+                    "false": []
+                  }
+                },
+                {
+                  "id": "controls-v4-342",
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "eq",
+                      "valueA": {
+                        "type": "variable",
+                        "value": "39"
+                      },
+                      "valueB": {
+                        "type": "number",
+                        "value": 5
+                      }
+                    }
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "id": "controls-v4-341",
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "25",
+                          "value": {
+                            "type": "number",
+                            "value": 2
+                          }
+                        }
+                      }
+                    ],
+                    "false": []
+                  }
+                },
+                {
+                  "id": "controls-v4-344",
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "eq",
+                      "valueA": {
+                        "type": "variable",
+                        "value": "39"
+                      },
+                      "valueB": {
+                        "type": "number",
+                        "value": 6
+                      }
+                    }
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "id": "controls-v4-343",
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "26",
+                          "value": {
+                            "type": "number",
+                            "value": 2
+                          }
+                        }
+                      }
+                    ],
+                    "false": []
+                  }
+                },
+                {
+                  "id": "controls-v4-346",
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "eq",
+                      "valueA": {
+                        "type": "variable",
+                        "value": "39"
+                      },
+                      "valueB": {
+                        "type": "number",
+                        "value": 7
+                      }
+                    }
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "id": "controls-v4-345",
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "27",
+                          "value": {
+                            "type": "number",
+                            "value": 2
+                          }
+                        }
+                      }
+                    ],
+                    "false": []
+                  }
+                },
+                {
+                  "id": "controls-v4-348",
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "eq",
+                      "valueA": {
+                        "type": "variable",
+                        "value": "39"
+                      },
+                      "valueB": {
+                        "type": "number",
+                        "value": 8
+                      }
+                    }
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "id": "controls-v4-347",
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "28",
+                          "value": {
+                            "type": "number",
+                            "value": 2
+                          }
+                        }
+                      }
+                    ],
+                    "false": []
+                  }
+                }
+              ],
+              "false": []
+            }
+          }
+        ],
+        "false": []
+      }
+    },
+    {
+      "id": "controls-v4-357",
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "40"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 1
+          }
+        }
+      },
+      "children": {
+        "true": [
+          {
+            "id": "controls-v4-353",
+            "command": "EVENT_ACTOR_MOVE_TO",
+            "args": {
+              "actorId": "$self$",
+              "x": {
+                "type": "variable",
+                "value": "36"
+              },
+              "y": {
+                "type": "variable",
+                "value": "37"
+              },
+              "units": "tiles",
+              "collideWith": [],
+              "moveType": "horizontal",
+              "lockDirection": []
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "controls-v4-356",
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "eq",
+                "valueA": {
+                  "type": "variable",
+                  "value": "40"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 2
+                }
+              }
+            },
+            "children": {
+              "true": [
+                {
+                  "id": "controls-v4-354",
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "eq",
+                      "valueA": {
+                        "type": "variable",
+                        "value": "38"
+                      },
+                      "valueB": {
+                        "type": "number",
+                        "value": 1
+                      }
+                    }
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "id": "controls-v4-241",
+                        "command": "EVENT_IF",
+                        "args": {
+                          "condition": {
+                            "type": "eq",
+                            "valueA": {
+                              "type": "variable",
+                              "value": "39"
+                            },
+                            "valueB": {
+                              "type": "number",
+                              "value": 1
+                            }
+                          }
+                        },
+                        "children": {
+                          "true": [
+                            {
+                              "id": "controls-v4-231",
+                              "command": "EVENT_WAIT",
+                              "args": {
+                                "units": "frames",
+                                "frames": {
+                                  "type": "number",
+                                  "value": 90
+                                }
+                              }
+                            },
+                            {
+                              "id": "controls-v4-232",
+                              "command": "EVENT_ACTOR_DEACTIVATE",
+                              "args": {
+                                "actorId": "cap-1"
+                              }
+                            },
+                            {
+                              "id": "controls-v4-233",
+                              "command": "EVENT_SET_VALUE",
+                              "args": {
+                                "variable": "21",
+                                "value": {
+                                  "type": "number",
+                                  "value": 3
+                                }
+                              }
+                            },
+                            {
+                              "id": "controls-v4-234",
+                              "command": "EVENT_INC_VALUE",
+                              "args": {
+                                "variable": "0"
+                              }
+                            },
+                            {
+                              "id": "controls-v4-237",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "gte",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "17"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 95
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "controls-v4-235",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "17",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 100
+                                      }
+                                    }
+                                  }
+                                ],
+                                "false": [
+                                  {
+                                    "id": "controls-v4-236",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "17",
+                                      "value": {
+                                        "type": "add",
+                                        "valueA": {
+                                          "type": "variable",
+                                          "value": "17"
+                                        },
+                                        "valueB": {
+                                          "type": "number",
+                                          "value": 5
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "id": "controls-v4-240",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "eq",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "2"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 1
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "controls-v4-238",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "6",
+                                      "value": {
+                                        "type": "add",
+                                        "valueA": {
+                                          "type": "number",
+                                          "value": 64
+                                        },
+                                        "valueB": {
+                                          "type": "variable",
+                                          "value": "17"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "id": "controls-v4-239",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "16",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 1
+                                      }
+                                    }
+                                  }
+                                ],
+                                "false": []
+                              }
+                            }
+                          ],
+                          "false": []
+                        }
+                      },
+                      {
+                        "id": "controls-v4-252",
+                        "command": "EVENT_IF",
+                        "args": {
+                          "condition": {
+                            "type": "eq",
+                            "valueA": {
+                              "type": "variable",
+                              "value": "39"
+                            },
+                            "valueB": {
+                              "type": "number",
+                              "value": 2
+                            }
+                          }
+                        },
+                        "children": {
+                          "true": [
+                            {
+                              "id": "controls-v4-242",
+                              "command": "EVENT_WAIT",
+                              "args": {
+                                "units": "frames",
+                                "frames": {
+                                  "type": "number",
+                                  "value": 90
+                                }
+                              }
+                            },
+                            {
+                              "id": "controls-v4-243",
+                              "command": "EVENT_ACTOR_DEACTIVATE",
+                              "args": {
+                                "actorId": "cap-2"
+                              }
+                            },
+                            {
+                              "id": "controls-v4-244",
+                              "command": "EVENT_SET_VALUE",
+                              "args": {
+                                "variable": "22",
+                                "value": {
+                                  "type": "number",
+                                  "value": 3
+                                }
+                              }
+                            },
+                            {
+                              "id": "controls-v4-245",
+                              "command": "EVENT_INC_VALUE",
+                              "args": {
+                                "variable": "0"
+                              }
+                            },
+                            {
+                              "id": "controls-v4-248",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "gte",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "17"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 95
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "controls-v4-246",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "17",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 100
+                                      }
+                                    }
+                                  }
+                                ],
+                                "false": [
+                                  {
+                                    "id": "controls-v4-247",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "17",
+                                      "value": {
+                                        "type": "add",
+                                        "valueA": {
+                                          "type": "variable",
+                                          "value": "17"
+                                        },
+                                        "valueB": {
+                                          "type": "number",
+                                          "value": 5
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "id": "controls-v4-251",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "eq",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "2"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 1
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "controls-v4-249",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "6",
+                                      "value": {
+                                        "type": "add",
+                                        "valueA": {
+                                          "type": "number",
+                                          "value": 64
+                                        },
+                                        "valueB": {
+                                          "type": "variable",
+                                          "value": "17"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "id": "controls-v4-250",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "16",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 1
+                                      }
+                                    }
+                                  }
+                                ],
+                                "false": []
+                              }
+                            }
+                          ],
+                          "false": []
+                        }
+                      },
+                      {
+                        "id": "controls-v4-263",
+                        "command": "EVENT_IF",
+                        "args": {
+                          "condition": {
+                            "type": "eq",
+                            "valueA": {
+                              "type": "variable",
+                              "value": "39"
+                            },
+                            "valueB": {
+                              "type": "number",
+                              "value": 3
+                            }
+                          }
+                        },
+                        "children": {
+                          "true": [
+                            {
+                              "id": "controls-v4-253",
+                              "command": "EVENT_WAIT",
+                              "args": {
+                                "units": "frames",
+                                "frames": {
+                                  "type": "number",
+                                  "value": 90
+                                }
+                              }
+                            },
+                            {
+                              "id": "controls-v4-254",
+                              "command": "EVENT_ACTOR_DEACTIVATE",
+                              "args": {
+                                "actorId": "cap-3"
+                              }
+                            },
+                            {
+                              "id": "controls-v4-255",
+                              "command": "EVENT_SET_VALUE",
+                              "args": {
+                                "variable": "23",
+                                "value": {
+                                  "type": "number",
+                                  "value": 3
+                                }
+                              }
+                            },
+                            {
+                              "id": "controls-v4-256",
+                              "command": "EVENT_INC_VALUE",
+                              "args": {
+                                "variable": "0"
+                              }
+                            },
+                            {
+                              "id": "controls-v4-259",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "gte",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "17"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 95
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "controls-v4-257",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "17",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 100
+                                      }
+                                    }
+                                  }
+                                ],
+                                "false": [
+                                  {
+                                    "id": "controls-v4-258",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "17",
+                                      "value": {
+                                        "type": "add",
+                                        "valueA": {
+                                          "type": "variable",
+                                          "value": "17"
+                                        },
+                                        "valueB": {
+                                          "type": "number",
+                                          "value": 5
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "id": "controls-v4-262",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "eq",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "2"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 1
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "controls-v4-260",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "6",
+                                      "value": {
+                                        "type": "add",
+                                        "valueA": {
+                                          "type": "number",
+                                          "value": 64
+                                        },
+                                        "valueB": {
+                                          "type": "variable",
+                                          "value": "17"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "id": "controls-v4-261",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "16",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 1
+                                      }
+                                    }
+                                  }
+                                ],
+                                "false": []
+                              }
+                            }
+                          ],
+                          "false": []
+                        }
+                      },
+                      {
+                        "id": "controls-v4-274",
+                        "command": "EVENT_IF",
+                        "args": {
+                          "condition": {
+                            "type": "eq",
+                            "valueA": {
+                              "type": "variable",
+                              "value": "39"
+                            },
+                            "valueB": {
+                              "type": "number",
+                              "value": 4
+                            }
+                          }
+                        },
+                        "children": {
+                          "true": [
+                            {
+                              "id": "controls-v4-264",
+                              "command": "EVENT_WAIT",
+                              "args": {
+                                "units": "frames",
+                                "frames": {
+                                  "type": "number",
+                                  "value": 90
+                                }
+                              }
+                            },
+                            {
+                              "id": "controls-v4-265",
+                              "command": "EVENT_ACTOR_DEACTIVATE",
+                              "args": {
+                                "actorId": "cap-4"
+                              }
+                            },
+                            {
+                              "id": "controls-v4-266",
+                              "command": "EVENT_SET_VALUE",
+                              "args": {
+                                "variable": "24",
+                                "value": {
+                                  "type": "number",
+                                  "value": 3
+                                }
+                              }
+                            },
+                            {
+                              "id": "controls-v4-267",
+                              "command": "EVENT_INC_VALUE",
+                              "args": {
+                                "variable": "0"
+                              }
+                            },
+                            {
+                              "id": "controls-v4-270",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "gte",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "17"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 95
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "controls-v4-268",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "17",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 100
+                                      }
+                                    }
+                                  }
+                                ],
+                                "false": [
+                                  {
+                                    "id": "controls-v4-269",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "17",
+                                      "value": {
+                                        "type": "add",
+                                        "valueA": {
+                                          "type": "variable",
+                                          "value": "17"
+                                        },
+                                        "valueB": {
+                                          "type": "number",
+                                          "value": 5
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "id": "controls-v4-273",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "eq",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "2"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 1
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "controls-v4-271",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "6",
+                                      "value": {
+                                        "type": "add",
+                                        "valueA": {
+                                          "type": "number",
+                                          "value": 64
+                                        },
+                                        "valueB": {
+                                          "type": "variable",
+                                          "value": "17"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "id": "controls-v4-272",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "16",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 1
+                                      }
+                                    }
+                                  }
+                                ],
+                                "false": []
+                              }
+                            }
+                          ],
+                          "false": []
+                        }
+                      },
+                      {
+                        "id": "controls-v4-285",
+                        "command": "EVENT_IF",
+                        "args": {
+                          "condition": {
+                            "type": "eq",
+                            "valueA": {
+                              "type": "variable",
+                              "value": "39"
+                            },
+                            "valueB": {
+                              "type": "number",
+                              "value": 5
+                            }
+                          }
+                        },
+                        "children": {
+                          "true": [
+                            {
+                              "id": "controls-v4-275",
+                              "command": "EVENT_WAIT",
+                              "args": {
+                                "units": "frames",
+                                "frames": {
+                                  "type": "number",
+                                  "value": 90
+                                }
+                              }
+                            },
+                            {
+                              "id": "controls-v4-276",
+                              "command": "EVENT_ACTOR_DEACTIVATE",
+                              "args": {
+                                "actorId": "cap-5"
+                              }
+                            },
+                            {
+                              "id": "controls-v4-277",
+                              "command": "EVENT_SET_VALUE",
+                              "args": {
+                                "variable": "25",
+                                "value": {
+                                  "type": "number",
+                                  "value": 3
+                                }
+                              }
+                            },
+                            {
+                              "id": "controls-v4-278",
+                              "command": "EVENT_INC_VALUE",
+                              "args": {
+                                "variable": "0"
+                              }
+                            },
+                            {
+                              "id": "controls-v4-281",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "gte",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "17"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 95
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "controls-v4-279",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "17",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 100
+                                      }
+                                    }
+                                  }
+                                ],
+                                "false": [
+                                  {
+                                    "id": "controls-v4-280",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "17",
+                                      "value": {
+                                        "type": "add",
+                                        "valueA": {
+                                          "type": "variable",
+                                          "value": "17"
+                                        },
+                                        "valueB": {
+                                          "type": "number",
+                                          "value": 5
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "id": "controls-v4-284",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "eq",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "2"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 1
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "controls-v4-282",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "6",
+                                      "value": {
+                                        "type": "add",
+                                        "valueA": {
+                                          "type": "number",
+                                          "value": 64
+                                        },
+                                        "valueB": {
+                                          "type": "variable",
+                                          "value": "17"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "id": "controls-v4-283",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "16",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 1
+                                      }
+                                    }
+                                  }
+                                ],
+                                "false": []
+                              }
+                            }
+                          ],
+                          "false": []
+                        }
+                      },
+                      {
+                        "id": "controls-v4-296",
+                        "command": "EVENT_IF",
+                        "args": {
+                          "condition": {
+                            "type": "eq",
+                            "valueA": {
+                              "type": "variable",
+                              "value": "39"
+                            },
+                            "valueB": {
+                              "type": "number",
+                              "value": 6
+                            }
+                          }
+                        },
+                        "children": {
+                          "true": [
+                            {
+                              "id": "controls-v4-286",
+                              "command": "EVENT_WAIT",
+                              "args": {
+                                "units": "frames",
+                                "frames": {
+                                  "type": "number",
+                                  "value": 90
+                                }
+                              }
+                            },
+                            {
+                              "id": "controls-v4-287",
+                              "command": "EVENT_ACTOR_DEACTIVATE",
+                              "args": {
+                                "actorId": "cap-6"
+                              }
+                            },
+                            {
+                              "id": "controls-v4-288",
+                              "command": "EVENT_SET_VALUE",
+                              "args": {
+                                "variable": "26",
+                                "value": {
+                                  "type": "number",
+                                  "value": 3
+                                }
+                              }
+                            },
+                            {
+                              "id": "controls-v4-289",
+                              "command": "EVENT_INC_VALUE",
+                              "args": {
+                                "variable": "0"
+                              }
+                            },
+                            {
+                              "id": "controls-v4-292",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "gte",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "17"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 95
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "controls-v4-290",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "17",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 100
+                                      }
+                                    }
+                                  }
+                                ],
+                                "false": [
+                                  {
+                                    "id": "controls-v4-291",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "17",
+                                      "value": {
+                                        "type": "add",
+                                        "valueA": {
+                                          "type": "variable",
+                                          "value": "17"
+                                        },
+                                        "valueB": {
+                                          "type": "number",
+                                          "value": 5
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "id": "controls-v4-295",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "eq",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "2"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 1
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "controls-v4-293",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "6",
+                                      "value": {
+                                        "type": "add",
+                                        "valueA": {
+                                          "type": "number",
+                                          "value": 64
+                                        },
+                                        "valueB": {
+                                          "type": "variable",
+                                          "value": "17"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "id": "controls-v4-294",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "16",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 1
+                                      }
+                                    }
+                                  }
+                                ],
+                                "false": []
+                              }
+                            }
+                          ],
+                          "false": []
+                        }
+                      },
+                      {
+                        "id": "controls-v4-307",
+                        "command": "EVENT_IF",
+                        "args": {
+                          "condition": {
+                            "type": "eq",
+                            "valueA": {
+                              "type": "variable",
+                              "value": "39"
+                            },
+                            "valueB": {
+                              "type": "number",
+                              "value": 7
+                            }
+                          }
+                        },
+                        "children": {
+                          "true": [
+                            {
+                              "id": "controls-v4-297",
+                              "command": "EVENT_WAIT",
+                              "args": {
+                                "units": "frames",
+                                "frames": {
+                                  "type": "number",
+                                  "value": 90
+                                }
+                              }
+                            },
+                            {
+                              "id": "controls-v4-298",
+                              "command": "EVENT_ACTOR_DEACTIVATE",
+                              "args": {
+                                "actorId": "cap-7"
+                              }
+                            },
+                            {
+                              "id": "controls-v4-299",
+                              "command": "EVENT_SET_VALUE",
+                              "args": {
+                                "variable": "27",
+                                "value": {
+                                  "type": "number",
+                                  "value": 3
+                                }
+                              }
+                            },
+                            {
+                              "id": "controls-v4-300",
+                              "command": "EVENT_INC_VALUE",
+                              "args": {
+                                "variable": "0"
+                              }
+                            },
+                            {
+                              "id": "controls-v4-303",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "gte",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "17"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 95
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "controls-v4-301",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "17",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 100
+                                      }
+                                    }
+                                  }
+                                ],
+                                "false": [
+                                  {
+                                    "id": "controls-v4-302",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "17",
+                                      "value": {
+                                        "type": "add",
+                                        "valueA": {
+                                          "type": "variable",
+                                          "value": "17"
+                                        },
+                                        "valueB": {
+                                          "type": "number",
+                                          "value": 5
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "id": "controls-v4-306",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "eq",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "2"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 1
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "controls-v4-304",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "6",
+                                      "value": {
+                                        "type": "add",
+                                        "valueA": {
+                                          "type": "number",
+                                          "value": 64
+                                        },
+                                        "valueB": {
+                                          "type": "variable",
+                                          "value": "17"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "id": "controls-v4-305",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "16",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 1
+                                      }
+                                    }
+                                  }
+                                ],
+                                "false": []
+                              }
+                            }
+                          ],
+                          "false": []
+                        }
+                      },
+                      {
+                        "id": "controls-v4-318",
+                        "command": "EVENT_IF",
+                        "args": {
+                          "condition": {
+                            "type": "eq",
+                            "valueA": {
+                              "type": "variable",
+                              "value": "39"
+                            },
+                            "valueB": {
+                              "type": "number",
+                              "value": 8
+                            }
+                          }
+                        },
+                        "children": {
+                          "true": [
+                            {
+                              "id": "controls-v4-308",
+                              "command": "EVENT_WAIT",
+                              "args": {
+                                "units": "frames",
+                                "frames": {
+                                  "type": "number",
+                                  "value": 90
+                                }
+                              }
+                            },
+                            {
+                              "id": "controls-v4-309",
+                              "command": "EVENT_ACTOR_DEACTIVATE",
+                              "args": {
+                                "actorId": "cap-8"
+                              }
+                            },
+                            {
+                              "id": "controls-v4-310",
+                              "command": "EVENT_SET_VALUE",
+                              "args": {
+                                "variable": "28",
+                                "value": {
+                                  "type": "number",
+                                  "value": 3
+                                }
+                              }
+                            },
+                            {
+                              "id": "controls-v4-311",
+                              "command": "EVENT_INC_VALUE",
+                              "args": {
+                                "variable": "0"
+                              }
+                            },
+                            {
+                              "id": "controls-v4-314",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "gte",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "17"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 95
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "controls-v4-312",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "17",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 100
+                                      }
+                                    }
+                                  }
+                                ],
+                                "false": [
+                                  {
+                                    "id": "controls-v4-313",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "17",
+                                      "value": {
+                                        "type": "add",
+                                        "valueA": {
+                                          "type": "variable",
+                                          "value": "17"
+                                        },
+                                        "valueB": {
+                                          "type": "number",
+                                          "value": 5
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "id": "controls-v4-317",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "eq",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "2"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 1
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "controls-v4-315",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "6",
+                                      "value": {
+                                        "type": "add",
+                                        "valueA": {
+                                          "type": "number",
+                                          "value": 64
+                                        },
+                                        "valueB": {
+                                          "type": "variable",
+                                          "value": "17"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "id": "controls-v4-316",
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "16",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 1
+                                      }
+                                    }
+                                  }
+                                ],
+                                "false": []
+                              }
+                            }
+                          ],
+                          "false": []
+                        }
+                      }
+                    ],
+                    "false": []
+                  }
+                },
+                {
+                  "id": "controls-v4-355",
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "eq",
+                      "valueA": {
+                        "type": "variable",
+                        "value": "38"
+                      },
+                      "valueB": {
+                        "type": "number",
+                        "value": 3
+                      }
+                    }
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "id": "controls-v4-332",
+                        "command": "EVENT_IF",
+                        "args": {
+                          "condition": {
+                            "type": "eq",
+                            "valueA": {
+                              "type": "variable",
+                              "value": "39"
+                            },
+                            "valueB": {
+                              "type": "number",
+                              "value": 1
+                            }
+                          }
+                        },
+                        "children": {
+                          "true": [
+                            {
+                              "id": "controls-v4-319",
+                              "command": "EVENT_TEXT",
+                              "args": {
+                                "text": [
+                                  "LUMA\nA marks a cap.\nBram gathers it.",
+                                  "Spend 2 fungi\nto wake a root\nwith Bloom.",
+                                  "An awake root\nregrows its caps\nfor 1 fungus.",
+                                  "B reveals roots.\nSELECT: spells.\nSTART: supplies."
+                                ]
+                              }
+                            }
+                          ],
+                          "false": [
+                            {
+                              "id": "controls-v4-331",
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "and",
+                                  "valueA": {
+                                    "type": "eq",
+                                    "valueA": {
+                                      "type": "variable",
+                                      "value": "2"
+                                    },
+                                    "valueB": {
+                                      "type": "number",
+                                      "value": 1
+                                    }
+                                  },
+                                  "valueB": {
+                                    "type": "gte",
+                                    "valueA": {
+                                      "type": "variable",
+                                      "value": "7"
+                                    },
+                                    "valueB": {
+                                      "type": "number",
+                                      "value": 3
+                                    }
+                                  }
+                                }
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "id": "controls-v4-320",
+                                    "command": "EVENT_IF_VALUE",
+                                    "args": {
+                                      "variable": "3",
+                                      "operator": ">=",
+                                      "comparator": 1
+                                    },
+                                    "children": {
+                                      "true": [
+                                        {
+                                          "id": "controls-v4-321",
+                                          "command": "EVENT_TEXT",
+                                          "args": {
+                                            "text": "VESPER\nA choice roots.\nIt stays."
+                                          }
+                                        }
+                                      ],
+                                      "false": [
+                                        {
+                                          "id": "controls-v4-322",
+                                          "command": "EVENT_TEXT",
+                                          "args": {
+                                            "text": [
+                                              "VESPER\nWe knew you\nbefore your name",
+                                              "The forge needs\nwarmth. The cap\nneeds a keeper."
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "id": "controls-v4-323",
+                                          "command": "EVENT_MENU",
+                                          "args": {
+                                            "variable": "4",
+                                            "items": 2,
+                                            "option1": "Keep the cap",
+                                            "option2": "Share its fire",
+                                            "layout": "dialogue",
+                                            "cancelOnB": true,
+                                            "cancelOnLastOption": false
+                                          }
+                                        },
+                                        {
+                                          "id": "controls-v4-324",
+                                          "command": "EVENT_IF_VALUE",
+                                          "args": {
+                                            "variable": "4",
+                                            "operator": ">=",
+                                            "comparator": 2
+                                          },
+                                          "children": {
+                                            "true": [
+                                              {
+                                                "id": "controls-v4-325",
+                                                "command": "EVENT_SET_VALUE",
+                                                "args": {
+                                                  "variable": "3",
+                                                  "value": {
+                                                    "type": "number",
+                                                    "value": 2
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "id": "controls-v4-326",
+                                                "command": "EVENT_TEXT",
+                                                "args": {
+                                                  "text": [
+                                                    "You share a\nsingle ember.\nThe forge wakes.",
+                                                    "VESPER\nNot all warmth\nmust be a wound.",
+                                                    "THE PALE CAP\nEmber keeper\nEnd of chapter."
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            "false": [
+                                              {
+                                                "id": "controls-v4-327",
+                                                "command": "EVENT_IF_VALUE",
+                                                "args": {
+                                                  "variable": "4",
+                                                  "operator": ">=",
+                                                  "comparator": 1
+                                                },
+                                                "children": {
+                                                  "true": [
+                                                    {
+                                                      "id": "controls-v4-328",
+                                                      "command": "EVENT_SET_VALUE",
+                                                      "args": {
+                                                        "variable": "3",
+                                                        "value": {
+                                                          "type": "number",
+                                                          "value": 1
+                                                        }
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "controls-v4-329",
+                                                      "command": "EVENT_TEXT",
+                                                      "args": {
+                                                        "text": [
+                                                          "You leave the\ncap rooted.\nThe pool sings.",
+                                                          "VESPER\nA small mercy.\nA deeper door.",
+                                                          "THE PALE CAP\nGrotto keeper\nEnd of chapter."
+                                                        ]
+                                                      }
+                                                    }
+                                                  ],
+                                                  "false": []
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "false": [
+                                  {
+                                    "id": "controls-v4-330",
+                                    "command": "EVENT_TEXT",
+                                    "args": {
+                                      "text": "The figure fades\nbefore you reach\nthe cap."
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "false": []
+                  }
+                },
+                {
+                  "id": "controls-v4-229",
+                  "command": "EVENT_COLONY_CONTROLS",
+                  "args": {
+                    "operation": 4,
+                    "kind": 0,
+                    "target": 0
+                  }
+                },
+                {
+                  "id": "controls-v4-230",
+                  "command": "EVENT_DEC_VALUE",
+                  "args": {
+                    "variable": "29"
+                  }
+                }
+              ],
+              "false": []
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

@@ -1,0 +1,18 @@
+{
+  "_resourceType": "palette",
+  "id": "pale-bed",
+  "name": "Pale Bed",
+  "colors": [
+    "F8F8E0",
+    "D0D0A8",
+    "888060",
+    "282010"
+  ],
+  "defaultName": "Pale Bed",
+  "defaultColors": [
+    "F8F8E0",
+    "D0D0A8",
+    "888060",
+    "282010"
+  ]
+}

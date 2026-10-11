@@ -1,0 +1,18 @@
+{
+  "_resourceType": "palette",
+  "id": "vesper-colors",
+  "name": "Vesper",
+  "colors": [
+    "FFFFFF",
+    "B080E8",
+    "B080E8",
+    "302050"
+  ],
+  "defaultName": "Vesper",
+  "defaultColors": [
+    "000000",
+    "FFFFFF",
+    "B080E8",
+    "302050"
+  ]
+}

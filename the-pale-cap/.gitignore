@@ -1,0 +1,8 @@
+build/
+.cache/
+
+# Local emulator evidence and save snapshots
+artifacts/
+save-states/
+__pycache__/
+.DS_Store

@@ -1,0 +1,18 @@
+{
+  "_resourceType": "palette",
+  "id": "dwarf-colors",
+  "name": "Dwarf",
+  "colors": [
+    "FFE0AB",
+    "D88951",
+    "D88951",
+    "302139"
+  ],
+  "defaultName": "Dwarf",
+  "defaultColors": [
+    "000000",
+    "F0D8B0",
+    "C07838",
+    "281810"
+  ]
+}

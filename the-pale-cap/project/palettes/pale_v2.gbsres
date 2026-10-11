@@ -1,0 +1,18 @@
+{
+  "_resourceType": "palette",
+  "id": "pale-v2",
+  "name": "pale-v2",
+  "colors": [
+    "FFF0CC",
+    "B8ABC6",
+    "605178",
+    "29233D"
+  ],
+  "defaultName": "pale-v2",
+  "defaultColors": [
+    "FFF0CC",
+    "B8ABC6",
+    "605178",
+    "29233D"
+  ]
+}
