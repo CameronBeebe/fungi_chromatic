@@ -1,0 +1,18 @@
+{
+  "_resourceType": "palette",
+  "id": "warm-forge",
+  "name": "warm-forge",
+  "colors": [
+    "FFF0B0",
+    "F8B860",
+    "A86068",
+    "302040"
+  ],
+  "defaultName": "warm-forge",
+  "defaultColors": [
+    "FFF0B0",
+    "F8B860",
+    "A86068",
+    "302040"
+  ]
+}

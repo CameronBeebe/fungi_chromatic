@@ -1,0 +1,11 @@
+{
+  "_resourceType": "tileset",
+  "id": "37cf484d-f160-407d-acfc-21b841499c70",
+  "name": "Nexus Signal",
+  "symbol": "tileset_nexus_signal",
+  "filename": "nexus-signal.png",
+  "width": 16,
+  "height": 4,
+  "imageWidth": 128,
+  "imageHeight": 32
+}

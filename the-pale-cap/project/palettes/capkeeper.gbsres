@@ -1,0 +1,18 @@
+{
+  "_resourceType": "palette",
+  "id": "luma-colors",
+  "name": "Capkeeper",
+  "colors": [
+    "E0FFCF",
+    "62BFAD",
+    "62BFAD",
+    "172C37"
+  ],
+  "defaultName": "Capkeeper",
+  "defaultColors": [
+    "000000",
+    "F4F8F0",
+    "90A888",
+    "182018"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "_resourceType": "palette",
+  "id": "deep-cap",
+  "name": "deep-cap",
+  "colors": [
+    "C8FF68",
+    "F030E0",
+    "503080",
+    "100818"
+  ],
+  "defaultName": "deep-cap",
+  "defaultColors": [
+    "FFF0C8",
+    "E0A0F0",
+    "8050B0",
+    "282040"
+  ]
+}

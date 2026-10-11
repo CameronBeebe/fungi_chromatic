@@ -1,0 +1,18 @@
+{
+  "_resourceType": "palette",
+  "id": "grotto-stone",
+  "name": "Grotto Stone",
+  "colors": [
+    "E0E8C8",
+    "78A870",
+    "385040",
+    "101810"
+  ],
+  "defaultName": "Grotto Stone",
+  "defaultColors": [
+    "E0E8C8",
+    "78A870",
+    "385040",
+    "101810"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "_resourceType": "palette",
+  "id": "dream-stone",
+  "name": "dream-stone",
+  "colors": [
+    "9060C0",
+    "483868",
+    "282038",
+    "080810"
+  ],
+  "defaultName": "dream-stone",
+  "defaultColors": [
+    "F8C0F0",
+    "9878C0",
+    "503878",
+    "201830"
+  ]
+}

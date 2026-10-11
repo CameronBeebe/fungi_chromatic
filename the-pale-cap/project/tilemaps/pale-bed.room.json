@@ -1,0 +1,2186 @@
+{
+  "format": "gb-studio-tilemap-room",
+  "version": 1,
+  "id": "beea06f2-e3bb-570f-96e3-9cb3ff19d2e1",
+  "name": "Pale Cap Bed",
+  "units": "8px-tiles",
+  "atlasPath": "project/tilemaps/pale-bed.atlas.json",
+  "atlasSha256": "3476e3d2f2d4a53eee21c12596e429de481bffa11be4ffcd0e9a7635b319ee9a",
+  "sceneId": "12f07015-0a42-504a-8d39-3f689e13ad3a",
+  "backgroundId": "74017d1b-6a0d-5497-abf2-dad6c3ca4484",
+  "backgroundPath": "assets/backgrounds/pale-bed.png",
+  "predecessorBackgroundId": "1e5f9d6a-bdbc-43e6-8c34-22f5bb5dea05",
+  "width": 20,
+  "height": 18,
+  "cells": [
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "cap",
+      "primitiveId": "cap",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "stem",
+      "primitiveId": "stem",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "cap",
+      "primitiveId": "cap",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "stem",
+      "primitiveId": "stem",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "cap",
+      "primitiveId": "cap",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "stem",
+      "primitiveId": "stem",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "cap",
+      "primitiveId": "cap",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "cap",
+      "primitiveId": "cap",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "stem",
+      "primitiveId": "stem",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "cap",
+      "primitiveId": "cap",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "cap",
+      "primitiveId": "cap",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "stem",
+      "primitiveId": "stem",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "pebble",
+      "primitiveId": "pebble",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "stem",
+      "primitiveId": "stem",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "cap",
+      "primitiveId": "cap",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "stem",
+      "primitiveId": "stem",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "cap",
+      "primitiveId": "cap",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "stem",
+      "primitiveId": "stem",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "cap",
+      "primitiveId": "cap",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "stem",
+      "primitiveId": "stem",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "cap",
+      "primitiveId": "cap",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "cap",
+      "primitiveId": "cap",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "stem",
+      "primitiveId": "stem",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "cap",
+      "primitiveId": "cap",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "cap",
+      "primitiveId": "cap",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "stem",
+      "primitiveId": "stem",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "soil",
+      "primitiveId": "soil",
+      "paletteByte": 1,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "moss",
+      "primitiveId": "moss",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "moss",
+      "primitiveId": "moss",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "chalk",
+      "primitiveId": "chalk",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "pebble",
+      "primitiveId": "pebble",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "chalk",
+      "primitiveId": "chalk",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "moss",
+      "primitiveId": "moss",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "chalk",
+      "primitiveId": "chalk",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "chalk",
+      "primitiveId": "chalk",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "pebble",
+      "primitiveId": "pebble",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "moss",
+      "primitiveId": "moss",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "pebble",
+      "primitiveId": "pebble",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "floor",
+      "primitiveId": "floor",
+      "paletteByte": 0,
+      "collisionByte": 0
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    },
+    {
+      "tileId": "wall",
+      "primitiveId": "wall",
+      "paletteByte": 0,
+      "collisionByte": 15
+    }
+  ],
+  "protectedRegions": [],
+  "reservedPaletteSlots": [
+    7
+  ],
+  "native": {
+    "pngSha256": "16ef557fae861d730e152c6cc37b4cce3bf464ea4b74f1566f1bb3ac25f57923",
+    "metadataSha256": "7e82b8432b299bdfd98bfd4da7403bd1e9cd322097ccee3e7321924d09dc1654",
+    "collisions": "0f15+0012+0f2+0012+0f2+0012+0f2+0012+0f2+00f+0f2+00!0f2+00f+0f2+00!0f2+0012+0f2+0012+0f2+0012+0f2+0012+0f2+0012+0f2+00!0f2+00f+0f2+00!0f2+00f+0f2+0012+0f2+0012+0f2+0012+0f15+"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "_resourceType": "actor",
+  "id": "cursor-controller",
+  "_index": 11,
+  "symbol": "actor_cursor_input_controller",
+  "prefabId": "",
+  "name": "Cursor input controller",
+  "coordinateType": "tiles",
+  "x": 15,
+  "y": 22,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "723a98aa-08ee-56ca-b20e-e0be14196c9c",
+  "paletteId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "isPinned": false,
+  "persistent": true,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [],
+  "startScript": [
+    {
+      "id": "controls-v4-4",
+      "command": "EVENT_ACTOR_HIDE",
+      "args": {
+        "actorId": "$self$"
+      }
+    },
+    {
+      "id": "controls-v4-5",
+      "command": "EVENT_ACTOR_COLLISIONS_DISABLE",
+      "args": {
+        "actorId": "$self$"
+      }
+    }
+  ],
+  "updateScript": [
+    {
+      "id": "controls-v4-6",
+      "command": "EVENT_COLONY_CONTROLS",
+      "args": {
+        "operation": 1,
+        "kind": 0,
+        "target": 0
+      }
+    }
+  ],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

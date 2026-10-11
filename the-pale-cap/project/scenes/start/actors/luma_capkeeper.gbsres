@@ -1,0 +1,42 @@
+{
+  "_resourceType": "actor",
+  "id": "luma",
+  "_index": 0,
+  "symbol": "actor_luma_capkeeper",
+  "prefabId": "",
+  "name": "Luma Capkeeper",
+  "coordinateType": "tiles",
+  "x": 15,
+  "y": 18,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "f3c33e39-c53a-5fe0-a7e7-d3831c62e2d1",
+  "paletteId": "luma-colors",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "work-v3-1468",
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "LUMA\nA marks a cap.\nBram gathers it.",
+          "Spend 2 fungi\nto wake a root\nwith Bloom.",
+          "An awake root\nregrows its caps\nfor 1 fungus.",
+          "B reveals roots.\nSELECT: spells.\nSTART: supplies."
+        ]
+      }
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

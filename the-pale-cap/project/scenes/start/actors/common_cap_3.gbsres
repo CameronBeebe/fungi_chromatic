@@ -1,0 +1,95 @@
+{
+  "_resourceType": "actor",
+  "id": "cap-3",
+  "_index": 3,
+  "symbol": "actor_common_cap_3",
+  "prefabId": "",
+  "name": "Common Cap 3",
+  "coordinateType": "tiles",
+  "x": 24,
+  "y": 18,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "d56e85d1-cec7-53df-a1f6-081aa115f609",
+  "paletteId": "fungus-colors",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "work-v3-176",
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "23"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
+        }
+      },
+      "children": {
+        "true": [
+          {
+            "id": "work-v3-172",
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "23",
+              "value": {
+                "type": "number",
+                "value": 1
+              }
+            }
+          },
+          {
+            "id": "work-v3-173",
+            "command": "EVENT_INC_VALUE",
+            "args": {
+              "variable": "29"
+            }
+          },
+          {
+            "id": "work-v3-174",
+            "command": "EVENT_SOUND_PLAY_EFFECT",
+            "args": {
+              "type": "beep",
+              "pitch": 3,
+              "units": "time",
+              "duration": 0.08,
+              "wait": false,
+              "priority": "medium"
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "work-v3-175",
+            "command": "EVENT_SOUND_PLAY_EFFECT",
+            "args": {
+              "type": "beep",
+              "pitch": 1,
+              "units": "time",
+              "duration": 0.08,
+              "wait": false,
+              "priority": "medium"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

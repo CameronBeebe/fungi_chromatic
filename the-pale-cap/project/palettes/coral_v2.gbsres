@@ -1,0 +1,18 @@
+{
+  "_resourceType": "palette",
+  "id": "coral-v2",
+  "name": "coral-v2",
+  "colors": [
+    "FFE0AB",
+    "E88078",
+    "84475B",
+    "302139"
+  ],
+  "defaultName": "coral-v2",
+  "defaultColors": [
+    "FFE0AB",
+    "E88078",
+    "84475B",
+    "302139"
+  ]
+}

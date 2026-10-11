@@ -1,0 +1,11 @@
+{
+  "_resourceType": "tileset",
+  "id": "c79580e8-21a1-446c-90a1-6e3b0d0a30b1",
+  "name": "Mycelial Cels",
+  "symbol": "tileset_mycelial_cels",
+  "filename": "mycelial-cels.png",
+  "width": 16,
+  "height": 8,
+  "imageWidth": 128,
+  "imageHeight": 64
+}

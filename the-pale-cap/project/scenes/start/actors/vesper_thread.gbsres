@@ -1,0 +1,148 @@
+{
+  "_resourceType": "actor",
+  "id": "vesper",
+  "_index": 9,
+  "symbol": "actor_vesper_thread",
+  "prefabId": "",
+  "name": "Vesper Thread",
+  "coordinateType": "tiles",
+  "x": 17,
+  "y": 9,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "f3c33e39-c53a-5fe0-a7e7-d3831c62e2d1",
+  "paletteId": "vesper-colors",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "grotto-v2-25",
+      "command": "EVENT_IF_VALUE",
+      "args": {
+        "variable": "3",
+        "operator": ">=",
+        "comparator": 1
+      },
+      "children": {
+        "true": [
+          {
+            "id": "grotto-v2-16",
+            "command": "EVENT_TEXT",
+            "args": {
+              "text": "VESPER\nA choice roots.\nIt stays."
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "grotto-v2-17",
+            "command": "EVENT_TEXT",
+            "args": {
+              "text": [
+                "VESPER\nWe knew you\nbefore your name",
+                "The forge needs\nwarmth. The cap\nneeds a keeper."
+              ]
+            }
+          },
+          {
+            "id": "grotto-v2-18",
+            "command": "EVENT_MENU",
+            "args": {
+              "variable": "4",
+              "items": 2,
+              "option1": "Keep the cap",
+              "option2": "Share its fire",
+              "layout": "dialogue",
+              "cancelOnB": true,
+              "cancelOnLastOption": false
+            }
+          },
+          {
+            "id": "grotto-v2-24",
+            "command": "EVENT_IF_VALUE",
+            "args": {
+              "variable": "4",
+              "operator": ">=",
+              "comparator": 2
+            },
+            "children": {
+              "true": [
+                {
+                  "id": "grotto-v2-19",
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "3",
+                    "value": {
+                      "type": "number",
+                      "value": 2
+                    }
+                  }
+                },
+                {
+                  "id": "grotto-v2-20",
+                  "command": "EVENT_TEXT",
+                  "args": {
+                    "text": [
+                      "You share a\nsingle ember.\nThe forge wakes.",
+                      "VESPER\nNot all warmth\nmust be a wound.",
+                      "THE PALE CAP\nEmber keeper\nEnd of chapter."
+                    ]
+                  }
+                }
+              ],
+              "false": [
+                {
+                  "id": "grotto-v2-23",
+                  "command": "EVENT_IF_VALUE",
+                  "args": {
+                    "variable": "4",
+                    "operator": ">=",
+                    "comparator": 1
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "id": "grotto-v2-21",
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "3",
+                          "value": {
+                            "type": "number",
+                            "value": 1
+                          }
+                        }
+                      },
+                      {
+                        "id": "grotto-v2-22",
+                        "command": "EVENT_TEXT",
+                        "args": {
+                          "text": [
+                            "You leave the\ncap rooted.\nThe pool sings.",
+                            "VESPER\nA small mercy.\nA deeper door.",
+                            "THE PALE CAP\nGrotto keeper\nEnd of chapter."
+                          ]
+                        }
+                      }
+                    ],
+                    "false": []
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

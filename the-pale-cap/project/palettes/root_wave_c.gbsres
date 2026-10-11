@@ -1,0 +1,18 @@
+{
+  "_resourceType": "palette",
+  "id": "root-wave-c",
+  "name": "root-wave-c",
+  "colors": [
+    "5830A8",
+    "58FFE0",
+    "F828E0",
+    "080810"
+  ],
+  "defaultName": "root-wave-c",
+  "defaultColors": [
+    "A068D8",
+    "FFE8A0",
+    "50E0C8",
+    "201830"
+  ]
+}

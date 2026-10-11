@@ -1,0 +1,18 @@
+{
+  "_resourceType": "palette",
+  "id": "water-v2",
+  "name": "water-v2",
+  "colors": [
+    "86E0CD",
+    "299CA4",
+    "185374",
+    "10283E"
+  ],
+  "defaultName": "water-v2",
+  "defaultColors": [
+    "86E0CD",
+    "299CA4",
+    "185374",
+    "10283E"
+  ]
+}
