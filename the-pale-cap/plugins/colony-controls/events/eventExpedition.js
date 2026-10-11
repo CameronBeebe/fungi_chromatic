@@ -7,7 +7,8 @@ module.exports={
  compile(input,h){
   const v=id=>h.getVariableAlias(String(id)),set=(id,n)=>h._setConst(v(id),n),next=()=>h.getNextLabel(),label=l=>h._label(l),jump=l=>h._jump(l),eq=(id,n,l)=>h._ifConst('.EQ',v(id),n,l,0);
   const num=value=>({type:'number',value}),sv=value=>({type:'variable',value:String(value)});
-  const travel=(scene,x=0,y=0)=>{h._overlayMoveTo(0,18,'.OVERLAY_SPEED_INSTANT');h.sceneSwitchUsingScriptValues(scene,typeof x==='object'?x:num(x),typeof y==='object'?y:num(y),'down',1);};
+  const hearth=op=>{if(input.mode==='home'){h._stackPushConst(op);h._callNative('ff_hearth');h._stackPop(1);}};
+  const travel=(scene,x=0,y=0)=>{hearth(0);h._overlayMoveTo(0,18,'.OVERLAY_SPEED_INSTANT');h.sceneSwitchUsingScriptValues(scene,typeof x==='object'?x:num(x),typeof y==='object'?y:num(y),'down',1);};
   const save=op=>{for(const id of [...saveIds].reverse())h._stackPushConst(v(id));h._stackPushConst(v(54));h._stackPushConst(op);h._callNative('ff_home_save');h._stackPop(saveIds.length+2);};
   const mutate=op=>{for(const id of [0,53,49,50])h._stackPushConst(v(id));h._stackPushConst(op);h._callNative('ff_inventory');h._stackPop(5);};
   if(input.mode==='pickup'){const done=next();eq(49,1,done);eq(49,2,done);set(49,1);label(done);return;}
@@ -22,13 +23,15 @@ module.exports={
   }
   h.lock();
   const draw=(lines,compact=false)=>{
+   hearth(2);
    const height=compact?5:18;h._overlayClear(0,0,20,height,'.UI_COLOR_WHITE',true,false);h._overlayMoveTo(0,compact?13:0,'.OVERLAY_SPEED_INSTANT');h._overlaySetScroll(0,0,20,height,'.UI_COLOR_WHITE');h._setTextLayer('.TEXT_LAYER_WIN');
-   const rows=Array(compact?4:17).fill('');for(const [y,t]of lines)rows[y]=' '+t;h.textDraw(rows.join('\n'),1,0,'overlay');h._overlayWait(true,['.UI_WAIT_WINDOW','.UI_WAIT_TEXT']);
+   const rows=Array(compact?4:17).fill('');for(const [y,t]of lines)rows[y]=' '+t;h.textDraw(rows.join('\n'),1,0,'overlay');h._overlayWait(true,['.UI_WAIT_WINDOW','.UI_WAIT_TEXT']);if(compact)hearth(1);
   };
   const choose=ys=>{set(51,1);h._choice(v(51),['.UI_MENU_CANCEL_B','.UI_MENU_SET_START'],ys.length);ys.forEach((y,i)=>h._menuItem(1,y,i+1,i+1,i?i:ys.length,i===ys.length-1?1:i+2));};
   const note=lines=>{draw([[1,'THE PALE CAP'],...lines,[16,'A/B Back']]);h.inputAwait(['a','b']);};
   const root=next(),home=next(),bag=next(),stash=next(),ret=next(),depart=next(),equip=next(),deposit=next(),withdraw=next(),close=next(),take=next(),inspect=next(),saving=next(),homeOptions=next();
   if(input.mode==='home'){
+   hearth(0);
    const ready=next(),loaded=next(),fresh=next();eq(55,1,ready);save(0);eq(54,1,loaded);eq(54,0,fresh);
    note([[4,'Save unavailable'],[6,'Damaged or older'],[7,'save preserved.'],[10,'New Game will not'],[11,'write until Save.']]);
    label(fresh);const title=next(),begin=next();label(title);
