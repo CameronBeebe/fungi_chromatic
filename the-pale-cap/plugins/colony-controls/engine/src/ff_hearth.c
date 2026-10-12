@@ -108,9 +108,9 @@ __asm
         ; HBlank and restore only the UI colors, without a redundant 32-byte
         ; palette write that would spill into the first window scanline.
 6$:
-        ldh a, (_STAT_REG)
-        and #STATF_BUSY
-        jr z, 6$
+        ldh a, (_LY_REG)
+        cp #103
+        jr nz, 6$
 7$:
         ldh a, (_STAT_REG)
         and #STATF_BUSY

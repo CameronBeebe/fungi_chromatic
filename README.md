@@ -27,8 +27,9 @@ it is not included in this checkpoint. The selected 160×144 Hearth source neede
 for rebuilding is preserved in `the-pale-cap/art/source/`. [ART-PIPELINE.md](the-pale-cap/ART-PIPELINE.md) describes
 conversion, palette constraints and seam diagnostics. The separate
 [Hi-Color Hearth study](the-pale-cap/art-tests/hearth-hicolor/README.md) compares
-scanline palettes with standard GBC rendering and a stable menu area. It is not
-integrated into the main game. Existing assets remain preserved.
+scanline palettes with standard GBC rendering. The main game now uses its richer
+104-pixel-high room above the functional home menu. Full-screen menus and other
+scenes use normal engine rendering. Existing source assets remain preserved.
 
 ## Dependencies and licensing
 

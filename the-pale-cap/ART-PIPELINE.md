@@ -93,3 +93,25 @@ Sprites can supply independent palettes and moving details over the room. Their
 OAM and scanline budgets must be checked in the actual composition, especially
 if combined with raster palette updates. Keep exploration separate from the
 real-time overworld until menu transitions and physical Chromatic output pass.
+
+## Integrated Hearth renderer — October 11
+
+The main game uses the reviewed cropped Hi-Color image at home. Its 260 tiles
+are repacked into 128 bank-0 tiles and 132 bank-1 tiles, leaving the engine's
+font/UI tile ranges intact. `tools/prepare_hearth_hicolor.py` validates and
+packages the checked-in converter outputs; the runtime does no image quantization.
+The 8,040-byte payload stays in ROM and its active tiles/maps load into VRAM.
+
+`ff_hearth.c` takes ownership of the LCD handler only while the room is visible.
+It restores the UI palette during the last image row's HBlank. Full-screen menus,
+inspection and departure relinquish that handler and restore engine palettes.
+The game remains locked by its ordinary home event; inventory/save mutations
+continue through the existing tested code.
+
+Because the palette loop masks interrupts across the image, home rendering clocks
+the existing music routine from VBlank with a fractional accumulator preserving
+the 256 Hz logical cadence (4389/1024 ticks per frame). This is appropriate for
+the current non-streaming soundtrack; it is not support for streamed sound effects
+or link transfers while the image renderer is active. Normal menus and other
+scenes retain the engine timer. Emulator checks cover cadence and non-silent
+output, not subjective sound quality or physical-device timing.

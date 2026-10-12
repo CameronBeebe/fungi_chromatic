@@ -7,16 +7,19 @@ file after each pass, and record verified behavior in PLAYTEST.md.
 
 ## Checkpoint before rendering overhaul — October 11
 
-- [x] Preserve integrated home/extraction/save work, source concepts and separate
-  Hi-Color study in a draft PR before replacing rendering or production assets.
+- [x] Preserve integrated home/extraction/save work and the separate Hi-Color study
+  in a checkpoint PR. The concept portfolio remains local and ignored.
 - [x] Refresh READMEs and preserve GB Studio, GBVM, Binjgb and Hi-Color notices;
   see `../THIRD_PARTY_NOTICES.md`.
 - [ ] Confirm the GBDK example license explicitly covers Toxa's Hi-Color ISR
   before promoting the copied renderer into a release.
 - [ ] Select a project-wide license for original code and art; the existing
   GB Studio MIT notice is an attribution, not a blanket licensing decision.
-- [ ] Integrate richer rendering only after checking functional menus, input,
-  music, sprite timing and bank budgets together, then test on the Chromatic.
+- [x] Integrate the 104px Hi-Color Hearth with functional home menus and validate
+  short input taps, stable consecutive frames, music cadence/output, item
+  transfers, extraction, cold boot and soft reset in the native emulator.
+- [ ] Test integrated Hi-Color on the Chromatic: visual/menu split, music quality,
+  response and physical save retention. Sprite highlights are still deferred.
 
 ## Design anchors
 

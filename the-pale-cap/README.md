@@ -28,7 +28,7 @@ harvested patches for one fungus. Reveal is free in this prototype. Awakening
 all three roots makes Vesper available during Reveal.
 
 Open `project.gbsproj` in GB Studio to edit. The current integrated cartridge is
-`build/rom/the-pale-cap-home-v1.gbc`; build outputs are local and ignored by Git.
+`build/rom/the-pale-cap-hicolor-home.gbc`; build outputs are local and ignored by Git.
 Saving is available only at home after extraction. Saves use version/checksum
 validation and two alternating records. The latest home save is restored on
 boot; there is no mid-run resume. No API keys, Wi-Fi, LLM calls, or Jev calls are
@@ -37,9 +37,11 @@ required. Physical cartridge retention still needs separate testing.
 Luma grants a single authored Gillsong fork. It can be inspected, equipped,
 deposited and withdrawn; its gameplay ability is still pending. Inspection uses
 the approved Vermilion study with animated cyan ornament. The illustrated Root
-Hearth currently uses standard GBC palettes. The richer
-[Hi-Color study](art-tests/hearth-hicolor/README.md) is a separate rendering demo,
-not the main game ROM.
+Hearth uses a 104-pixel-high Hi-Color image above its functional home menu.
+Full-screen bag/stash/save menus and the expedition restore normal engine
+rendering. The [Hi-Color study](art-tests/hearth-hicolor/README.md) remains a
+separate comparison demo. The game integration uses an 8,040-byte room payload;
+the compiled ROM remains 256 KiB in the tested build.
 
 See [TODO.md](TODO.md) for the living backlog,
 [DESIGN.md](DESIGN.md) for agreed rules and provisional mechanics, and
@@ -68,3 +70,12 @@ the newer conversion and seam-audit tools also require NumPy. Native emulator
 automation uses PyBoy; host state tests require Python and a C compiler.
 See [third-party notices](../THIRD_PARTY_NOTICES.md) before redistributing source,
 ROMs or preview files. Preserve the existing GB Studio MIT `LICENSE`.
+
+To regenerate the integrated Hi-Color arrays, run
+`python3 tools/prepare_hearth_hicolor.py`. It packages the checked-in converter
+outputs using tile banks that preserve GBVM's font allocation. Rebuild the study
+first only when intentionally changing its source/conversion. The integration
+test accepts `--rom`, `--output`, and `--hicolor`; the last option checks room
+stability, short direction taps, music cadence/output and soft reset in addition
+to the full extraction/save/cold-boot loop. It needs the matching debug symbols
+next to the ROM. See PLAYTEST.md for the exact tested build and limitations.

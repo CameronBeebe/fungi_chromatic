@@ -41,11 +41,13 @@ preserved in `licenses/GBDK-png2hicolorgb.txt`, including Wu quantizer and LodeP
 terms. Converted assets depict our concept art, not its bundled example picture.
 
 The Hi-Color study copies and modifies GBDK 4.5.0's `examples/gb/hicolor/src/gbc_hicolor.c`
-and `.h`. The example credits its palette ISR to Toxa. The installed
+and `.h`. The game integration in `the-pale-cap/plugins/colony-controls/engine/src/ff_hearth.c`
+further adapts that ISR for the native home scene, window timing, and music clock.
+The example credits its palette ISR to Toxa. The installed
 `LICENSE_png2hicolorgb` labels GBDK example source CC0 1.0, but the copied source
 itself says `TODO: Permissive License`. Both facts are retained: do not silently
 replace that header or claim that this specific ISR has an explicit MIT notice.
-Before promoting the study into a release, confirm the example notice covers
+Before distributing a release containing this renderer, confirm the example notice covers
 this ISR or obtain an explicit clarification. This is a tracked release question,
 not an assertion that the converter's output is restricted.
 

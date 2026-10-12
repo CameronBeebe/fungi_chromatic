@@ -534,3 +534,16 @@ power behavior are not established by the emulator or host tests.
 ### Gillsong inspection flow — October 11
 
 Integrated the Vermilion study’s cyan ornament pulse into item inspection. It starts automatically; B returns as before. The fork, text, and other palettes remain static. Native emulator checked all 192 frames: exactly 245 ornament pixels animate, followed by the original rest interval. Save/load and both inspection return paths pass. Browser export rebuilt; refresh the preview to load it. Hardware animation remains untested.
+
+## Home rendering integration — October 11
+
+The functional hideout now renders the approved Hearth composition with
+scanline palettes above its Bag / Home / Exit menu. Inventory, stash, save
+and startup screens remain ordinary full-screen overlays. Inspection and
+expedition scenes restore normal rendering. The underlying ownership,
+extraction and hideout-only save rules are unchanged.
+
+This is a scene-specific rendering choice, not an assumption that the real-time
+overworld will use the same CPU-intensive technique. The current home view
+contains no moving actors. Additional sprite lighting/animation must fit the
+renderer timing budget and pass physical Chromatic checks before adoption.

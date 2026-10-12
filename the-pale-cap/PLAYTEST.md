@@ -228,3 +228,36 @@ separate checks; native cold-boot behavior is verified above.
 ### Gillsong inspection flow — October 11
 
 Integrated the Vermilion study’s cyan ornament pulse into item inspection. It starts automatically; B returns as before. The fork, text, and other palettes remain static. Native emulator checked all 192 frames: exactly 245 ornament pixels animate, followed by the original rest interval. Save/load and both inspection return paths pass. Browser export rebuilt; refresh the preview to load it. Hardware animation remains untested.
+
+## Integrated Hi-Color Hearth — October 11
+
+Native ROM `build/rom/the-pale-cap-hicolor-home.gbc`, SHA256
+`60f0e6704ff8fb9bdd7d18e144590a8b44a3da89bf17fca2104ebae436b9e06e`.
+Official native build passed, CGB-only/MBC5 header valid, 256 KiB ROM and
+32 KiB declared save RAM. The room payload is 8,040 bytes; no production PNG
+was overwritten. Compiler output contains only the existing upstream deprecations.
+
+Ran `tests/playtest_home.py --rom build/rom/the-pale-cap-hicolor-home.gbc
+--output artifacts/hicolor-home-evidence --hicolor` with the installed PyBoy.
+The actual ROM passed departure, Luma gift, both inspection return paths,
+Gillsong ornament animation (245 pixels), extraction, deposit, home save and
+fresh-emulator boot from battery RAM alone. The restored stash retained ownership.
+Additional checks: a two-frame direction tap changed the home selection without
+changing room pixels; 120 consecutive room frames stayed identical; the music
+routine advanced 514 logical ticks over 120 frames both in the Hi-Color room
+and in normal full-screen menus; both produced varying, non-silent emulated
+audio in more than 100 of those frames. Engine soft reset restored the room.
+The final room row matches the converted asset: UI palette restoration no longer
+paints cyan/cream pixels along the room/menu boundary. These are timing/signal
+checks, not a subjective listening assessment.
+
+The public stepped emulator separately showed the room and functional Home
+menu. The official browser export displayed the integrated room with actual
+keyboard input. The plugin preview listener remains in its older unresolved
+closure state, so the official export is served by a separate owned localhost
+server without closing the earlier preview. Browser persistence was not tested.
+
+Physical Chromatic output, audio quality and save retention remain unverified.
+No cartridge flash was performed. Hi-Color support is limited to the static
+104px home view; animated sprite highlights, streaming sound effects and link
+transfers during that view require further timing work.

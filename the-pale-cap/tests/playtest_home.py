@@ -13,12 +13,24 @@ rom=args.rom
 extra={}
 with tempfile.TemporaryDirectory() as tmp:
  r=Path(tmp)/'home.gbc';shutil.copy2(rom,r)
- p=PyBoy(str(r),window='null',sound_emulated=False);p.set_emulation_speed(0);p.tick(180,True)
+ p=PyBoy(str(r),window='null',sound_emulated=args.hicolor);p.set_emulation_speed(0);p.tick(180,True)
  def shot(n):p.screen.image.save(out/(n+'.png'))
  def press(k,held=10,rest=20):p.button_press(k);p.tick(held,True);p.button_release(k);p.tick(rest,True)
  shot('01-new-game');press('a');shot('02-home');home=p.screen.image.copy()
  if args.hicolor:
   assert len(set(home.crop((0,0,160,104)).getdata()))>200,'Hi-Color did not start'
+  # The final two tiles use palette 7, also used by the menu. An early
+  # palette restore previously painted their last row cyan and cream.
+  raw=P/'art-tests/hearth-hicolor/generated'
+  tiles=(raw/'hearth_menu.til').read_bytes();mapping=(raw/'hearth_menu.map').read_bytes()
+  attrs=(raw/'hearth_menu.atr').read_bytes();colors=(raw/'hearth_menu.pal').read_bytes()
+  for x in range(144,160):
+   i=12*20+x//8;assert attrs[i]&7==7
+   tile=mapping[i]+(256 if attrs[i]&8 else 0);bit=7-x%8
+   color=((tiles[tile*16+14]>>bit)&1)|(((tiles[tile*16+15]>>bit)&1)<<1)
+   offset=103*32+3*8+color*2;rgb555=int.from_bytes(colors[offset:offset+2],'little')
+   expected=tuple(((rgb555>>shift)&31)*8 for shift in (0,5,10))
+   assert home.convert('RGB').getpixel((x,103))==expected,'Menu palette leaked into room'
   # Two-frame taps must change selection while leaving all room pixels intact.
   press('right',2,2);selected=p.screen.image.copy()
   assert home.crop((0,0,160,104)).tobytes()==selected.crop((0,0,160,104)).tobytes()
@@ -47,9 +59,12 @@ with tempfile.TemporaryDirectory() as tmp:
   symbols=Path(str(rom)+'.debug/symbols.noi').read_text()
   counter=int(re.search(r'DEF _music_play_isr_counter (0x[0-9A-Fa-f]+)',symbols)[1],16)
   def clock_ticks():
-   total=0;last=p.memory[counter]
+   total=0;last=p.memory[counter];audio_changes=0
    for _ in range(120):
     p.tick(1,True);now=p.memory[counter];total+=(now-last)&255;last=now
+    sound=p.sound.ndarray
+    if sound.size and int(sound.max())!=int(sound.min()):audio_changes+=1
+   assert audio_changes>100,('Sound output missing',audio_changes)
    return total
   top=p.screen.image.crop((0,0,160,104)).tobytes()
   hi_ticks=clock_ticks()
@@ -61,7 +76,8 @@ with tempfile.TemporaryDirectory() as tmp:
   assert 513<=normal_ticks<=515,('Menu music clock drift',normal_ticks)
   assert p.screen.image.crop((0,0,160,104)).tobytes()==top,'Room failed after menu'
   extra={'hiColorMusicTicksPer120Frames':hi_ticks,'menuMusicTicksPer120Frames':normal_ticks,
-         'consecutiveStableRoomFrames':120,'twoFrameDirectionTap':True}
+         'consecutiveStableRoomFrames':120,'twoFrameDirectionTap':True,
+         'roomMenuBoundaryMatchesAsset':True}
  press('right');press('a');press('down');press('a');shot('06-deposit');press('b')
  for _ in range(3):press('down')
  press('a');shot('07-saved');p.stop(save=True)
@@ -74,6 +90,15 @@ with tempfile.TemporaryDirectory() as tmp:
  a=home.convert('RGB');b=p.screen.image.convert('RGB')
  assert a.crop((0,0,160,100)).tobytes()==b.crop((0,0,160,100)).tobytes(),'Cold boot did not open home'
  press('right');press('a');press('a');shot('09-restored-stash');press('a',10,90);shot('10-restored-inspection');press('b',10,90)
+ if args.hicolor:
+  # Engine soft reset must also return to a clean room renderer, not leave a
+  # stale LCD handler or duplicate music callback installed.
+  for key in ('a','b','start','select'):p.button_press(key)
+  p.tick(4,True)
+  for key in ('a','b','start','select'):p.button_release(key)
+  p.tick(180,True)
+  assert p.screen.image.crop((0,0,160,104)).tobytes()==home.crop((0,0,160,104)).tobytes(),'Soft reset corrupted home'
+  shot('11-soft-reset-home');extra['softResetRestoresHome']=True
  p.stop(save=False)
 report={'romSHA256':hashlib.sha256(rom.read_bytes()).hexdigest(),'checks':['new game starts at illustrated home','Luma gives fork','Bag opens native inspection','B returns to expedition','return enters home scene','stash deposit','home save commits checked record','cold boot from battery SRAM opens home without title','saved ownership is stash','restored stash and illustration inspected'],'saveBytes':len(data),'physicalHardwareTested':False}
 report.update(extra)
