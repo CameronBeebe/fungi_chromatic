@@ -7,16 +7,26 @@ file after each pass, and record verified behavior in PLAYTEST.md.
 
 ## Checkpoint before rendering overhaul — October 11
 
-- [x] Preserve integrated home/extraction/save work, source concepts and separate
-  Hi-Color study in a draft PR before replacing rendering or production assets.
+- [x] Preserve integrated home/extraction/save work and the separate Hi-Color study
+  in a checkpoint PR. The concept portfolio remains local and ignored.
 - [x] Refresh READMEs and preserve GB Studio, GBVM, Binjgb and Hi-Color notices;
   see `../THIRD_PARTY_NOTICES.md`.
 - [ ] Confirm the GBDK example license explicitly covers Toxa's Hi-Color ISR
   before promoting the copied renderer into a release.
 - [ ] Select a project-wide license for original code and art; the existing
   GB Studio MIT notice is an attribution, not a blanket licensing decision.
-- [ ] Integrate richer rendering only after checking functional menus, input,
-  music, sprite timing and bank budgets together, then test on the Chromatic.
+- [x] Integrate the 104px Hi-Color Hearth with functional home menus and validate
+  short input taps, stable consecutive frames, music cadence/output, item
+  transfers, extraction, cold boot and soft reset in the native emulator.
+- [x] Flash integrated Hi-Color to the user's Chromatic; user reports the Hearth
+  room looks excellent on the physical screen.
+- [x] Fix the old-art flash on entry and palette/tile snow during transitions;
+  verify consecutive frames and music timing in the emulator.
+- [x] Remove the obsolete Hearth illustration from the built ROM. Preserve its
+  source file; use one blank backing tile for the engine's native scene.
+- [ ] Reflash the transition fix and confirm clean entry/exit on the Chromatic.
+- [ ] Check the menu boundary, music quality, response and physical save retention
+  individually on hardware. Sprite highlights are still deferred.
 
 ## Design anchors
 
@@ -40,9 +50,25 @@ file after each pass, and record verified behavior in PLAYTEST.md.
 
 ## Current priorities (user direction, October 11)
 
-Immediate order: illustrated Bag -> Inspect using approved Vermilion; dark/cyan
-menu styling; hideout-only saving and direct-to-home boot; then home improvement
-and a useful fork effect. The extraction foundation already exists.
+Next major milestone: overhaul expedition visuals and gameplay. The physical
+Hearth test establishes the desired visual quality; the current overworld is a
+prototype, not the art direction to preserve. Start with one cohesive, playable
+biome slice before expanding the world. See DESIGN.md's overworld milestone.
+
+- [ ] Prepare a native-size expedition composition with Bram, a landmark,
+  harvestable fungal growth, a mycelial route and a readable extraction point.
+- [ ] Compare ordinary and elevated-exposure views of that same composition;
+  preserve geography and show a meaningful discovery beyond recoloring.
+- [ ] Review candidate tile/character replacements individually before adopting
+  them; keep approved Hearth and item artwork and all source concepts intact.
+- [ ] Integrate a small slice with a useful fork interaction, resource tradeoff
+  and return-to-stash payoff; audit existing terminal mechanics before redesign.
+- [ ] Validate moving actors, cursor response, queued work, music and rendering
+  budgets together. Do not assume the static Hearth renderer suits the overworld.
+
+The earlier illustrated Bag -> Inspect, dark/cyan menus, hideout-only saving and
+direct-to-home boot milestone is implemented. Home improvement and a useful fork
+effect remain unfinished. The extraction foundation already exists.
 See [EXPEDITION-SLICE.md](EXPEDITION-SLICE.md) for a concrete proposal and acceptance
 checks. Numeric limits, loss rules and the fork effect are provisional test choices.
 The earlier encounter work remains valuable but is no longer the immediate first

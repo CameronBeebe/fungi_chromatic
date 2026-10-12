@@ -228,3 +228,76 @@ separate checks; native cold-boot behavior is verified above.
 ### Gillsong inspection flow — October 11
 
 Integrated the Vermilion study’s cyan ornament pulse into item inspection. It starts automatically; B returns as before. The fork, text, and other palettes remain static. Native emulator checked all 192 frames: exactly 245 ornament pixels animate, followed by the original rest interval. Save/load and both inspection return paths pass. Browser export rebuilt; refresh the preview to load it. Hardware animation remains untested.
+
+## Integrated Hi-Color Hearth — October 11
+
+Native ROM `build/rom/the-pale-cap-hicolor-home.gbc`, SHA256
+`60f0e6704ff8fb9bdd7d18e144590a8b44a3da89bf17fca2104ebae436b9e06e`.
+Official native build passed, CGB-only/MBC5 header valid, 256 KiB ROM and
+32 KiB declared save RAM. The room payload is 8,040 bytes; no production PNG
+was overwritten. Compiler output contains only the existing upstream deprecations.
+
+Ran `tests/playtest_home.py --rom build/rom/the-pale-cap-hicolor-home.gbc
+--output artifacts/hicolor-home-evidence --hicolor` with the installed PyBoy.
+The actual ROM passed departure, Luma gift, both inspection return paths,
+Gillsong ornament animation (245 pixels), extraction, deposit, home save and
+fresh-emulator boot from battery RAM alone. The restored stash retained ownership.
+Additional checks: a two-frame direction tap changed the home selection without
+changing room pixels; 120 consecutive room frames stayed identical; the music
+routine advanced 514 logical ticks over 120 frames both in the Hi-Color room
+and in normal full-screen menus; both produced varying, non-silent emulated
+audio in more than 100 of those frames. Engine soft reset restored the room.
+The final room row matches the converted asset: UI palette restoration no longer
+paints cyan/cream pixels along the room/menu boundary. These are timing/signal
+checks, not a subjective listening assessment.
+
+The public stepped emulator separately showed the room and functional Home
+menu. The official browser export displayed the integrated room with actual
+keyboard input. The plugin preview listener remains in its older unresolved
+closure state, so the official export is served by a separate owned localhost
+server without closing the earlier preview. Browser persistence was not tested.
+
+Physical Chromatic output, audio quality and save retention remain unverified.
+No cartridge flash was performed. Hi-Color support is limited to the static
+104px home view; animated sprite highlights, streaming sound effects and link
+transfers during that view require further timing work.
+
+### Physical Hearth feedback — October 11
+
+The plugin successfully flashed the exact native ROM above (SHA256
+`60f0e6704ff8fb9bdd7d18e144590a8b44a3da89bf17fca2104ebae436b9e06e`)
+to the connected Chromatic, Player 01. The write completed successfully in
+24.4 seconds. The user subsequently reported: "the hearth room looks incredible."
+This establishes positive user-observed appearance on hardware, not a measured
+frame-timing, audio, menu-boundary or save-retention check. Those remain open.
+No computer screen/audio recording or physical capture was used. The user also
+identified the overworld's visuals and gameplay as the next overhaul priority.
+
+### Hearth transition fixes — October 11
+
+The user reported the old blocky Hearth flashing before the richer image and
+snow/garbled graphics while moving between home and the expedition. The original
+scene explicitly faded in the fallback art; stopping Hi-Color also restored
+ordinary palettes over the still-visible Hi-Color tilemap. Removed that entry
+fade and now prepare renderer/menu changes under black before revealing them.
+LCD stays enabled during the tile upload to avoid a white LCD-off flash.
+
+An extended check also caught occasional palette corruption: the VBlank music
+callback could delay LYC 152 until line 153. Music now runs after the rendered
+image, once the real stack and ROM bank have been restored.
+
+Fixed native ROM: `build/rom/the-pale-cap-hicolor-transition.gbc`, SHA256
+`f10da0c902c8786cbd15cd09c7f05ed218cf52c7c8f1460263e1caf4d2f6a487`.
+The new regression fails against the previously flashed ROM on entry frame 4.
+The fixed ROM passes 1,550 transition frames across new game, departure,
+extraction, menu return and battery cold boot; 3,600 consecutive room frames
+remain identical with music active. Music counts are 514/515 ticks per 120 frames
+in room/menu respectively, within the expected fractional-clock phase range.
+The complete item/inspection/deposit/save/soft-reset flow also passes. Public
+stepped emulator samples separately show menu -> black -> complete Hearth.
+These fixes have not yet been flashed or verified on physical hardware.
+
+The scene now loads a uniform single-tile backing instead of the original Hearth
+illustration. Build symbols confirm no `bg_root_hearth` image payload is linked;
+the source PNG is preserved unchanged. Only the Hi-Color Hearth illustration is
+used in the game. The padded cartridge size remains 256 KiB.
