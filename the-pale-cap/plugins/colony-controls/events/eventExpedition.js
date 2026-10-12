@@ -25,7 +25,7 @@ module.exports={
   const draw=(lines,compact=false)=>{
    hearth(2);
    const height=compact?5:18;h._overlayClear(0,0,20,height,'.UI_COLOR_WHITE',true,false);h._overlayMoveTo(0,compact?13:0,'.OVERLAY_SPEED_INSTANT');h._overlaySetScroll(0,0,20,height,'.UI_COLOR_WHITE');h._setTextLayer('.TEXT_LAYER_WIN');
-   const rows=Array(compact?4:17).fill('');for(const [y,t]of lines)rows[y]=' '+t;h.textDraw(rows.join('\n'),1,0,'overlay');h._overlayWait(true,['.UI_WAIT_WINDOW','.UI_WAIT_TEXT']);if(compact)hearth(1);
+   const rows=Array(compact?4:17).fill('');for(const [y,t]of lines)rows[y]=' '+t;h.textDraw(rows.join('\n'),1,0,'overlay');h._overlayWait(true,['.UI_WAIT_WINDOW','.UI_WAIT_TEXT']);hearth(compact?1:3);
   };
   const choose=ys=>{set(51,1);h._choice(v(51),['.UI_MENU_CANCEL_B','.UI_MENU_SET_START'],ys.length);ys.forEach((y,i)=>h._menuItem(1,y,i+1,i+1,i?i:ys.length,i===ys.length-1?1:i+2));};
   const note=lines=>{draw([[1,'THE PALE CAP'],...lines,[16,'A/B Back']]);h.inputAwait(['a','b']);};

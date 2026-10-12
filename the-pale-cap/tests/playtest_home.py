@@ -15,9 +15,26 @@ with tempfile.TemporaryDirectory() as tmp:
  r=Path(tmp)/'home.gbc';shutil.copy2(rom,r)
  p=PyBoy(str(r),window='null',sound_emulated=args.hicolor);p.set_emulation_speed(0);p.tick(180,True)
  def shot(n):p.screen.image.save(out/(n+'.png'))
- def press(k,held=10,rest=20):p.button_press(k);p.tick(held,True);p.button_release(k);p.tick(rest,True)
- shot('01-new-game');press('a');shot('02-home');home=p.screen.image.copy()
+ def tick(frames,trace=None):
+  if trace is None:p.tick(frames,True)
+  else:
+   for _ in range(frames):
+    p.tick(1,True);trace.append(p.screen.image.convert('RGB').copy())
+ def press(k,held=10,rest=20,trace=None):
+  p.button_press(k);tick(held,trace);p.button_release(k);tick(rest,trace)
+ def check_reveal(frames,name,after_black=False):
+  expected=home.convert('RGB').crop((0,0,160,104)).tobytes();started=not after_black
+  for i,frame in enumerate(frames):
+   top=frame.crop((0,0,160,104));colors=set(top.getdata())
+   if colors=={(0,0,0)}:started=True
+   if started and len(colors)>4 and top.tobytes()!=expected:
+    frame.save(out/(name+'-bad-frame.png'))
+    raise AssertionError((name,'intermediate room/palette frame',i))
+  assert started,(name,'no black handoff')
+ entry=[]
+ shot('01-new-game');press('a',trace=entry);shot('02-home');home=p.screen.image.copy()
  if args.hicolor:
+  check_reveal(entry,'new-game')
   assert len(set(home.crop((0,0,160,104)).getdata()))>200,'Hi-Color did not start'
   # The final two tiles use palette 7, also used by the menu. An early
   # palette restore previously painted their last row cyan and cream.
@@ -36,7 +53,15 @@ with tempfile.TemporaryDirectory() as tmp:
   assert home.crop((0,0,160,104)).tobytes()==selected.crop((0,0,160,104)).tobytes()
   assert home.crop((0,104,160,144)).tobytes()!=selected.crop((0,104,160,144)).tobytes(),'Two-frame direction missed'
   press('left',2,2)
- press('right');press('right');press('a',10,90)
+ press('right');press('right');departure=[];press('a',10,90,departure)
+ if args.hicolor:
+  # Until the outgoing image has been blanked, it must remain the complete
+  # Hi-Color room, never its tilemap interpreted with ordinary palettes.
+  for i,frame in enumerate(departure):
+   top=frame.crop((0,0,160,104))
+   if set(top.getdata())=={(0,0,0)}:break
+   assert top.tobytes()==home.convert('RGB').crop((0,0,160,104)).tobytes(),('departure snow',i)
+  else:raise AssertionError('Departure never blanked before scene load')
  for _ in range(4):press('up',4,4)
  press('a',4,1200);shot('03-luma-gift')
  for _ in range(6):press('a',10,180)
@@ -54,8 +79,9 @@ with tempfile.TemporaryDirectory() as tmp:
  assert len(changed)>0,'Gillsong inspection is static'
  frames[0].save(out/'gillsong-flow.gif',save_all=True,append_images=frames[1:],duration=17,loop=0)
  print('Animated ornament pixels:',len(changed))
- press('b',10,90);press('start');press('down');press('a',10,1200);shot('05-returned-home')
+ press('b',10,90);press('start');press('down');returned=[];press('a',10,1200,returned);shot('05-returned-home')
  if args.hicolor:
+  check_reveal(returned,'extraction',after_black=True)
   symbols=Path(str(rom)+'.debug/symbols.noi').read_text()
   counter=int(re.search(r'DEF _music_play_isr_counter (0x[0-9A-Fa-f]+)',symbols)[1],16)
   def clock_ticks():
@@ -69,15 +95,18 @@ with tempfile.TemporaryDirectory() as tmp:
   top=p.screen.image.crop((0,0,160,104)).tobytes()
   hi_ticks=clock_ticks()
   assert 513<=hi_ticks<=515,('Hi-Color music clock drift',hi_ticks)
-  for _ in range(120):
+  for _ in range(3600):
    p.tick(1,True)
+   if p.screen.image.crop((0,0,160,104)).tobytes()!=top:
+    shot('unstable-room')
    assert p.screen.image.crop((0,0,160,104)).tobytes()==top,'Unstable room frame'
-  press('right');press('a');normal_ticks=clock_ticks();press('b')
+  press('right');press('a');normal_ticks=clock_ticks();menu_return=[];press('b',trace=menu_return)
+  check_reveal(menu_return,'menu-return')
   assert 513<=normal_ticks<=515,('Menu music clock drift',normal_ticks)
   assert p.screen.image.crop((0,0,160,104)).tobytes()==top,'Room failed after menu'
   extra={'hiColorMusicTicksPer120Frames':hi_ticks,'menuMusicTicksPer120Frames':normal_ticks,
-         'consecutiveStableRoomFrames':120,'twoFrameDirectionTap':True,
-         'roomMenuBoundaryMatchesAsset':True}
+         'consecutiveStableRoomFrames':3600,'twoFrameDirectionTap':True,
+         'roomMenuBoundaryMatchesAsset':True,'transitionFramesChecked':len(entry)+len(departure)+len(returned)+len(menu_return)}
  press('right');press('a');press('down');press('a');shot('06-deposit');press('b')
  for _ in range(3):press('down')
  press('a');shot('07-saved');p.stop(save=True)
@@ -85,7 +114,9 @@ with tempfile.TemporaryDirectory() as tmp:
  data=ram.read_bytes();assert data[:4]==b'PCH1' and data[54]==0xa5,'No committed home record'
  assert int.from_bytes(data[46:48],'little')==2,'Fork not in saved stash'
  (out/'saved-home.ram').write_bytes(data)
- p=PyBoy(str(r),window='null',sound_emulated=False);p.set_emulation_speed(0);p.tick(180,True);shot('08-cold-home')
+ p=PyBoy(str(r),window='null',sound_emulated=False);p.set_emulation_speed(0);cold=[];tick(180,cold);shot('08-cold-home')
+ if args.hicolor:
+  check_reveal(cold,'cold-boot');extra['transitionFramesChecked']+=len(cold)
  # The room is visible immediately, unlike the full-screen startup menu.
  a=home.convert('RGB');b=p.screen.image.convert('RGB')
  assert a.crop((0,0,160,100)).tobytes()==b.crop((0,0,160,100)).tobytes(),'Cold boot did not open home'

@@ -272,3 +272,27 @@ This establishes positive user-observed appearance on hardware, not a measured
 frame-timing, audio, menu-boundary or save-retention check. Those remain open.
 No computer screen/audio recording or physical capture was used. The user also
 identified the overworld's visuals and gameplay as the next overhaul priority.
+
+### Hearth transition fixes — October 11
+
+The user reported the old blocky Hearth flashing before the richer image and
+snow/garbled graphics while moving between home and the expedition. The original
+scene explicitly faded in the fallback art; stopping Hi-Color also restored
+ordinary palettes over the still-visible Hi-Color tilemap. Removed that entry
+fade and now prepare renderer/menu changes under black before revealing them.
+LCD stays enabled during the tile upload to avoid a white LCD-off flash.
+
+An extended check also caught occasional palette corruption: the VBlank music
+callback could delay LYC 152 until line 153. Music now runs after the rendered
+image, once the real stack and ROM bank have been restored.
+
+Fixed native ROM: `build/rom/the-pale-cap-hicolor-transition.gbc`, SHA256
+`1dddd8015932fe7d1014cfdb3ddad10e806abd8eb0ce8815b53dd2b25384c7b6`.
+The new regression fails against the previously flashed ROM on entry frame 4.
+The fixed ROM passes 1,550 transition frames across new game, departure,
+extraction, menu return and battery cold boot; 3,600 consecutive room frames
+remain identical with music active. Music counts are 514/515 ticks per 120 frames
+in room/menu respectively, within the expected fractional-clock phase range.
+The complete item/inspection/deposit/save/soft-reset flow also passes. Public
+stepped emulator samples separately show menu -> black -> complete Hearth.
+These fixes have not yet been flashed or verified on physical hardware.

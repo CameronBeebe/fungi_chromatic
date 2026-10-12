@@ -7,6 +7,7 @@
 #include "interrupts.h"
 #include "palette.h"
 #include "music_manager.h"
+#include "fade_manager.h"
 #include "ff_hearth_data.h"
 
 static uint16_t ff_hearth_sp_save;
@@ -143,6 +144,10 @@ __asm
         ldh (__current_bank), a
         ld (_rROMB0), a
 
+        ; Run music after the picture, with the real stack and bank restored.
+        ; A busy music update in VBlank can otherwise delay LYC 152 until
+        ; scanline 153 and miss the palette preload deadline.
+        call _ff_hearth_music
         ret
 __endasm;
 }
@@ -150,7 +155,7 @@ __endasm;
 
 
 /* The scanline loop masks interrupts across the picture. Clock the existing
- * music driver from VBlank while it owns LCD timing, preserving its 256 Hz
+ * music driver after the image while it owns LCD timing, preserving its 256 Hz
  * logical clock: 70224 dots/frame / 16384 dots/timer tick = 4389/1024.
  * There are no streaming sound effects or link transfers in this home view.
  * Full menus and other scenes retain the engine timer interrupt unchanged. */
@@ -163,10 +168,10 @@ void ff_hearth_music(void) NONBANKED {
 }
 
 static void hearth_stop(void) NONBANKED {
-    if (!ff_hearth_active) return;
-    CRITICAL {
+    /* Finish the last complete picture before changing its palette owner. */
+    wait_vbl_done();
+    if (ff_hearth_active) CRITICAL {
         remove_LCD(ff_hearth_lcd);
-        remove_VBL(ff_hearth_music);
         ff_hearth_active = 0;
         STAT_REG = STATF_LYC;
         LYC_REG = 150;
@@ -174,14 +179,16 @@ static void hearth_stop(void) NONBANKED {
         IF_REG &= ~TIM_IFLAG;
         IE_REG = (IE_REG & ~TIM_IFLAG) | ff_hearth_timer_ie;
     }
-    set_bkg_palette(0, 8, (const uint16_t *)BkgPalette);
+    /* Ordinary palettes must never be shown over the Hi-Color tilemap.
+     * The next menu/scene is prepared under black and revealed separately. */
+    fade_style = 1;
+    fade_init();
 }
 
 static void hearth_start(void) NONBANKED {
     uint8_t saved_bank, i;
     if (ff_hearth_active) return;
     wait_vbl_done();
-    DISPLAY_OFF;
     /* All image tiles stay outside the engine UI/font allocation. Bank 0 uses
      * IDs 0..127 and bank 1 uses 0..131 in signed background addressing. */
     LCDC_REG &= ~LCDCF_BG8000;
@@ -209,19 +216,22 @@ static void hearth_start(void) NONBANKED {
         ff_hearth_timer_ie = IE_REG & TIM_IFLAG;
         IE_REG &= ~TIM_IFLAG;
         ff_hearth_active = 1;
-        add_VBL(ff_hearth_music);
         add_LCD(ff_hearth_lcd);
         LYC_REG = 152;
         STAT_REG = STATF_LYC;
     }
-    DISPLAY_ON;
+    /* Palettes stay black throughout VRAM preparation. LYC 152 initializes
+     * the picture before its first visible frame. */
+    fade_timer = 0;
 }
 
-/* 0: leave scene/reset loader; 1: show room; 2: full-screen menu.
+/* 0: leave scene/reset loader; 1: show room; 2: prepare under black;
+ * 3: reveal a completed full-screen menu.
  * Called only by the home event. Normal expedition menus never take ownership. */
 void ff_hearth(SCRIPT_CTX *THIS) OLDCALL BANKED {
     uint8_t mode = *(UWORD *)VM_REF_TO_PTR(-1);
     if (mode == 1) hearth_start();
+    else if (mode == 3) fade_in_modal();
     else {
         hearth_stop();
         if (!mode) ff_hearth_loaded = 0;

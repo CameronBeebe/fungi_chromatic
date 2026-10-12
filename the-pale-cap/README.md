@@ -28,7 +28,7 @@ harvested patches for one fungus. Reveal is free in this prototype. Awakening
 all three roots makes Vesper available during Reveal.
 
 Open `project.gbsproj` in GB Studio to edit. The current integrated cartridge is
-`build/rom/the-pale-cap-hicolor-home.gbc`; build outputs are local and ignored by Git.
+`build/rom/the-pale-cap-hicolor-transition.gbc`; build outputs are local and ignored by Git.
 Saving is available only at home after extraction. Saves use version/checksum
 validation and two alternating records. The latest home save is restored on
 boot; there is no mid-run resume. No API keys, Wi-Fi, LLM calls, or Jev calls are

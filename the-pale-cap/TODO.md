@@ -20,6 +20,9 @@ file after each pass, and record verified behavior in PLAYTEST.md.
   transfers, extraction, cold boot and soft reset in the native emulator.
 - [x] Flash integrated Hi-Color to the user's Chromatic; user reports the Hearth
   room looks excellent on the physical screen.
+- [x] Fix the old-art flash on entry and palette/tile snow during transitions;
+  verify consecutive frames and music timing in the emulator.
+- [ ] Reflash the transition fix and confirm clean entry/exit on the Chromatic.
 - [ ] Check the menu boundary, music quality, response and physical save retention
   individually on hardware. Sprite highlights are still deferred.
 

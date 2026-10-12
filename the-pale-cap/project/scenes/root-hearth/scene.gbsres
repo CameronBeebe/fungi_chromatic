@@ -23,7 +23,7 @@
     "default-ui"
   ],
   "spritePaletteIds": [],
-  "autoFadeSpeed": 1,
+  "autoFadeSpeed": null,
   "playerHit1Script": [],
   "playerHit2Script": [],
   "playerHit3Script": [],
@@ -34,13 +34,6 @@
       "command": "EVENT_ACTOR_HIDE",
       "args": {
         "actorId": "player"
-      }
-    },
-    {
-      "id": "60283df9-ad79-48e5-b0b3-68de83b08892",
-      "command": "EVENT_FADE_IN",
-      "args": {
-        "speed": 1
       }
     },
     {

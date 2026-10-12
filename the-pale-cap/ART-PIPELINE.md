@@ -104,14 +104,24 @@ The 8,040-byte payload stays in ROM and its active tiles/maps load into VRAM.
 
 `ff_hearth.c` takes ownership of the LCD handler only while the room is visible.
 It restores the UI palette during the last image row's HBlank. Full-screen menus,
-inspection and departure relinquish that handler and restore engine palettes.
+inspection and departure relinquish that handler under black. Ordinary palettes
+are revealed only after the full-screen menu or destination is ready. The home
+scene disables its old automatic/explicit fade-in, which exposed the fallback
+image before the Hi-Color upload. VRAM preparation keeps the LCD on and palettes
+black, avoiding an LCD-off white flash.
 The game remains locked by its ordinary home event; inventory/save mutations
 continue through the existing tested code.
 
 Because the palette loop masks interrupts across the image, home rendering clocks
-the existing music routine from VBlank with a fractional accumulator preserving
+the existing music routine after the last image row with a fractional accumulator preserving
 the 256 Hz logical cadence (4389/1024 ticks per frame). This is appropriate for
 the current non-streaming soundtrack; it is not support for streamed sound effects
 or link transfers while the image renderer is active. Normal menus and other
 scenes retain the engine timer. Emulator checks cover cadence and non-silent
 output, not subjective sound quality or physical-device timing.
+
+Do not move that music callback back into VBlank: a busy update can delay the
+LYC 152 palette preload until scanline 153 and corrupt an occasional image frame.
+The callback runs after the assembly renderer restores its real stack and ROM
+bank. Regression coverage includes 3,600 consecutive room frames with music and
+frame-by-frame entry, departure, menu-return, extraction and cold-boot checks.
