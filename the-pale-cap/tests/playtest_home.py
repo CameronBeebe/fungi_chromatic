@@ -83,6 +83,8 @@ with tempfile.TemporaryDirectory() as tmp:
  if args.hicolor:
   check_reveal(returned,'extraction',after_black=True)
   symbols=Path(str(rom)+'.debug/symbols.noi').read_text()
+  assert '_bg_root_hearth' not in symbols,'Obsolete Hearth image still linked into ROM'
+  assert '_bg_hearth_renderer_backing_tileset' in symbols,'Missing minimal scene backing'
   counter=int(re.search(r'DEF _music_play_isr_counter (0x[0-9A-Fa-f]+)',symbols)[1],16)
   def clock_ticks():
    total=0;last=p.memory[counter];audio_changes=0
@@ -106,7 +108,8 @@ with tempfile.TemporaryDirectory() as tmp:
   assert p.screen.image.crop((0,0,160,104)).tobytes()==top,'Room failed after menu'
   extra={'hiColorMusicTicksPer120Frames':hi_ticks,'menuMusicTicksPer120Frames':normal_ticks,
          'consecutiveStableRoomFrames':3600,'twoFrameDirectionTap':True,
-         'roomMenuBoundaryMatchesAsset':True,'transitionFramesChecked':len(entry)+len(departure)+len(returned)+len(menu_return)}
+         'roomMenuBoundaryMatchesAsset':True,'obsoleteHearthAbsentFromROM':True,
+         'transitionFramesChecked':len(entry)+len(departure)+len(returned)+len(menu_return)}
  press('right');press('a');press('down');press('a');shot('06-deposit');press('b')
  for _ in range(3):press('down')
  press('a');shot('07-saved');p.stop(save=True)

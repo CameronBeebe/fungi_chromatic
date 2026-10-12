@@ -109,6 +109,11 @@ are revealed only after the full-screen menu or destination is ready. The home
 scene disables its old automatic/explicit fade-in, which exposed the fallback
 image before the Hi-Color upload. VRAM preparation keeps the LCD on and palettes
 black, avoiding an LCD-off white flash.
+
+The scene references `hearth-renderer-backing.png`, a uniform image that compiles
+to one blank tile and the engine-required maps. It does not load a second Hearth
+illustration. The original `root-hearth.png` remains an unreferenced source asset
+and is absent from the linked ROM; the regression checks its symbols are absent.
 The game remains locked by its ordinary home event; inventory/save mutations
 continue through the existing tested code.
 

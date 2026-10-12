@@ -287,7 +287,7 @@ callback could delay LYC 152 until line 153. Music now runs after the rendered
 image, once the real stack and ROM bank have been restored.
 
 Fixed native ROM: `build/rom/the-pale-cap-hicolor-transition.gbc`, SHA256
-`1dddd8015932fe7d1014cfdb3ddad10e806abd8eb0ce8815b53dd2b25384c7b6`.
+`f10da0c902c8786cbd15cd09c7f05ed218cf52c7c8f1460263e1caf4d2f6a487`.
 The new regression fails against the previously flashed ROM on entry frame 4.
 The fixed ROM passes 1,550 transition frames across new game, departure,
 extraction, menu return and battery cold boot; 3,600 consecutive room frames
@@ -296,3 +296,8 @@ in room/menu respectively, within the expected fractional-clock phase range.
 The complete item/inspection/deposit/save/soft-reset flow also passes. Public
 stepped emulator samples separately show menu -> black -> complete Hearth.
 These fixes have not yet been flashed or verified on physical hardware.
+
+The scene now loads a uniform single-tile backing instead of the original Hearth
+illustration. Build symbols confirm no `bg_root_hearth` image payload is linked;
+the source PNG is preserved unchanged. Only the Hi-Color Hearth illustration is
+used in the game. The padded cartridge size remains 256 KiB.

@@ -22,6 +22,8 @@ file after each pass, and record verified behavior in PLAYTEST.md.
   room looks excellent on the physical screen.
 - [x] Fix the old-art flash on entry and palette/tile snow during transitions;
   verify consecutive frames and music timing in the emulator.
+- [x] Remove the obsolete Hearth illustration from the built ROM. Preserve its
+  source file; use one blank backing tile for the engine's native scene.
 - [ ] Reflash the transition fix and confirm clean entry/exit on the Chromatic.
 - [ ] Check the menu boundary, music quality, response and physical save retention
   individually on hardware. Sprite highlights are still deferred.
