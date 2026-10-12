@@ -261,3 +261,14 @@ Physical Chromatic output, audio quality and save retention remain unverified.
 No cartridge flash was performed. Hi-Color support is limited to the static
 104px home view; animated sprite highlights, streaming sound effects and link
 transfers during that view require further timing work.
+
+### Physical Hearth feedback — October 11
+
+The plugin successfully flashed the exact native ROM above (SHA256
+`60f0e6704ff8fb9bdd7d18e144590a8b44a3da89bf17fca2104ebae436b9e06e`)
+to the connected Chromatic, Player 01. The write completed successfully in
+24.4 seconds. The user subsequently reported: "the hearth room looks incredible."
+This establishes positive user-observed appearance on hardware, not a measured
+frame-timing, audio, menu-boundary or save-retention check. Those remain open.
+No computer screen/audio recording or physical capture was used. The user also
+identified the overworld's visuals and gameplay as the next overhaul priority.

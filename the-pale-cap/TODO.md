@@ -18,8 +18,10 @@ file after each pass, and record verified behavior in PLAYTEST.md.
 - [x] Integrate the 104px Hi-Color Hearth with functional home menus and validate
   short input taps, stable consecutive frames, music cadence/output, item
   transfers, extraction, cold boot and soft reset in the native emulator.
-- [ ] Test integrated Hi-Color on the Chromatic: visual/menu split, music quality,
-  response and physical save retention. Sprite highlights are still deferred.
+- [x] Flash integrated Hi-Color to the user's Chromatic; user reports the Hearth
+  room looks excellent on the physical screen.
+- [ ] Check the menu boundary, music quality, response and physical save retention
+  individually on hardware. Sprite highlights are still deferred.
 
 ## Design anchors
 
@@ -43,9 +45,25 @@ file after each pass, and record verified behavior in PLAYTEST.md.
 
 ## Current priorities (user direction, October 11)
 
-Immediate order: illustrated Bag -> Inspect using approved Vermilion; dark/cyan
-menu styling; hideout-only saving and direct-to-home boot; then home improvement
-and a useful fork effect. The extraction foundation already exists.
+Next major milestone: overhaul expedition visuals and gameplay. The physical
+Hearth test establishes the desired visual quality; the current overworld is a
+prototype, not the art direction to preserve. Start with one cohesive, playable
+biome slice before expanding the world. See DESIGN.md's overworld milestone.
+
+- [ ] Prepare a native-size expedition composition with Bram, a landmark,
+  harvestable fungal growth, a mycelial route and a readable extraction point.
+- [ ] Compare ordinary and elevated-exposure views of that same composition;
+  preserve geography and show a meaningful discovery beyond recoloring.
+- [ ] Review candidate tile/character replacements individually before adopting
+  them; keep approved Hearth and item artwork and all source concepts intact.
+- [ ] Integrate a small slice with a useful fork interaction, resource tradeoff
+  and return-to-stash payoff; audit existing terminal mechanics before redesign.
+- [ ] Validate moving actors, cursor response, queued work, music and rendering
+  budgets together. Do not assume the static Hearth renderer suits the overworld.
+
+The earlier illustrated Bag -> Inspect, dark/cyan menus, hideout-only saving and
+direct-to-home boot milestone is implemented. Home improvement and a useful fork
+effect remain unfinished. The extraction foundation already exists.
 See [EXPEDITION-SLICE.md](EXPEDITION-SLICE.md) for a concrete proposal and acceptance
 checks. Numeric limits, loss rules and the fork effect are provisional test choices.
 The earlier encounter work remains valuable but is no longer the immediate first
