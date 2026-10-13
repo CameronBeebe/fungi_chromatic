@@ -59,7 +59,15 @@ biome slice before expanding the world. See DESIGN.md's overworld milestone.
 - [x] Build a separate six-view hardware comparison ROM from the three existing
   studies; emulator-check controls and stable rendering. See
   `art-tests/overworld-gallery/README.md`. Source concepts stay local and ignored.
-- [ ] Compare all three directions and both exposure views on the Chromatic.
+- [x] Compare all three directions and both exposure views on the Chromatic;
+  user reports they look great, while noting unintended differences across states.
+- [x] Build isolated interactive Hi-Color Heartwood: moving Bram, cursor/FIFO,
+  obstacle routing, one harvested patch, independent reveal and persistent state.
+  Emulator checks pass; see `art-tests/heartwood-playable/README.md`.
+- [ ] Review the interactive Hi-Color scene on hardware, including sprite fit,
+  subtle reveal readability, partial patch transitions and movement feel.
+- [ ] Budget music, more actors and production scheduling with the Hi-Color ISR
+  before integrating this experiment into the main game.
 - [ ] Review the designer's modular production candidates: exact tiles/sprites,
   harvested/regrowth states, and storyboards assembled from those same assets.
 
