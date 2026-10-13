@@ -1,3 +1,23 @@
+# Interactive Hi-Color Heartwood — October 12, 2026
+
+Separate GBDK experiment: `art-tests/heartwood-playable/build/heartwood-playable.gbc`.
+Exact ROM identity and retained framebuffer evidence are generated under its
+`build/manifest.json` and `build/evidence/verification.json`.
+Input-driven native tests cover a one-frame cursor tap, designation, independent
+Bram movement, ordered obstacle detour then harvesting, blocked target rejection,
+one item earned without duplication, exposure preserving harvested remains,
+help round-trip and reset. Across 963 consecutive checked frames, pixels outside
+current/previous sprite rectangles and registered patch footprints stay unchanged.
+The plugin emulator also displayed movement, harvest and reveal in genuine frames.
+The browser player opens the standalone ROM. Physical hardware is not yet tested.
+No main-game assets, saves, audio, extraction or production queue integration changed.
+
+The earlier six-view static gallery was flashed successfully; the user reports
+the scenes look great on the Chromatic. That feedback does not validate this
+interactive ROM's timing or art. See the experiment README for budgets/limitations.
+
+---
+
 # Audio, forge and boot menu — October 10, 2026
 
 Native ROM `build/rom/the-pale-cap-atmosphere-v2.gbc`, SHA-256

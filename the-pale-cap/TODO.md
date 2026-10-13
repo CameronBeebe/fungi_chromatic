@@ -24,7 +24,8 @@ file after each pass, and record verified behavior in PLAYTEST.md.
   verify consecutive frames and music timing in the emulator.
 - [x] Remove the obsolete Hearth illustration from the built ROM. Preserve its
   source file; use one blank backing tile for the engine's native scene.
-- [ ] Reflash the transition fix and confirm clean entry/exit on the Chromatic.
+- [x] Reflash the transition fix and confirm clean entry/exit on the Chromatic;
+  user reports it looks good. Other hardware checks below remain separate.
 - [ ] Check the menu boundary, music quality, response and physical save retention
   individually on hardware. Sprite highlights are still deferred.
 
@@ -54,6 +55,21 @@ Next major milestone: overhaul expedition visuals and gameplay. The physical
 Hearth test establishes the desired visual quality; the current overworld is a
 prototype, not the art direction to preserve. Start with one cohesive, playable
 biome slice before expanding the world. See DESIGN.md's overworld milestone.
+
+- [x] Build a separate six-view hardware comparison ROM from the three existing
+  studies; emulator-check controls and stable rendering. See
+  `art-tests/overworld-gallery/README.md`. Source concepts stay local and ignored.
+- [x] Compare all three directions and both exposure views on the Chromatic;
+  user reports they look great, while noting unintended differences across states.
+- [x] Build isolated interactive Hi-Color Heartwood: moving Bram, cursor/FIFO,
+  obstacle routing, one harvested patch, independent reveal and persistent state.
+  Emulator checks pass; see `art-tests/heartwood-playable/README.md`.
+- [ ] Review the interactive Hi-Color scene on hardware, including sprite fit,
+  subtle reveal readability, partial patch transitions and movement feel.
+- [ ] Budget music, more actors and production scheduling with the Hi-Color ISR
+  before integrating this experiment into the main game.
+- [ ] Review the designer's modular production candidates: exact tiles/sprites,
+  harvested/regrowth states, and storyboards assembled from those same assets.
 
 - [ ] Prepare a native-size expedition composition with Bram, a landmark,
   harvestable fungal growth, a mycelial route and a readable extraction point.
