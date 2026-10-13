@@ -66,6 +66,11 @@ biome slice before expanding the world. See DESIGN.md's overworld milestone.
   Emulator checks pass; see `art-tests/heartwood-playable/README.md`.
 - [ ] Review the interactive Hi-Color scene on hardware, including sprite fit,
   subtle reveal readability, partial patch transitions and movement feel.
+- [x] Refine the isolated study's visible cursor latency, foreground visibility,
+  distinct target pin and explicit action/reveal messages. Emulator output checks
+  pass; browser/hardware feel still needs the user's review.
+- [x] Ignore and untrack older generated study ROMs/logs/frame evidence while
+  preserving every local copy and all required art/player/build inputs.
 - [ ] Budget music, more actors and production scheduling with the Hi-Color ISR
   before integrating this experiment into the main game.
 - [ ] Review the designer's modular production candidates: exact tiles/sprites,

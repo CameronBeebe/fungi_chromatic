@@ -36,7 +36,7 @@ with tempfile.TemporaryDirectory() as temp:
         current=p.screen.image.copy()
         diff=ImageChops.difference(original.convert('RGB'),current.convert('RGB'))
         d=ImageDraw.Draw(diff)
-        for box in initial_boxes+prior_boxes+boxes()+[(104,80,135,103),(72,64,111,79)]:d.rectangle(box,fill=(0,0,0))
+        for box in initial_boxes+prior_boxes+boxes()+[(104,80,135,103),(72,64,111,79),(0,136,159,143)]:d.rectangle(box,fill=(0,0,0))
         assert diff.getbbox() is None,('Unexpected scenery change',p.frame_count,diff.getbbox())
         prior_boxes=boxes();background_frames+=1
     initial_boxes=prior_boxes.copy()
@@ -44,7 +44,30 @@ with tempfile.TemporaryDirectory() as temp:
     start_x=value('cursor_x');p.button_press('left');tick(1);p.button_release('left');tick(1)
     assert value('cursor_x')==start_x-1,'Missed short cursor tap'
     press('right');assert value('cursor_x')==start_x
-    p.button_press('a')
+    before_move=p.screen.image.copy();p.button_press('left');latency=None
+    for frame in range(1,5):
+        tick(1)
+        if p.screen.image.tobytes()!=before_move.tobytes() and latency is None:latency=frame
+    p.button_release('left');tick(2)
+    assert latency is not None and latency<=2,('Visible cursor delay',latency)
+    press('right',rest=2)
+    # Measure repeat against actual native frames, not iterations of game logic.
+    events=[];last=value('cursor_x');p.button_press('left')
+    for frame in range(1,32):
+        tick(1);current=value('cursor_x')
+        if current!=last:events.append(frame);last=current
+    p.button_release('left');tick(2)
+    assert len(events)>=8,('Slow held cursor',events)
+    assert max(b-a for a,b in zip(events[1:],events[2:]))<=4,events
+    while value('cursor_x')<start_x:press('right',rest=2)
+    p.button_press('a');command_latency=None;visible_walk_latency=None
+    bram_start=value('bram_x');oam_start=p.memory[0xFE0D]
+    for frame in range(1,5):
+        stable_frame()
+        if value('bram_x')!=bram_start and command_latency is None:command_latency=frame
+        if p.memory[0xFE0D]!=oam_start and visible_walk_latency is None:visible_walk_latency=frame
+    assert command_latency is not None and command_latency<=2,('Command delayed',command_latency)
+    assert visible_walk_latency is not None and visible_walk_latency<=3,('OAM delayed',visible_walk_latency)
     for _ in range(2):stable_frame()
     p.button_release('a')
     positions=[]
@@ -68,7 +91,9 @@ with tempfile.TemporaryDirectory() as temp:
     assert revealed.crop((72,64,112,80)).tobytes()!=harvested.crop((72,64,112,80)).tobytes(),'Reveal invisible'
     for _ in range(600):stable_frame()
     press('start');assert value('help_open')==1;press('start',rest=90)
-    assert p.screen.image.tobytes()==revealed.tobytes(),'Help did not restore persistent scene'
+    returned=ImageChops.difference(p.screen.image.convert('RGB'),revealed.convert('RGB'))
+    rd=ImageDraw.Draw(returned);rd.rectangle((89,68,96,83),fill=(0,0,0));rd.rectangle((0,136,159,143),fill=(0,0,0))
+    assert returned.getbbox() is None,'Help did not restore persistent scene'
     # Repeated harvest cannot duplicate loot.
     press('a',rest=90);assert value('loot')==1 and value('queue_count')==0
     press('select',rest=90);assert value('loot')==value('harvested')==value('exposure')==0
@@ -94,6 +119,32 @@ with tempfile.TemporaryDirectory() as temp:
     aim(5,9);press('a',rest=400)
     assert (value('bram_x'),value('bram_y'))==(44,76)
     p.screen.image.save(evidence/'05-foreground.png')
-    report={'romSHA256':hashlib.sha256(rom.read_bytes()).hexdigest(),'nativeFramesWithUnchangedScenery':background_frames,'harvestFrames':len(positions),'uniqueWalkPositions':len(set(positions)),'shortCursorTap':True,'noBlockedFootCells':True,'exposurePreservesHarvest':True,'helpRestoresScene':True,'duplicateHarvestRejected':True,'resetVerified':True,'queuedDetourThenHarvest':True,'blockedTargetRejected':True,'physicalHardwareTested':False}
+    # Cursor must show both palette colors over foreground roots, bright shelves,
+    # Bram and at the right screen edge. Compare every nontransparent UI pixel.
+    def cursor_pixels_visible():
+        screen=p.screen.image.convert('RGB')
+        for obj in (0,1):
+            oy,ox,tile,prop=p.memory[0xFE00+obj*4:0xFE04+obj*4]
+            pixels=p.memory[1,0x8000+tile*16:0x8000+tile*16+32]
+            for yy in range(16):
+                for xx in range(8):
+                    k=((pixels[yy*2]>>(7-xx))&1)|(((pixels[yy*2+1]>>(7-xx))&1)<<1)
+                    if not k:continue
+                    # PyBoy expands RGB555 by shifting left three bits.
+                    source=(50,38,46) if k==1 else (206,181,131)
+                    color=tuple((v*31//255)*8 for v in source)
+                    x=ox-8+xx;y=oy-16+yy
+                    assert 0<=x<160 and 0<=y<136,('Cursor clipped',x,y)
+                    assert screen.getpixel((x,y))==color,('Cursor hidden',x,y,screen.getpixel((x,y)),color)
+    for x,y in [(4,7),(7,8),(4,3),(5,9),(19,15)]:
+        aim(x,y);tick(5);cursor_pixels_visible()
+    p.screen.image.save(evidence/'06-cursor-edge.png')
+    # B pressed during an unfinished upload must toggle, not be silently lost.
+    wanted=value('exposure')
+    for _ in range(5):
+        wanted=1-wanted;press('b',rest=2)
+        assert value('exposure')==wanted,'B dropped during patch upload'
+    tick(40);p.screen.image.save(evidence/'07-reveal-feedback.png')
+    report={'romSHA256':hashlib.sha256(rom.read_bytes()).hexdigest(),'nativeFramesWithUnchangedScenery':background_frames,'harvestFrames':len(positions),'uniqueWalkPositions':len(set(positions)),'shortCursorTap':True,'cursorVisibleLatencyFrames':latency,'heldCursorMoveFrames':events,'commandMovementLatencyFrames':command_latency,'visibleMovementLatencyFrames':visible_walk_latency,'cursorForegroundAndEdges':True,'rapidExposureToggles':True,'noBlockedFootCells':True,'exposurePreservesHarvest':True,'helpRestoresScene':True,'duplicateHarvestRejected':True,'resetVerified':True,'queuedDetourThenHarvest':True,'blockedTargetRejected':True,'physicalHardwareTested':False}
     (evidence/'verification.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2));p.stop(save=False)

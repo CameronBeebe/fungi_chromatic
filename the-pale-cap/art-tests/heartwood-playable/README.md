@@ -9,16 +9,19 @@ production game build or approved character/resource artwork.
 
 - Start / Enter: enter the room or open help (pauses work; shows bag/queue counts).
 - D-pad / arrows: move the designation cursor. First press is immediate; held
-  directions repeat after eight ticks and then every four, following the
-  production cursor's timing model.
+  directions repeat after six native frames and then every three. The cursor is
+  inset at screen edges and remains visible over foreground scenery and Bram.
 - A / Z: enqueue walking to ground or harvesting the three small fans in the
   clearing to the right. Bram walks independently. Up to eight orders fit.
-- B / X: toggle a small hyphal reveal above the patch. Harvested stays harvested.
+- B / X: toggle the hyphal reveal and its cyan pulsing knot. The status strip
+  reports HYPHAE VISIBLE / ORDINARY VIEW. Harvested stays harvested.
 - Select / Shift: reset this experiment, including the resource and bag.
 
 The cursor begins over the resource. Press A to see the complete first interaction.
-Blocked/full/duplicate requests briefly tint the cursor red. The current order
-gets a small marker. No game saves, extraction, enemies, sound or networking.
+Blocked/full/duplicate requests briefly tint the cursor red and explain why in
+the status strip. The current order gets a distinct diamond pin, which alternates
+while working. HARVESTING and GATHERED +1 identify work and its reward. No game
+saves, extraction, enemies, sound or networking.
 The upper bridge/exits are scenery in this bounded clearing test.
 
 ## Build, validate, preview
@@ -51,12 +54,15 @@ palette schedule serves all physical/perception states. The resource has a
 192-byte pattern patch per state; the reveal has a 160-byte patch per state.
 Pattern IDs are not deduplicated, so a tile update cannot alter another location.
 The master occupies VRAM bank 0 tiles 0–255 and bank 1 tiles 0–103. Sprites occupy
-bank 1 tiles 128–195, with no overlap. Maps remain in their separate VRAM areas.
+bank 1 tiles 128–203; status font tiles use 204–243, with no overlap. The bottom
+eight screen pixels are a status window; the image renders above it at 136px.
+Maps remain in their separate VRAM areas.
 The resulting padded ROM is 64 KiB; generated manifest records its exact hash.
 
 Bram's eight native 16x16 frames use two overlaid object palettes, shared plum
 shadows and ochre/ivory highlights. Four 8x16 objects form Bram, two form the
-cursor and one marks the current order: at most seven per scanline in this test.
+cursor, one marks the current order and one marks the reveal: at most eight
+per scanline in this test.
 Some root-fringe tiles have foreground priority to overlap his upper body.
 The character and fans are new studies, not production replacements.
 
@@ -65,25 +71,38 @@ This bounds upload work before the long palette ISR. The patch can therefore
 change progressively over a short interval; it is not an atomic whole-patch
 swap. Palette timing is reused from `../hearth-hicolor/src/gbc_hicolor.c`.
 
-The isolated FIFO and incremental breadth-first search preserve the cursor/order
-model. Production `ff_controls.c` depends on GB Studio VM/actors and routes for
-the old map, so it is referenced for behavior rather than copied into this ROM.
+The isolated FIFO and precomputed routes preserve the cursor/order model.
+Routing costs 6,289 ROM bytes and removes the per-order runtime search delay.
+Production `ff_controls.c` depends on GB Studio VM/actors and routes for the old
+map, so it is referenced for behavior rather than copied into this ROM.
 Do not interpret this harness as production-engine integration.
+
+The cursor uses the highest object priority and refreshes OAM in early VBlank,
+after sampling input, instead of waiting for the following default transfer.
+Only foreground tiles intersecting cursor/target UI temporarily lose background
+priority; those tiles regain it when UI moves away. Bram can consequently show
+through that small shared region too if he overlaps the UI. Elsewhere the root
+occlusion is retained. Background pixel/color data is unchanged by this priority
+adjustment. It is a deliberate bounded compromise, not per-pixel compositing.
 
 ## Validation and remaining work
 
 The verifier boots the real ROM, designates work via buttons, checks all walked
 foot cells, queues a detour before harvesting, rejects blocked targets/duplicate
 harvests, switches exposure, round-trips through help and resets. It compares
-963 consecutive native frames outside actual OAM rectangles and registered
-patch areas: no unrelated scenery changes. It also checks a one-frame cursor
-tap, persistent cut remains across exposure, and one item earned.
+841 consecutive native frames outside actual OAM rectangles, registered patches
+and the status row: no unrelated scenery changes. Measured cursor visibility
+latency is two frames; command-to-movement is one frame (two to visible OAM).
+Held cursor events occur at frames 1, 7, 10, 13, etc. Pixel checks cover cursor
+corners over roots, bright shelves, Bram and the right edge. Rapid B toggles
+during patch updates are retained. Persistent cut remains and single yield pass.
 
 Collision is a hand-authored foot-position grid for this clearing, not a complete
 actor-footprint or level annotation system. Music, more actors, queue UI,
 larger worlds and production scheduling need separate budget/integration tests.
-The reveal is deliberately subtle under the fixed master palettes. B requests
-during an unfinished patch upload are ignored. Physical hardware testing and
+The underlying threads use the fixed master palettes; an independent cyan sprite
+knot and explicit status message make the reveal readable. This is perception
+feedback, not an implemented new ability or resource system. Physical testing and
 art-direction approval are pending; the preceding static gallery's hardware
 approval does not cover this executable.
 

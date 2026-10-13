@@ -1,3 +1,25 @@
+# Heartwood response and feedback refinement — October 12, 2026
+
+Native ROM SHA-256:
+`1717a91002d94c6752b1335a7f052c250bc3104208464b37f639f72307f70d86`.
+The 64 KiB isolated test now uses precomputed routes, early-VBlank cursor OAM
+refresh, inset outlined cursor brackets, a distinct order pin, and an eight-pixel
+status window. A cyan pulse marks the hyphal reveal; rapid B toggles during tile
+uploads are retained. Foreground priority is cleared only under cursor/target
+UI, restoring it when UI leaves; Bram may show through those shared tiles too.
+
+The stricter visible-output test initially caught a three-frame cursor delay.
+After the transfer change, visible cursor response is two native frames; Bram
+begins moving after one frame and is visible moving after two. Held cursor moves
+at frames 1, 7, 10, 13, etc. Pixel tests assert both bracket colors over roots,
+bright shelves, Bram and the screen edge. Ordered detour/harvest, blocked target,
+single yield, help/reset and persistent harvested state pass. Across 841 checked
+consecutive frames, scenery outside OAM rectangles, registered patch footprints
+and the status row stays unchanged. These are emulator measurements, not browser
+event-latency or hardware-feel measurements. No new cartridge flash was performed.
+
+---
+
 # Interactive Hi-Color Heartwood — October 12, 2026
 
 Separate GBDK experiment: `art-tests/heartwood-playable/build/heartwood-playable.gbc`.
