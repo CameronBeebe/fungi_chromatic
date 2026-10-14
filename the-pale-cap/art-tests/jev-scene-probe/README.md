@@ -92,6 +92,42 @@ height, steps, overhangs, character clearance and reachable interaction position
 separately. An apparently clear surface may still be unreachable. Keep uncertain
 cells out of automatic navigation; never accept a coarse label as a pixel mask.
 
+## Jev as scene author — October 14
+
+The newer [scene-generation direction](../../SCENE-GENERATION.md) lets Jev choose
+meaning within a bounded game vocabulary. Classification confidence is retained
+for review; it is not an accuracy threshold for the authoring compiler. This is
+a different policy from the adjustable ground-candidate threshold in the probe UI.
+
+```sh
+python3 the-pale-cap/tools/jev_scene_package.py \
+  the-pale-cap/art-tests/heartwood-playable/build/master-decoded.png --run
+python3 the-pale-cap/tools/test_jev_scene_package.py
+```
+
+This pass uses the independently decoded Hi-Color image, not the preconversion
+painting used by the first four requests above. It supplies the full image, grid
+and ten explicit crops per call, across nine calls. Cached rows are reused without
+an API key or `--run`. The current 136px visible-height contract excludes foot
+positions hidden by the bottom eight-pixel HUD; `--visible-height` is explicit.
+
+Output lives in ignored `build/package/<revision>/`: source image, frozen
+interpretation, scene JSON and review page. Candidate fields cover region labels,
+bounded harvest sites, reachable approach cells, finite action templates, stable
+IDs, initial state and local art-state jobs. Source hashes, prompt fingerprints
+and explicit model versions bind the package to its inputs. Region adjacency
+does not imply individual object identity: the harvest template proposes one-cell
+sampling sites within a broader colony, rather than deleting the entire region.
+
+The live decoded-image pass used 94,627 input tokens across nine requests totaling
+6.772 seconds of HTTP time. It proposed 24 harvesting sites in one region; six have
+reachable work positions. Code tests cover bounded patches, unreachable targets,
+deterministic revisions, HUD exclusion and a serialized depleted site yielding
+nothing on a second harvest. This is a candidate manifest, not a new playable ROM.
+Its art-state jobs are requests only; no new pixels, patterns or game assets are
+written. Actor clearance, height, exits, native integration and hardware checks
+remain explicit promotion blockers.
+
 ## References
 
 - [Release](https://typesafe.ai/blog/jev-1-14)
