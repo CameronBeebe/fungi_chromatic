@@ -136,15 +136,25 @@ with tempfile.TemporaryDirectory() as temp:
                     x=ox-8+xx;y=oy-16+yy
                     assert 0<=x<160 and 0<=y<136,('Cursor clipped',x,y)
                     assert screen.getpixel((x,y))==color,('Cursor hidden',x,y,screen.getpixel((x,y)),color)
-    for x,y in [(4,7),(7,8),(4,3),(5,9),(19,15)]:
+    for x,y in [(4,7),(7,8),(4,3),(5,9),(19,16),(0,0)]:
         aim(x,y);tick(5);cursor_pixels_visible()
     p.screen.image.save(evidence/'06-cursor-edge.png')
+    # Visible bracket bounds, ground-pin tip and destination share one cell.
+    aim(10,14);tick(5)
+    oy,ox=p.memory[0xFE00:0xFE02]
+    assert (ox-8,oy-16)==(80,112),'Cursor is offset from selected cell'
+    press('a',rest=2)
+    py,px=p.memory[0xFE08:0xFE0A]
+    assert (px-8+3,py-16+8)==(84,116),'Pin tip is not at cursor center'
+    tick(400)
+    assert (value('bram_x'),value('bram_y'))==(84,116),'Bram did not reach cursor center'
+    p.screen.image.save(evidence/'08-centered-destination.png')
     # B pressed during an unfinished upload must toggle, not be silently lost.
     wanted=value('exposure')
     for _ in range(5):
         wanted=1-wanted;press('b',rest=2)
         assert value('exposure')==wanted,'B dropped during patch upload'
     tick(40);p.screen.image.save(evidence/'07-reveal-feedback.png')
-    report={'romSHA256':hashlib.sha256(rom.read_bytes()).hexdigest(),'nativeFramesWithUnchangedScenery':background_frames,'harvestFrames':len(positions),'uniqueWalkPositions':len(set(positions)),'shortCursorTap':True,'cursorVisibleLatencyFrames':latency,'heldCursorMoveFrames':events,'commandMovementLatencyFrames':command_latency,'visibleMovementLatencyFrames':visible_walk_latency,'cursorForegroundAndEdges':True,'rapidExposureToggles':True,'noBlockedFootCells':True,'exposurePreservesHarvest':True,'helpRestoresScene':True,'duplicateHarvestRejected':True,'resetVerified':True,'queuedDetourThenHarvest':True,'blockedTargetRejected':True,'physicalHardwareTested':False}
+    report={'romSHA256':hashlib.sha256(rom.read_bytes()).hexdigest(),'nativeFramesWithUnchangedScenery':background_frames,'harvestFrames':len(positions),'uniqueWalkPositions':len(set(positions)),'shortCursorTap':True,'cursorVisibleLatencyFrames':latency,'heldCursorMoveFrames':events,'commandMovementLatencyFrames':command_latency,'visibleMovementLatencyFrames':visible_walk_latency,'cursorForegroundAndEdges':True,'cursorPinDestinationAligned':True,'rapidExposureToggles':True,'noBlockedFootCells':True,'exposurePreservesHarvest':True,'helpRestoresScene':True,'duplicateHarvestRejected':True,'resetVerified':True,'queuedDetourThenHarvest':True,'blockedTargetRejected':True,'physicalHardwareTested':False}
     (evidence/'verification.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2));p.stop(save=False)

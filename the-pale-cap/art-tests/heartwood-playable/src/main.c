@@ -82,14 +82,16 @@ static void cursor_input(uint8_t keys,uint8_t pressed){
     if(dir==J_LEFT&&cursor_x)--cursor_x;
     if(dir==J_RIGHT&&cursor_x<19)++cursor_x;
     if(dir==J_UP&&cursor_y)--cursor_y;
-    if(dir==J_DOWN&&cursor_y<15)++cursor_y;
+    if(dir==J_DOWN&&cursor_y<16)++cursor_y;
 }
 static void pair(uint8_t obj,uint8_t tile,uint8_t x,uint8_t y,uint8_t prop){
     set_sprite_tile(obj,tile);set_sprite_prop(obj,prop);move_sprite(obj,x+8,y+16);
     set_sprite_tile(obj+1,tile+2);set_sprite_prop(obj+1,prop);move_sprite(obj+1,x+16,y+16);
 }
+/* The visible 8x8 bracket encloses the selected cell. Bram stands at its
+ * center; the ground-order pin tip lands on that same center. */
 static void draw_cursor(void){
-    pair(0,192,cursor_x<18?cursor_x*8:144,cursor_y*8,S_BANK|(rejected?3:2));
+    pair(0,192,cursor_x*8,cursor_y*8,S_BANK|(rejected?3:2));
 }
 static void draw_actors(void){
     uint8_t f=work_ticks?6+((frame_clock>>3)&1):(facing==8?4:facing)+(moving?((frame_clock>>3)&1):0);
@@ -104,7 +106,7 @@ static void draw_actors(void){
     /* Lowest OAM indices win: UI stays above Bram when their pixels overlap. */
     if(queue_count){
         set_sprite_tile(2,196+(work_ticks&&((frame_clock>>3)&1)?2:0));set_sprite_prop(2,S_BANK|2);
-        move_sprite(2,orders[0].harvest?122:orders[0].x*8+8,orders[0].harvest?85:orders[0].y*8+8);
+        move_sprite(2,orders[0].harvest?122:orders[0].x*8+9,orders[0].harvest?85:orders[0].y*8+12);
     }else move_sprite(2,0,0);
     if(exposure){
         set_sprite_tile(7,200+((frame_clock>>4)&1)*2);set_sprite_prop(7,S_BANK|4);move_sprite(7,97,84);
@@ -117,7 +119,7 @@ static void cursor_priority(void){
     priority_x=cursor_x;priority_y=cursor_y;
     for(i=0;i<8;i++){
         x=4+(i&3);y=7+(i>>2);priority_attrs[i]=foreground_attrs[i];
-        if(x>=cursor_x&&x<=cursor_x+1&&y>=cursor_y&&y<=cursor_y+1)priority_attrs[i]&=0x7f;
+        if(x==cursor_x&&y==cursor_y)priority_attrs[i]&=0x7f;
         if(queue_count&&!orders[0].harvest&&x==orders[0].x&&(y==orders[0].y||y+1==orders[0].y))priority_attrs[i]&=0x7f;
     }
     VBK_REG=1;set_bkg_tiles(4,7,4,2,priority_attrs);VBK_REG=0;
@@ -139,8 +141,8 @@ static void draw_status(void){
     case MSG_BLOCKED:text="CANNOT WALK THERE";break;
     case MSG_FULL:text="QUEUE FULL";break;
     case MSG_DUPLICATE:text="ALREADY QUEUED";break;
-    case MSG_ON:case 21:text="HYPHAE VISIBLE";break;
-    case MSG_OFF:text="ORDINARY VIEW";break;
+    case MSG_ON:case 21:text="REVEAL TEST ON";break;
+    case MSG_OFF:text="REVEAL TEST OFF";break;
     case MSG_RESET:text="ROOM RESET";break;
     case MSG_EMPTY:text="PATCH HARVESTED";break;
     case 20:text="WALKING TO ORDER";break;
@@ -173,7 +175,7 @@ static void show_help(void){
     gotoxy(1,1);printf("HEARTWOOD STUDY");
     gotoxy(1,3);printf("DPAD  MOVE CURSOR");
     gotoxy(1,5);printf("A  WALK OR HARVEST");
-    gotoxy(1,7);printf("B  EXPOSURE VIEW");
+    gotoxy(1,7);printf("B  REVEAL ART TEST");
     gotoxy(1,9);printf("SELECT  RESET ROOM");
     gotoxy(1,11);printf("START  VIEW OR HELP");
     gotoxy(1,13);printf("BAG %u  ORDERS %u",loot,queue_count);

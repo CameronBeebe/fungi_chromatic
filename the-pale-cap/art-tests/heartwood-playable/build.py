@@ -154,14 +154,15 @@ for f in range(8):
 data+=arr('bram_tiles',frames)
 rgb555=lambda c:sum((v*31//255)<<s for v,s in zip(c,(0,5,10)))
 data+=arr('actor_palettes',[rgb555(rgb[i]) for i in (0,1,2,3,0,4,5,6)],'uint16_t')
-# Inset brackets fit even at the screen edges. Dark keylines survive bright art.
+# Brackets enclose exactly one selected 8x8 cell, including screen edges.
+# The remaining sprite pixels are transparent; dark keylines survive bright art.
 marker=[]
 cursor=Image.new('L',(16,16));cd=ImageDraw.Draw(cursor)
-for x,y,dx,dy in [(2,2,1,1),(13,2,-1,1),(2,13,1,-1),(13,13,-1,-1)]:
-    for q in range(4):
+for x,y,dx,dy in [(1,1,1,1),(6,1,-1,1),(1,6,1,-1),(6,6,-1,-1)]:
+    for q in range(2):
         cd.rectangle((min(x,x+dx*q)-1,min(y,y+dy*q)-1,max(x,x+dx*q)+1,max(y,y+dy*q)+1),fill=1)
-for x,y,dx,dy in [(2,2,1,1),(13,2,-1,1),(2,13,1,-1),(13,13,-1,-1)]:
-    cd.line((x,y,x+3*dx,y),fill=2);cd.line((x,y,x,y+3*dy),fill=2)
+for x,y,dx,dy in [(1,1,1,1),(6,1,-1,1),(1,6,1,-1),(6,6,-1,-1)]:
+    cd.line((x,y,x+dx,y),fill=2);cd.line((x,y,x,y+dy),fill=2)
 for half in range(2):
     for y in range(16):
         lo=hi=0

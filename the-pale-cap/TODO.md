@@ -1,9 +1,12 @@
 # The Pale Cap — living TODO
 
-Updated October 11, 2026. This is the GBC adaptation's backlog; the terminal
+Updated October 13, 2026. This is the GBC adaptation's backlog; the terminal
 repository keeps its own TODO. The order below is a recommendation, not a set
 of settled design decisions. Keep experiments small and playable, update this
 file after each pass, and record verified behavior in PLAYTEST.md.
+
+- [x] Align Heartwood cursor brackets, ground-order marker and Bram arrival to
+  the same tile center; label the reveal overlay as an art test.
 
 ## Checkpoint before rendering overhaul — October 11
 

@@ -1,3 +1,22 @@
+# Heartwood target alignment — October 13, 2026
+
+Native ROM SHA-256:
+`a42db8e45e41ec726e6663a7974bc018f07c021997fe5aa13138479a374f1ebc`.
+The bracket now encloses the actual 8x8 selected cell instead of a 16x16 area
+anchored at that cell's upper left. The ground-order diamond tip and Bram's
+arrival point coincide with its center. Bottom/right cells remain distinct and
+fully visible. Harvest orders still approach the resource from its work position.
+The B overlay is explicitly labeled REVEAL TEST ON/OFF: no gameplay benefit is
+implemented by that visual toggle yet.
+
+Native regression checks pass, including a new exact cursor/pin/arrival alignment
+assertion, both screen corners, foreground visibility, two-frame cursor response,
+FIFO harvesting and 841 stable-scene frames. The public emulator also displayed
+the rebuilt room. Preview files are prepared; existing browser play is not reset.
+No physical cartridge flash or hardware check was performed.
+
+---
+
 # Heartwood response and feedback refinement — October 12, 2026
 
 Native ROM SHA-256:

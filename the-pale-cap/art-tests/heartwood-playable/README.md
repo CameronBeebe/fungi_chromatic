@@ -10,17 +10,19 @@ production game build or approved character/resource artwork.
 - Start / Enter: enter the room or open help (pauses work; shows bag/queue counts).
 - D-pad / arrows: move the designation cursor. First press is immediate; held
   directions repeat after six native frames and then every three. The cursor is
-  inset at screen edges and remains visible over foreground scenery and Bram.
+  an 8x8 bracket around the selected tile and remains visible over foreground scenery and Bram.
 - A / Z: enqueue walking to ground or harvesting the three small fans in the
   clearing to the right. Bram walks independently. Up to eight orders fit.
 - B / X: toggle the hyphal reveal and its cyan pulsing knot. The status strip
-  reports HYPHAE VISIBLE / ORDINARY VIEW. Harvested stays harvested.
+  reports REVEAL TEST ON / OFF. This only tests artwork visibility; the knot
+  is not a destination or usable resource. Harvested stays harvested.
 - Select / Shift: reset this experiment, including the resource and bag.
 
 The cursor begins over the resource. Press A to see the complete first interaction.
 Blocked/full/duplicate requests briefly tint the cursor red and explain why in
 the status strip. The current order gets a distinct diamond pin, which alternates
-while working. HARVESTING and GATHERED +1 identify work and its reward. No game
+while working. On ground orders its tip points to the selected tile center,
+where Bram stands; harvest orders instead approach the patch from beside it. HARVESTING and GATHERED +1 identify work and its reward. No game
 saves, extraction, enemies, sound or networking.
 The upper bridge/exits are scenery in this bounded clearing test.
 
