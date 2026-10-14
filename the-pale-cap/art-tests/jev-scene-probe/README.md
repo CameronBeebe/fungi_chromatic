@@ -154,8 +154,12 @@ tag. Nine other requests independently label every cell's center for walkability
 fungus, harvest suitability, exposed water and built structure. Those cell calls
 do not see the proposal text. No automatic fungus-to-harvest rule is applied.
 
-The browser study has clickable Inspect targets, heatmaps, all five probabilities
-per cell, and an option to reveal rejected proposals. Accepted descriptions must
+The browser study has clickable Inspect targets, a 0–100% display threshold,
+optional labeled grid and per-cell scores, and an option to reveal rejected
+proposals. Hover highlights a cell and shows all five probabilities; click pins
+the readout across layer/cutoff changes. Arrow keys select cells, Enter pins and
+Escape releases. A compact sticky readout keeps scores visible on narrow screens.
+The cutoff filters only the current label overlay, never the frozen scene rules. Accepted descriptions must
 pass the explicitly recorded provisional policy. A proposed anchor more than one
 cell outside Jev's box is held for review: the models may mean different instances.
 This is disagreement detection, not accurate segmentation. Small boxes are selected
