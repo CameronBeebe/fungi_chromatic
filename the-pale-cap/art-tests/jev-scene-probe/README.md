@@ -155,15 +155,18 @@ fungus, harvest suitability, exposed water and built structure. Those cell calls
 do not see the proposal text. No automatic fungus-to-harvest rule is applied.
 
 The browser study has clickable Inspect targets, a 0–100% display threshold,
-optional labeled grid and per-cell scores, and an option to reveal rejected
-proposals. Hover highlights a cell and shows all five probabilities; click pins
+optional grid lines and an option to reveal rejected proposals. Cell IDs and
+percentages are not painted over the scene; probabilities appear on hover.
+Estimated object bounds are hidden by default and shown only for the selected
+object when explicitly enabled, with an explanation that they are not collision
+or interaction hitboxes. Hover highlights a cell and shows all five probabilities; click pins
 the readout across layer/cutoff changes. Arrow keys select cells, Enter pins and
 Escape releases. A compact sticky readout keeps scores visible on narrow screens.
 The cutoff filters only the current label overlay, never the frozen scene rules. Accepted descriptions must
 pass the explicitly recorded provisional policy. A proposed anchor more than one
 cell outside Jev's box is held for review: the models may mean different instances.
-This is disagreement detection, not accurate segmentation. Small boxes are selected
-above larger overlapping boxes; names also provide keyboard-accessible selection.
+This is disagreement detection, not accurate segmentation. Object names provide keyboard-accessible Inspect selection; diagnostic boxes
+do not intercept cell-hover or pinning input.
 Gameplay actions other than browser Inspect remain disabled. Navigation heatmaps
 show local support, not collision, and exclude the HUD-covered bottom-row foot
 positions. Bridge connectivity and elevation transitions still need validation.
