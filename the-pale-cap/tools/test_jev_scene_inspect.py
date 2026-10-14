@@ -1,0 +1,104 @@
+"""No-network invariants for proposals, independent evidence and Inspect gating."""
+import copy
+import json
+from pathlib import Path
+import tempfile
+import unittest
+
+import jev_scene_inspect as inspect
+
+
+def proposal():
+    return {'objects':[{'name':'Shelf fungus','locator':'The amber shelf on the left trunk',
+                       'anchorCell':'D4','inspectText':'Amber shelves hug the old bark.',
+                       'tags':['fungus','amber']}]}
+
+
+def fixture():
+    cells={c+'_'+k:{'type':'noul','noul':.1} for c in inspect.CELL_IDS for k in inspect.LABELS}
+    objs={'object_0_'+k:{'type':'noul','noul':.95} for k in ('presence','visual_fit','no_promises','tag_0','tag_1')}
+    objs['object_0_box']={'type':'box','box':{'left':.1,'top':.1,'right':.4,'bottom':.4},'confidence':.9}
+    return cells,objs
+
+
+class InspectTests(unittest.TestCase):
+    def test_overlapping_walkable_structure_preserved_without_exclusivity(self):
+        c,o=fixture()
+        for k in ('walkable','built_structure'):c['H2_'+k]['noul']=.98
+        scene=inspect.compile_study('art',proposal(),c,o,[])
+        labels=next(c for c in scene['cells'] if c['id']=='H2')['labels']
+        self.assertEqual(labels['walkable'],.98);self.assertEqual(labels['built_structure'],.98)
+        self.assertGreater(sum(labels.values()),1)
+
+    def test_high_fungus_does_not_enable_harvest(self):
+        c,o=fixture();c['D4_fungus']['noul']=1;c['D4_harvest_candidate']['noul']=.1
+        scene=inspect.compile_study('art',proposal(),c,o,[])
+        self.assertEqual(scene['objects'][0]['enabledActions'],['inspect'])
+        self.assertFalse(scene['runtimeReady'])
+
+    def test_absent_target_cannot_enter_inspect_even_with_box(self):
+        c,o=fixture();o['object_0_presence']['noul']=.05
+        obj=inspect.compile_study('art',proposal(),c,o,[])['objects'][0]
+        self.assertFalse(obj['accepted']);self.assertEqual(obj['enabledActions'],[])
+        self.assertIn('presence',obj['reviewReasons'])
+
+    def test_promised_mechanics_or_visual_contradiction_held_for_review(self):
+        for k in ('visual_fit','no_promises'):
+            c,o=fixture();o['object_0_'+k]['noul']=.2
+            obj=inspect.compile_study('art',proposal(),c,o,[])['objects'][0]
+            self.assertFalse(obj['accepted']);self.assertIn(k,obj['reviewReasons'])
+
+    def test_different_anchor_and_box_locations_held_for_review(self):
+        c,o=fixture()
+        o['object_0_box']['box']={'left':.8,'top':.8,'right':.9,'bottom':.9}
+        obj=inspect.compile_study('art',proposal(),c,o,[])['objects'][0]
+        self.assertFalse(obj['accepted'])
+        self.assertIn('anchor_box_disagreement',obj['reviewReasons'])
+
+    def test_bad_proposal_location_and_duplicates_rejected(self):
+        p=proposal();p['objects'][0]['anchorCell']='K10'
+        with self.assertRaises(ValueError):inspect.validate_proposals(p)
+        p=proposal();p['objects']*=2
+        with self.assertRaises(ValueError):inspect.validate_proposals(p)
+
+    def test_missing_nonfinite_and_boolean_probabilities_rejected(self):
+        for v in (None,float('nan'),float('inf'),True,1.1):
+            with self.assertRaises(ValueError):inspect.probability({'noul':v})
+        c,o=fixture();del c['D4_fungus']
+        with self.assertRaises(ValueError):inspect.compile_study('art',proposal(),c,o,[])
+
+    def test_invalid_boxes_and_wrong_models_rejected(self):
+        payload={'questions':{'box':{'type':'box'}}}
+        response={'model':inspect.JUDGE,'answers':{'box':{'type':'box','box':{'left':.5,'right':.4,'top':0,'bottom':1},'confidence':.9}}}
+        with self.assertRaises(ValueError):inspect.validate_judgments(payload,response)
+        response['answers']['box']['box']['right']=.9
+        inspect.validate_judgments(payload,response)
+        response['model']='other'
+        with self.assertRaises(ValueError):inspect.validate_judgments(payload,response)
+
+    def test_freeze_roundtrip_and_content_changes_revision(self):
+        c,o=fixture();p=proposal();a=inspect.compile_study('art',p,c,o,[])
+        self.assertEqual(a,json.loads(json.dumps(a)))
+        self.assertEqual(a,inspect.compile_study('art',p,c,o,[]))
+        p['objects'][0]['inspectText']='Copper shelves cling to bark.'
+        self.assertNotEqual(a['revision'],inspect.compile_study('art',p,c,o,[])['revision'])
+
+    def test_generated_text_cannot_escape_script(self):
+        c,o=fixture();p=proposal();p['objects'][0]['inspectText']='</script><script>alert(1)</script>'
+        page=inspect.render(inspect.compile_study('art',p,c,o,[]),'data:image/png;base64,AA==')
+        self.assertNotIn(p['objects'][0]['inspectText'],page)
+        self.assertIn('\\u003c/script\\u003e',page)
+        self.assertNotIn('__STUDY_DATA__',page)
+
+    def test_cache_replay_needs_no_key_and_changed_payload_does_not_reuse(self):
+        with tempfile.TemporaryDirectory() as d:
+            payload={'model':'test'};fp=inspect.hash_json(payload)
+            folder=Path(d)/'requests'/('test-'+fp[:16]);folder.mkdir(parents=True)
+            saved={'fingerprint':fp,'response':{'ok':True},'elapsedSeconds':1}
+            (folder/'response.json').write_text(json.dumps(saved))
+            def forbidden(*args):raise AssertionError('Network must not be called')
+            self.assertEqual(saved,inspect.cached_call(Path(d),'test',payload,False,'NO_KEY',forbidden))
+            with self.assertRaises(SystemExit):inspect.cached_call(Path(d),'test',{'model':'changed'},False,'NO_KEY',forbidden)
+
+
+if __name__=='__main__':unittest.main()

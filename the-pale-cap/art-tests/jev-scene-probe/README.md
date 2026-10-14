@@ -128,14 +128,73 @@ Its art-state jobs are requests only; no new pixels, patterns or game assets are
 written. Actor clearance, height, exits, native integration and hardware checks
 remain explicit promotion blockers.
 
+## Proposal → Jev → Inspect
+
+```sh
+python3 the-pale-cap/tools/jev_scene_inspect.py \
+  the-pale-cap/art-tests/heartwood-playable/build/master-decoded.png --run
+python3 -m unittest discover -s the-pale-cap/tools -p 'test_jev_scene*.py'
+```
+
+Requires `XAI_API_KEY` and `TYPESAFE_API_KEY` for uncached calls; Pillow remains the
+only non-standard-library dependency. Keys are read at request time and never
+written to the requests, results or browser page. `--run` sends the selected art
+and prompts to xAI and TypeSafe. No key or `--run` is needed for a cached replay.
+No automatic retries or fallback models are used. `--proposer-model` explicitly
+selects a compatible xAI model; the default is `grok-4.3`, verified available on
+the development account. Record the returned model too, since provider aliases
+can evolve. This prototype uses the documented Chat Completions JSON-schema API;
+it does not install an SDK or invoke model tools.
+
+The proposer sees the clean decoded scene plus a grid, enlarged with nearest
+neighbor. It proposes up to twelve objects, short Inspect descriptions, approximate
+anchor cells and overlapping descriptive tags. Jev separately judges object
+presence, full-image bounds, prose fit, unsupported mechanical promises and each
+tag. Nine other requests independently label every cell's center for walkability,
+fungus, harvest suitability, exposed water and built structure. Those cell calls
+do not see the proposal text. No automatic fungus-to-harvest rule is applied.
+
+The browser study has clickable Inspect targets, heatmaps, all five probabilities
+per cell, and an option to reveal rejected proposals. Accepted descriptions must
+pass the explicitly recorded provisional policy. A proposed anchor more than one
+cell outside Jev's box is held for review: the models may mean different instances.
+This is disagreement detection, not accurate segmentation. Small boxes are selected
+above larger overlapping boxes; names also provide keyboard-accessible selection.
+Gameplay actions other than browser Inspect remain disabled. Navigation heatmaps
+show local support, not collision, and exclude the HUD-covered bottom-row foot
+positions. Bridge connectivity and elevation transitions still need validation.
+
+The first live run produced eight proposals and five accepted Inspect descriptions.
+Two were held for visual/prose fit; one mushroom had an anchor/box disagreement.
+For boardwalk cell H2, the independent walkable and built-structure probabilities
+were 0.76 and 0.95. This is an illustrative result, not an accuracy benchmark.
+The run made one xAI call and eleven Jev calls, totaling 24.784 seconds of HTTP time;
+Jev used 90,220 input tokens. Exact usage and timing are in `evidence.json`.
+
+Outputs are ignored under `build/inspect/<revision>/`: `scene.json`, `evidence.json`,
+`source.png`, and `index.html`. Requests/responses are fingerprinted under
+`build/inspect/requests/`; the source image is snapshotted once. Scene identity
+includes labels, copy, policy, source hash and request/model provenance, excluding
+variable HTTP timing. The compiled interpretation is frozen for the revision.
+`build/inspect/index.html` points to the latest run. The root report and movement
+package link to this study, and the study links back to both.
+
+Tests cover overlapping labels, no harvest inference from fungi alone, absent
+objects, contradictory/promise-laden prose, spatial disagreement, invalid inputs,
+model versions, cached replay, frozen identity and safe HTML embedding. Original
+ROM/art files are unchanged. A production text-length/font pass is still needed.
+
 ## References
 
 - [Release](https://typesafe.ai/blog/jev-1-14)
 - [Images and image limits](https://docs.typesafe.ai/images)
 - [Box output](https://docs.typesafe.ai/primitives/box)
 - [Choice output](https://docs.typesafe.ai/primitives/choice)
+- [Independent yes/no labels](https://docs.typesafe.ai/primitives/noul)
+- [xAI image inputs](https://docs.x.ai/developers/model-capabilities/images/understanding)
+- [xAI structured output](https://docs.x.ai/developers/model-capabilities/text/structured-outputs)
 - [Models and pricing](https://docs.typesafe.ai/models)
 
 No third-party source is vendored. Pillow is an existing optional tool dependency;
-networking uses Python's standard library. TypeSafe is an external service, not a
-cartridge runtime dependency.
+networking uses Python's standard library. TypeSafe and xAI are external services, not
+cartridge runtime dependencies.

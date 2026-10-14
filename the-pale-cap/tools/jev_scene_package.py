@@ -208,10 +208,11 @@ def main():
     (revision_dir/'scene.json').write_text(json.dumps(scene,indent=2)+'\n')
     (revision_dir/'interpretation.json').write_text(json.dumps(record,indent=2)+'\n')
     source.save(revision_dir/'source.png')
-    page = probe.report_page([record])
+    page = probe.report_page([record], root_prefix="../../")
     info = f'<p>Scene package: {sum(o["enabledInPrototype"] for o in scene["objects"])} reachable harvest targets; {len(scene["artStateJobs"])} pending art-state jobs. Authoring candidate, not a playable ROM. <a href="scene.json">Scene JSON</a> · <a href="interpretation.json">Frozen Jev decisions</a></p>'
     page = page.replace('<h1>Jev scene probe</h1>','<h1>Jev-authored scene package</h1>'+info)
     (revision_dir/'index.html').write_text(page)
+    (args.out/'index.html').write_text(f'<!doctype html><meta charset="utf-8"><title>Scene package</title><p><a href="{revision_dir.name}/">Open the latest movement + interaction package</a></p><p><a href="../inspect/">Heartwood Inspect + overlapping labels</a></p><p><a href="../">All scene probes</a></p>')
     print(json.dumps({'package':str(revision_dir/'scene.json'),'review':str(revision_dir/'index.html'),
                       'objects':len(scene['objects']),'reachableHarvestTargets':len(scene['artStateJobs']),
                       'terrain':dict(Counter(scene['grid']['terrain'])),

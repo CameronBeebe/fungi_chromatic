@@ -179,10 +179,11 @@ def evaluate(payload, key):
     return result, round(time.monotonic()-started, 3)
 
 
-def report_page(records):
+def report_page(records, root_prefix=""):
+    """Review page; root_prefix links sibling studies under the report server."""
     # Inputs and raw answers stay JSON data, never executable HTML.
     data = json.dumps(records).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
-    return '''<!doctype html><html><head><meta charset="utf-8"><title>Jev scene probe</title>
+    page = '''<!doctype html><html><head><meta charset="utf-8"><title>Jev scene probe</title>
 <style>body{background:#111820;color:#e6e5df;font:16px system-ui;margin:24px;max-width:1100px}h1{font-size:26px}p{max-width:850px;color:#bfcbd0}button,select,input{font:inherit}button,select{background:#26343c;color:#eee;padding:8px;border:1px solid #61767f}button{margin-right:6px}#stage{position:relative;width:min(800px,100%);margin-top:18px}#scene{width:100%;display:block;image-rendering:pixelated}svg{position:absolute;inset:0;width:100%;height:100%}.cell{cursor:crosshair}.cell:hover{stroke:white;stroke-width:.5}.legend{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0}.dot{display:inline-block;width:12px;height:12px;margin-right:6px}#detail{min-height:65px;white-space:pre-wrap}label{margin-right:14px}#meta{font-size:13px}a{color:#98dadd}</style></head><body>
 <h1>Jev scene probe</h1><p>Experimental visual labels, not a collision map. Green means plausible ground at the cell center. Disconnected raised surfaces, narrow passages and character clearance still need validation. Hover a cell for the full distribution.</p>
 <select id="pick" aria-label="Scene"></select> <button id="terrain">Terrain</button><button id="mask">Candidate ground</button><button id="interactions">Interactions</button><button id="original">Original</button>
@@ -202,6 +203,11 @@ r.cells.forEach(c=>{const terrain=a[c.id],v=mode==='interactions'?a['interact_'+
 let descriptions=[];r.targets.forEach((target,i)=>{const p=a['present_'+i].noul,b=a['box_'+i].box;descriptions.push(target+': presence '+(p*100).toFixed(0)+'%');if($('boxes').checked&&p>=.75)rect([b.left,b.top,b.right,b.bottom],'#fff',false,target+' · presence '+(p*100).toFixed(1)+'%')});
 $('objects').textContent=descriptions.join(' · ');if(mode==='interactions')$('detail').textContent=r.cells.some(c=>a['interact_'+c.id])?'Visual interaction candidates only; not implemented mechanics. Hover a cell.':'This earlier run did not ask interaction questions. Select the close-ups + interactions run.';$('meta').textContent=r.response.model+' · '+r.elapsedSeconds+(r.requests?' s total / '+r.requests.length+' requests · ':' s request · ')+r.response.usage.input_tokens+' input tokens · '+ground+'/'+r.cells.length+' cells above ground threshold · '+r.sourceSHA256.slice(0,12);}
 ['terrain','mask','original','interactions'].forEach(k=>$(k).onclick=()=>{mode=k;draw()});$('pick').onchange=draw;$('threshold').oninput=draw;$('boxes').onchange=draw;draw();</script></body></html>'''
+
+    nav = ('<nav><a href="'+root_prefix+'index.html">All scene probes</a> · '
+           '<a href="'+root_prefix+'package/index.html">Movement + interaction package</a> · '
+           '<a href="'+root_prefix+'inspect/index.html">Heartwood Inspect + overlapping labels</a></nav>')
+    return page.replace('<body>', '<body>'+nav)
 
 
 def main():

@@ -11,6 +11,15 @@ useful evidence for tuning; it is not a requirement that every creative decision
 clear an accuracy threshold. Code still enforces reachable interactions, bounded
 effects, item budgets, persistent identity and hardware constraints.
 
+## Production direction
+
+Confirmed October 14: develop this unified package workflow for production level
+design. Movement/access and interaction authoring are complementary layers of the
+same level, not competing prototypes. The probe explores visual decisions; the
+package compiler makes those decisions persistent and mechanically constrained.
+Production adoption is the direction, not a claim that the current browser study
+is ready to ship on cartridge.
+
 ## Intended sequence
 
 1. **Generation brief.** Art direction, character references, biome, exposure
@@ -21,7 +30,13 @@ effects, item budgets, persistent identity and hardware constraints.
    art. Compile Hi-Color tiles, attributes and palette schedules under the chosen
    scene renderer. Independently decode those bytes and inspect the result.
    Concept art is not the image on which final scene mechanics are judged.
-3. **Jev interpretation.** Supply the decoded native pixel image plus local crops
+3. **Visual proposals and Jev interpretation.** A separate vision-language model
+   first proposes distinctive visible objects, descriptive labels and short Inspect
+   prose from the decoded native image. This is an open vocabulary proposal step;
+   supported engine verbs remain a separate bounded vocabulary. Jev checks the
+   proposals against pixels, including presence, visual fit, and whether Inspect
+   text promises behavior the game cannot perform. Retain rejected proposals too.
+   Supply the decoded native pixel image plus local crops
    from that same image. Classify terrain, proposed interactions, materials and
    relevant perceptual characteristics as separate questions. Full context and
    crops can coexist in one call. Batch large crop sets to keep requests bounded.
@@ -54,6 +69,28 @@ effects, item budgets, persistent identity and hardware constraints.
 This is an iterative pipeline: an unworkable interpretation may require a new
 scene layout or a local art revision. Successful type validation alone does not
 prove readable pixels, correct placement, game balance or hardware timing.
+
+## Overlapping labels and Inspect
+
+Use independent questions for properties that may coexist. A boardwalk can be a
+built structure and locally walkable; a fungus can be scenery, a resource, or both.
+Do not force material, traversal and interaction into one mutually exclusive label.
+Ask walkability directly, rather than equating it with bare ground. Local support
+is separate from access to an elevated surface and from actor-sized clearance.
+
+Creative descriptors proposed by the vision model can become player-facing Inspect
+text after review. The first browser study uses provisional presence/visual-fit/
+no-mechanical-promise cutoffs, preserving every probability for tuning. These are
+not universal acceptance thresholds for scene authorship. Avoid lore or prose that
+promises rewards, animations or abilities unless an explicit supported rule exists.
+
+Multiple labels are useful features for gameplay policies, not independent votes
+whose probabilities can be summed or multiplied to manufacture certainty. A future
+rule may deliberately combine fungal identity, harvest suitability, access, state
+and tools. The user's fungus/harvest example motivates overlapping evidence; it is
+not a settled rule that every fungus is harvestable. Current Inspect judgments do
+not enable harvesting or change collision. Freeze accepted names and descriptions
+with the same source/revision provenance as mechanics.
 
 ## Persistent meaning and perceptual views
 
@@ -103,3 +140,21 @@ fungal region, six with reachable adjacent work cells. It used 94,627 input
 tokens across nine calls. This is one generated interpretation to examine, not
 a quality benchmark or a settled economy design. Original art and game files
 remain unchanged. See [probe instructions and findings](art-tests/jev-scene-probe/README.md).
+
+## Proposal → Jev → Inspect experiment
+
+`tools/jev_scene_inspect.py` extends the same decoded Heartwood image into a
+browser review with named Inspect targets and independent map labels. It uses
+xAI for bounded structured proposals, then Jev 1.14 for image-grounded judgments.
+Cell labels are judged without the proposal prose in their context to reduce
+anchoring: walkable, fungus, harvest candidate, exposed water and built structure.
+All 90 cell centers are tested with full-scene context and local crops. Object
+questions separately check presence, bounds, proposed tags and Inspect prose.
+Proposed anchors that disagree with the returned boxes are held for review.
+
+Outputs include source hash, exact request fingerprints, returned model versions,
+usage, raw judgments and a frozen scene revision. Calls require explicit `--run`;
+cached reruns work without credentials. Browser Inspect is functional; it is not a
+new native gameplay implementation. Boxes are candidate extents, not segmentation
+masks; overlaps, actor clearance, exits, harvesting templates and art states remain
+work to do before integration. Original scene assets remain unchanged.
