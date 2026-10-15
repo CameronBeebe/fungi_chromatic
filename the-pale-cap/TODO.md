@@ -1,9 +1,12 @@
 # The Pale Cap — living TODO
 
-Updated October 11, 2026. This is the GBC adaptation's backlog; the terminal
+Updated October 13, 2026. This is the GBC adaptation's backlog; the terminal
 repository keeps its own TODO. The order below is a recommendation, not a set
 of settled design decisions. Keep experiments small and playable, update this
 file after each pass, and record verified behavior in PLAYTEST.md.
+
+- [x] Align Heartwood cursor brackets, ground-order marker and Bram arrival to
+  the same tile center; label the reveal overlay as an art test.
 
 ## Checkpoint before rendering overhaul — October 11
 
@@ -66,6 +69,11 @@ biome slice before expanding the world. See DESIGN.md's overworld milestone.
   Emulator checks pass; see `art-tests/heartwood-playable/README.md`.
 - [ ] Review the interactive Hi-Color scene on hardware, including sprite fit,
   subtle reveal readability, partial patch transitions and movement feel.
+- [x] Refine the isolated study's visible cursor latency, foreground visibility,
+  distinct target pin and explicit action/reveal messages. Emulator output checks
+  pass; browser/hardware feel still needs the user's review.
+- [x] Ignore and untrack older generated study ROMs/logs/frame evidence while
+  preserving every local copy and all required art/player/build inputs.
 - [ ] Budget music, more actors and production scheduling with the Hi-Color ISR
   before integrating this experiment into the main game.
 - [ ] Review the designer's modular production candidates: exact tiles/sprites,

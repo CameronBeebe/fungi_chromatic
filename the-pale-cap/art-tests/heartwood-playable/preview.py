@@ -19,7 +19,7 @@ config['rom']='rom/heartwood-playable.gbc'
 (web/'gbstudio.json').write_text(json.dumps(config,indent=2)+'\n')
 html=(template/'index.html').read_text().replace('Root Hearth — Hi-Color Study','Heartwood — Playable Hi-Color Study')
 start=html.index('<div class="study-note">');end=html.index('</div>',start)+6
-html=html[:start]+'''<div class="study-note"><strong>HEARTWOOD · PLAYABLE HI-COLOR TEST</strong><br>Enter: room/help · Arrows: cursor · Z: queue walk/harvest<br>X: exposure · Shift: reset · Bag count in help<br>Standalone experiment · No save or audio</div>'''+html[end:]
+html=html[:start]+'''<div class="study-note"><strong>HEARTWOOD · PLAYABLE HI-COLOR TEST</strong><br>Enter: room/help · Arrows: cursor · Z: queue walk/harvest<br>X: reveal art test · Shift: reset · Bag count in help<br>Standalone experiment · No save or audio</div>'''+html[end:]
 html=html.replace('</head>','<style>#game { top:104px; height:calc(100% - 112px); }</style></head>')
 (web/'index.html').write_text(html)
 if '--prepare-only' in sys.argv:

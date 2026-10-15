@@ -10,6 +10,7 @@ import json
 import os
 import struct
 import subprocess
+from collections import deque
 from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parent
@@ -47,6 +48,9 @@ full.save(out/'master-full.png')
 # No dedupe: each screen cell owns a pattern, so patch uploads cannot change
 # another tile referencing the same pattern. Sprite storage is bank1:128+.
 subprocess.run([str(args.gbdk/'bin/png2hicolorgb'),str(out/'master-full.png'),'--type=3','-L=adaptive-fast','-R=adaptive-fast','--nodedupe','--csource','--bank=2','-o','master.c'],cwd=out,check=True)
+# Keep the full source; the bottom eight pixels are reserved for a status window.
+master_c=out/'master.c'
+master_c.write_text(master_c.read_text().replace('.height_in_tiles = 18u', '.height_in_tiles = 17u'))
 tiles = (out/'master.til').read_bytes()
 tilemap = (out/'master.map').read_bytes()
 attrs = bytearray((out/'master.atr').read_bytes())
@@ -95,8 +99,9 @@ reveal_cells=[y*20+x for y in range(8,10) for x in range(9,14)]
 reveal=decoded.copy(); d=ImageDraw.Draw(reveal)
 # Deliberate native pixels: fine branching roots. Quantize into the MASTER'S
 # palette; no scene-wide recoloring and no independent image conversion.
-for points in [[(73,66),(77,68),(79,73),(86,75),(92,75),(98,78),(107,78)],[(83,67),(86,72),(86,75)],[(94,69),(92,73),(92,75)]]:
-    d.line(points,fill=(211,191,137))
+for points in [[(73,66),(77,68),(79,73),(86,75),(92,75),(98,78),(107,78)],[(83,65),(86,70),(86,75)],[(97,65),(94,70),(92,75)],[(108,67),(103,71),(98,78)]]:
+    d.line(points,fill=(245,230,186))
+    for x,y in points[1:-1]:d.point((x+1,y),fill=(245,230,186))
 
 data=''
 def arr(name, values, typ='uint8_t'):
@@ -107,6 +112,7 @@ data+=arr('resource_cut',b''.join(encode_cell(cut,c%20,c//20) for c in resource_
 data+=arr('reveal_ids',[pattern_id(c) for c in reveal_cells],'uint16_t')
 data+=arr('reveal_off',b''.join(tiles[pattern_id(c)*16:pattern_id(c)*16+16] for c in reveal_cells))
 data+=arr('reveal_on',b''.join(encode_cell(reveal,c%20,c//20) for c in reveal_cells))
+data+=arr('foreground_attrs',[attrs[y*20+x] for y in (7,8) for x in range(4,8)])
 
 # Bram's native 16x16 cells. Two overlaid palette layers provide six opaque
 # colors, using four 8x16 objects. Shared plum shadows and warm shelf highlights.
@@ -148,17 +154,57 @@ for f in range(8):
 data+=arr('bram_tiles',frames)
 rgb555=lambda c:sum((v*31//255)<<s for v,s in zip(c,(0,5,10)))
 data+=arr('actor_palettes',[rgb555(rgb[i]) for i in (0,1,2,3,0,4,5,6)],'uint16_t')
-# Cursor is four small corners; a thin marker avoids covering the target.
+# Brackets enclose exactly one selected 8x8 cell, including screen edges.
+# The remaining sprite pixels are transparent; dark keylines survive bright art.
 marker=[]
+cursor=Image.new('L',(16,16));cd=ImageDraw.Draw(cursor)
+for x,y,dx,dy in [(1,1,1,1),(6,1,-1,1),(1,6,1,-1),(6,6,-1,-1)]:
+    for q in range(2):
+        cd.rectangle((min(x,x+dx*q)-1,min(y,y+dy*q)-1,max(x,x+dx*q)+1,max(y,y+dy*q)+1),fill=1)
+for x,y,dx,dy in [(1,1,1,1),(6,1,-1,1),(1,6,1,-1),(6,6,-1,-1)]:
+    cd.line((x,y,x+dx,y),fill=2);cd.line((x,y,x,y+dy),fill=2)
 for half in range(2):
     for y in range(16):
         lo=hi=0
         for x in range(half*8,half*8+8):
-            k=2 if ((y in (0,15) and (x<3 or x>12)) or (x in (0,15) and (y<3 or y>12))) else 0
+            k=cursor.getpixel((x,y))
             lo=lo*2+(k&1);hi=hi*2+(k>>1)
         marker.extend((lo,hi))
 data+=arr('cursor_tiles',marker)
 data+=arr('cursor_palettes',[rgb555(c) for c in [(0,0,0),(50,38,46),(206,181,131),(150,100,60),(0,0,0),(50,38,46),(173,77,52),(150,100,60)]],'uint16_t')
+
+# Distinct target pin (two work phases) and a luminous exposure knot. Each
+# uses one hardware object; all objects together fit within a scanline's ten.
+icons=[]
+for style in ('pin','work','knot','knot-bright'):
+    im=Image.new('L',(8,16));pen=ImageDraw.Draw(im)
+    if style in ('pin','work'):
+        pen.polygon([(3,1),(6,4),(3,8),(0,4)],fill=1)
+        pen.polygon([(3,2),(5,4),(3,6),(1,4)],fill=2)
+        if style=='work':pen.line((2,4,4,4),fill=3)
+    else:
+        pen.ellipse((0,3,6,9),fill=1);pen.ellipse((1,4,5,8),outline=2)
+        pen.point((3,6),fill=3)
+        if style=='knot-bright':
+            for pt in [(3,1),(3,11),(7,6)]:pen.point(pt,fill=2)
+    for y in range(16):
+        lo=hi=0
+        for x in range(8):
+            k=im.getpixel((x,y));lo=lo*2+(k&1);hi=hi*2+(k>>1)
+        icons.extend((lo,hi))
+data+=arr('icon_tiles',icons)
+data+=arr('reveal_palette',[rgb555(c) for c in [(0,0,0),(31,41,53),(92,185,184),(216,238,206)]],'uint16_t')
+
+# Compact explicitly authored 3x5 text, one 8x8 hardware tile per glyph.
+glyphs={' ':'000000000000000','A':'010101111101101','B':'110101110101110','C':'011100100100011','D':'110101101101110','E':'111100110100111','F':'111100110100100','G':'011100101101011','H':'101101111101101','I':'111010010010111','J':'001001001101010','K':'101101110101101','L':'100100100100111','M':'101111111101101','N':'101111111111101','O':'010101101101010','P':'110101110100100','Q':'010101101111011','R':'110101110101101','S':'011100010001110','T':'111010010010010','U':'101101101101111','V':'101101101101010','W':'101101111111101','X':'101101010101101','Y':'101101010010010','Z':'111001010100111','0':'111101101101111','1':'010110010010111','2':'110001010100111','3':'110001010001110','4':'101101111001001','5':'111100110001110','6':'011100111101111','7':'111001010010010','8':'111101111101111','9':'111101111001110',':':'000010000010000','+':'000010111010000','-':'000000111000000'}
+charset=' ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:+-'
+font=[]
+for ch in charset:
+    for y in range(8):
+        bits=int(glyphs[ch][(y-1)*3:y*3],2)<<3 if 1<=y<=5 else 0
+        font.extend((bits,bits))
+data+=arr('hud_font',font)
+data+='#define HUD_FONT_COUNT '+str(len(charset))+'\n'
 
 # Feet positions on an 8px navigation grid. Hand-reviewed clearing only; bridge
 # and exits stay scenery in this bounded experiment. Rocks and resource block it.
@@ -170,10 +216,26 @@ for y in range(18):
         if x in (6,7) and y==11:valid=False
         walk.append(int(valid))
 data+=arr('walkable',walk)
+# Compute routes once, matching the main game's precomputed-route approach.
+# The native loop performs a bounded table lookup, with no search/initialization.
+cells=[i for i,v in enumerate(walk) if v];index={c:i for i,c in enumerate(cells)}
+routes=[255]*(len(cells)**2)
+for start in cells:
+    seen={start:4};q=deque([start])
+    while q:
+        c=q.popleft()
+        for direction,n in enumerate((c-1,c+1,c-20,c+20)):
+            if n not in index or n in seen or abs(n%20-c%20)+abs(n//20-c//20)!=1:continue
+            seen[n]=direction if c==start else seen[c];q.append(n)
+    for goal,direction in seen.items():routes[index[start]*len(cells)+index[goal]]=direction
+route_c='#pragma bank 3\n#include <gbdk/platform.h>\n'+arr('cell_index',[index.get(c,255) for c in range(360)])+arr('directions',routes)
+route_c+='uint8_t route_step(uint8_t sx,uint8_t sy,uint8_t tx,uint8_t ty) BANKED { uint8_t a=cell_index[(uint16_t)sy*20+sx],b=cell_index[(uint16_t)ty*20+tx]; if(a==255||b==255)return 255; return directions[(uint16_t)a*'+str(len(cells))+'+b]; }\n'
+(out/'routes.c').write_text(route_c)
 (out/'assets.h').write_text(data)
 renderer=ROOT.parent/'hearth-hicolor/src'
 rom=out/'heartwood-playable.gbc'
-subprocess.run([str(args.gbdk/'bin/lcc'),'-Wm-yC','-Wl-yt0x19','-Wl-m','-Wl-w','-autobank','-Wb-ext=.rel','-I'+str(renderer),'-I.','-o',str(rom),str(ROOT/'src/main.c'),str(renderer/'gbc_hicolor.c'),'master.c'],cwd=out,check=True)
+subprocess.run([str(args.gbdk/'bin/lcc'),'-Wm-yC','-Wl-yt0x19','-Wl-m','-Wl-w','-autobank','-Wb-ext=.rel','-I'+str(renderer),'-I.','-o',str(rom),str(ROOT/'src/main.c'),str(renderer/'gbc_hicolor.c'),'master.c','routes.c'],cwd=out,check=True)
 manifest={'source':str(args.source),'sourceSHA256':hashlib.sha256(args.source.read_bytes()).hexdigest(),'romSHA256':hashlib.sha256(rom.read_bytes()).hexdigest(),'romBytes':rom.stat().st_size,'masterBytes':len(tiles)+len(tilemap)+len(attrs)+len(pal),'resourcePatchBytesPerState':len(resource_cells)*16,'revealPatchBytesPerState':len(reveal_cells)*16,'spriteTileBytes':len(frames)+len(marker),'paletteBytes':len(pal),'foregroundPriorityCells':[[x,y] for y in (7,8) for x in range(4,8)]}
+manifest.update({'routingBytes':len(routes)+360,'hudFontBytes':len(font),'iconBytes':len(icons),'imageHeight':136,'maxObjectsPerScanline':8})
 (out/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
 print(json.dumps(manifest,indent=2))

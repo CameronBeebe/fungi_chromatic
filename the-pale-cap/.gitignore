@@ -6,3 +6,12 @@ artifacts/
 save-states/
 __pycache__/
 .DS_Store
+
+# Generated cartridges, emulator saves and bulky per-frame test evidence.
+# Keep authored art, converter inputs, reports and licensed preview dependencies.
+*.gb
+*.gbc
+*.sav
+*.state
+*.log
+emulator-evidence/
