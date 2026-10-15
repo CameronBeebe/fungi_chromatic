@@ -416,6 +416,8 @@ See ART-PIPELINE.md and art-tests/root-hearth-conversion/README.md.
   serialization. This is an offline package test, not a playable generated ROM.
 - [x] Add a vision-model proposal → Jev → browser Inspect experiment on decoded
   Heartwood pixels, retaining proposed names, prose, labels and rejected candidates.
+- [x] Feed art-description/prompt plus decoded pixels into proposal generation;
+  freeze brief provenance and judge intent alignment separately from visibility.
 - [x] Add independent walkable/fungus/harvest-candidate/water/structure labels;
   preserve overlap without inferring harvesting solely from fungal identity.
 - [ ] Review Inspect copy, target bounds and overlapping labels; compare disagreements

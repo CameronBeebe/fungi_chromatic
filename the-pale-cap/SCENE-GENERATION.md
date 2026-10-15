@@ -32,7 +32,10 @@ is ready to ship on cartridge.
    Concept art is not the image on which final scene mechanics are judged.
 3. **Visual proposals and Jev interpretation.** A separate vision-language model
    first proposes distinctive visible objects, descriptive labels and short Inspect
-   prose from the decoded native image. This is an open vocabulary proposal step;
+   prose from BOTH the art description/prompt and the decoded native image. Preserve
+   the brief as creative intent and the image as visual evidence; requested objects
+   are not assumed to have appeared. Include amendments after art edits or native
+   additions. This is an open vocabulary proposal step;
    supported engine verbs remain a separate bounded vocabulary. Jev checks the
    proposals against pixels, including presence, visual fit, and whether Inspect
    text promises behavior the game cannot perform. Retain rejected proposals too.
@@ -158,3 +161,20 @@ cached reruns work without credentials. Browser Inspect is functional; it is not
 new native gameplay implementation. Boxes are candidate extents, not segmentation
 masks; overlaps, actor clearance, exits, harvesting templates and art states remain
 work to do before integration. Original scene assets remain unchanged.
+
+### Art brief input
+
+The Inspect script accepts `--brief path/to/context.txt` (UTF-8, up to 16 KiB).
+The proposal model receives the brief beside the clean decoded image and grid.
+Jev object review receives it too, with an independent brief-alignment judgment.
+Alignment never overrides absence, poor visual fit or an unsupported promise.
+Cell-label calls remain image-only so an intent change does not silently rewrite
+visual evidence or invalidate those caches. This is a deliberate separation of
+intent-aware interpretation from the reusable per-cell visual measurements.
+
+The brief is snapshotted, hashed, included in request fingerprints and the frozen
+scene revision, saved beside the result, and viewable in the review UI. Omitting
+it preserves existing image-only requests and cache identities. The tracked
+Heartwood example combines the recorded clean-plate edit prompt with explicitly
+separated later native mushroom additions; it is not misrepresented as one original
+generation prompt. Future scene generation should supply its prompt directly.

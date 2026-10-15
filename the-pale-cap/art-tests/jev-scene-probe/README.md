@@ -159,9 +159,10 @@ optional grid lines and an option to reveal rejected proposals. Cell IDs and
 percentages are not painted over the scene; probabilities appear on hover.
 Estimated object bounds are hidden by default and shown only for the selected
 object when explicitly enabled, with an explanation that they are not collision
-or interaction hitboxes. Hover highlights a cell and shows all five probabilities; click pins
-the readout across layer/cutoff changes. Arrow keys select cells, Enter pins and
-Escape releases. A compact sticky readout keeps scores visible on narrow screens.
+or interaction hitboxes. Hover highlights a cell and shows all five probabilities; an explicit Pin readout button holds
+the scores across layer/cutoff changes; ordinary clicks do not stop hover updates. Arrow keys select cells, Enter pins and
+Escape releases. One full probability breakdown sits directly below the image, matching the
+original probe interaction without painting text onto the scene.
 The cutoff filters only the current label overlay, never the frozen scene rules. Accepted descriptions must
 pass the explicitly recorded provisional policy. A proposed anchor more than one
 cell outside Jev's box is held for review: the models may mean different instances.
@@ -190,6 +191,33 @@ Tests cover overlapping labels, no harvest inference from fungi alone, absent
 objects, contradictory/promise-laden prose, spatial disagreement, invalid inputs,
 model versions, cached replay, frozen identity and safe HTML embedding. Original
 ROM/art files are unchanged. A production text-length/font pass is still needed.
+
+## Supplying the art brief alongside the image
+
+```sh
+python3 the-pale-cap/tools/jev_scene_inspect.py \
+  the-pale-cap/art-tests/heartwood-playable/build/master-decoded.png \
+  --brief the-pale-cap/art-tests/jev-scene-probe/heartwood-art-context.txt --run
+```
+
+The optional brief is UTF-8 text, at most 16 KiB. Both proposal and object-review
+requests carry it as intent, not proof of visible content. Object results record a
+separate `briefAlignment` probability, which does not enable Inspect or override
+presence. Image-only cell requests stay identical and reuse their caches. The
+brief's bytes are hashed and its text is frozen in `scene.json`, saved separately
+as `art-brief.txt`, and shown in the UI under “What this study does.” Changes to the
+brief invalidate affected request caches and scene identity. No brief preserves
+the earlier requests. The included example explicitly distinguishes Heartwood's
+recorded clean-plate prompt from later additions in the native build.
+
+The first brief-aware Heartwood run produced eight proposals, six accepted and
+two held for review. The nine cell-label responses were reused unchanged. One
+new proposal request and two object-review requests took 14.798 seconds of HTTP
+time; the recorded full dependency timing is 21.425 seconds including the reused
+cell requests. This is a changed interpretation, not evidence of improved accuracy.
+The full brief-aware result was replayed with both API keys removed. Twenty-one
+offline tests pass, including brief cache invalidation, input limits, provenance
+freezing and high intent alignment never overriding low visual presence.
 
 ## References
 
