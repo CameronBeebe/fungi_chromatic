@@ -13,10 +13,22 @@ One physical world persists through perceptual changes: resources, designations,
 work, and connected roots do not reset when sight fades. Spore exposure is a
 character property; its raw value stays out of ordinary player-facing UI.
 
-The MVP is deterministic and offline. LLM generation and Jev judgments belong
+The MVP cartridge is deterministic and offline. Build-time LLM/image generation
+and Jev interpretation can author content now; live in-game generation belongs
 to a later expansion, subject to the proposed Wi-Fi hardware/firmware work. No
 network or model dependency belongs in the order-processing loop. Prepared
 content can be authored or generated ahead of time and compiled into the ROM.
+
+### Generative scene direction — October 14
+
+Jev may assign meaning and supported mechanics to generated native art, rather
+than merely label a predetermined world. The resulting interpretation becomes
+persistent scene data. Creative classification belongs to generation; reachable
+work, bounded effects, stable identities and hardware validity remain enforced
+by code. The pipeline is image generation → native Hi-Color conversion → Jev
+terrain/interaction interpretation → mechanical compilation → local art-state
+variants → validated scene package. See [SCENE-GENERATION.md](SCENE-GENERATION.md)
+for the agreed direction, additional steps and exact prototype limitations.
 
 ## Current implementation focus — October 11
 

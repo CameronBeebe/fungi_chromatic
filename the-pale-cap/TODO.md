@@ -412,6 +412,42 @@ Integrated the Vermilion study’s cyan ornament pulse into item inspection. It 
 
 See ART-PIPELINE.md and art-tests/root-hearth-conversion/README.md.
 
+### Generative scene packages — October 14
+
+- [x] Test Jev 1.14 on scene images with full-image context and explicit crops;
+  retain terrain and proposed interaction categories independently.
+- [x] Run a full pass on decoded native Hi-Color Heartwood pixels, preserving
+  the original scene and all saved classifications.
+- [x] Compile a candidate scene package with frozen interpretation, bounded
+  harvest sites, reachable approach cells, stable IDs and art-state job requests.
+- [x] Test deterministic compilation and one-yield state transitions through
+  serialization. This is an offline package test, not a playable generated ROM.
+- [x] Add a vision-model proposal → Jev → browser Inspect experiment on decoded
+  Heartwood pixels, retaining proposed names, prose, labels and rejected candidates.
+- [x] Feed art-description/prompt plus decoded pixels into proposal generation;
+  freeze brief provenance and judge intent alignment separately from visibility.
+- [x] Add independent walkable/fungus/harvest-candidate/water/structure labels;
+  preserve overlap without inferring harvesting solely from fungal identity.
+- [ ] Review Inspect copy, target bounds and overlapping labels; compare disagreements
+  with the older terrain/interaction pass, especially boardwalk access and heights.
+- [ ] Integrate reviewed objects/labels with the movement and interaction package;
+  keep evidence separate from explicit gameplay rules and persistent object states.
+- [ ] Review provisional object regions/sites; refine beyond coarse 16x16 cells.
+- [ ] Add actor clearance, elevations, foreground overlap and explicit entrances/
+  exits; validate extraction reachability before accepting a playable package.
+- [ ] Add before/after Jev checks for intended changes, retained objects, lighting
+  and sprite readability alongside exact unchanged-pixel and hardware audits.
+- [ ] Generate the requested local art-state variants from the exact native master;
+  verify unchanged exterior pixels, frozen palette use and tile/upload budgets.
+- [ ] Compile one package into a standalone playable cartridge, verify queue/work/
+  reward/revisit behavior, then test on Chromatic before production integration.
+- [ ] Add bounded templates beyond harvest and tune yields/costs against the
+  extraction economy. Jev authors proposals; supported code implements effects.
+- [ ] Extend the frozen package format to alternate exposure/language views and
+  later remote delivery while preserving object state and traded-item identity.
+
+See SCENE-GENERATION.md and art-tests/jev-scene-probe/README.md.
+
 - [ ] Compare an authored standard Hearth background, a sprite-augmented version,
   and an isolated scanline-palette/Hi-Color rendering study using the same source.
 - [ ] For Hi-Color, verify menu/text stability, LCD interrupt coexistence, scene

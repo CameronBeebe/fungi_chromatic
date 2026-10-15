@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Heartwood · Inspect study</title>
+<style>
+:root{color-scheme:dark;--ink:#08171e;--panel:#102830;--line:#28515c;--cyan:#8ce4dc;--cream:#f0dfbb;--muted:#9bb7bb}*{box-sizing:border-box}body{margin:0;background:var(--ink);color:var(--cream);font:16px/1.5 system-ui}main{max-width:1240px;margin:auto;padding:28px}nav{display:flex;gap:20px;flex-wrap:wrap;font-size:14px}a{color:var(--cyan)}h1{font:36px/1.1 Georgia,serif;margin:24px 0 12px}h2{font:26px/1.2 Georgia,serif;margin:10px 0 16px}p{max-width:850px}.muted,small{color:var(--muted)}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--cyan)}.layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(280px,1fr);gap:24px;margin-top:22px}.panel{background:var(--panel);padding:20px;border:1px solid var(--line);border-radius:8px}#stage{position:relative;line-height:0;background:#050e13}#scene{width:100%;image-rendering:pixelated;display:block}svg{position:absolute;inset:0;width:100%;height:100%;touch-action:manipulation}.toolbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}button,select{font:inherit;color:var(--cream);background:#16343e;border:1px solid #38606b;border-radius:4px;padding:7px 11px;cursor:pointer}button[aria-pressed=true],button[aria-current=true]{background:#214e59;border-color:var(--cyan);color:white}button:focus-visible,select:focus-visible{outline:2px solid #ffda7d;outline-offset:2px}.target{fill:transparent;stroke:#a2eee4;stroke-width:.7;cursor:pointer;vector-effect:non-scaling-stroke}.target:hover,.target.selected{stroke:#ffe092;stroke-width:2;fill:#fff1ad15}.target.rejected{stroke:#dc9a90;stroke-dasharray:2 2}.tag{display:inline-block;padding:2px 7px;margin:3px 4px 3px 0;border:1px solid var(--line);border-radius:3px;font-size:13px;color:var(--cyan)}#description{font:21px/1.55 Georgia,serif;min-height:100px}#objectList{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:7px;margin-top:12px}#objectList button{text-align:left}.metric{display:grid;grid-template-columns:135px 1fr 42px;align-items:center;gap:8px;font-size:13px;margin:9px 0}.bar{height:6px;background:#07191e;border-radius:2px}.bar i{display:block;height:100%;background:#74ccc8}summary{cursor:pointer;color:var(--cyan)}details{border-top:1px solid var(--line);padding-top:12px;margin-top:16px}.note{font-size:13px;color:var(--muted)}#cellReadout{min-height:205px;margin-top:18px}#selectionStatus{font-size:13px;color:var(--cyan)}#summary{font-size:14px;color:var(--muted)}#mapHint{font-size:13px;min-height:20px}#hoverCell{font-weight:600}#filter{margin-top:14px}.warning{color:#f2b99a}label{cursor:pointer}@media(max-width:850px){main{padding:16px}.layout{grid-template-columns:1fr}h1{font-size:30px}}
+
+#mapReadout{position:sticky;top:0;z-index:2;background:#102830f5;border:1px solid var(--line);padding:8px 10px;margin-bottom:8px;font-size:13px;color:var(--cream)}.map-controls{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;margin:10px 0;font-size:14px}.map-controls input[type=range]{width:150px;vertical-align:middle;accent-color:var(--cyan)}#thresholdNote{font-size:12px;color:var(--muted);margin-bottom:12px}#cellReadout{margin:0 0 22px;min-height:0;border-bottom:1px solid var(--line);padding-bottom:16px}#unpin{font-size:12px;padding:3px 8px;margin-top:8px}#overlay:focus-visible{outline:2px solid #ffda7d;outline-offset:2px}.cell-focus{pointer-events:none;fill:none;stroke:#ffdf7c;stroke-width:1}
+#cellReadout{margin:0;padding:14px 0;min-height:110px;border-bottom:1px solid var(--line)}#hoverCell{font-size:17px}#mapReadout{position:static;border:0;background:none;padding:4px 0;margin:0 0 8px;font-size:16px;color:var(--muted)}#pinReadout{font-size:12px;padding:3px 8px}
+</style></head><body><main>
+<nav><a href="../../">All scene probes</a><a href="../../package/">Movement + interaction package</a><a href="scene.json">Inspect scene JSON</a><a href="evidence.json">Model evidence</a></nav>
+<div class="eyebrow" style="margin-top:25px">The Pale Cap · level authoring</div>
+<h1>Heartwood, read closely</h1>
+<p class="muted">One scene, several meanings. Inspect proposed objects, then explore independent labels over the same native pixels. A bridge can be a structure and a walking surface; a fungus need not be a harvest target.</p>
+<p id="summary"></p>
+<div class="layout"><section>
+<div class="toolbar" id="layers" aria-label="Map layer"></div>
+<div class="map-controls">
+<label for="threshold">Minimum probability <input id="threshold" type="range" min="0" max="100" step="1" value="50"> <output id="cutoff" for="threshold">50%</output></label>
+<label><input id="showGrid" type="checkbox" checked> Grid lines</label>
+<label><input id="showBounds" type="checkbox"> Object bounds (estimates)</label>
+</div><div id="thresholdNote"></div>
+<div id="stage"><img id="scene" src="__SCENE_IMAGE__" alt="Decoded native Heartwood scene with shelf fungi, a boardwalk and a pool"><svg id="overlay" viewBox="0 0 160 144" tabindex="0" aria-label="Inspect targets and cell labels. Arrow keys select a cell; Enter pins scores; Escape releases them."></svg></div>
+<div id="cellReadout" aria-live="polite"><div id="hoverCell">Hover over a cell to see its probabilities.</div><div id="mapReadout"></div><button id="pinReadout" disabled aria-pressed="false">Pin readout</button><span class="note"> Independent labels can overlap.</span></div>
+<p id="mapHint" class="muted"></p>
+<label id="filter"><input type="checkbox" id="showRejected"> Show proposals held for review</label>
+<div id="objectList" aria-label="Inspectable objects"></div>
+
+</section><aside class="panel"><div class="eyebrow">Inspect</div><div id="selectionStatus"></div><h2 id="objectName">Choose something in Heartwood</h2><p id="description">Select a named object below the scene.</p><div id="tags"></div><p class="note" id="actionNote"></p><details><summary>Why this description?</summary><div id="judgments"></div><p class="note" id="locator"></p></details><details><summary>What this study does</summary><p class="note">A separate vision model proposed names, descriptions and labels. Jev saw the same decoded artwork, local crops and those proposals. The Inspect selection uses explicit provisional review cutoffs; all original judgments remain available.</p><p class="note">This browser study enables Inspect only. It does not move Bram, award resources or replace the ROM. Harvest art states, actual navigation and native text layout are still to be implemented.</p><p class="note" id="models"></p><details id="briefSection" hidden><summary>Art prompt and context</summary><p class="note">Creative intent accompanies the pixels. It does not prove that a feature is visible.</p><pre id="briefText" style="white-space:pre-wrap;font:13px/1.5 system-ui"></pre></details></details></aside></div>
+</main><script>
+'use strict';
+const study=__STUDY_DATA__;
+const $=id=>document.getElementById(id),NS='http://www.w3.org/2000/svg';
+const names={walkable:'Walkable',fungus:'Fungus',harvest_candidate:'Harvest candidate',water:'Water',built_structure:'Built structure'};
+const colors={walkable:'#76e393',fungus:'#f1a1e4',harvest_candidate:'#f7cb77',water:'#6bc7fb',built_structure:'#c0b3ff'};
+let layer='inspect',selected=null,activeCell=0,pinned=false,hasHighlight=false;
+const accepted=study.objects.filter(o=>o.accepted);
+$('summary').textContent=`${accepted.length} Inspect descriptions accepted · ${study.objects.length-accepted.length} held for review · 90 cells × 5 overlapping labels · browser study, not a new ROM`;
+$('models').textContent=[...new Set(study.provenance.map(c=>c.model))].join(' → ');
+if(study.artBrief){$('briefSection').hidden=false;$('briefText').textContent=study.artBrief.text;}
+function svg(tag,attrs){const el=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,v));return el;}
+function metric(parent,label,p){const row=document.createElement('div');row.className='metric';const title=document.createElement('span');title.textContent=label;const bar=document.createElement('div');bar.className='bar';const fill=document.createElement('i');fill.style.width=(p*100)+'%';bar.append(fill);const pct=document.createElement('span');pct.textContent=Math.round(p*100)+'%';row.append(title,bar,pct);parent.append(row);}
+function paintFocus(){
+ $('overlay').querySelector('.cell-focus')?.remove();
+ if(!hasHighlight)return;
+ $('overlay').append(svg('rect',{x:activeCell%10*16+.5,y:Math.floor(activeCell/10)*16+.5,width:15,height:15,class:'cell-focus'}));
+}
+function showCell(i){
+ if(i<0||i>=study.cells.length)return;activeCell=i;hasHighlight=true;const c=study.cells[i];
+ $('hoverCell').textContent=`${c.id}${layer==='inspect'?' · All labels':' · '+names[layer]+' '+(c.labels[layer]*100).toFixed(1)+'%'}${pinned?' · pinned':''}${i>=80?' · covered by game HUD':''}`;
+ $('mapReadout').textContent=Object.entries(c.labels).map(([k,p])=>names[k]+' '+(p*100).toFixed(1)+'%').join(' | ');
+ $('pinReadout').disabled=false;$('pinReadout').textContent=pinned?'Unpin readout':'Pin readout';$('pinReadout').setAttribute('aria-pressed',String(pinned));paintFocus();
+}
+function select(id){selected=id;const o=study.objects.find(o=>o.id===id);if(!o)return;$('objectName').textContent=o.name;$('description').textContent=o.inspectText;$('selectionStatus').textContent=o.accepted?'Accepted for this Inspect study':'Review only — not accepted for gameplay';$('selectionStatus').className=o.accepted?'':'warning';$('tags').replaceChildren();Object.entries(o.tagProbabilities).forEach(([tag,p])=>{const s=document.createElement('span');s.className='tag';s.textContent=`${tag} ${Math.round(p*100)}%`;$('tags').append(s);});$('judgments').replaceChildren();Object.entries(o.judgments).forEach(([k,p])=>metric($('judgments'),k.replaceAll('_',' '),p));if(o.briefAlignment!==undefined)metric($('judgments'),'Brief alignment',o.briefAlignment);$('locator').textContent=o.locator+(o.reviewReasons.length?' · Held for: '+o.reviewReasons.join(', '):'');$('actionNote').textContent=o.accepted?'Inspect is enabled in this study. Other actions require an authored rule, access checks and appropriate art states.':'The proposed text is shown for review, not as an accepted in-game description.';draw();}
+function visibleObjects(){return study.objects.filter(o=>o.accepted||$('showRejected').checked);}
+function draw(){const root=$('overlay');root.replaceChildren();$('objectList').replaceChildren();
+ document.querySelectorAll('#layers button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.layer===layer)));
+ const threshold=Number($('threshold').value)/100,grid=$('showGrid').checked;
+ $('cutoff').textContent=Math.round(threshold*100)+'%';$('threshold').disabled=layer==='inspect';
+ let qualifying=0,eligible=0;
+ study.cells.forEach((c,i)=>{
+  const x=i%10*16,y=Math.floor(i/10)*16,p=layer==='inspect'?null:c.labels[layer];
+  const hidden=layer==='walkable'&&i>=80,passes=p!==null&&p>=threshold&&!hidden;
+  if(p!==null&&!hidden){eligible++;if(passes)qualifying++;}
+  root.append(svg('rect',{x,y,width:16,height:16,fill:hidden?'#09121b':passes?colors[layer]:'transparent','fill-opacity':hidden?.7:passes?.55:0,stroke:grid?'#ffffff55':'none','stroke-width':.25}));
+ });
+ $('thresholdNote').textContent=layer==='inspect'?'Choose a label layer to filter its probabilities. Grid lines remain available in Inspect.':`${qualifying} / ${eligible} visible cell centers meet ${Math.round(threshold*100)}% for ${names[layer]}. Below-cutoff cells stay readable; this display filter does not change the scene rules.`;
+ visibleObjects().sort((a,b)=>((b.box.right-b.box.left)*(b.box.bottom-b.box.top))-((a.box.right-a.box.left)*(a.box.bottom-a.box.top))).forEach(o=>{const b=document.createElement('button');b.textContent=o.name+(o.accepted?'':' · review');b.setAttribute('aria-current',String(selected===o.id));b.onclick=()=>select(o.id);$('objectList').append(b);
+ if($('showBounds').checked&&o.id===selected){const box=o.box;const rect=svg('rect',{x:box.left*160,y:box.top*144,width:(box.right-box.left)*160,height:(box.bottom-box.top)*144,class:'target selected'+(o.accepted?'':' rejected'),'pointer-events':'none','aria-label':'Estimated bounds of '+o.name});root.append(rect);}});
+ $('mapHint').textContent=$('showBounds').checked?'The large rectangle is Jev’s estimated extent of the selected object—not a walking area or an interaction hitbox. Choose a name below to review its estimate.':'Hover any cell to see its full probability breakdown below the image. Choose an object name below to Inspect it.';
+ if(hasHighlight)showCell(activeCell);
+}
+Object.entries({inspect:'Inspect',...names}).forEach(([key,name])=>{const b=document.createElement('button');b.textContent=name;b.dataset.layer=key;b.onclick=()=>{layer=key;draw();};$('layers').append(b);});
+$('showRejected').onchange=()=>{if(selected&&!study.objects.find(o=>o.id===selected).accepted&&!$('showRejected').checked){selected=null;if(accepted.length)select(accepted[0].id);else draw();return;}draw();};
+function cellAt(e){const r=$('overlay').getBoundingClientRect();const x=Math.min(9,Math.max(0,Math.floor((e.clientX-r.left)/r.width*10))),y=Math.min(8,Math.max(0,Math.floor((e.clientY-r.top)/r.height*9)));return y*10+x;}
+$('overlay').onpointermove=e=>{if(!pinned)showCell(cellAt(e));};
+$('overlay').onclick=e=>{if(!pinned)showCell(cellAt(e));};
+$('overlay').onkeydown=e=>{
+ if(e.target!==$('overlay'))return;
+ const x=activeCell%10,y=Math.floor(activeCell/10);
+ const next={ArrowLeft:y*10+Math.max(0,x-1),ArrowRight:y*10+Math.min(9,x+1),ArrowUp:Math.max(0,y-1)*10+x,ArrowDown:Math.min(8,y+1)*10+x};
+ if(e.key in next){e.preventDefault();showCell(next[e.key]);}
+ else if(e.key==='Enter'||e.key===' '){e.preventDefault();pinned=true;showCell(activeCell);}
+ else if(e.key==='Escape'){pinned=false;showCell(activeCell);}
+};
+$('pinReadout').onclick=()=>{pinned=!pinned;showCell(activeCell);};
+$('threshold').oninput=draw;$('showGrid').onchange=draw;$('showBounds').onchange=draw;
+if(accepted.length)select(accepted[0].id);else draw();
+</script></body></html>

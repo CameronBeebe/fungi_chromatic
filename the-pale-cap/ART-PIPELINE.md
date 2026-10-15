@@ -29,6 +29,16 @@ arbitrary changes in lighting. Increasing palette variety alone does not solve i
    palettes, build the cartridge and inspect actual emulator frames with menus.
    Hardware review remains a separate acceptance step.
 
+## Generated scene interpretation
+
+The October 14 [generative scene pipeline](SCENE-GENERATION.md) extends this
+workflow: Jev interprets the independently decoded native pixel art, then bounded
+mechanics request local state variants from that same master. Preserve immutable
+source/interpretation revisions and exact pixels outside each edit footprint.
+Terrain, object identity, interaction sites and physical art changes are separate
+steps. The current scene-package experiment only emits variant requests; it does
+not yet generate or certify those patches.
+
 ## Animation
 
 Plan palette cycling in the master using spatially ordered color indices. Keep
