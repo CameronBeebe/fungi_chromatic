@@ -286,6 +286,11 @@ duplicate/stale endpoints, unresolved-target gates, comparison cache identity,
 independent review gates and safe HTML. Live negative controls, human calibration,
 sprite readability and native integration are still TODOs.
 
+Browser checks covered the wipe/diff views, edit-boundary toggle, pixel RGB
+readout, relationship selection, estimated bounds, probability filtering and
+the empty-results state. The wipe starts over the edited area rather than the
+unchanged center of the scene.
+
 ## References
 
 - [Release](https://typesafe.ai/blog/jev-1-14)

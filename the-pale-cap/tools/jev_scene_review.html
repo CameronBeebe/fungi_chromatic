@@ -12,7 +12,7 @@
 <nav class="tabs" aria-label="Review views"><button id="changeTab" aria-pressed="true">Before / after</button><button id="relationsTab" aria-pressed="false">Object relationships</button></nav></header>
 <section id="changes"><div class="layout"><div>
 <div class="controls" id="modes"><button data-mode="before" aria-pressed="false">Before</button><button data-mode="after" aria-pressed="false">After</button><button data-mode="wipe" aria-pressed="true">Compare</button><button data-mode="diff" aria-pressed="false">Changed pixels</button></div>
-<div class="controls"><label id="wipeControl">Before ← <input id="wipe" aria-label="Comparison divider" type="range" min="0" max="160" value="80"> → After</label><label><input id="footprint" type="checkbox"> Edit boundary</label></div>
+<div class="controls"><label id="wipeControl">Before ← <input id="wipe" aria-label="Comparison divider" type="range" min="0" max="160" value="120"> → After</label><label><input id="footprint" type="checkbox"> Edit boundary</label></div>
 <div class="stage"><canvas id="compare" width="160" height="144" aria-label="Native before and after image comparison" tabindex="0"></canvas></div>
 <p id="pixelReadout" class="readout" aria-live="polite">Hover to compare the exact native pixel values. The cyan difference view shows changed pixels; pink would mean a change outside the allowed boundary.</p>
 <div class="card"><h3>Aligned close-ups</h3><div class="crop-pair"><div><p class="muted">Before</p><canvas id="beforeCrop" width="48" height="40"></canvas></div><div><p class="muted">After</p><canvas id="afterCrop" width="48" height="40"></canvas></div></div><p class="muted">The same 48 × 40 area, enlarged without smoothing.</p></div>
