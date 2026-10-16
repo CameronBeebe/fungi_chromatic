@@ -178,3 +178,78 @@ it preserves existing image-only requests and cache identities. The tracked
 Heartwood example combines the recorded clean-plate edit prompt with explicitly
 separated later native mushroom additions; it is not misrepresented as one original
 generation prompt. Future scene generation should supply its prompt directly.
+
+## Relationships and state-change review
+
+The next executable stage is `tools/jev_scene_review.py`. It consumes a frozen
+Inspect revision, an explicit bounded list of candidate object pairs, and the
+existing Heartwood harness's encoded harvest patch. It does not edit source art,
+generate a replacement ROM, or automatically promote model answers into gameplay.
+
+Relationships preserve stable endpoint IDs, direction or symmetry, independent
+presence judgments, the relation probability, and review reasons. Initial types
+are attachment, visibly continuous fungal growth, elevation/overlooking and a
+visually continuous route. The last is only a hypothesis: a semantic relation
+graph is not the navigation graph. Clearance, height transitions and reachability
+remain deterministic engine checks. Unresolved Inspect objects cannot be rescued
+by a high relationship score. Symmetric duplicate pairs and stale plans are rejected.
+
+Before/after review has two separate sources of evidence:
+
+- **Exact checks:** decode the master and patched tile bytes with the same map,
+  attributes and palette schedule; validate patch identity and tile aliases;
+  count all changed pixels, including any outside the authored editable footprint.
+- **Visual judgments:** Jev receives both full decoded images and aligned local
+  crops, plus the intended change. Independently judge the intact target, harvest
+  readability, cut remnants, coherent ground/shading and preserved surroundings.
+  Do not feed exact-check results or prior scores into these judgments.
+
+The first native harvest patch changes 280 pixels within a 32x24 footprint, uses
+192 bytes across 12 patterns, and changes zero exterior pixels. This proves local
+patch confinement, not artistic quality or hardware timing. Jev assigned .85 to
+harvest readability but only .42 to identifying the intact fans and .67 to coherent
+ground/shading. The review retains that tension and holds the visual candidate;
+scores are not averaged to conceal a weak prerequisite. The known harness target
+is not silently linked to the Inspect mushroom proposal with unresolved bounds.
+
+Interactive development dashboards are part of the workflow, not disposable
+demos. Preserve before/after wipes, exact diffs, aligned close-ups, independent
+probabilities, optional estimated bounds, threshold filters, rejected candidates,
+and provenance. Keep numbers below or beside artwork instead of covering pixels.
+Display filters must not mutate frozen decisions. Review data and API caches stay
+local; code, plans and instructions are versioned. The cartridge stays offline.
+
+## Further combinations to explore
+
+These are design directions, not implemented capabilities or promises of accuracy:
+
+1. **Learn art preferences.** Retain good/bad human labels. Let a proposal model
+   suggest useful visual questions, use Jev answers as features, and test whether
+   they predict held-out preferences. Avoid merely reinforcing the current look.
+2. **Exposure-dependent interpretation.** Combine the decoded view with Bram's
+   exposure spectrum, vocabulary and equipment to propose supported meanings or
+   affordances. Freeze accepted variants against persistent core object identities.
+3. **Local repair loops.** Use before/after judgments to find an unclear depletion
+   state or shading seam, optionally localize it with Box, author a bounded repair,
+   then recompile and recheck. Exact exterior pixels and hardware budgets remain
+   hard constraints. Never rerun until a favorable score happens to appear.
+4. **Adaptive questions.** Spend another crop or targeted judgment on a disagreement
+   only when resolving it affects an actual decision. Bound cost, iterations and
+   stopping conditions; retain failed attempts and the reason for escalation.
+5. **Player-readability tests.** Compare what looks selected, depleted, traversable
+   or occluded with known engine state, using actual decoded frames and sprites.
+6. **Relationship-aware mechanics.** Reviewed attachment or colony candidates can
+   inform explicitly designed resource groups, propagation, local reveals and
+   dependency rules. The engine owns costs, persistence and causal effects.
+
+Repeated calls measure stability, not arbitrarily precise truth. Shared model
+biases, ambiguous pixels and correlated prompts can repeat the same mistake.
+Use diverse relevant evidence, narrow questions, deterministic constraints and
+human-reviewed held-out cases. Identical-image and reversed-state controls should
+test the before/after prompts before any automated acceptance policy. Record a
+valid creative interpretation once it is coherent and playable; there need not be
+one objectively correct interpretation for invented scenery.
+
+Relevant patterns: [feature discovery](https://docs.typesafe.ai/cookbooks/autoresearch_feature_discovery),
+[composite scoring](https://docs.typesafe.ai/patterns/composite-scoring), and
+[consistency](https://docs.typesafe.ai/cookbooks/consistency_noul_cookbook).

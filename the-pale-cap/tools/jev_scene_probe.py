@@ -206,7 +206,8 @@ $('objects').textContent=descriptions.join(' · ');if(mode==='interactions')$('d
 
     nav = ('<nav><a href="'+root_prefix+'index.html">All scene probes</a> · '
            '<a href="'+root_prefix+'package/index.html">Movement + interaction package</a> · '
-           '<a href="'+root_prefix+'inspect/index.html">Heartwood Inspect + overlapping labels</a></nav>')
+           '<a href="'+root_prefix+'inspect/index.html">Heartwood Inspect + overlapping labels</a> · '
+           '<a href="'+root_prefix+'review/index.html">Relationships + before/after</a></nav>')
     return page.replace('<body>', '<body>'+nav)
 
 

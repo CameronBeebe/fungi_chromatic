@@ -1,0 +1,11 @@
+{
+  "sourceRevision": "6fe17560a504c3c093f4a10f13dec1aa681a0100eeaf58337d3b9aeb6d6e4856",
+  "relationships": [
+    {"id":"shelves-root","a":"heartwood.inspect.00","b":"heartwood.inspect.01","kind":"attached_to"},
+    {"id":"hyphae-root","a":"heartwood.inspect.07","b":"heartwood.inspect.01","kind":"attached_to"},
+    {"id":"shelves-hyphae","a":"heartwood.inspect.00","b":"heartwood.inspect.07","kind":"same_growth"},
+    {"id":"steps-boardwalk","a":"heartwood.inspect.02","b":"heartwood.inspect.03","kind":"visible_route"},
+    {"id":"boardwalk-pool","a":"heartwood.inspect.03","b":"heartwood.inspect.04","kind":"overlooks"},
+    {"id":"fans-shelves","a":"heartwood.inspect.05","b":"heartwood.inspect.00","kind":"same_growth"}
+  ]
+}

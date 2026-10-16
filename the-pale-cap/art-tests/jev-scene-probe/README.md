@@ -219,6 +219,78 @@ The full brief-aware result was replayed with both API keys removed. Twenty-one
 offline tests pass, including brief cache invalidation, input limits, provenance
 freezing and high intent alignment never overriding low visual presence.
 
+## Relationship and native state-change review
+
+After creating the brief-aware Inspect study and the existing Heartwood harness
+build, run this from the repository root with Pillow available:
+
+```sh
+python3 the-pale-cap/tools/jev_scene_review.py \
+  the-pale-cap/art-tests/jev-scene-probe/build/inspect/6fe17560a504c3c0 \
+  --plan the-pale-cap/art-tests/jev-scene-probe/heartwood-relations.json --run
+```
+
+The plan pins an Inspect revision and six candidate pairs. It is not portable to
+another regenerated interpretation without reviewing and updating those IDs.
+Use `--native-build PATH` for the matching existing harness build. The decoder
+reads `master.til`, `.map`, `.atr`, `.pal` and the three resource arrays in
+`assets.h`; it does not execute or rebuild that source. A fresh checkout requires
+the locally preserved art input and prior build/Inspect outputs described above.
+Do not replace a missing input with a lookalike: source hash and pixel matching
+are checked before any calls. No new third-party code or package is required.
+
+Two successful Jev requests test seven endpoint presences, six relations and
+five before/after questions. Full decoded scenes and local crops are supplied;
+no source painting or runtime sprite is included. The review uses integer nearest
+enlargements with each dimension at least 384. A smaller batch with 256/288-pixel
+crops was rejected as “Invalid image dimensions” despite the documented minima;
+the exact cause within that batch is not isolated. No automatic retries or model
+fallbacks are used. The two successful calls recorded 8,898 input tokens, 346
+output tokens and 1.051 seconds total HTTP time; these are measurements of one
+run, not a performance guarantee.
+
+The dashboard is written under `build/review/<revision>/`. The report server's
+`/review/` entry links to the latest result. It includes:
+
+- Before / After / Compare wipe / Changed pixels, with native RGB hover readout.
+- Aligned crops and optional authored edit boundary, without text over the art.
+- Exact patch footprint, pixel counts, byte budget and input fingerprints.
+- Each visual judgment separately, with the actual question and review flags.
+- Selectable relationship pairs, probability filtering and optional estimated
+  bounds. The connecting line is not a navigable path or an inferred physical strand.
+- Frozen JSON, raw answers, usage and links back to the source Inspect review.
+
+The first patch changed 280 pixels, none outside its 32x24 footprint; 12 patterns
+use 192 patch bytes with unchanged map/attributes/palettes. Jev supported shelf/root
+attachment at .92 and hypha/root attachment at .79. Four other relations remain
+held, including unresolved endpoints. Harvest readability scored .85 but intact
+fans only .42 and ground coherence .67, so the visual change also remains held
+under provisional .70 review gates. These are useful disagreements, not proof
+the asset is bad or the model is right. No scene actions or navigation are enabled.
+
+The complete review replays with both API keys removed when `--run` is omitted.
+Cache identity covers images, state, question wording and model; plan/review
+policy changes are frozen into result identity. Old results are retained. Reports
+and request caches stay ignored; only the tools, template and explicit plan are
+versioned. Existing assets and native ROM remain untouched.
+
+Run the offline invariants with:
+
+```sh
+python3 -m unittest discover -s the-pale-cap/tools -p 'test_jev_scene*.py'
+```
+
+33 tests cover prior package/Inspect behavior plus exterior changes, empty patches,
+tile aliases, master mismatch, palette decoding, invalid arrays, relation direction,
+duplicate/stale endpoints, unresolved-target gates, comparison cache identity,
+independent review gates and safe HTML. Live negative controls, human calibration,
+sprite readability and native integration are still TODOs.
+
+Browser checks covered the wipe/diff views, edit-boundary toggle, pixel RGB
+readout, relationship selection, estimated bounds, probability filtering and
+the empty-results state. The wipe starts over the edited area rather than the
+unchanged center of the scene.
+
 ## References
 
 - [Release](https://typesafe.ai/blog/jev-1-14)

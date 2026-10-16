@@ -435,8 +435,17 @@ See ART-PIPELINE.md and art-tests/root-hearth-conversion/README.md.
 - [ ] Review provisional object regions/sites; refine beyond coarse 16x16 cells.
 - [ ] Add actor clearance, elevations, foreground overlap and explicit entrances/
   exits; validate extraction reachability before accepting a playable package.
-- [ ] Add before/after Jev checks for intended changes, retained objects, lighting
-  and sprite readability alongside exact unchanged-pixel and hardware audits.
+- [x] Add bounded object-relationship judgments with stable endpoints, direction/
+  symmetry, presence gates and retained unresolved candidates; no automatic routes.
+- [x] Decode the existing Heartwood harvest patch and compare before/after full
+  frames plus aligned crops through Jev, alongside exact exterior-pixel checks.
+- [x] Add an interactive relationship and before/after review dashboard: wipe,
+  pixel diff, close-ups, estimated bounds, probability filter and raw evidence.
+- [ ] Resolve the mushroom proposal's spatial disagreement before linking the
+  authored harvest footprint to a generated object. Review the weak intact-target
+  and ground-coherence scores; don't average them into a harvest pass.
+- [ ] Calibrate visual checks on human-reviewed examples, identical before/after
+  and reversed-state controls; then test sprite readability and native timing.
 - [ ] Generate the requested local art-state variants from the exact native master;
   verify unchanged exterior pixels, frozen palette use and tile/upload budgets.
 - [ ] Compile one package into a standalone playable cartridge, verify queue/work/
@@ -445,6 +454,12 @@ See ART-PIPELINE.md and art-tests/root-hearth-conversion/README.md.
   extraction economy. Jev authors proposals; supported code implements effects.
 - [ ] Extend the frozen package format to alternate exposure/language views and
   later remote delivery while preserving object state and traded-item identity.
+- [ ] Explore human good/bad art labels → proposed visual questions → Jev features
+  with held-out evaluation, retaining varied art directions.
+- [ ] Add budgeted targeted follow-up questions and bounded local repair loops
+  where a disagreement affects a gameplay/art decision; retain failed attempts.
+- [ ] Test relationship-aware colony/reveal mechanics and player-readability
+  judgments against explicit supported rules and known engine states.
 
 See SCENE-GENERATION.md and art-tests/jev-scene-probe/README.md.
 

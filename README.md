@@ -35,8 +35,10 @@ The offline [Jev scene experiment](the-pale-cap/art-tests/jev-scene-probe/README
 explores native art → terrain/interaction decisions → persistent candidate scene
 packages. [SCENE-GENERATION.md](the-pale-cap/SCENE-GENERATION.md) records the direction
 and remaining art-state/runtime work. The Inspect extension adds xAI visual
-proposals and Jev judgments over overlapping labels. These optional external APIs
-run at development time; the cartridge remains offline.
+proposals and Jev judgments over overlapping labels. A relationship and before/after
+dashboard compares model judgments with exact pixel checks on the existing native
+harvest patch. These optional external APIs run at development time; the cartridge
+remains offline.
 
 ## Dependencies and licensing
 
