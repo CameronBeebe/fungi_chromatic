@@ -16,7 +16,7 @@ python3 the-pale-cap/art-tests/overworld-gallery/verify.py
 ```
 
 The builder requires GBDK-2020 with `png2hicolorgb` and `lcc`. Set `GBDK_PATH`
-or pass `--gbdk PATH`; the default is the local Chromatic plugin toolchain.
+or pass `--gbdk PATH`; one of these must identify an installed GBDK toolchain.
 The verifier requires PyBoy and Pillow in its Python environment.
 
 Source art defaults to the locally preserved, ignored directory

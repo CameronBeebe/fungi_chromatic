@@ -1,86 +1,86 @@
 [
   {
-    "path": "/Users/sciphi/src/fungi_chromatic/the-pale-cap/DESIGN.md",
+    "path": "the-pale-cap/DESIGN.md",
     "sha256": "cf6848a718ee3bcd669d22424c8cd9378c0a402c544dac701e11148aaed0a872",
     "lines": 462
   },
   {
-    "path": "/Users/sciphi/src/fungi_chromatic/the-pale-cap/TODO.md",
+    "path": "the-pale-cap/TODO.md",
     "sha256": "6c82b40d9e47782a52f9988831ffa08e25ef10b16303657483e0d7c27416805b",
     "lines": 292
   },
   {
-    "path": "/Users/sciphi/src/fungi_chromatic/the-pale-cap/EXPEDITION-SLICE.md",
+    "path": "the-pale-cap/EXPEDITION-SLICE.md",
     "sha256": "28ee30273fa6bafdd2beb519620c2330ae238c68b3607f2b68b7dfebb4292320",
     "lines": 151
   },
   {
-    "path": "/Users/sciphi/src/fungi_chromatic/the-pale-cap/PLAYTEST.md",
+    "path": "the-pale-cap/PLAYTEST.md",
     "sha256": "5f0c218db6dbec393a7d6fbe510f505f207fef5d94b99b46ea16a9b1ea496b4c",
     "lines": 153
   },
   {
-    "path": "/Users/sciphi/src/fungi_chromatic/the-pale-cap/project.gbsproj",
+    "path": "the-pale-cap/project.gbsproj",
     "sha256": "d9c7a4f7b7c7e84304e6da4ce82073dfcc68afbca7b9de618be02e8694b8c653",
     "lines": 8
   },
   {
-    "path": "/Users/sciphi/src/fungi_chromatic/the-pale-cap/project/settings.gbsres",
+    "path": "the-pale-cap/project/settings.gbsres",
     "sha256": "f274af73b0808207c8fa1515012bbfbada639a2d602a0e135cee99f6ff6982d1",
     "lines": 117
   },
   {
-    "path": "/Users/sciphi/src/fungi_chromatic/the-pale-cap/project/variables.gbsres",
+    "path": "the-pale-cap/project/variables.gbsres",
     "sha256": "2e6f5199d33829db233b7943dfb576e11bf15c204a22c6beb745a299c5bdf0d5",
     "lines": 241
   },
   {
-    "path": "/Users/sciphi/src/fungi_chromatic/the-pale-cap/plugins/colony-controls/engine/src/ff_controls.c",
+    "path": "the-pale-cap/plugins/colony-controls/engine/src/ff_controls.c",
     "sha256": "388eab6e0e08e65ac2502f58b7d01f18a30cbc5bcce2a31a4d07e46411bc969f",
     "lines": 104
   },
   {
-    "path": "/Users/sciphi/Library/Application Support/modretro-chromatic/toolchain/.local/vendor/gb-studio/package.json",
+    "path": "GB_STUDIO_ROOT/package.json",
     "sha256": "a112d326c72c423743f2c6c57d3489e663afa2bc9fdd959e804751c2692a037b",
     "lines": 216
   },
   {
-    "path": "/Users/sciphi/Library/Application Support/modretro-chromatic/toolchain/.local/vendor/gb-studio/appData/engine/engine.json",
+    "path": "GB_STUDIO_ROOT/appData/engine/engine.json",
     "sha256": "31e55c21a2c9a55a05bf5135e237a4a91fa23770b6896546950014c5f951bc0f",
     "lines": 2589
   },
   {
-    "path": "/Users/sciphi/Library/Application Support/modretro-chromatic/toolchain/.local/vendor/gb-studio/appData/engine/gbvm/src/core/load_save.c",
+    "path": "GB_STUDIO_ROOT/appData/engine/gbvm/src/core/load_save.c",
     "sha256": "d57054fc86d37153c75d0d5c744b4366a2988f21ed1c15dca99436c6f5bffa39",
     "lines": 162
   },
   {
-    "path": "/Users/sciphi/Library/Application Support/modretro-chromatic/toolchain/.local/vendor/gb-studio/appData/engine/gbvm/include/load_save.h",
+    "path": "GB_STUDIO_ROOT/appData/engine/gbvm/include/load_save.h",
     "sha256": "5c9f43aa06502e8321180e98a65645217a5d9eb212ba0f6baf27c19f0b6807f3",
     "lines": 26
   },
   {
-    "path": "/Users/sciphi/Library/Application Support/modretro-chromatic/toolchain/.local/vendor/gb-studio/appData/engine/gbvm/src/core/core.c",
+    "path": "GB_STUDIO_ROOT/appData/engine/gbvm/src/core/core.c",
     "sha256": "7978d2147d09294f25886d604fc4093cb1ba2084e809cab46b32d86861bbe353",
     "lines": 246
   },
   {
-    "path": "/Users/sciphi/Library/Application Support/modretro-chromatic/toolchain/.local/vendor/gb-studio/appData/engine/gbvm/src/core/data_manager.c",
+    "path": "GB_STUDIO_ROOT/appData/engine/gbvm/src/core/data_manager.c",
     "sha256": "2ff20d8a9d3efe6b752d391d988aa9c74e669d87a13dcaf37f64700b5987d190",
     "lines": 363
   },
   {
-    "path": "/Users/sciphi/Library/Application Support/modretro-chromatic/toolchain/.local/vendor/gb-studio/src/lib/compiler/scriptBuilder/scriptBuilder.ts",
+    "path": "GB_STUDIO_ROOT/src/lib/compiler/scriptBuilder/scriptBuilder.ts",
     "sha256": "cf38cd6c26d21eaa7c9f318569ea34efc4aacfce52c67697d71e06f4a9502a87",
     "lines": 4355
   },
   {
-    "path": "/Users/sciphi/Library/Application Support/modretro-chromatic/toolchain/.local/vendor/gb-studio/src/lib/compiler/compileData.ts",
+    "path": "GB_STUDIO_ROOT/src/lib/compiler/compileData.ts",
     "sha256": "f34b55bf5ca467c655bbced9124e67016fbc99daa66b4b37b2351fc15aa3c67c",
     "lines": 2100
   },
   {
-    "path": "/Users/sciphi/Library/Application Support/modretro-chromatic/toolchain/.local/vendor/gb-studio/src/lib/compiler/generateGBVMData.ts",
+    "path": "GB_STUDIO_ROOT/src/lib/compiler/generateGBVMData.ts",
     "sha256": "da337b61bf57a14f860d4bacd45b09f3c4ffd92ff66917ac5ca79d69e6ecd599",
     "lines": 1526
   }

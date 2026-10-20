@@ -1,6 +1,6 @@
 # Gillsong — ornament and color refinement
 
-Standalone rendering study for The Pale Cap. No inventory, item mechanics, production assets or shared documents changed. No cartridge flashing. The original study and portfolio are read-only references. No browser server was opened and port 55697 was not touched.
+Standalone rendering study. Its Vermilion art and ornament animation are now used by integrated item inspection; this ROM itself contains no inventory or item mechanics.
 
 ## Look first
 
@@ -38,6 +38,4 @@ No Hi-Color build is included. More palettes per scanline would require a separa
 
 ## Reproduce
 
-Run `sh reproduce.sh` from this directory. It regenerates PNGs, comparison, `art.h` and audit, compiles the ROM, runs controller tests and checks encoded pixels. Dependencies: Node plus Sharp, GBDK 4.5.0, Python with PyBoy 2.7.0 and Pillow. Override `SHARP_MODULE`, `GBDK_LCC` and `PYBOY_PYTHON` for other installations. All outputs stay here. The retained source header makes rebuilding independent of changes to the original directory.
-
-The ModRetro connector reported no authorized workspace for standalone builds. The installed compiler and emulator were invoked directly without selecting another session's project. No live preview was created. Review the native PNGs and retained emulator GIF, or load the ROM in your own emulator.
+Run `sh reproduce.sh` from this directory. It regenerates PNGs, comparison, `art.h` and audit, compiles the ROM, runs controller tests and checks encoded pixels. Dependencies: Node plus Sharp, GBDK 4.5.0, Python with PyBoy 2.7.0 and Pillow. Set `GBDK_PATH`; optionally override `SHARP_MODULE` and `PYBOY_PYTHON`. Install Sharp through npm or provide its module path. All outputs stay here. The retained source header makes rebuilding independent of changes to the original directory.

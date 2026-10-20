@@ -36,8 +36,7 @@ python3 the-pale-cap/art-tests/heartwood-playable/verify.py
 python3 the-pale-cap/art-tests/heartwood-playable/preview.py
 ```
 
-The build uses `GBDK_PATH` / `--gbdk`, defaulting to the installed Chromatic
-toolchain. `--source PATH` overrides the locally preserved 160x144 clean plate:
+The build requires `GBDK_PATH` / `--gbdk` pointing to a GBDK installation. `--source PATH` overrides the locally preserved 160x144 clean plate:
 `concept-art/heartwood-assets-candidate-v1/source/layout-reference-160x144.png`.
 That portfolio is ignored and is deliberately not uploaded. A fresh checkout
 needs the local input. Original source SHA-256:

@@ -7,7 +7,7 @@ No production background is replaced and no game save is read or written.
 ## Build and view
 
 Set `GBDK_PATH` to an installed GBDK-2020 directory, then run `sh build.sh` from
-this directory. The script defaults to the local Chromatic toolchain location.
+this directory. The script requires GBDK_PATH and reports missing tools before building.
 It invokes `png2hicolorgb` and `lcc`; prepared standard tiles, font and cropped
 source are checked in. Build output: `bin/hearth-hicolor.gbc`.
 The `web/` folder is a standalone GB Studio/Binjgb preview snapshot. Rebuilding

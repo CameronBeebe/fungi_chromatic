@@ -13,8 +13,8 @@ default. Neither model bounds nor probabilities silently become collision.
 ## Run
 
 Use Python with Pillow and PyBoy, and the existing GBDK toolchain. On the current
-Mac these are installed by the Chromatic plugin. `GBDK_PATH` can select another
-GBDK directory. No additional packages, remote calls or credentials are required
+Mac these are installed by the Chromatic plugin. Set `GBDK_PATH` to the GBDK
+directory before building. No additional packages, remote calls or credentials are required
 after the upstream evidence and native assets exist.
 
 From the repository root (replace revision directories with your local outputs):
@@ -38,7 +38,7 @@ links. This never flashes a cartridge or replaces an existing game ROM.
 
 `verify` makes a separately labeled **automation fixture**, not human approval.
 It is useful for testing the pipeline before reviewing a scene. The editor links
-the default fixture so the user can immediately play the actual native ROM.
+the default fixture so a reviewer can immediately play the actual native ROM.
 
 ## What is frozen and checked
 

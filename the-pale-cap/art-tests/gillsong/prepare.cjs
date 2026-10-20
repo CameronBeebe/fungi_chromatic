@@ -1,9 +1,10 @@
 // Native-screen reconstruction: source illustration sampling + authored UI + tile palettes.
 // This is a conversion study, not a claim that downsampling alone authors good pixel art.
 const fs=require('fs'),path=require('path');
-const sharp=require('/Users/sciphi/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');
+const sharp=require(process.env.SHARP_MODULE || 'sharp');
 const out=__dirname;
 const src=path.resolve(out,'../../../concept-art/portfolio-2026-10-11/14-screen-compositions.png');
+if (!fs.existsSync(src)) { console.error('This archived study requires local concept-art/portfolio-2026-10-11/14-screen-compositions.png; see README.md.'); process.exit(1); }
 const hex=s=>[1,3,5].map(i=>parseInt(s.slice(i,i+2),16));
 const quant=c=>c.map(v=>Math.round(Math.round(v*31/255)*255/31));
 const bg='#081021';

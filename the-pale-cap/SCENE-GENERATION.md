@@ -90,7 +90,7 @@ promises rewards, animations or abilities unless an explicit supported rule exis
 Multiple labels are useful features for gameplay policies, not independent votes
 whose probabilities can be summed or multiplied to manufacture certainty. A future
 rule may deliberately combine fungal identity, harvest suitability, access, state
-and tools. The user's fungus/harvest example motivates overlapping evidence; it is
+and tools. The fungus/harvest example motivates overlapping evidence; it is
 not a settled rule that every fungus is harvestable. Current Inspect judgments do
 not enable harvesting or change collision. Freeze accepted names and descriptions
 with the same source/revision provenance as mechanics.

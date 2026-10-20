@@ -1,6 +1,6 @@
 # First expedition and hideout slice
 
-October 11, 2026. Implementation proposal following the user's approved priority
+October 11, 2026. Implementation proposal following the approved project priority
 order. Numbers and loss rules below are test defaults, not settled game canon.
 No gameplay implementation is claimed by this document.
 

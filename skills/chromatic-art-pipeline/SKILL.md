@@ -9,7 +9,7 @@ and the relevant candidate's audit before changing that asset.
 
 Concept images establish composition, not a finished pixel master. Preserve the
 original and use a separate candidate directory. Review at 160×144 as well as
-enlarged. The user's individual-asset decisions govern replacement; do not infer
+enlarged. Explicit per-asset approvals govern replacement; do not infer
 approval of a whole art library from approval of one example.
 
 Run `the-pale-cap/tools/convert_background.py` with Python, Pillow and NumPy.
@@ -21,7 +21,7 @@ Use `--palettes AUDIT` to freeze reviewed families across revisions. See
 Run `the-pale-cap/tools/audit_background_seams.py SOURCE CANDIDATE OUTPUT`.
 Inspect flagged edges against the source and palette map. A lower flagged count
 does not prove better artwork: intentional steps can be flagged and a uniformly
-muddy picture can score well. Check specific user-identified areas.
+muddy picture can score well. Check specific review-identified areas.
 
 Verify exported 2bpp roundtrip, RGB555 palettes, UI reservation and tile budget.
 Then judge silhouettes, pixel clusters and readable interaction targets. Plan
