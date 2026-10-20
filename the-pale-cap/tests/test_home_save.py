@@ -1,11 +1,15 @@
 """Native record implementation checks using a host SRAM adapter."""
+
 from pathlib import Path
-import subprocess,tempfile
-root=Path(__file__).resolve().parents[1]
-source=(root/'plugins/colony-controls/engine/src/ff_home_save.c').read_text()
+import subprocess, tempfile
+
+root = Path(__file__).resolve().parents[1]
+source = (root / "plugins/colony-controls/engine/src/ff_home_save.c").read_text()
 with tempfile.TemporaryDirectory() as t:
- p=Path(t);(p/'gbdk').mkdir()
- (p/'gbdk/platform.h').write_text('''#include <stdint.h>
+    p = Path(t)
+    (p / "gbdk").mkdir()
+    (p / "gbdk/platform.h").write_text(
+        """#include <stdint.h>
 typedef uint16_t UWORD;
 #define OLDCALL
 #define BANKED
@@ -13,11 +17,15 @@ extern uint8_t banks[2][8192];
 #define ENABLE_RAM
 #define DISABLE_RAM
 #define SWITCH_RAM(n) (ram=banks[n])
-''')
- (p/'vm.h').write_text('typedef struct {int unused;} SCRIPT_CTX;\nextern UWORD stack[22],script_memory[21];\n#define VM_REF_TO_PTR(i) (&stack[-(i)-1])\n')
- source=source.replace('(volatile uint8_t *)0xa000','banks[0]')
- (p/'save.c').write_text(source)
- (p/'test.c').write_text('''#include <assert.h>
+"""
+    )
+    (p / "vm.h").write_text(
+        "typedef struct {int unused;} SCRIPT_CTX;\nextern UWORD stack[22],script_memory[21];\n#define VM_REF_TO_PTR(i) (&stack[-(i)-1])\n"
+    )
+    source = source.replace("(volatile uint8_t *)0xa000", "banks[0]")
+    (p / "save.c").write_text(source)
+    (p / "test.c").write_text(
+        """#include <assert.h>
 #include <string.h>
 #include <stdint.h>
 uint8_t banks[2][8192];uint16_t stack[22],script_memory[21];
@@ -39,7 +47,13 @@ int main(void){uint8_t a[55],b[55];int k;
  // Invalid ownership cannot be committed.
  script_memory[17]=2;script_memory[18]=1;op(2);assert(script_memory[20]==2);
  return 0;}
-''')
- subprocess.run(['cc','-Wno-unknown-pragmas','-I',t,str(p/'test.c'),'-o',str(p/'test')],check=True)
- subprocess.run([str(p/'test')],check=True)
-print('PASS: record roundtrip, 55 interrupted prefixes, 55 corruptions, fallback, empty and invalid ownership')
+"""
+    )
+    subprocess.run(
+        ["cc", "-Wno-unknown-pragmas", "-I", t, str(p / "test.c"), "-o", str(p / "test")],
+        check=True,
+    )
+    subprocess.run([str(p / "test")], check=True)
+print(
+    "PASS: record roundtrip, 55 interrupted prefixes, 55 corruptions, fallback, empty and invalid ownership"
+)

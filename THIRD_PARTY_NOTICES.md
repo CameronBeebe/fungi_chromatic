@@ -1,6 +1,6 @@
 # Third-party dependencies and notices
 
-Checkpoint reviewed October 11, 2026. This records dependencies and copied
+Dependency inventory reviewed October 20, 2026. This records dependencies and copied
 material; it does not relicense third-party work or choose a project-wide
 license for original game code, music or concept artwork.
 
@@ -65,3 +65,11 @@ No FlashGBX, firmware flashing tool, Wi-Fi implementation, or third-party exampl
 art is vendored as part of this checkpoint. Concept/source images and their
 variants are preserved for review; asset approval and project licensing are
 separate decisions.
+
+## Development checks
+
+Black (MIT) formats Python tooling, and Gitleaks (MIT) is used for local secret
+scans. These tools are external development dependencies, not cartridge code.
+CI uses GitHub Actions checkout/setup-python; no paid model service is called.
+This cleanup does not resolve the renderer license question above or select a
+license for original project work.

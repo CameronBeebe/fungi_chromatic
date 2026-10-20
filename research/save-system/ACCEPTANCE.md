@@ -15,4 +15,4 @@ Implementation gates for the first loop. These tests are **not yet executed**. U
 - [ ] **Visual/runtime reconstruction:** restored palette, hidden/collected objects, root connections, equipment effects and paid markers match semantic state; overlay is closed, inputs are rebound once, worker is idle, and music/ambient restart behavior is acceptable. Restore never reopens the boot menu.
 - [ ] **Cartridge sign-off, separately authorized:** identify actual save hardware, then test full power-off/restart, retention, real interrupted saves and previous-record recovery on a disposable test save. Measure save feedback/duration. Keep physical results distinct from emulator and browser results.
 
-Implementation detail and source evidence: [REPORT.md](/Users/sciphi/src/fungi_chromatic/research/save-system/REPORT.md).
+Implementation detail and source evidence: [REPORT.md](REPORT.md).

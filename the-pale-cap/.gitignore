@@ -15,3 +15,11 @@ __pycache__/
 *.state
 *.log
 emulator-evidence/
+
+# Historical conversion outputs; recipes and comparison references stay tracked.
+art-tests/root-hearth-conversion/coherent/
+art-tests/root-hearth-conversion/continuity-0/
+art-tests/root-hearth-conversion/continuity-1/
+art-tests/root-hearth-conversion/continuity-4/
+art-tests/root-hearth-conversion/region-aware/
+art-tests/root-hearth-conversion/region-directed/

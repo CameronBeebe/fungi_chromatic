@@ -1,6 +1,6 @@
 // Exact native-index editing: fork pixels are retained from the approved conversion.
 const fs=require('fs'),path=require('path'),crypto=require('crypto');
-const sharp=require(process.env.SHARP_MODULE||'/Users/sciphi/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');
+const sharp=require(process.env.SHARP_MODULE || 'sharp');
 const glyph=require('./font.cjs'),out=__dirname;
 const source=fs.readFileSync(path.join(out,'reference/baseline-art.h'),'utf8');
 const arr=n=>source.match(new RegExp(n+'\\[\\] = \\{([^}]+)'))[1].split(',').map(Number);

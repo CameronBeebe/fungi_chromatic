@@ -1,2 +1,7 @@
 # Local concept portfolio; retain selected build inputs under the-pale-cap/art/source.
 concept-art/
+
+# Local Python/tool environments and secret-scan reports.
+.venv/
+node_modules/
+.gitleaks-report.json
