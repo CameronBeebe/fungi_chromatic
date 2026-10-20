@@ -283,13 +283,38 @@ python3 -m unittest discover -s the-pale-cap/tools -p 'test_jev_scene*.py'
 33 tests cover prior package/Inspect behavior plus exterior changes, empty patches,
 tile aliases, master mismatch, palette decoding, invalid arrays, relation direction,
 duplicate/stale endpoints, unresolved-target gates, comparison cache identity,
-independent review gates and safe HTML. Live negative controls, human calibration,
-sprite readability and native integration are still TODOs.
+independent review gates and safe HTML. The newer controls and prototype adapter
+extend this coverage (53 scene tests total); human calibration and broader sprite
+readability checks remain TODOs.
 
 Browser checks covered the wipe/diff views, edit-boundary toggle, pixel RGB
 readout, relationship selection, estimated bounds, probability filtering and
 the empty-results state. The wipe starts over the edited area rather than the
 unchanged center of the scene.
+
+## Bounded controls and localization
+
+```sh
+python3 the-pale-cap/tools/jev_scene_controls.py \
+  the-pale-cap/art-tests/jev-scene-probe/build/review/3c673440792143ec --run
+```
+
+Omit `--run` to replay cached evidence without a key or network. A frozen plan
+compares two question versions on forward, identical-intact, identical-depleted
+and reverse pairs. Expected answers stay outside model input. The existing
+forward call is reused; at most nine new calls cover the other comparisons and
+two location attempts. No retry-until-pass loop is used.
+
+Both versions matched all four expected bands on this one scene. Full-image and
+guided-crop boxes still disagree: zero mutual overlap. The controls dashboard
+compares them with the original proposal and known patch footprint, preserving
+that uncertainty. Outputs live under `build/controls/<revision>/` and can be
+viewed through the existing report server's `/controls/` entry.
+
+The [review-to-ROM editor](../scene-prototype/README.md) connects this frozen
+evidence to corrected navigation and a bounded harvest contract. It builds a
+separate native prototype after explicit review; API results cannot directly
+inject commands, replace engine rules or imply human acceptance.
 
 ## References
 

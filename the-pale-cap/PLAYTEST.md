@@ -362,3 +362,18 @@ The scene now loads a uniform single-tile backing instead of the original Hearth
 illustration. Build symbols confirm no `bg_root_hearth` image payload is linked;
 the source PNG is preserved unchanged. Only the Hi-Color Hearth illustration is
 used in the game. The padded cartridge size remains 256 KiB.
+
+### Reviewed scene prototype adapter — October 20
+
+This is a separate Heartwood ROM, not an update to the integrated cartridge.
+Three automation fixtures compiled to 64 KiB and passed actual PyBoy inputs and
+state assertions: default 60-tick harvest/+2 loot/1 supply, alternate spawn with
+120-tick harvest/+7 loot/2 supplies, and unaffordable work rejection. Tests checked
+the configured spawn, traversed foot cells, duration, spending/yield, duplicate
+harvest rejection, help-menu revisit persistence and reset. The original native
+prototype ROM was preserved. No physical flash or hardware validation was done.
+
+The local review editor was browser-tested for immediate numeric validation,
+Jev walk proposal, blocked-spawn rejection, restored authored mask and undo.
+Generated fixtures are explicitly not human approvals. See
+`art-tests/scene-prototype/README.md` for the repeatable workflow and limits.

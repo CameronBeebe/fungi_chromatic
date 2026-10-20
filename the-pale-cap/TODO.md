@@ -1,9 +1,29 @@
 # The Pale Cap — living TODO
 
-Updated October 13, 2026. This is the GBC adaptation's backlog; the terminal
+Updated October 20, 2026. This is the GBC adaptation's backlog; the terminal
 repository keeps its own TODO. The order below is a recommendation, not a set
 of settled design decisions. Keep experiments small and playable, update this
 file after each pass, and record verified behavior in PLAYTEST.md.
+
+## Current milestone: human-reviewed scene → playable ROM
+
+- [x] Test before/after questions with unchanged and reversed pairs; preserve
+  original/full-image/guided-crop localization estimates without auto-linking.
+- [x] Add an editor for walkable cells, spawn/work position and harvest economy,
+  with hover probabilities, undo, Jev proposal and strict native build checks.
+- [x] Compile reviewed settings into separate ROMs and automatically verify
+  movement, work duration, supplies, rewards, duplicate rejection and reset.
+  See `art-tests/scene-prototype/README.md` for the first Heartwood adapter.
+- [ ] Human review and playtest the adapter's generated ROM; fix visual clearance
+  and tuning where needed. Automation fixtures do not count as human acceptance.
+- [ ] Generalize the asset-bundle contract to another scene while preserving
+  master art, bounded state patches, navigation and per-object identities.
+- [ ] Support several explicit interaction nodes/types per scene, with costs,
+  rewards, depleted state, Inspect text and deterministic persistence rules.
+- [ ] Connect reviewed scenes to the expedition → extraction → hideout/save loop.
+  Prioritize playable consequences over additional visual-only studies.
+- [ ] Keep expanding controls/calibration across scenes; repeated agreement is
+  not arbitrarily precise truth. Resolve disputed geometry in the editor.
 
 - [x] Align Heartwood cursor brackets, ground-order marker and Bram arrival to
   the same tile center; label the reveal overlay as an art test.
