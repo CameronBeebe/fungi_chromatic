@@ -5,6 +5,11 @@
 #include "gbc_hicolor.h"
 #include "master.h"
 #include "assets.h"
+#ifdef SCENE_CONFIGURED
+#include <scene_config.h>
+#else
+#include "scene_defaults.h"
+#endif
 extern void hicolor_palette_isr(void) NONBANKED;
 uint8_t route_step(uint8_t sx,uint8_t sy,uint8_t tx,uint8_t ty) BANKED;
 
@@ -16,14 +21,15 @@ static const uint16_t black[32]={0};
 static const uint16_t ui[4]={RGB(2,2,4),RGB(6,10,12),RGB(15,22,22),RGB(28,26,20)};
 typedef struct {uint8_t x,y,harvest;} Order;
 static Order orders[8];
-uint8_t queue_count,bram_x=44,bram_y=100,cursor_x=14,cursor_y=11;
+uint8_t queue_count,bram_x=SCENE_SPAWN_X*8+4,bram_y=SCENE_SPAWN_Y*8+4,cursor_x=14,cursor_y=11;
+uint8_t supplies=SCENE_START_SUPPLIES;
 uint8_t harvested,exposure,loot,work_ticks,help_open=1,rejected;
 static uint8_t facing=4,previous,last_dir,frame_clock,last_cursor_time,cursor_delay;
 static uint8_t patch_pending,resource_index,reveal_index;
 uint8_t moving,notice,notice_ticks;
 static uint8_t next_x,next_y,step_remaining,hud_last=255,priority_x=255,priority_y=255;
 static uint8_t hud[20],priority_attrs[8];
-enum {MSG_NONE,MSG_QUEUED,MSG_HARVEST,MSG_CUT,MSG_BLOCKED,MSG_FULL,MSG_DUPLICATE,MSG_ON,MSG_OFF,MSG_RESET,MSG_EMPTY};
+enum {MSG_NONE,MSG_QUEUED,MSG_HARVEST,MSG_CUT,MSG_BLOCKED,MSG_FULL,MSG_DUPLICATE,MSG_ON,MSG_OFF,MSG_RESET,MSG_EMPTY,MSG_COST};
 static void say(uint8_t msg){notice=msg;notice_ticks=75;}
 
 static uint16_t cell(uint8_t x,uint8_t y){return (uint16_t)y*20+x;}
@@ -43,8 +49,9 @@ static void run_orders(void){
         if(direction==4){
             moving=0;
             if(orders[0].harvest&&!harvested){
+                if(supplies<SCENE_HARVEST_COST){say(MSG_COST);pop_order();return;}
                 if(++work_ticks==1)say(MSG_HARVEST);
-                if(work_ticks==45){harvested=1;loot=1;patch_pending|=1;resource_index=0;pop_order();say(MSG_CUT);}
+                if(work_ticks==SCENE_WORK_TICKS){harvested=1;loot=SCENE_HARVEST_YIELD;supplies-=SCENE_HARVEST_COST;patch_pending|=1;resource_index=0;pop_order();say(MSG_CUT);}
             }else pop_order();
             return;
         }
@@ -62,8 +69,9 @@ static void designate(void){
     if(queue_count==8){rejected=30;say(MSG_FULL);return;}
     if(is_resource){
         if(harvested){rejected=30;say(MSG_EMPTY);return;}
+        if(supplies<SCENE_HARVEST_COST){rejected=30;say(MSG_COST);return;}
         for(i=0;i<queue_count;i++)if(orders[i].harvest){rejected=30;say(MSG_DUPLICATE);return;}
-        orders[queue_count].x=12;orders[queue_count].y=12;
+        orders[queue_count].x=SCENE_WORK_X;orders[queue_count].y=SCENE_WORK_Y;
     }else{
         if(!walkable[cell(cursor_x,cursor_y)]){rejected=30;say(MSG_BLOCKED);return;}
         orders[queue_count].x=cursor_x;orders[queue_count].y=cursor_y;
@@ -137,7 +145,8 @@ static void draw_status(void){
     switch(key){
     case MSG_QUEUED:text="ORDER QUEUED";break;
     case MSG_HARVEST:text="HARVESTING";break;
-    case MSG_CUT:text="GATHERED +1";break;
+    case MSG_CUT:text=SCENE_REWARD_MESSAGE;break;
+    case MSG_COST:text="NEED MORE SUPPLIES";break;
     case MSG_BLOCKED:text="CANNOT WALK THERE";break;
     case MSG_FULL:text="QUEUE FULL";break;
     case MSG_DUPLICATE:text="ALREADY QUEUED";break;
@@ -179,7 +188,7 @@ static void show_help(void){
     gotoxy(1,9);printf("SELECT  RESET ROOM");
     gotoxy(1,11);printf("START  VIEW OR HELP");
     gotoxy(1,13);printf("BAG %u  ORDERS %u",loot,queue_count);
-    gotoxy(1,15);printf("ISOLATED TEST");
+    gotoxy(1,15);printf("SUPPLIES %u",supplies);
     gotoxy(1,16);printf("NO SAVE OR AUDIO");
     vsync();set_bkg_palette(0,1,ui);SHOW_BKG;
 }
@@ -217,7 +226,8 @@ void main(void){
         if(pressed&J_B){exposure=!exposure;patch_pending|=2;reveal_index=0;say(exposure?MSG_ON:MSG_OFF);}
         if(pressed&J_SELECT){
             queue_count=work_ticks=harvested=loot=exposure=moving=step_remaining=0;
-            patch_pending=3;resource_index=reveal_index=0;bram_x=44;bram_y=100;priority_x=255;say(MSG_RESET);
+            patch_pending=3;resource_index=reveal_index=0;bram_x=SCENE_SPAWN_X*8+4;bram_y=SCENE_SPAWN_Y*8+4;
+            supplies=SCENE_START_SUPPLIES;priority_x=255;say(MSG_RESET);
         }
         /* Logic may resume after the long LCD ISR; no hardware writes here
          * except shadow OAM, which the next VBlank transfers. */

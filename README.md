@@ -40,6 +40,12 @@ dashboard compares model judgments with exact pixel checks on the existing nativ
 harvest patch. These optional external APIs run at development time; the cartridge
 remains offline.
 
+The [review-to-ROM editor](the-pale-cap/art-tests/scene-prototype/README.md) now
+connects that evidence to a playable native prototype. Correct walkable space,
+choose harvest timing/cost/yield, approve the settings, and automatically compile
+and emulator-test a separate ROM. The first adapter supports the existing
+Heartwood room; additional scene bundles and mechanics remain to be added.
+
 ## Dependencies and licensing
 
 See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for GB Studio/GBVM,

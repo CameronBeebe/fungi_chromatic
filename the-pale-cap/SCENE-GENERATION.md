@@ -219,6 +219,35 @@ and provenance. Keep numbers below or beside artwork instead of covering pixels.
 Display filters must not mutate frozen decisions. Review data and API caches stay
 local; code, plans and instructions are versioned. The cartridge stays offline.
 
+## Human review to native prototype — October 20
+
+The immediate goal is an automated, human-reviewed process for scaling playable
+prototype ROMs and concentrating iteration on mechanics. The first end-to-end
+adapter is now available in `art-tests/scene-prototype/README.md`:
+
+1. Snapshot encoded Heartwood art, native renderer and frozen review evidence.
+2. Correct walkable cells, spawn and work access in a local editor. Inspect Jev's
+   overlapping labels or apply its walk proposal without treating it as approval.
+3. Choose harvest duration, supply cost, starting supplies and yield.
+4. Explicitly review geometry and mechanics. Freeze those exact settings.
+5. Validate connectivity/budgets, generate configuration and routes, compile a
+   separate native ROM, and test real inputs/state in PyBoy.
+6. Play the result in Binjgb or download the ROM; retain the manifest and evidence.
+
+Automated verification fixtures remain distinct from human-reviewed builds. Both
+are prototypes, not production acceptance. The adapter uses the known encoded
+harvest patch, not the unresolved model-generated mushroom box. One room/one
+patch is the current boundary; multiple supported interaction types, additional
+asset bundles, extraction and persistent hideout state are the next extensions.
+
+The bounded before/after experiment compared original and stricter transition
+questions on forward, identical-intact, identical-depleted and reversed pairs.
+Both versions matched all four expected bands in this single-scene diagnostic.
+Expected answers were not sent to the model. This is a useful control, not a
+calibrated guarantee. Full-image and guided-crop mushroom localization remained
+in disagreement (zero mutual box overlap), so human correction stays required.
+The dashboard preserves both estimates and the original proposal.
+
 ## Further combinations to explore
 
 These are design directions, not implemented capabilities or promises of accuracy:
