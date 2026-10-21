@@ -5,6 +5,12 @@ A Fungi Fortress cartridge prototype for the ModRetro Chromatic, built with GB S
 <!-- TODO: Add an actual hardware photo or GIF at docs/media/hearth.gif, then embed it here. Do not substitute an emulator capture for hardware footage. -->
 *Hardware footage of the Root Hearth is forthcoming.*
 
+![Root Hearth background, integrated tile and palette data shown at 4x](the-pale-cap/art/integrated/root-hearth-4x.png)
+
+*Integrated art, not hardware footage and not an emulator capture: the Root Hearth background after conversion to GBC tiles and palettes, rendered host-side by [`prepare_home.py`](the-pale-cap/tools/prepare_home.py) at 160×144 and scaled 4× (nearest neighbor).*
+
+Adapted from the terminal game harness [fungi_fortress](https://github.com/CameronBeebe/fungi_fortress).
+
 ## What works today
 
 - **Integrated game — [The Pale Cap](the-pale-cap/README.md):** cursor-directed walking and harvesting, a bounded work queue, fungal spells, authored encounters, an illustrated hideout, item inspection/equipment, bag/stash transfers, extraction and hideout-only saves. A valid save boots directly into the hideout. Gillsong's active ability is not implemented.
