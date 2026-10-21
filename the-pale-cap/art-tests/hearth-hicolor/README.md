@@ -39,7 +39,8 @@ must check input, audio, sprite timing and engine interrupt interactions.
 `src/gbc_hicolor.c` and `.h` derive from the GBDK-2020 4.5.0 `examples/gb/hicolor`
 renderer; its palette ISR is credited to Toxa. Local changes add menu palette
 restoration after the shortened picture. The upstream `TODO: Permissive License`
-header is retained. The installed distribution's `LICENSE_png2hicolorgb` labels
-GBDK example source CC0; see the preserved notice and licensing caveat in
+header is retained for provenance. The upstream GBDK example source, including
+these renderer files, is covered by the explicit CC0 notice also shipped as
+`LICENSE_png2hicolorgb`; see the pinned source links and preserved notice in
 the repository's [third-party notices](../../../THIRD_PARTY_NOTICES.md).
 The upstream example illustration is not used here.

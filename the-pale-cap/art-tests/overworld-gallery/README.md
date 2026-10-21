@@ -42,8 +42,8 @@ The October 11 build is 128 KiB including code, font and bank padding. Its six
 image payloads total 66,688 bytes: five at 11,120 bytes and one at 11,088 bytes.
 This uses the existing full-screen Hi-Color study renderer; it is not a new
 rendering approach. It reuses `../hearth-hicolor/src/gbc_hicolor.c` and `.h`.
-See that study's README and the root third-party notices for provenance and the
-unresolved upstream ISR licensing clarification before release.
+See that study's README and the root third-party notices for the upstream
+example's CC0 dedication and the local adaptations' MIT license.
 
 All six images passed 180 consecutive stable-frame checks, six help round trips,
 left/right wrapping and both exposure buttons in PyBoy. Genuine emulator frames
