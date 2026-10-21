@@ -1,8 +1,9 @@
 # Third-party dependencies and notices
 
 Dependency inventory reviewed October 20, 2026. This records dependencies and copied
-material; it does not relicense third-party work or choose a project-wide
-license for original game code, music or concept artwork.
+material. Original project code, documentation and assets are covered by the root
+[MIT license](LICENSE), to the extent of the contributors' rights. Third-party
+material retains the terms recorded below; the project license does not replace them.
 
 ## GB Studio and GBVM
 
@@ -43,13 +44,20 @@ terms. Converted assets depict our concept art, not its bundled example picture.
 The Hi-Color study copies and modifies GBDK 4.5.0's `examples/gb/hicolor/src/gbc_hicolor.c`
 and `.h`. The game integration in `the-pale-cap/plugins/colony-controls/engine/src/ff_hearth.c`
 further adapts that ISR for the native home scene, window timing, and music clock.
-The example credits its palette ISR to Toxa. The installed
-`LICENSE_png2hicolorgb` labels GBDK example source CC0 1.0, but the copied source
-itself says `TODO: Permissive License`. Both facts are retained: do not silently
-replace that header or claim that this specific ISR has an explicit MIT notice.
-Before distributing a release containing this renderer, confirm the example notice covers
-this ISR or obtain an explicit clarification. This is a tracked release question,
-not an assertion that the converter's output is restricted.
+The example credits its palette ISR to Toxa. The upstream png2hicolorgb
+[license notice](https://github.com/bbbbbr/png2hicolorgb/blob/387f5e004557bcd5dde5cb969df368a44e624a6f/LICENSE)
+explicitly dedicates the GBDK example source to CC0 1.0. That example contains
+[`gbc_hicolor.c`](https://github.com/bbbbbr/png2hicolorgb/blob/387f5e004557bcd5dde5cb969df368a44e624a6f/example_gbdk/src/gbc_hicolor.c)
+and its header, including the palette ISR used here. The installed GBDK
+`LICENSE_png2hicolorgb` carries the same example-source notice, preserved in
+`licenses/GBDK-png2hicolorgb.txt`.
+
+We rely on that explicit CC0 dedication for the upstream example renderer.
+Its retained `TODO: Permissive License` source comment is an unfinished header,
+not an additional restriction or a requirement to obtain separate permission.
+Local renderer adaptations are covered by the root MIT license; upstream source
+credits and notices are retained. The bundled example illustration has separate
+CC BY terms and is not used in this project.
 
 ## External Python tools
 
@@ -62,14 +70,14 @@ license files govern any future redistribution of those tools:
 [PyBoy](https://github.com/Baekalfen/PyBoy).
 
 No FlashGBX, firmware flashing tool, Wi-Fi implementation, or third-party example
-art is vendored as part of this checkpoint. Concept/source images and their
-variants are preserved for review; asset approval and project licensing are
-separate decisions.
+art is vendored as part of this checkpoint. Original concept/source images and
+their variants fall under the root MIT license; visual approval for gameplay
+remains a separate design decision.
 
 ## Development checks
 
 Black (MIT) formats Python tooling, and Gitleaks (MIT) is used for local secret
 scans. These tools are external development dependencies, not cartridge code.
 CI uses GitHub Actions checkout/setup-python; no paid model service is called.
-This cleanup does not resolve the renderer license question above or select a
-license for original project work.
+The upstream renderer license scope was verified against the linked example
+source and notice on October 20, 2026.

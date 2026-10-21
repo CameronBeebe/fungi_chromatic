@@ -112,6 +112,6 @@ approval does not cover this executable.
 The original generated clean-plate provenance is in the local designer handoff.
 New sprite cells, resource shapes and build/gameplay code are authored here.
 No new third-party package or renderer copy is vendored. The shared Hi-Color
-renderer retains its upstream licensing clarification requirement, documented
-in the Hearth study and root `THIRD_PARTY_NOTICES.md`; this experiment does not
-resolve release licensing. The preview retains the existing Binjgb MIT files.
+renderer derives from the CC0 GBDK example, with local adaptations under the
+root MIT license; see the Hearth study and root `THIRD_PARTY_NOTICES.md` for
+provenance. The preview retains the existing Binjgb MIT files.

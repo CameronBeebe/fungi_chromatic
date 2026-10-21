@@ -56,4 +56,6 @@ The earlier terminal simulation lives in [fungi_fortress](https://github.com/Cam
 
 The broad `concept-art/` portfolio, generated ROMs, API caches and emulator outputs are ignored. Selected build inputs and existing notices remain tracked. Optional live pipeline runs require an explicit `--run` and environment credentials (`XAI_API_KEY`, `TYPESAFE_API_KEY`); no credentials belong in source or browser dashboards.
 
-See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). A project-wide license for original work has not been selected, and the copied Hi-Color ISR's licensing needs clarification before release. The existing GB Studio MIT notice is attribution, not a blanket license for this project.
+Original project code, documentation and assets are available under the [MIT license](LICENSE), to the extent of the contributors' rights in that material. Commercial use is permitted; redistributed copies or substantial portions must retain the copyright and license notice. There is no separate restriction on original artwork.
+
+Third-party material retains its own terms; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The upstream Hi-Color GBDK example source is covered by its CC0 notice. The existing `the-pale-cap/LICENSE` preserves GB Studio's MIT attribution and does not replace the root project license.

@@ -44,9 +44,6 @@ in [PLAYTEST.md](PLAYTEST.md). These are priorities, not promised release scope.
 
 ## Publication decisions
 
-- [ ] Choose a project-wide license for original code/art.
-- [ ] Resolve the Hi-Color ISR's source-header/distribution-notice ambiguity;
-  see [third-party notices](../THIRD_PARTY_NOTICES.md).
 - [ ] Add real Hearth hardware footage under `docs/media/`.
 - [ ] Decide separately whether public release should use fresh history, and
   whether to delete merged remote branches. Cleanup does neither automatically.
