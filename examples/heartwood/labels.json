@@ -1,0 +1,902 @@
+[
+  {
+    "id": "A1",
+    "labels": {
+      "walkable": 0.04,
+      "fungus": 0.06,
+      "harvest_candidate": 0.06,
+      "water": 0.02,
+      "built_structure": 0.03
+    }
+  },
+  {
+    "id": "B1",
+    "labels": {
+      "walkable": 0.11,
+      "fungus": 0.19,
+      "harvest_candidate": 0.08,
+      "water": 0.02,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "C1",
+    "labels": {
+      "walkable": 0.14,
+      "fungus": 0.57,
+      "harvest_candidate": 0.11,
+      "water": 0.02,
+      "built_structure": 0.13
+    }
+  },
+  {
+    "id": "D1",
+    "labels": {
+      "walkable": 0.17,
+      "fungus": 0.82,
+      "harvest_candidate": 0.24,
+      "water": 0.03,
+      "built_structure": 0.16
+    }
+  },
+  {
+    "id": "E1",
+    "labels": {
+      "walkable": 0.17,
+      "fungus": 0.92,
+      "harvest_candidate": 0.25,
+      "water": 0.03,
+      "built_structure": 0.21
+    }
+  },
+  {
+    "id": "F1",
+    "labels": {
+      "walkable": 0.24,
+      "fungus": 0.92,
+      "harvest_candidate": 0.35,
+      "water": 0.07,
+      "built_structure": 0.11
+    }
+  },
+  {
+    "id": "G1",
+    "labels": {
+      "walkable": 0.61,
+      "fungus": 0.6,
+      "harvest_candidate": 0.24,
+      "water": 0.13,
+      "built_structure": 0.66
+    }
+  },
+  {
+    "id": "H1",
+    "labels": {
+      "walkable": 0.81,
+      "fungus": 0.16,
+      "harvest_candidate": 0.24,
+      "water": 0.14,
+      "built_structure": 0.91
+    }
+  },
+  {
+    "id": "I1",
+    "labels": {
+      "walkable": 0.81,
+      "fungus": 0.12,
+      "harvest_candidate": 0.15,
+      "water": 0.08,
+      "built_structure": 0.97
+    }
+  },
+  {
+    "id": "J1",
+    "labels": {
+      "walkable": 0.78,
+      "fungus": 0.07,
+      "harvest_candidate": 0.08,
+      "water": 0.09,
+      "built_structure": 0.91
+    }
+  },
+  {
+    "id": "A2",
+    "labels": {
+      "walkable": 0.04,
+      "fungus": 0.13,
+      "harvest_candidate": 0.1,
+      "water": 0.02,
+      "built_structure": 0.03
+    }
+  },
+  {
+    "id": "B2",
+    "labels": {
+      "walkable": 0.1,
+      "fungus": 0.12,
+      "harvest_candidate": 0.09,
+      "water": 0.01,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "C2",
+    "labels": {
+      "walkable": 0.06,
+      "fungus": 0.62,
+      "harvest_candidate": 0.11,
+      "water": 0.02,
+      "built_structure": 0.08
+    }
+  },
+  {
+    "id": "D2",
+    "labels": {
+      "walkable": 0.12,
+      "fungus": 0.91,
+      "harvest_candidate": 0.24,
+      "water": 0.03,
+      "built_structure": 0.14
+    }
+  },
+  {
+    "id": "E2",
+    "labels": {
+      "walkable": 0.09,
+      "fungus": 0.95,
+      "harvest_candidate": 0.29,
+      "water": 0.03,
+      "built_structure": 0.2
+    }
+  },
+  {
+    "id": "F2",
+    "labels": {
+      "walkable": 0.2,
+      "fungus": 0.93,
+      "harvest_candidate": 0.43,
+      "water": 0.12,
+      "built_structure": 0.09
+    }
+  },
+  {
+    "id": "G2",
+    "labels": {
+      "walkable": 0.49,
+      "fungus": 0.87,
+      "harvest_candidate": 0.25,
+      "water": 0.42,
+      "built_structure": 0.71
+    }
+  },
+  {
+    "id": "H2",
+    "labels": {
+      "walkable": 0.76,
+      "fungus": 0.33,
+      "harvest_candidate": 0.11,
+      "water": 0.46,
+      "built_structure": 0.95
+    }
+  },
+  {
+    "id": "I2",
+    "labels": {
+      "walkable": 0.79,
+      "fungus": 0.09,
+      "harvest_candidate": 0.08,
+      "water": 0.32,
+      "built_structure": 0.98
+    }
+  },
+  {
+    "id": "J2",
+    "labels": {
+      "walkable": 0.47,
+      "fungus": 0.09,
+      "harvest_candidate": 0.06,
+      "water": 0.32,
+      "built_structure": 0.93
+    }
+  },
+  {
+    "id": "A3",
+    "labels": {
+      "walkable": 0.18,
+      "fungus": 0.17,
+      "harvest_candidate": 0.19,
+      "water": 0.03,
+      "built_structure": 0.04
+    }
+  },
+  {
+    "id": "B3",
+    "labels": {
+      "walkable": 0.34,
+      "fungus": 0.23,
+      "harvest_candidate": 0.17,
+      "water": 0.03,
+      "built_structure": 0.03
+    }
+  },
+  {
+    "id": "C3",
+    "labels": {
+      "walkable": 0.17,
+      "fungus": 0.45,
+      "harvest_candidate": 0.12,
+      "water": 0.02,
+      "built_structure": 0.07
+    }
+  },
+  {
+    "id": "D3",
+    "labels": {
+      "walkable": 0.18,
+      "fungus": 0.62,
+      "harvest_candidate": 0.15,
+      "water": 0.03,
+      "built_structure": 0.08
+    }
+  },
+  {
+    "id": "E3",
+    "labels": {
+      "walkable": 0.12,
+      "fungus": 0.86,
+      "harvest_candidate": 0.31,
+      "water": 0.06,
+      "built_structure": 0.15
+    }
+  },
+  {
+    "id": "F3",
+    "labels": {
+      "walkable": 0.18,
+      "fungus": 0.92,
+      "harvest_candidate": 0.35,
+      "water": 0.12,
+      "built_structure": 0.11
+    }
+  },
+  {
+    "id": "G3",
+    "labels": {
+      "walkable": 0.5,
+      "fungus": 0.9,
+      "harvest_candidate": 0.31,
+      "water": 0.59,
+      "built_structure": 0.44
+    }
+  },
+  {
+    "id": "H3",
+    "labels": {
+      "walkable": 0.38,
+      "fungus": 0.27,
+      "harvest_candidate": 0.15,
+      "water": 0.78,
+      "built_structure": 0.7
+    }
+  },
+  {
+    "id": "I3",
+    "labels": {
+      "walkable": 0.28,
+      "fungus": 0.06,
+      "harvest_candidate": 0.07,
+      "water": 0.83,
+      "built_structure": 0.4
+    }
+  },
+  {
+    "id": "J3",
+    "labels": {
+      "walkable": 0.25,
+      "fungus": 0.07,
+      "harvest_candidate": 0.07,
+      "water": 0.59,
+      "built_structure": 0.6
+    }
+  },
+  {
+    "id": "A4",
+    "labels": {
+      "walkable": 0.2,
+      "fungus": 0.47,
+      "harvest_candidate": 0.24,
+      "water": 0.03,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "B4",
+    "labels": {
+      "walkable": 0.45,
+      "fungus": 0.69,
+      "harvest_candidate": 0.31,
+      "water": 0.03,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "C4",
+    "labels": {
+      "walkable": 0.66,
+      "fungus": 0.63,
+      "harvest_candidate": 0.41,
+      "water": 0.03,
+      "built_structure": 0.03
+    }
+  },
+  {
+    "id": "D4",
+    "labels": {
+      "walkable": 0.54,
+      "fungus": 0.64,
+      "harvest_candidate": 0.61,
+      "water": 0.02,
+      "built_structure": 0.06
+    }
+  },
+  {
+    "id": "E4",
+    "labels": {
+      "walkable": 0.32,
+      "fungus": 0.88,
+      "harvest_candidate": 0.41,
+      "water": 0.02,
+      "built_structure": 0.16
+    }
+  },
+  {
+    "id": "F4",
+    "labels": {
+      "walkable": 0.45,
+      "fungus": 0.94,
+      "harvest_candidate": 0.39,
+      "water": 0.07,
+      "built_structure": 0.2
+    }
+  },
+  {
+    "id": "G4",
+    "labels": {
+      "walkable": 0.62,
+      "fungus": 0.87,
+      "harvest_candidate": 0.19,
+      "water": 0.33,
+      "built_structure": 0.09
+    }
+  },
+  {
+    "id": "H4",
+    "labels": {
+      "walkable": 0.43,
+      "fungus": 0.22,
+      "harvest_candidate": 0.12,
+      "water": 0.81,
+      "built_structure": 0.08
+    }
+  },
+  {
+    "id": "I4",
+    "labels": {
+      "walkable": 0.34,
+      "fungus": 0.07,
+      "harvest_candidate": 0.08,
+      "water": 0.85,
+      "built_structure": 0.08
+    }
+  },
+  {
+    "id": "J4",
+    "labels": {
+      "walkable": 0.41,
+      "fungus": 0.06,
+      "harvest_candidate": 0.07,
+      "water": 0.28,
+      "built_structure": 0.13
+    }
+  },
+  {
+    "id": "A5",
+    "labels": {
+      "walkable": 0.18,
+      "fungus": 0.46,
+      "harvest_candidate": 0.24,
+      "water": 0.03,
+      "built_structure": 0.03
+    }
+  },
+  {
+    "id": "B5",
+    "labels": {
+      "walkable": 0.65,
+      "fungus": 0.62,
+      "harvest_candidate": 0.31,
+      "water": 0.02,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "C5",
+    "labels": {
+      "walkable": 0.88,
+      "fungus": 0.55,
+      "harvest_candidate": 0.25,
+      "water": 0.02,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "D5",
+    "labels": {
+      "walkable": 0.81,
+      "fungus": 0.41,
+      "harvest_candidate": 0.46,
+      "water": 0.02,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "E5",
+    "labels": {
+      "walkable": 0.56,
+      "fungus": 0.52,
+      "harvest_candidate": 0.58,
+      "water": 0.02,
+      "built_structure": 0.04
+    }
+  },
+  {
+    "id": "F5",
+    "labels": {
+      "walkable": 0.86,
+      "fungus": 0.65,
+      "harvest_candidate": 0.75,
+      "water": 0.05,
+      "built_structure": 0.04
+    }
+  },
+  {
+    "id": "G5",
+    "labels": {
+      "walkable": 0.81,
+      "fungus": 0.69,
+      "harvest_candidate": 0.83,
+      "water": 0.13,
+      "built_structure": 0.03
+    }
+  },
+  {
+    "id": "H5",
+    "labels": {
+      "walkable": 0.89,
+      "fungus": 0.55,
+      "harvest_candidate": 0.79,
+      "water": 0.17,
+      "built_structure": 0.03
+    }
+  },
+  {
+    "id": "I5",
+    "labels": {
+      "walkable": 0.83,
+      "fungus": 0.23,
+      "harvest_candidate": 0.49,
+      "water": 0.18,
+      "built_structure": 0.03
+    }
+  },
+  {
+    "id": "J5",
+    "labels": {
+      "walkable": 0.69,
+      "fungus": 0.1,
+      "harvest_candidate": 0.31,
+      "water": 0.17,
+      "built_structure": 0.03
+    }
+  },
+  {
+    "id": "A6",
+    "labels": {
+      "walkable": 0.29,
+      "fungus": 0.24,
+      "harvest_candidate": 0.3,
+      "water": 0.04,
+      "built_structure": 0.07
+    }
+  },
+  {
+    "id": "B6",
+    "labels": {
+      "walkable": 0.7,
+      "fungus": 0.23,
+      "harvest_candidate": 0.28,
+      "water": 0.02,
+      "built_structure": 0.03
+    }
+  },
+  {
+    "id": "C6",
+    "labels": {
+      "walkable": 0.89,
+      "fungus": 0.11,
+      "harvest_candidate": 0.15,
+      "water": 0.04,
+      "built_structure": 0.04
+    }
+  },
+  {
+    "id": "D6",
+    "labels": {
+      "walkable": 0.92,
+      "fungus": 0.1,
+      "harvest_candidate": 0.15,
+      "water": 0.04,
+      "built_structure": 0.03
+    }
+  },
+  {
+    "id": "E6",
+    "labels": {
+      "walkable": 0.91,
+      "fungus": 0.1,
+      "harvest_candidate": 0.22,
+      "water": 0.03,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "F6",
+    "labels": {
+      "walkable": 0.91,
+      "fungus": 0.51,
+      "harvest_candidate": 0.85,
+      "water": 0.04,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "G6",
+    "labels": {
+      "walkable": 0.87,
+      "fungus": 0.89,
+      "harvest_candidate": 0.94,
+      "water": 0.04,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "H6",
+    "labels": {
+      "walkable": 0.85,
+      "fungus": 0.92,
+      "harvest_candidate": 0.95,
+      "water": 0.03,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "I6",
+    "labels": {
+      "walkable": 0.9,
+      "fungus": 0.38,
+      "harvest_candidate": 0.79,
+      "water": 0.03,
+      "built_structure": 0.01
+    }
+  },
+  {
+    "id": "J6",
+    "labels": {
+      "walkable": 0.78,
+      "fungus": 0.11,
+      "harvest_candidate": 0.65,
+      "water": 0.03,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "A7",
+    "labels": {
+      "walkable": 0.28,
+      "fungus": 0.11,
+      "harvest_candidate": 0.13,
+      "water": 0.03,
+      "built_structure": 0.16
+    }
+  },
+  {
+    "id": "B7",
+    "labels": {
+      "walkable": 0.84,
+      "fungus": 0.06,
+      "harvest_candidate": 0.09,
+      "water": 0.03,
+      "built_structure": 0.89
+    }
+  },
+  {
+    "id": "C7",
+    "labels": {
+      "walkable": 0.87,
+      "fungus": 0.06,
+      "harvest_candidate": 0.06,
+      "water": 0.03,
+      "built_structure": 0.85
+    }
+  },
+  {
+    "id": "D7",
+    "labels": {
+      "walkable": 0.8,
+      "fungus": 0.06,
+      "harvest_candidate": 0.14,
+      "water": 0.03,
+      "built_structure": 0.25
+    }
+  },
+  {
+    "id": "E7",
+    "labels": {
+      "walkable": 0.93,
+      "fungus": 0.06,
+      "harvest_candidate": 0.2,
+      "water": 0.02,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "F7",
+    "labels": {
+      "walkable": 0.89,
+      "fungus": 0.15,
+      "harvest_candidate": 0.36,
+      "water": 0.04,
+      "built_structure": 0.03
+    }
+  },
+  {
+    "id": "G7",
+    "labels": {
+      "walkable": 0.8,
+      "fungus": 0.78,
+      "harvest_candidate": 0.92,
+      "water": 0.03,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "H7",
+    "labels": {
+      "walkable": 0.84,
+      "fungus": 0.74,
+      "harvest_candidate": 0.92,
+      "water": 0.02,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "I7",
+    "labels": {
+      "walkable": 0.68,
+      "fungus": 0.55,
+      "harvest_candidate": 0.86,
+      "water": 0.03,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "J7",
+    "labels": {
+      "walkable": 0.52,
+      "fungus": 0.11,
+      "harvest_candidate": 0.24,
+      "water": 0.03,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "A8",
+    "labels": {
+      "walkable": 0.28,
+      "fungus": 0.11,
+      "harvest_candidate": 0.2,
+      "water": 0.04,
+      "built_structure": 0.14
+    }
+  },
+  {
+    "id": "B8",
+    "labels": {
+      "walkable": 0.85,
+      "fungus": 0.06,
+      "harvest_candidate": 0.05,
+      "water": 0.03,
+      "built_structure": 0.9
+    }
+  },
+  {
+    "id": "C8",
+    "labels": {
+      "walkable": 0.92,
+      "fungus": 0.05,
+      "harvest_candidate": 0.06,
+      "water": 0.03,
+      "built_structure": 0.94
+    }
+  },
+  {
+    "id": "D8",
+    "labels": {
+      "walkable": 0.79,
+      "fungus": 0.07,
+      "harvest_candidate": 0.12,
+      "water": 0.03,
+      "built_structure": 0.76
+    }
+  },
+  {
+    "id": "E8",
+    "labels": {
+      "walkable": 0.84,
+      "fungus": 0.07,
+      "harvest_candidate": 0.36,
+      "water": 0.03,
+      "built_structure": 0.06
+    }
+  },
+  {
+    "id": "F8",
+    "labels": {
+      "walkable": 0.91,
+      "fungus": 0.09,
+      "harvest_candidate": 0.45,
+      "water": 0.04,
+      "built_structure": 0.03
+    }
+  },
+  {
+    "id": "G8",
+    "labels": {
+      "walkable": 0.86,
+      "fungus": 0.26,
+      "harvest_candidate": 0.73,
+      "water": 0.04,
+      "built_structure": 0.05
+    }
+  },
+  {
+    "id": "H8",
+    "labels": {
+      "walkable": 0.84,
+      "fungus": 0.31,
+      "harvest_candidate": 0.77,
+      "water": 0.03,
+      "built_structure": 0.04
+    }
+  },
+  {
+    "id": "I8",
+    "labels": {
+      "walkable": 0.53,
+      "fungus": 0.12,
+      "harvest_candidate": 0.33,
+      "water": 0.04,
+      "built_structure": 0.03
+    }
+  },
+  {
+    "id": "J8",
+    "labels": {
+      "walkable": 0.3,
+      "fungus": 0.05,
+      "harvest_candidate": 0.13,
+      "water": 0.03,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "A9",
+    "labels": {
+      "walkable": 0.3,
+      "fungus": 0.11,
+      "harvest_candidate": 0.14,
+      "water": 0.03,
+      "built_structure": 0.04
+    }
+  },
+  {
+    "id": "B9",
+    "labels": {
+      "walkable": 0.64,
+      "fungus": 0.14,
+      "harvest_candidate": 0.19,
+      "water": 0.04,
+      "built_structure": 0.4
+    }
+  },
+  {
+    "id": "C9",
+    "labels": {
+      "walkable": 0.87,
+      "fungus": 0.09,
+      "harvest_candidate": 0.08,
+      "water": 0.03,
+      "built_structure": 0.83
+    }
+  },
+  {
+    "id": "D9",
+    "labels": {
+      "walkable": 0.87,
+      "fungus": 0.08,
+      "harvest_candidate": 0.08,
+      "water": 0.03,
+      "built_structure": 0.8
+    }
+  },
+  {
+    "id": "E9",
+    "labels": {
+      "walkable": 0.65,
+      "fungus": 0.11,
+      "harvest_candidate": 0.36,
+      "water": 0.04,
+      "built_structure": 0.15
+    }
+  },
+  {
+    "id": "F9",
+    "labels": {
+      "walkable": 0.82,
+      "fungus": 0.09,
+      "harvest_candidate": 0.47,
+      "water": 0.07,
+      "built_structure": 0.03
+    }
+  },
+  {
+    "id": "G9",
+    "labels": {
+      "walkable": 0.88,
+      "fungus": 0.1,
+      "harvest_candidate": 0.68,
+      "water": 0.05,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "H9",
+    "labels": {
+      "walkable": 0.86,
+      "fungus": 0.09,
+      "harvest_candidate": 0.55,
+      "water": 0.06,
+      "built_structure": 0.02
+    }
+  },
+  {
+    "id": "I9",
+    "labels": {
+      "walkable": 0.69,
+      "fungus": 0.1,
+      "harvest_candidate": 0.28,
+      "water": 0.05,
+      "built_structure": 0.03
+    }
+  },
+  {
+    "id": "J9",
+    "labels": {
+      "walkable": 0.55,
+      "fungus": 0.07,
+      "harvest_candidate": 0.17,
+      "water": 0.04,
+      "built_structure": 0.02
+    }
+  }
+]

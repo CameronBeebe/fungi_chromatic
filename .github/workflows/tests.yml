@@ -8,10 +8,47 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: astral-sh/setup-uv@v6
         with:
-          python-version: '3.12'
-          cache: pip
-      - run: python -m pip install -r requirements-dev.txt
+          version: '0.9.5'
+          enable-cache: true
+      - run: uv sync --locked
       - run: make test
       - run: make format-check
+  native-demo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.9.5'
+          enable-cache: true
+      - run: uv sync --locked --extra demo
+      - name: Install public GBDK 4.5.0
+        shell: bash
+        run: |
+          curl --fail --location --retry 3 -o "$RUNNER_TEMP/gbdk.tar.gz" https://github.com/gbdk-2020/gbdk-2020/releases/download/4.5.0/gbdk-linux64.tar.gz
+          echo "d7857a5f6d135ee4c249043ca26aad9f2ec8ab5d4106d97720d404114f42605c  $RUNNER_TEMP/gbdk.tar.gz" | sha256sum --check
+          tar -xzf "$RUNNER_TEMP/gbdk.tar.gz" -C "$RUNNER_TEMP"
+          echo "GBDK_PATH=$RUNNER_TEMP/gbdk" >> "$GITHUB_ENV"
+      - name: Build Hearth comparison and browser ROM
+        run: sh the-pale-cap/art-tests/hearth-hicolor/build.sh
+      - name: Build and emulator-test offline Heartwood example
+        run: uv run --locked --extra demo python the-pale-cap/tools/scene_prototype.py example --verify
+      - uses: actions/upload-artifact@v4
+        with:
+          name: standalone-experiments
+          if-no-files-found: error
+          path: |
+            LICENSE
+            THIRD_PARTY_NOTICES.md
+            licenses/
+            the-pale-cap/art-tests/hearth-hicolor/bin/hearth-hicolor.gbc
+            the-pale-cap/art-tests/hearth-hicolor/web/
+            the-pale-cap/art-tests/scene-prototype/build/*/runs/*/prototype.gbc
+            the-pale-cap/art-tests/scene-prototype/build/*/runs/*/manifest.json
+            the-pale-cap/art-tests/scene-prototype/build/*/runs/*/verification.json
+            the-pale-cap/art-tests/scene-prototype/build/*/runs/*/before.png
+            the-pale-cap/art-tests/scene-prototype/build/*/runs/*/after.png
+            the-pale-cap/art-tests/scene-prototype/build/*/runs/*/web/

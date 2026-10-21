@@ -1,4 +1,0 @@
-# Offline unit tests and formatting. PyBoy is optional for native ROM playtests.
-Pillow>=10,<13
-numpy>=1.26,<3
-black==25.1.0

@@ -10,8 +10,10 @@ Set `GBDK_PATH` to an installed GBDK-2020 directory, then run `sh build.sh` from
 this directory. The script requires GBDK_PATH and reports missing tools before building.
 It invokes `png2hicolorgb` and `lcc`; prepared standard tiles, font and cropped
 source are checked in. Build output: `bin/hearth-hicolor.gbc`.
-The `web/` folder is a standalone GB Studio/Binjgb preview snapshot. Rebuilding
-the ROM does not automatically update its `web/rom/hearth-hicolor.gbc` copy.
+The build also updates `web/rom/hearth-hicolor.gbc` for the included Binjgb
+player. From the repository root, serve it with `uv run --locked python -m
+http.server 8000 --bind 127.0.0.1 --directory the-pale-cap/art-tests/hearth-hicolor/web`
+and open `http://127.0.0.1:8000/`. No plugin or developer code is needed.
 
 - A/Z: Hi-Color; B/X: standard palettes; Select: toggle rendering.
 - Start/Enter: open or close the menu study.

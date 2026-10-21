@@ -12,25 +12,32 @@ default. Neither model bounds nor probabilities silently become collision.
 
 ## Run
 
-Use Python with Pillow and PyBoy, and the existing GBDK toolchain. On the current
-Mac these are installed by the Chromatic plugin. Set `GBDK_PATH` to the GBDK
-directory before building. No additional packages, remote calls or credentials are required
-after the upstream evidence and native assets exist.
-
-From the repository root (replace revision directories with your local outputs):
+For the self-contained offline example, install [uv](https://docs.astral.sh/uv/getting-started/installation/)
+and run from the repository root:
 
 ```sh
-python3 the-pale-cap/tools/scene_prototype.py prepare \
-  the-pale-cap/art-tests/jev-scene-probe/build/review/3c673440792143ec \
-  --controls the-pale-cap/art-tests/jev-scene-probe/build/controls/4e3839fccc866d55
-
-# prepare prints the candidate directory; use it for both commands below.
-python3 the-pale-cap/tools/scene_prototype.py verify CANDIDATE_DIRECTORY
-python3 the-pale-cap/tools/scene_prototype.py serve CANDIDATE_DIRECTORY
+uv sync --locked
+uv run --locked python the-pale-cap/tools/scene_prototype.py example --serve
 ```
 
+Viewing/editing needs no GBDK, API keys, local concept portfolio or plugin.
+To build, install GBDK 4.5.0, set `GBDK_PATH`, then use:
+
+```sh
+uv sync --locked --extra demo
+uv run --locked --extra demo python the-pale-cap/tools/scene_prototype.py example --verify --serve
+```
+
+The [walkthrough](../../../docs/GETTING_STARTED.md) covers setup and controls.
+The [example](../../../examples/heartwood/README.md) contains selected encoded
+art and recorded evidence; current engine code is snapshotted at preparation.
+For a new locally generated review, use `prepare REVIEW_DIRECTORY --controls
+CONTROLS_DIRECTORY`, then `verify CANDIDATE_DIRECTORY` and `serve
+CANDIDATE_DIRECTORY`, with the same `uv run --locked --extra demo python
+the-pale-cap/tools/scene_prototype.py` prefix. These upstream inputs remain local.
+
 `serve` prints a loopback-only URL with an unguessable session path. Open it in the
-in-app browser. Review geometry and mechanics, check both review confirmations,
+browser. Review geometry and mechanics, check both review confirmations,
 then **Approve & build prototype**. Edits clear those confirmations. The server
 revalidates everything and records the exact reviewed specification. Compilation
 and emulator tests run automatically; only a passing build gets playable/download
