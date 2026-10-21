@@ -76,8 +76,11 @@ remains a separate design decision.
 
 ## Development checks
 
+uv (MIT/Apache-2.0) manages the locked Python environment; it is an external
+development tool, not part of the cartridge. CI uses astral-sh/setup-uv alongside
+GitHub checkout/upload-artifact actions.
 Black (MIT) formats Python tooling, and Gitleaks (MIT) is used for local secret
 scans. These tools are external development dependencies, not cartridge code.
-CI uses GitHub Actions checkout/setup-python; no paid model service is called.
+No paid model service is called in CI.
 The upstream renderer license scope was verified against the linked example
 source and notice on October 20, 2026.

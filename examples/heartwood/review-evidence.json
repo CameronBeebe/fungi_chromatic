@@ -1,0 +1,501 @@
+{
+  "schemaVersion": 1,
+  "runtimeReady": false,
+  "inspectRevision": "6fe17560a504c3c093f4a10f13dec1aa681a0100eeaf58337d3b9aeb6d6e4856",
+  "sourceSHA256": "15d1365212b3ec298bd61b564026cb31f0b7e55d98565bf5092cd4b2f3344795",
+  "objects": [
+    {
+      "name": "Tiered Amber Shelves",
+      "locator": "Three wide layered orange fungal shelves jutting from the massive left-side trunk",
+      "anchorCell": "D2",
+      "inspectText": "Warm amber shelves stack in broad fans from the thick trunk, their pale undersides catching faint light.",
+      "tags": [
+        "fungal shelves",
+        "amber wood",
+        "tree trunk"
+      ],
+      "id": "heartwood.inspect.00",
+      "accepted": true,
+      "reviewReasons": [],
+      "judgments": {
+        "presence": 0.96,
+        "visual_fit": 0.88,
+        "no_promises": 0.96
+      },
+      "box": {
+        "top": 0.04,
+        "bottom": 0.35,
+        "left": 0.06,
+        "right": 0.66
+      },
+      "tagProbabilities": {
+        "fungal shelves": 0.96,
+        "amber wood": 0.6,
+        "tree trunk": 0.74
+      },
+      "enabledActions": [
+        "inspect"
+      ],
+      "briefAlignment": 0.96
+    },
+    {
+      "name": "Gnarled Root Mass",
+      "locator": "Thick brown roots and bark at the base of the trunk with white threads",
+      "anchorCell": "C4",
+      "inspectText": "Exposed roots twist into the plum soil, pale hyphae tracing thin lines across the bark.",
+      "tags": [
+        "gnarled roots",
+        "hyphal threads",
+        "ancient wood"
+      ],
+      "id": "heartwood.inspect.01",
+      "accepted": true,
+      "reviewReasons": [],
+      "judgments": {
+        "presence": 0.94,
+        "visual_fit": 0.84,
+        "no_promises": 0.93
+      },
+      "box": {
+        "top": 0.05,
+        "bottom": 0.54,
+        "left": 0.04,
+        "right": 0.46
+      },
+      "tagProbabilities": {
+        "gnarled roots": 0.92,
+        "hyphal threads": 0.9,
+        "ancient wood": 0.91
+      },
+      "enabledActions": [
+        "inspect"
+      ],
+      "briefAlignment": 0.95
+    },
+    {
+      "name": "Southwest Stone Steps",
+      "locator": "Four ascending gray stone steps along the lower-left path edge",
+      "anchorCell": "A8",
+      "inspectText": "Rough stone steps climb the slope, edges softened by moss and scattered leaves.",
+      "tags": [
+        "stone steps",
+        "mossy path",
+        "traversal"
+      ],
+      "id": "heartwood.inspect.02",
+      "accepted": true,
+      "reviewReasons": [],
+      "judgments": {
+        "presence": 0.85,
+        "visual_fit": 0.67,
+        "no_promises": 0.94
+      },
+      "box": {
+        "top": 0.66,
+        "bottom": 0.89,
+        "left": 0.05,
+        "right": 0.34
+      },
+      "tagProbabilities": {
+        "stone steps": 0.85,
+        "mossy path": 0.37,
+        "traversal": 0.95
+      },
+      "enabledActions": [
+        "inspect"
+      ],
+      "briefAlignment": 0.9
+    },
+    {
+      "name": "Northeast Boardwalk",
+      "locator": "Wooden plank bridge extending rightward from the upper trunk area",
+      "anchorCell": "I2",
+      "inspectText": "Weathered planks form a narrow elevated path above the dark water.",
+      "tags": [
+        "wooden planks",
+        "boardwalk",
+        "traversal"
+      ],
+      "id": "heartwood.inspect.03",
+      "accepted": true,
+      "reviewReasons": [],
+      "judgments": {
+        "presence": 0.95,
+        "visual_fit": 0.86,
+        "no_promises": 0.96
+      },
+      "box": {
+        "top": 0.04,
+        "bottom": 0.33,
+        "left": 0.66,
+        "right": 0.98
+      },
+      "tagProbabilities": {
+        "wooden planks": 0.95,
+        "boardwalk": 0.93,
+        "traversal": 0.97
+      },
+      "enabledActions": [
+        "inspect"
+      ],
+      "briefAlignment": 0.96
+    },
+    {
+      "name": "Dark Still Pool",
+      "locator": "Small oval of deep blue water near the center-right of the clearing",
+      "anchorCell": "G5",
+      "inspectText": "Quiet dark water reflects the muted sky, bordered by soil and low plants.",
+      "tags": [
+        "dark water",
+        "still pool",
+        "plum soil"
+      ],
+      "id": "heartwood.inspect.04",
+      "accepted": false,
+      "reviewReasons": [
+        "presence",
+        "visual_fit",
+        "no_promises"
+      ],
+      "judgments": {
+        "presence": 0.58,
+        "visual_fit": 0.41,
+        "no_promises": 0.75
+      },
+      "box": {
+        "top": 0.45,
+        "bottom": 0.46,
+        "left": 0.56,
+        "right": 0.78
+      },
+      "tagProbabilities": {
+        "dark water": 0.52,
+        "still pool": 0.55,
+        "plum soil": 0.24
+      },
+      "enabledActions": [],
+      "briefAlignment": 0.82
+    },
+    {
+      "name": "Ochre Mushroom Trio",
+      "locator": "Three small asymmetric yellow-brown caps in the lower central clearing",
+      "anchorCell": "F7",
+      "inspectText": "Tiny ochre fans rise from the soil, each with subtle shading on their caps.",
+      "tags": [
+        "ochre caps",
+        "small fungi",
+        "plum soil"
+      ],
+      "id": "heartwood.inspect.05",
+      "accepted": false,
+      "reviewReasons": [
+        "anchor_box_disagreement"
+      ],
+      "judgments": {
+        "presence": 0.82,
+        "visual_fit": 0.8,
+        "no_promises": 0.96
+      },
+      "box": {
+        "top": 0.55,
+        "bottom": 0.56,
+        "left": 0.62,
+        "right": 0.69
+      },
+      "tagProbabilities": {
+        "ochre caps": 0.86,
+        "small fungi": 0.93,
+        "plum soil": 0.91
+      },
+      "enabledActions": [],
+      "briefAlignment": 0.93
+    },
+    {
+      "name": "Scattered Rock Clusters",
+      "locator": "Low gray and blue stones dotting the mid-ground soil and path edges",
+      "anchorCell": "E6",
+      "inspectText": "Rounded stones rest among low vegetation, their surfaces cool and matte.",
+      "tags": [
+        "gray stones",
+        "plum soil",
+        "low vegetation"
+      ],
+      "id": "heartwood.inspect.06",
+      "accepted": true,
+      "reviewReasons": [],
+      "judgments": {
+        "presence": 0.79,
+        "visual_fit": 0.68,
+        "no_promises": 0.96
+      },
+      "box": {
+        "top": 0.55,
+        "bottom": 0.66,
+        "left": 0.04,
+        "right": 0.97
+      },
+      "tagProbabilities": {
+        "gray stones": 0.85,
+        "plum soil": 0.87,
+        "low vegetation": 0.7
+      },
+      "enabledActions": [
+        "inspect"
+      ],
+      "briefAlignment": 0.86
+    },
+    {
+      "name": "White Root Hyphae",
+      "locator": "Fine white filaments spreading from the trunk base into nearby soil",
+      "anchorCell": "B5",
+      "inspectText": "Delicate white threads extend across the ground from the root cluster.",
+      "tags": [
+        "hyphal threads",
+        "white filaments",
+        "fungal ecology"
+      ],
+      "id": "heartwood.inspect.07",
+      "accepted": true,
+      "reviewReasons": [],
+      "judgments": {
+        "presence": 0.91,
+        "visual_fit": 0.85,
+        "no_promises": 0.93
+      },
+      "box": {
+        "top": 0.12,
+        "bottom": 0.47,
+        "left": 0.03,
+        "right": 0.25
+      },
+      "tagProbabilities": {
+        "hyphal threads": 0.88,
+        "white filaments": 0.89,
+        "fungal ecology": 0.94
+      },
+      "enabledActions": [
+        "inspect"
+      ],
+      "briefAlignment": 0.96
+    }
+  ],
+  "relationships": [
+    {
+      "id": "shelves-root",
+      "a": "heartwood.inspect.00",
+      "b": "heartwood.inspect.01",
+      "kind": "attached_to",
+      "probability": 0.92,
+      "presence": {
+        "a": 0.89,
+        "b": 0.87
+      },
+      "reviewReasons": [],
+      "candidateSupported": true,
+      "enabledActions": [],
+      "definition": "Does A visibly grow from, attach to, or rest in direct physical contact with B? Mere proximity or overlapping estimate boxes is insufficient.",
+      "symmetric": false
+    },
+    {
+      "id": "hyphae-root",
+      "a": "heartwood.inspect.07",
+      "b": "heartwood.inspect.01",
+      "kind": "attached_to",
+      "probability": 0.79,
+      "presence": {
+        "a": 0.9,
+        "b": 0.87
+      },
+      "reviewReasons": [],
+      "candidateSupported": true,
+      "enabledActions": [],
+      "definition": "Does A visibly grow from, attach to, or rest in direct physical contact with B? Mere proximity or overlapping estimate boxes is insufficient.",
+      "symmetric": false
+    },
+    {
+      "id": "shelves-hyphae",
+      "a": "heartwood.inspect.00",
+      "b": "heartwood.inspect.07",
+      "kind": "same_growth",
+      "probability": 0.57,
+      "presence": {
+        "a": 0.89,
+        "b": 0.9
+      },
+      "reviewReasons": [
+        "relation_below_review_cutoff"
+      ],
+      "candidateSupported": false,
+      "enabledActions": [],
+      "definition": "Do A and B plausibly form parts of one visibly continuous fungal growth? Visual interpretation only: do not claim genetic identity, shared stats, or an unseen underground connection.",
+      "symmetric": true
+    },
+    {
+      "id": "steps-boardwalk",
+      "a": "heartwood.inspect.02",
+      "b": "heartwood.inspect.03",
+      "kind": "visible_route",
+      "probability": 0.22,
+      "presence": {
+        "a": 0.25,
+        "b": 0.9
+      },
+      "reviewReasons": [
+        "a_presence",
+        "relation_below_review_cutoff"
+      ],
+      "candidateSupported": false,
+      "enabledActions": [],
+      "definition": "Is a continuous, visibly supported walking surface traceable between A and B, with evident transitions in height? Do not infer hidden paths. This is a visual route hypothesis, not verified actor clearance or engine connectivity.",
+      "symmetric": true
+    },
+    {
+      "id": "boardwalk-pool",
+      "a": "heartwood.inspect.03",
+      "b": "heartwood.inspect.04",
+      "kind": "overlooks",
+      "probability": 0.7,
+      "presence": {
+        "a": 0.9,
+        "b": 0.24
+      },
+      "reviewReasons": [
+        "b_inspect_unresolved",
+        "b_presence"
+      ],
+      "candidateSupported": false,
+      "enabledActions": [],
+      "definition": "Is A visibly elevated above or overlooking B in the depicted scene? Screen-up alone is insufficient; use perspective and occlusion cues.",
+      "symmetric": false
+    },
+    {
+      "id": "fans-shelves",
+      "a": "heartwood.inspect.05",
+      "b": "heartwood.inspect.00",
+      "kind": "same_growth",
+      "probability": 0.36,
+      "presence": {
+        "a": 0.55,
+        "b": 0.89
+      },
+      "reviewReasons": [
+        "a_inspect_unresolved",
+        "a_presence",
+        "relation_below_review_cutoff"
+      ],
+      "candidateSupported": false,
+      "enabledActions": [],
+      "definition": "Do A and B plausibly form parts of one visibly continuous fungal growth? Visual interpretation only: do not claim genetic identity, shared stats, or an unseen underground connection.",
+      "symmetric": true
+    }
+  ],
+  "policy": {
+    "version": 1,
+    "relationCutoff": 0.7,
+    "presenceCutoff": 0.65,
+    "visualReviewCutoff": 0.7,
+    "note": "Provisional review cutoffs, not calibrated accuracy. No probability products or automatic gameplay promotion."
+  },
+  "exactAudit": {
+    "changedPixels": 280,
+    "outsidePixels": 0,
+    "changedBoundsXYXY": [
+      104,
+      80,
+      136,
+      104
+    ],
+    "footprintXYWH": [
+      104,
+      80,
+      32,
+      24
+    ],
+    "localityPassed": true,
+    "nonemptyChangePassed": true,
+    "passed": true,
+    "patchBytes": 192,
+    "patchPatterns": 12,
+    "patternIds": [
+      213,
+      214,
+      215,
+      216,
+      233,
+      234,
+      235,
+      236,
+      253,
+      254,
+      255,
+      256
+    ],
+    "paletteScheduleUnchanged": true,
+    "mapAndAttributesUnchanged": true,
+    "sourceHashes": {
+      "til": "a3103c3a43135d37b3e007683f19811405314f91f10fc58d84efe814cc4d75d4",
+      "map": "e126297518a7c20b4b9f753a576bdf57becc0ff3b054ff4c0e155239ba424aec",
+      "atr": "091d6186506152a7f49d83d7550e9f791382a7c8b6c270bd12ff04127de0fc98",
+      "pal": "7235f5d8665692abe2822c706b904ca783ea339851f267ac912da097c238a4c3"
+    },
+    "patchSHA256": "273b6999d527316525b85e91cfe4f3a56317937215ced42d867c4d9f6b65e260",
+    "afterTilesSHA256": "e41887e229d9031c0cf1875f7d0453ab549e33edbf74c7a20aa18c43921f12d7",
+    "scope": "Existing Heartwood encoded harvest patch. No ROM timing or gameplay certification."
+  },
+  "comparison": {
+    "intact_visible": {
+      "probability": 0.42,
+      "question": "In BEFORE, are the small ochre mushroom fans visibly identifiable inside the target footprint? Do not assume they exist because the intended edit names them."
+    },
+    "depleted_readable": {
+      "probability": 0.85,
+      "question": "Comparing BEFORE to AFTER, does AFTER read as those mushroom fans having been harvested or depleted? Disappearance alone may be ambiguous; judge the actual visual change."
+    },
+    "remains_visible": {
+      "probability": 0.87,
+      "question": "In AFTER, are small cut stems or remnants visibly distinguishable at the former fan positions? Judge pixels, not the stated intent."
+    },
+    "ground_coherent": {
+      "probability": 0.67,
+      "question": "Does AFTER show coherent ground and shading within and around the edited footprint, without obvious rectangular seams or pasted-looking patches?"
+    },
+    "surroundings_preserved": {
+      "probability": 0.84,
+      "question": "Do the scene composition, unrelated objects and lighting outside the target remain visually consistent between BEFORE and AFTER? This is a perceptual judgment; code separately checks exact pixels."
+    }
+  },
+  "comparisonReview": {
+    "reviewReasons": [
+      "intact_visible",
+      "ground_coherent"
+    ],
+    "candidateSupported": false,
+    "enabledActions": [],
+    "note": "Separate provisional gates, never an averaged approval score. Human review and target identity resolution still required."
+  },
+  "patchTarget": {
+    "id": "heartwood.harness.ochre-fans",
+    "source": "authored native harness footprint",
+    "inspectObjectId": null,
+    "note": "The Inspect mushroom proposal has unresolved bounds. This patch is NOT automatically assigned to that proposal."
+  },
+  "provenance": [
+    {
+      "stage": "relationships",
+      "requestFingerprint": "a1c04d8b3f7445fb209edfbed9ba8d52e90e8c3d4ff52d378819260a493bb9bd",
+      "model": "jev-1.14.0"
+    },
+    {
+      "stage": "harvest-comparison",
+      "requestFingerprint": "6674ae534b2135eb3a8e04939c76c785f3e4d63d849d1a23c4b3898dea4481ad",
+      "model": "jev-1.14.0"
+    }
+  ],
+  "promotionBlockers": [
+    "review_relationships_and_object_extents",
+    "resolve_mushroom_identity",
+    "validate_actor_clearance_and_routes",
+    "integrate_scene_package_with_native_engine"
+  ],
+  "revision": "3c673440792143ecc522bf4eb1100400f2ba1507acae78f99ba230e053f938b7"
+}

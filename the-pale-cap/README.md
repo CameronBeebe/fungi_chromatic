@@ -1,6 +1,6 @@
 # The Pale Cap
 
-An offline Game Boy Color prototype of Fungi Fortress: move a cursor, queue
+An experimental, offline Game Boy Color game: move a cursor, queue
 harvests for the played dwarf, spend fungi to grow the network, and reveal a
 neon mycelial layer. The played dwarf's spore exposure determines your view.
 
@@ -27,8 +27,9 @@ Bloom costs two fungi to awaken a root. Cast at an awakened root to regrow its
 harvested patches for one fungus. Reveal is free in this prototype. Awakening
 all three roots makes Vesper available during Reveal.
 
-Open `project.gbsproj` in GB Studio to edit. The current integrated cartridge is
-`build/rom/the-pale-cap-hicolor-transition.gbc`; build outputs are local and ignored by Git.
+Open `project.gbsproj` in GB Studio 4.3.2 to edit/play; Export ROM creates
+`build/rom/game.gb`. Build outputs are local and ignored by Git. No hardware or
+developer code is required for emulator play. See the [setup walkthrough](../docs/GETTING_STARTED.md).
 Saving is available only at home after extraction. Saves use version/checksum
 validation and two alternating records. The latest home save is restored on
 boot; there is no mid-run resume. No API keys, Wi-Fi, LLM calls, or Jev calls are
@@ -65,14 +66,14 @@ currently atmospheric; language-based interactions are tracked in TODO.md.
 
 ## Dependencies and notices
 
-GB Studio and GBDK build the native game. Python art tools require Pillow;
-the newer conversion and seam-audit tools also require NumPy. Native emulator
-automation uses PyBoy; host state tests require Python and a C compiler.
+GB Studio and GBDK build the native game. `uv sync --locked` installs the pinned
+Python art/test dependencies; `--extra demo` adds PyBoy for native emulator
+automation. Host state tests also require a C compiler.
 See [third-party notices](../THIRD_PARTY_NOTICES.md) before redistributing source,
 ROMs or preview files. Preserve the existing GB Studio MIT `LICENSE`.
 
 To regenerate the integrated Hi-Color arrays, run
-`python3 tools/prepare_hearth_hicolor.py`. It packages the checked-in converter
+`uv run --locked python tools/prepare_hearth_hicolor.py`. It packages the checked-in converter
 outputs using tile banks that preserve GBVM's font allocation. Rebuild the study
 first only when intentionally changing its source/conversion. The integration
 test accepts `--rom`, `--output`, and `--hicolor`; the last option checks room

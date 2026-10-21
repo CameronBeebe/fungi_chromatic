@@ -98,3 +98,21 @@ snapshot identity, exact pixel bounds, route constraints and approval gates.
 These tests require no model calls, ROM or private artwork. Logical recovery does
 not prove electrical power-loss behavior. CI runs this suite and formatting;
 full integrated-game compilation and physical hardware checks are separate.
+
+## Public onboarding check — October 21, 2026
+
+The integrated game rebuilt from a temporary checkout of tracked files using
+GB Studio 4.3.2's official CLI. The 256 KiB ROM SHA-256 is
+`d8fac4895098f2c33845356c96d909765cc5b009167e4c57bb16e888fab5265b`.
+`tests/playtest_home.py` passed new game/home, Luma's fork, animated inspection,
+extraction, stash deposit, save and cold boot from battery SRAM. This run did
+not use `--hicolor` (that extended check needs matching debug symbols), so it
+is not a new certification of transition timing or music. Actual emulator
+frames are in `docs/media/` with provenance. No hardware was flashed.
+
+The checked-in Heartwood example also compiled into the existing 64 KiB ROM
+`e30b2961ada603e569df5bd920c04c4ffd0b0f15cab42ec855ee6e591e2d8fc0`.
+Its native verification passed movement, walk-mask adherence, supply/cost/yield,
+work duration, repeat-harvest rejection, reset and menu persistence. Public
+setup and CI now use `uv.lock`; the example replays recorded model evidence
+without API calls. See `docs/GETTING_STARTED.md` from the repository root.

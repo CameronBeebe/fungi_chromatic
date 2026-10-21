@@ -158,6 +158,53 @@ def load_candidate(folder):
     return candidate
 
 
+def example(example_dir=None, output_dir=None):
+    """Materialize the public, frozen evidence with the current native sources.
+
+    The checked-in seed has no executable engine copy or generated runs. Its
+    original identity records provenance; current engine hashes create a new
+    candidate when source changes. Never overwrite a previously edited snapshot.
+    """
+    source = example_dir or PROJECT.parent / "examples/heartwood"
+    output = output_dir or OUT
+    seed = json.loads((source / "candidate.json").read_text())
+    if contract.identity({k: v for k, v in seed.items() if k != "revision"}) != seed["revision"]:
+        raise ValueError("Example identity mismatch")
+    if set(seed["artHashes"]) != set(ART_FILES) or set(seed["presentationHashes"]) != {
+        "source.png",
+        "labels.json",
+        "review-evidence.json",
+        "control-evidence.json",
+    }:
+        raise ValueError("Unexpected example files")
+    output.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix="example-", dir=output) as temp:
+        staging = Path(temp) / "candidate"
+        staging.mkdir()
+        (staging / "art").mkdir()
+        (staging / "engine").mkdir()
+        for name in ART_FILES:
+            shutil.copy2(source / "art" / name, staging / "art" / name)
+        for name in seed["presentationHashes"]:
+            shutil.copy2(source / name, staging / name)
+        for name, path in ENGINE_FILES.items():
+            shutil.copy2(path, staging / "engine" / name)
+        candidate = {**seed, "exampleSeedRevision": seed["revision"]}
+        candidate["engineHashes"] = {
+            name: patch.sha((staging / "engine" / name).read_bytes()) for name in ENGINE_FILES
+        }
+        del candidate["revision"]
+        candidate["revision"] = contract.identity(candidate)
+        json_write(staging / "candidate.json", candidate)
+        load_candidate(staging)
+        target = output / candidate["revision"][:16]
+        if target.exists():
+            load_candidate(target)
+        else:
+            staging.rename(target)
+    return target, candidate
+
+
 def smoke_test(folder, spec):
     from pyboy import PyBoy
 
@@ -304,7 +351,7 @@ def build(folder, spec, approval_kind):
     configured = os.environ.get("GBDK_PATH")
     if not configured:
         raise ValueError("Set GBDK_PATH to a GBDK-2020 installation before building a ROM")
-    lcc = Path(configured).expanduser() / "bin/lcc"
+    lcc = Path(configured).expanduser().resolve() / "bin/lcc"
     if not lcc.is_file():
         raise ValueError("Configured GBDK compiler is unavailable")
     recipe = {
@@ -522,11 +569,30 @@ def main():
     p = sub.add_parser("prepare")
     p.add_argument("review_dir", type=Path)
     p.add_argument("--controls", type=Path)
+    p = sub.add_parser("example", help="Use checked-in Heartwood art and recorded evidence offline")
+    p.add_argument(
+        "--verify", action="store_true", help="Compile and emulator-test the default fixture"
+    )
+    p.add_argument(
+        "--serve", action="store_true", help="Open a local review server (prints its URL)"
+    )
     for command in ("serve", "verify"):
         p = sub.add_parser(command)
         p.add_argument("candidate_dir", type=Path)
     args = parser.parse_args()
-    if args.command == "prepare":
+    if args.command == "example":
+        folder, candidate = example()
+        print(json.dumps({"candidate": str(folder), "revision": candidate["revision"]}), flush=True)
+        if args.verify:
+            spec = {
+                **copy.deepcopy(candidate["defaults"]),
+                "candidateRevision": candidate["revision"],
+            }
+            fixture, manifest = build(folder, spec, "automation_fixture")
+            print(json.dumps({"fixture": str(fixture), "manifest": manifest}), flush=True)
+        if args.serve:
+            serve(folder)
+    elif args.command == "prepare":
         folder, candidate = prepare(args.review_dir, args.controls)
         print(json.dumps({"candidate": str(folder), "revision": candidate["revision"]}))
     elif args.command == "serve":
@@ -539,4 +605,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except (ValueError, FileNotFoundError, ModuleNotFoundError) as exc:
+        raise SystemExit(f"Error: {exc}") from None

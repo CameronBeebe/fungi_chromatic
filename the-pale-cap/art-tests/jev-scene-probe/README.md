@@ -19,8 +19,8 @@ cartridge. **The integrated GB Studio game does not consume these outputs yet.**
    spawn/work positions and a harvest economy, approve, compile and emulator-test
    a separate Heartwood ROM. One fixed room/patch is supported today.
 
-Each Python tool has `--help`. Run from the repository root with Python 3.10+ and
-Pillow; install `requirements-dev.txt` for offline tests. The pinned Jev model is
+Each Python tool has `--help`. Run `uv sync --locked` from the repository root,
+then invoke tools with `uv run --locked python`. The pinned Jev model is
 centralized in [`pipeline_models.py`](../../tools/pipeline_models.py).
 
 ## Calls, caches and review
@@ -45,9 +45,10 @@ new mushroom-location boxes had no overlap. This is a diagnostic, not a general
 accuracy claim. Automation fixtures are not human-approved scene packages.
 
 Inputs/results, request caches and generated players live in ignored `build/`.
-The initial Heartwood inputs require local original concept art and the native
-[Heartwood harness](../heartwood-playable/README.md); they are not shipped with a
-fresh clone. No concept image is silently uploaded without an explicit live run.
+Recreating the initial model runs requires local original concept art and the
+native [Heartwood harness](../heartwood-playable/README.md). A selected
+[offline example](../../../examples/heartwood/README.md) ships the already encoded
+art and recorded evidence for the review-to-ROM loop; it does not rerun generation. No concept image is silently uploaded without an explicit live run.
 
 See [scene architecture](../../SCENE-GENERATION.md) and the
 [historical experiment notes](../../../docs/notes/scene-pipeline-experiments.md)

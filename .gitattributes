@@ -1,0 +1,6 @@
+# Frozen converter inputs are byte-hashed; preserve their original trailing lines.
+examples/heartwood/art/master.[ch] whitespace=-blank-at-eof
+examples/heartwood/art/*.til binary
+examples/heartwood/art/*.pal binary
+examples/heartwood/art/*.map binary
+examples/heartwood/art/*.atr binary

@@ -1,0 +1,567 @@
+{
+  "schemaVersion": 1,
+  "parentRevision": "3c673440792143ecc522bf4eb1100400f2ba1507acae78f99ba230e053f938b7",
+  "inspectRevision": "6fe17560a504c3c093f4a10f13dec1aa681a0100eeaf58337d3b9aeb6d6e4856",
+  "sourceSHA256": "15d1365212b3ec298bd61b564026cb31f0b7e55d98565bf5092cd4b2f3344795",
+  "runtimeReady": false,
+  "plan": {
+    "parentRevision": "3c673440792143ecc522bf4eb1100400f2ba1507acae78f99ba230e053f938b7",
+    "cases": [
+      {
+        "id": "forward",
+        "name": "Intact \u2192 depleted",
+        "before": "intact",
+        "after": "depleted",
+        "expected": {
+          "depleted_readable": true,
+          "changed": true,
+          "material_lost": true,
+          "material_gained": false
+        }
+      },
+      {
+        "id": "same_intact",
+        "name": "Intact \u2192 same intact",
+        "before": "intact",
+        "after": "intact",
+        "expected": {
+          "depleted_readable": false,
+          "changed": false,
+          "material_lost": false,
+          "material_gained": false
+        }
+      },
+      {
+        "id": "same_depleted",
+        "name": "Depleted \u2192 same depleted",
+        "before": "depleted",
+        "after": "depleted",
+        "expected": {
+          "depleted_readable": false,
+          "changed": false,
+          "material_lost": false,
+          "material_gained": false
+        }
+      },
+      {
+        "id": "reverse",
+        "name": "Depleted \u2192 intact",
+        "before": "depleted",
+        "after": "intact",
+        "expected": {
+          "depleted_readable": false,
+          "changed": true,
+          "material_lost": false,
+          "material_gained": true
+        }
+      }
+    ],
+    "policy": {
+      "version": 1,
+      "expectedYesMinimum": 0.7,
+      "expectedNoMaximum": 0.3,
+      "presenceMinimum": 0.65,
+      "scope": "Four deliberately constructed pairs from one authored patch, not a held-out accuracy benchmark. Cutoffs are provisional. No automatic promotion."
+    },
+    "requestFingerprints": {
+      "original_forward": "6674ae534b2135eb3a8e04939c76c785f3e4d63d849d1a23c4b3898dea4481ad",
+      "original_same_intact": "69a1fb2cc5fc2f55662b5bb4f65354def09c3b224505b32386627384b0b449a0",
+      "original_same_depleted": "de2ed3bd6a01a39859440a1e351db92583a65d936419d17ce096f49c5a65fd46",
+      "original_reverse": "1fef1de2da6ce7b564389366a02dcf73e9c0a2b0f78f34bdf8527cc44109d39a",
+      "transition_forward": "dc720445f6fe823d71cd7b4bf2ba2beee5a01b6c34d654a10d8d1e100e11810d",
+      "transition_same_intact": "b74f54ea0f603b4a89b4d692b0073380f363388240d327adc8ee68d463c0519d",
+      "transition_same_depleted": "1307c460454bbbb6d23bb10b186046b7627c0d57f93d6d4414358ac813ddabcf",
+      "transition_reverse": "18588a3b217e1ec803ba733ab101f2927ac0022e313aa010c41278686aa0e367",
+      "localize_full": "695ea9ed1d3dd337abe3324f379dde4c6594853791ca915b55553e7d95d496a4",
+      "localize_guided": "f56f58ec755f89667bd27d972829e5c69b6b46c73a649d7b81e70c31e1eae7de"
+    },
+    "maximumNewCalls": 9,
+    "runPolicy": "One request per input and prompt version; no automatic retries. Expected labels are not sent to the model."
+  },
+  "cases": [
+    {
+      "id": "forward",
+      "name": "Intact \u2192 depleted",
+      "before": "intact",
+      "after": "depleted",
+      "version": "original",
+      "judgments": {
+        "depleted_readable": {
+          "probability": 0.85,
+          "expected": true,
+          "meetsProvisionalExpectation": true
+        }
+      },
+      "exactAudit": {
+        "changedPixels": 280,
+        "outsidePixels": 0,
+        "changedBoundsXYXY": [
+          104,
+          80,
+          136,
+          104
+        ],
+        "footprintXYWH": [
+          104,
+          80,
+          32,
+          24
+        ],
+        "localityPassed": true,
+        "nonemptyChangePassed": true,
+        "passed": true
+      },
+      "meetsAllExpectations": true
+    },
+    {
+      "id": "same_intact",
+      "name": "Intact \u2192 same intact",
+      "before": "intact",
+      "after": "intact",
+      "version": "original",
+      "judgments": {
+        "depleted_readable": {
+          "probability": 0.02,
+          "expected": false,
+          "meetsProvisionalExpectation": true
+        }
+      },
+      "exactAudit": {
+        "changedPixels": 0,
+        "outsidePixels": 0,
+        "changedBoundsXYXY": null,
+        "footprintXYWH": [
+          104,
+          80,
+          32,
+          24
+        ],
+        "localityPassed": true,
+        "nonemptyChangePassed": false,
+        "passed": false
+      },
+      "meetsAllExpectations": true
+    },
+    {
+      "id": "same_depleted",
+      "name": "Depleted \u2192 same depleted",
+      "before": "depleted",
+      "after": "depleted",
+      "version": "original",
+      "judgments": {
+        "depleted_readable": {
+          "probability": 0.03,
+          "expected": false,
+          "meetsProvisionalExpectation": true
+        }
+      },
+      "exactAudit": {
+        "changedPixels": 0,
+        "outsidePixels": 0,
+        "changedBoundsXYXY": null,
+        "footprintXYWH": [
+          104,
+          80,
+          32,
+          24
+        ],
+        "localityPassed": true,
+        "nonemptyChangePassed": false,
+        "passed": false
+      },
+      "meetsAllExpectations": true
+    },
+    {
+      "id": "reverse",
+      "name": "Depleted \u2192 intact",
+      "before": "depleted",
+      "after": "intact",
+      "version": "original",
+      "judgments": {
+        "depleted_readable": {
+          "probability": 0.07,
+          "expected": false,
+          "meetsProvisionalExpectation": true
+        }
+      },
+      "exactAudit": {
+        "changedPixels": 280,
+        "outsidePixels": 0,
+        "changedBoundsXYXY": [
+          104,
+          80,
+          136,
+          104
+        ],
+        "footprintXYWH": [
+          104,
+          80,
+          32,
+          24
+        ],
+        "localityPassed": true,
+        "nonemptyChangePassed": true,
+        "passed": true
+      },
+      "meetsAllExpectations": true
+    },
+    {
+      "id": "forward",
+      "name": "Intact \u2192 depleted",
+      "before": "intact",
+      "after": "depleted",
+      "version": "transition",
+      "judgments": {
+        "changed": {
+          "probability": 0.99,
+          "expected": true,
+          "meetsProvisionalExpectation": true
+        },
+        "material_lost": {
+          "probability": 0.98,
+          "expected": true,
+          "meetsProvisionalExpectation": true
+        },
+        "material_gained": {
+          "probability": 0.03,
+          "expected": false,
+          "meetsProvisionalExpectation": true
+        }
+      },
+      "exactAudit": {
+        "changedPixels": 280,
+        "outsidePixels": 0,
+        "changedBoundsXYXY": [
+          104,
+          80,
+          136,
+          104
+        ],
+        "footprintXYWH": [
+          104,
+          80,
+          32,
+          24
+        ],
+        "localityPassed": true,
+        "nonemptyChangePassed": true,
+        "passed": true
+      },
+      "meetsAllExpectations": true
+    },
+    {
+      "id": "same_intact",
+      "name": "Intact \u2192 same intact",
+      "before": "intact",
+      "after": "intact",
+      "version": "transition",
+      "judgments": {
+        "changed": {
+          "probability": 0.04,
+          "expected": false,
+          "meetsProvisionalExpectation": true
+        },
+        "material_lost": {
+          "probability": 0.03,
+          "expected": false,
+          "meetsProvisionalExpectation": true
+        },
+        "material_gained": {
+          "probability": 0.06,
+          "expected": false,
+          "meetsProvisionalExpectation": true
+        }
+      },
+      "exactAudit": {
+        "changedPixels": 0,
+        "outsidePixels": 0,
+        "changedBoundsXYXY": null,
+        "footprintXYWH": [
+          104,
+          80,
+          32,
+          24
+        ],
+        "localityPassed": true,
+        "nonemptyChangePassed": false,
+        "passed": false
+      },
+      "meetsAllExpectations": true
+    },
+    {
+      "id": "same_depleted",
+      "name": "Depleted \u2192 same depleted",
+      "before": "depleted",
+      "after": "depleted",
+      "version": "transition",
+      "judgments": {
+        "changed": {
+          "probability": 0.05,
+          "expected": false,
+          "meetsProvisionalExpectation": true
+        },
+        "material_lost": {
+          "probability": 0.03,
+          "expected": false,
+          "meetsProvisionalExpectation": true
+        },
+        "material_gained": {
+          "probability": 0.05,
+          "expected": false,
+          "meetsProvisionalExpectation": true
+        }
+      },
+      "exactAudit": {
+        "changedPixels": 0,
+        "outsidePixels": 0,
+        "changedBoundsXYXY": null,
+        "footprintXYWH": [
+          104,
+          80,
+          32,
+          24
+        ],
+        "localityPassed": true,
+        "nonemptyChangePassed": false,
+        "passed": false
+      },
+      "meetsAllExpectations": true
+    },
+    {
+      "id": "reverse",
+      "name": "Depleted \u2192 intact",
+      "before": "depleted",
+      "after": "intact",
+      "version": "transition",
+      "judgments": {
+        "changed": {
+          "probability": 0.99,
+          "expected": true,
+          "meetsProvisionalExpectation": true
+        },
+        "material_lost": {
+          "probability": 0.02,
+          "expected": false,
+          "meetsProvisionalExpectation": true
+        },
+        "material_gained": {
+          "probability": 0.99,
+          "expected": true,
+          "meetsProvisionalExpectation": true
+        }
+      },
+      "exactAudit": {
+        "changedPixels": 280,
+        "outsidePixels": 0,
+        "changedBoundsXYXY": [
+          104,
+          80,
+          136,
+          104
+        ],
+        "footprintXYWH": [
+          104,
+          80,
+          32,
+          24
+        ],
+        "localityPassed": true,
+        "nonemptyChangePassed": true,
+        "passed": true
+      },
+      "meetsAllExpectations": true
+    }
+  ],
+  "originalTarget": {
+    "name": "Ochre Mushroom Trio",
+    "locator": "Three small asymmetric yellow-brown caps in the lower central clearing",
+    "anchorCell": "F7",
+    "inspectText": "Tiny ochre fans rise from the soil, each with subtle shading on their caps.",
+    "tags": [
+      "ochre caps",
+      "small fungi",
+      "plum soil"
+    ],
+    "id": "heartwood.inspect.05",
+    "accepted": false,
+    "reviewReasons": [
+      "anchor_box_disagreement"
+    ],
+    "judgments": {
+      "presence": 0.82,
+      "visual_fit": 0.8,
+      "no_promises": 0.96
+    },
+    "box": {
+      "top": 0.55,
+      "bottom": 0.56,
+      "left": 0.62,
+      "right": 0.69
+    },
+    "tagProbabilities": {
+      "ochre caps": 0.86,
+      "small fungi": 0.93,
+      "plum soil": 0.91
+    },
+    "enabledActions": [],
+    "briefAlignment": 0.93
+  },
+  "originalBoxMetrics": {
+    "boundsXYXY": [
+      99.2,
+      79.2,
+      110.39999999999999,
+      80.64000000000001
+    ],
+    "widthPixels": 11.199999999999989,
+    "heightPixels": 1.440000000000012,
+    "centerInAuthoredFootprint": false,
+    "fractionOfBoxInsideFootprint": 0.2539682539682576,
+    "note": "An edit footprint is larger than object art. Overlap is a location diagnostic, not segmentation accuracy."
+  },
+  "localization": {
+    "full": {
+      "presence": 0.89,
+      "boxConfidence": 0.82,
+      "box": {
+        "top": 0.48,
+        "bottom": 0.65,
+        "left": 0.62,
+        "right": 0.77
+      },
+      "coordinateFrame": "full_scene",
+      "metrics": {
+        "boundsXYXY": [
+          99.2,
+          69.12,
+          123.2,
+          93.60000000000001
+        ],
+        "widthPixels": 24.0,
+        "heightPixels": 24.480000000000004,
+        "centerInAuthoredFootprint": true,
+        "fractionOfBoxInsideFootprint": 0.4444444444444447,
+        "note": "An edit footprint is larger than object art. Overlap is a location diagnostic, not segmentation accuracy."
+      },
+      "clipping": {},
+      "reviewReasons": [],
+      "supportedCandidate": true,
+      "automaticallyLinked": false
+    },
+    "guided": {
+      "presence": 0.9,
+      "boxConfidence": 0.49,
+      "box": {
+        "top": 0.45,
+        "bottom": 0.63,
+        "left": 0.61,
+        "right": 0.78
+      },
+      "coordinateFrame": "crop",
+      "metrics": {
+        "boundsXYXY": [
+          125.28,
+          90.0,
+          133.44,
+          97.2
+        ],
+        "widthPixels": 8.159999999999997,
+        "heightPixels": 7.200000000000003,
+        "centerInAuthoredFootprint": true,
+        "fractionOfBoxInsideFootprint": 1.0,
+        "note": "An edit footprint is larger than object art. Overlap is a location diagnostic, not segmentation accuracy."
+      },
+      "clipping": {
+        "left": 0.22,
+        "top": 0.16,
+        "right": 0.15,
+        "bottom": 0.11
+      },
+      "reviewReasons": [],
+      "supportedCandidate": true,
+      "automaticallyLinked": false
+    }
+  },
+  "cropBoundsXYXY": [
+    96,
+    72,
+    144,
+    112
+  ],
+  "footprintXYWH": [
+    104,
+    80,
+    32,
+    24
+  ],
+  "transitionQuestions": {
+    "changed": "Is there any discernible difference in the depicted objects or ground INSIDE the central target area between the first and second image? Identical images mean no, regardless of whether the scene looks depleted.",
+    "material_lost": "From the first image to the second, has visible above-ground material in the central target cluster been removed or reduced? Compare corresponding pixels and shapes. A depleted-looking second image alone is insufficient: the first must show material that the second lacks. No for unchanged images or material appearing.",
+    "material_gained": "From the first image to the second, has visible above-ground material appeared or increased in the central target cluster? Compare corresponding pixels and shapes. No for unchanged images or material disappearing."
+  },
+  "originalQuestion": "Comparing BEFORE to AFTER, does AFTER read as those mushroom fans having been harvested or depleted? Disappearance alone may be ambiguous; judge the actual visual change.",
+  "provenance": [
+    {
+      "name": "original_forward",
+      "model": "jev-1.14.0",
+      "requestFingerprint": "6674ae534b2135eb3a8e04939c76c785f3e4d63d849d1a23c4b3898dea4481ad"
+    },
+    {
+      "name": "original_same_intact",
+      "model": "jev-1.14.0",
+      "requestFingerprint": "69a1fb2cc5fc2f55662b5bb4f65354def09c3b224505b32386627384b0b449a0"
+    },
+    {
+      "name": "original_same_depleted",
+      "model": "jev-1.14.0",
+      "requestFingerprint": "de2ed3bd6a01a39859440a1e351db92583a65d936419d17ce096f49c5a65fd46"
+    },
+    {
+      "name": "original_reverse",
+      "model": "jev-1.14.0",
+      "requestFingerprint": "1fef1de2da6ce7b564389366a02dcf73e9c0a2b0f78f34bdf8527cc44109d39a"
+    },
+    {
+      "name": "transition_forward",
+      "model": "jev-1.14.0",
+      "requestFingerprint": "dc720445f6fe823d71cd7b4bf2ba2beee5a01b6c34d654a10d8d1e100e11810d"
+    },
+    {
+      "name": "transition_same_intact",
+      "model": "jev-1.14.0",
+      "requestFingerprint": "b74f54ea0f603b4a89b4d692b0073380f363388240d327adc8ee68d463c0519d"
+    },
+    {
+      "name": "transition_same_depleted",
+      "model": "jev-1.14.0",
+      "requestFingerprint": "1307c460454bbbb6d23bb10b186046b7627c0d57f93d6d4414358ac813ddabcf"
+    },
+    {
+      "name": "transition_reverse",
+      "model": "jev-1.14.0",
+      "requestFingerprint": "18588a3b217e1ec803ba733ab101f2927ac0022e313aa010c41278686aa0e367"
+    },
+    {
+      "name": "localize_full",
+      "model": "jev-1.14.0",
+      "requestFingerprint": "695ea9ed1d3dd337abe3324f379dde4c6594853791ca915b55553e7d95d496a4"
+    },
+    {
+      "name": "localize_guided",
+      "model": "jev-1.14.0",
+      "requestFingerprint": "f56f58ec755f89667bd27d972829e5c69b6b46c73a649d7b81e70c31e1eae7de"
+    }
+  ],
+  "notes": [
+    "Known unchanged pairs have zero changed pixels. Nonempty-change failure is expected for those controls, not an asset bug.",
+    "The guided search uses an authored region, not an automatically discovered location.",
+    "The parent proposal, its acceptance status and its ID are unchanged. New boxes are review candidates, not collision masks.",
+    "These four related cases diagnose one scene. They do not establish general accuracy or calibrated probabilities."
+  ],
+  "localizationAgreement": {
+    "intersectionOverUnion": 0.0,
+    "requiresHumanReview": true,
+    "automaticallyLinked": false
+  },
+  "revision": "4e3839fccc866d551eefffe40ee2ca2cfbe9c997f6929adb597acf9d34a58292"
+}
