@@ -11,6 +11,18 @@ commands = [
     [sys.executable, "the-pale-cap/tests/test_home_save.py"],
     [sys.executable, "the-pale-cap/tests/test_inventory.py"],
     [sys.executable, "-m", "unittest", "discover", "-s", "the-pale-cap/tools", "-p", "test_*.py"],
+    [
+        sys.executable,
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "evals/judge_calibration",
+        "-t",
+        ".",
+        "-p",
+        "test_*.py",
+    ],
 ]
 for command in commands:
     subprocess.run(command, cwd=ROOT, env=env, check=True)
