@@ -2,8 +2,8 @@
 #include <gbdk/platform.h>
 #include "vm.h"
 #include <stdint.h>
-#define COUNT 20
-#define SIZE 55
+#define COUNT 44
+#define SIZE (12+2*COUNT+3)
 #define VALUE(n) (*(UWORD *)VM_REF_TO_PTR(-(n)-1))
 #define OUT(n) (script_memory[VALUE(n)])
 static uint8_t record[SIZE], best[SIZE];
@@ -14,11 +14,16 @@ static uint16_t crc(const uint8_t *p,uint8_t n) {
 static uint32_t sequence(const uint8_t *p){return (uint32_t)p[8]|(uint32_t)p[9]<<8|(uint32_t)p[10]<<16|(uint32_t)p[11]<<24;}
 static uint16_t word(const uint8_t *p,uint8_t i){return (uint16_t)p[12+2*i]|(uint16_t)p[13+2*i]<<8;}
 static uint8_t valid(const uint8_t *p){
- uint16_t c;
- if(p[0]!='P'||p[1]!='C'||p[2]!='H'||p[3]!='1'||p[4]!=1||p[5]!=COUNT||p[6]||p[7]||p[54]!=0xa5)return 0;
- c=crc(p,52);if(p[52]!=(uint8_t)c||p[53]!=(uint8_t)(c>>8))return 0;
+ uint16_t c;uint8_t end;
+ if(p[0]!='P'||p[1]!='C'||p[2]!='H'||p[3]!='1'||!((p[4]==1&&p[5]==20)||(p[4]==2&&p[5]==COUNT))||p[6]||p[7])return 0;
+ end=12+2*p[5];
+ if(p[end+2]!=0xa5)return 0;
+ c=crc(p,end);if(p[end]!=(uint8_t)c||p[end+1]!=(uint8_t)(c>>8))return 0;
  if(word(p,17)>2||word(p,18)>1||(word(p,18)&&word(p,17)!=1))return 0;
  if(word(p,0)>32767||word(p,19)>999||word(p,3)>1||word(p,4)>3||word(p,8)>100)return 0;
+ if(p[4]==2){uint8_t i;for(i=20;i<COUNT;i+=12){
+  if(word(p,i)>=31||word(p,i+1)>=28||word(p,i+2)>2||word(p,i+3)>9||word(p,i+4)>3||word(p,i+5)>999||word(p,i+6)>999||word(p,i+8)||word(p,i+9)||word(p,i+10)>1||word(p,i+11)>1)return 0;
+ }}
  return 1;
 }
 /* Explicit stable schema, not engine snapshots: safe because saves are home-only.
@@ -38,19 +43,19 @@ void ff_home_save(SCRIPT_CTX *THIS) OLDCALL BANKED {
   }
  }
  OUT(1)=found?1:(dirty?3:0);
- if(op==1&&found){for(i=0;i<COUNT;i++)OUT(i+2)=word(best,i);}
+ if(op==1&&found){for(i=0;i<COUNT;i++)OUT(i+2)=i<best[5]?word(best,i):0;}
  if(op==2){
   for(i=0;i<SIZE;i++)record[i]=0;
-  record[0]='P';record[1]='C';record[2]='H';record[3]='1';record[4]=1;record[5]=COUNT;
+  record[0]='P';record[1]='C';record[2]='H';record[3]='1';record[4]=2;record[5]=COUNT;
   ++seq;for(i=0;i<4;i++)record[8+i]=(uint8_t)(seq>>(8*i));
   for(i=0;i<COUNT;i++){uint16_t v=OUT(i+2);record[12+2*i]=v;record[13+2*i]=v>>8;}
-  c=crc(record,52);record[52]=c;record[53]=c>>8;record[54]=0xa5;
+  c=crc(record,SIZE-3);record[SIZE-3]=c;record[SIZE-2]=c>>8;record[SIZE-1]=0xa5;
   if(!valid(record)){OUT(1)=2;goto done;}
   SWITCH_RAM(found?(newest^1):0);
-  ram[54]=0;if(ram[54]!=0){OUT(1)=2;goto done;}
-  for(i=0;i<54;i++)ram[i]=record[i];
-  for(i=0;i<54;i++)if(ram[i]!=record[i]){OUT(1)=2;goto done;}
-  ram[54]=0xa5;OUT(1)=ram[54]==0xa5?1:2;
+  ram[SIZE-1]=0;if(ram[SIZE-1]!=0){OUT(1)=2;goto done;}
+  for(i=0;i<SIZE-1;i++)ram[i]=record[i];
+  for(i=0;i<SIZE-1;i++)if(ram[i]!=record[i]){OUT(1)=2;goto done;}
+  ram[SIZE-1]=0xa5;OUT(1)=ram[SIZE-1]==0xa5?1:2;
  }
  done: SWITCH_RAM(0);DISABLE_RAM;
 }

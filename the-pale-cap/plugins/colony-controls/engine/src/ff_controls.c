@@ -32,11 +32,13 @@ void ff_controls(SCRIPT_CTX *THIS) OLDCALL BANKED {
         OUTPUT(3) = 0;
         return;
     }
-    if (op == 1) {
+    if (op == 1 || op == 5) {
         /* Input overrides mask frame_joy before VM scripts run. Read the sampled
          * physical pad so the cursor stays independent of top-down movement. */
-        held = joypads.joy0 & INPUT_DPAD;
-        pressed = held & ~last_buttons;
+        /* Press events carry their direction, even if the pad was released
+         * while other agent scripts were running. Polling handles holds. */
+        held = (op == 5 ? kind : joypads.joy0) & INPUT_DPAD;
+        pressed = (op == 5) ? held : (held & ~last_buttons);
         last_buttons = held;
         direction = pressed ? pressed : ((held & last_direction) ? last_direction : held);
         direction = (direction & J_LEFT) ? J_LEFT : (direction & J_RIGHT) ? J_RIGHT :
@@ -44,8 +46,8 @@ void ff_controls(SCRIPT_CTX *THIS) OLDCALL BANKED {
         now = (UBYTE)game_time;
         if (!direction) { last_direction = 0; return; }
         elapsed = now - last_cursor_frame;
-        if (direction == last_direction && elapsed < cursor_delay) return;
-        cursor_delay = direction != last_direction ? 8 : 4;
+        if (direction == last_direction && (!elapsed || (!pressed && elapsed < cursor_delay))) return;
+        cursor_delay = (pressed || direction != last_direction) ? 8 : 4;
         last_direction = direction;
         last_cursor_frame = now;
         x = PLAYER.pos.x >> 8; y = PLAYER.pos.y >> 8;
