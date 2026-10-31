@@ -52,6 +52,7 @@ The [small offline Heartwood example](examples/heartwood/README.md) includes sel
 - [Design](the-pale-cap/DESIGN.md) and [roadmap](the-pale-cap/TODO.md)
 - [Scene generation architecture](the-pale-cap/SCENE-GENERATION.md) and [pipeline tools](the-pale-cap/art-tests/jev-scene-probe/README.md)
 - [Native engine extensions](the-pale-cap/plugins/README.md)
+- [Heartwood cell-label calibration eval](evals/judge_calibration/README.md): Jev's recorded labels against hand labels (labels pending)
 - [Historical research and experiments](docs/notes/README.md)
 
 The project grew out of [fungi_fortress](https://github.com/CameronBeebe/fungi_fortress), an earlier terminal simulation. This repository is its own native experiment. Richer language/exposure mechanics, generated scene integration, hideout construction, turn-based encounters and link trading remain planned. Live generation and Wi-Fi are outside the offline prototype.

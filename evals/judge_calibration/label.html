@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Heartwood cell labels</title>
+<style>
+  body { font: 14px/1.4 system-ui, sans-serif; margin: 16px; background: #1b1a1f; color: #e8e4dc; }
+  h1 { font-size: 18px; margin: 0 0 8px; }
+  .wrap { display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-start; }
+  canvas { image-rendering: pixelated; background: #000; display: block; }
+  #scene { cursor: crosshair; }
+  .panel { min-width: 300px; max-width: 420px; }
+  fieldset { border: 1px solid #555; margin: 0 0 10px; padding: 8px 10px; }
+  legend { padding: 0 4px; color: #c9b98f; }
+  label { display: block; margin: 3px 0; }
+  kbd { background: #333; border: 1px solid #666; border-radius: 3px; padding: 0 4px; font-size: 12px; }
+  #reasons.off { opacity: .4; }
+  textarea { width: 100%; box-sizing: border-box; background: #111; color: #eee; border: 1px solid #555; }
+  button { margin: 2px 4px 2px 0; }
+  .muted { color: #9a958c; font-size: 12px; }
+  #status { margin-top: 6px; min-height: 1.4em; }
+  #flags { color: #f0a040; }
+  details { margin-top: 12px; max-width: 900px; }
+</style>
+</head>
+<body>
+<h1>Heartwood cell labels <span id="cellName"></span></h1>
+<div class="muted">One scene, 90 cells. Label the exact center of the highlighted cell. Jev's answers are not shown here.</div>
+<div class="wrap" style="margin-top:10px">
+  <div>
+    <canvas id="scene" width="480" height="432" aria-label="Heartwood scene"></canvas>
+    <div style="margin-top:6px">
+      <label style="display:inline"><input type="checkbox" id="showGrid" checked> grid <kbd>G</kbd></label>
+      &nbsp;<label style="display:inline"><input type="checkbox" id="showAuthored"> authored walk grid (reference) <kbd>O</kbd></label>
+    </div>
+    <div class="muted">The authored grid is the playtested route from candidate.json. It is off by default so it doesn't anchor your labels.</div>
+  </div>
+  <div>
+    <canvas id="crop" width="288" height="288" aria-label="Close-up of the current cell"></canvas>
+    <div class="muted">Close-up: 3x3 cells around the target, centre cell outlined. Black outside the scene is padding.</div>
+  </div>
+  <div class="panel">
+    <fieldset>
+      <legend>Labels (checked = yes)</legend>
+      <div id="labelBoxes"></div>
+    </fieldset>
+    <fieldset id="reasons">
+      <legend>If not walkable, which failed? (optional)</legend>
+      <div id="reasonBoxes"></div>
+    </fieldset>
+    <label>Notes <kbd>N</kbd><textarea id="notes" rows="2" maxlength="500"></textarea></label>
+    <div>
+      <button id="done">Done, next <kbd>Enter</kbd></button>
+      <button id="skip">Skip cell <kbd>K</kbd></button>
+      <button id="clear">Clear cell</button>
+    </div>
+    <div>
+      <button id="save">Save labels.csv <kbd>Ctrl+S</kbd></button>
+      <button id="export">Download CSV</button>
+    </div>
+    <div id="status"></div>
+    <div id="progress" class="muted"></div>
+    <div id="flags"></div>
+  </div>
+</div>
+<details open>
+  <summary>Definitions and keys</summary>
+  <p><b>walkable</b> means ALL of these hold:
+  (a) the cell is connected to the main walkable region, not an isolated patch in a random spot;
+  (b) a dwarf can be displayed there;
+  (c) it looks walkable in the image;
+  (d) a walker could stand there;
+  (e) it can be selected as a tile the dwarf can move to.
+  If any one fails, leave walkable unchecked and, if you like, tick the reasons. Row 9 cell centres sit under the bottom 8 px HUD.</p>
+  <p><b>fungus</b>: fungal growth visible at the centre (cap, stalk, gills, shelf fungus, mycelium).
+  <b>harvest_candidate</b>: you would want this to be a small collectable resource. This is your design preference, not a fact about the pixels.
+  <b>water</b>: exposed water at the centre (not water hidden under a bridge deck).
+  <b>built_structure</b>: something constructed at the centre (boards, bridge deck, steps, masonry, furniture).</p>
+  <p class="muted">Keys: arrows move; click the scene to jump; <kbd>1</kbd>-<kbd>5</kbd> toggle labels;
+  <kbd>Q</kbd> <kbd>W</kbd> <kbd>E</kbd> <kbd>R</kbd> <kbd>T</kbd> toggle walkable reasons; <kbd>Enter</kbd> marks the cell done, saves and moves on;
+  <kbd>K</kbd> skip; <kbd>N</kbd> notes (<kbd>Esc</kbd> leaves notes); <kbd>G</kbd> grid; <kbd>O</kbd> authored overlay.
+  A cell is only exported once you mark it done or change something; untouched cells stay blank, never "no".
+  Cells outlined in orange are labeled walkable but not connected to the largest walkable region.</p>
+</details>
+<script>
+"use strict";
+const S = 3, ZOOM = 6;
+const NAMES = {walkable: "walkable", fungus: "fungus", harvest_candidate: "harvest_candidate (your preference)", water: "water", built_structure: "built_structure"};
+const REASONS = {not_connected: "(a) not connected", no_dwarf_display: "(b) no dwarf display", not_look_walkable: "(c) doesn't look walkable", cant_stand: "(d) can't stand", not_selectable: "(e) not selectable"};
+const REASON_KEYS = ["q", "w", "e", "r", "t"];
+let D, img, state = {}, cur = 0, dirty = false;
+
+function $(id) { return document.getElementById(id); }
+function cid() { return D.cells[cur]; }
+function xy(c) { return [c.charCodeAt(0) - 65, parseInt(c.slice(1), 10) - 1]; }
+
+function rowToState(r) {
+  const s = {done: false, skip: false, labels: {}, reasons: {}, notes: r.notes || ""};
+  for (const k of D.labels) {
+    const v = (r[k] || "").toLowerCase();
+    if (v === "skip") s.skip = true;
+    if (v === "yes" || v === "no" || v === "skip") s.done = true;
+    s.labels[k] = v === "yes";
+  }
+  for (const k of D.walkFail) s.reasons[k] = (r["walk_fail_" + k] || "").toLowerCase() === "yes";
+  return s;
+}
+
+function stateToRow(c) {
+  const s = state[c], [x, y] = xy(c), r = {cell_id: c, row: String(y + 1), col: String(x + 1), notes: s.notes};
+  for (const k of D.labels) r[k] = s.skip ? "skip" : s.done ? (s.labels[k] ? "yes" : "no") : "";
+  const showReasons = s.done && !s.skip && !s.labels.walkable;
+  for (const k of D.walkFail) r["walk_fail_" + k] = showReasons && s.reasons[k] ? "yes" : "";
+  return r;
+}
+
+function isolated() {
+  const walk = new Set(D.cells.filter(c => { const s = state[c]; return s.done && !s.skip && s.labels.walkable; }));
+  const seen = new Set(), comps = [];
+  for (const c of D.cells) {
+    if (!walk.has(c) || seen.has(c)) continue;
+    const comp = [], stack = [c]; seen.add(c);
+    while (stack.length) {
+      const n = stack.pop(); comp.push(n); const [x, y] = xy(n);
+      for (const [dx, dy] of [[1,0],[-1,0],[0,1],[0,-1]]) {
+        const nx = x + dx, ny = y + dy;
+        if (nx < 0 || ny < 0 || nx >= D.cols || ny >= D.rows) continue;
+        const m = String.fromCharCode(65 + nx) + (ny + 1);
+        if (walk.has(m) && !seen.has(m)) { seen.add(m); stack.push(m); }
+      }
+    }
+    comps.push(comp);
+  }
+  comps.sort((a, b) => b.length - a.length);
+  return comps.slice(1).flat();
+}
+
+function draw() {
+  const cv = $("scene"), g = cv.getContext("2d");
+  g.imageSmoothingEnabled = false;
+  g.drawImage(img, 0, 0, 160 * S, 144 * S);
+  const C = D.cell * S;
+  if ($("showAuthored").checked) {
+    g.fillStyle = "rgba(80,200,255,0.30)";
+    for (const c of D.authoredWalkable) { const [x, y] = xy(c); g.fillRect(x * C, y * C, C, C); }
+  }
+  if ($("showGrid").checked) {
+    g.strokeStyle = "rgba(255,255,255,0.18)"; g.lineWidth = 1;
+    for (let i = 1; i < D.cols; i++) { g.beginPath(); g.moveTo(i * C + .5, 0); g.lineTo(i * C + .5, 144 * S); g.stroke(); }
+    for (let i = 1; i < D.rows; i++) { g.beginPath(); g.moveTo(0, i * C + .5); g.lineTo(160 * S, i * C + .5); g.stroke(); }
+  }
+  for (const c of D.cells) if (state[c].done) {
+    const [x, y] = xy(c); g.fillStyle = "rgba(255,255,255,0.55)"; g.fillRect(x * C + 3, y * C + 3, 5, 5);
+  }
+  const iso = isolated();
+  g.strokeStyle = "#f0a040"; g.lineWidth = 2;
+  for (const c of iso) { const [x, y] = xy(c); g.strokeRect(x * C + 3, y * C + 3, C - 6, C - 6); }
+  const [x, y] = xy(cid());
+  g.strokeStyle = "#ffef3a"; g.lineWidth = 3; g.strokeRect(x * C + 1.5, y * C + 1.5, C - 3, C - 3);
+  g.fillStyle = "#ffef3a"; g.fillRect(x * C + C / 2 - 2, y * C + C / 2 - 2, 4, 4);
+
+  const cc = $("crop"), h = cc.getContext("2d");
+  h.imageSmoothingEnabled = false; h.fillStyle = "#000"; h.fillRect(0, 0, cc.width, cc.height);
+  const sx = x * D.cell - D.cell, sy = y * D.cell - D.cell, W = 3 * D.cell;
+  const ix = Math.max(0, sx), iy = Math.max(0, sy), ex = Math.min(160, sx + W), ey = Math.min(144, sy + W);
+  h.drawImage(img, ix, iy, ex - ix, ey - iy, (ix - sx) * ZOOM, (iy - sy) * ZOOM, (ex - ix) * ZOOM, (ey - iy) * ZOOM);
+  h.strokeStyle = "#ffef3a"; h.lineWidth = 2; h.strokeRect(D.cell * ZOOM + 1, D.cell * ZOOM + 1, D.cell * ZOOM - 2, D.cell * ZOOM - 2);
+  h.fillStyle = "#ffef3a"; h.fillRect(1.5 * D.cell * ZOOM - 3, 1.5 * D.cell * ZOOM - 3, 6, 6);
+
+  $("flags").textContent = iso.length ? "Walkable but not connected to the main region: " + iso.join(", ") : "";
+}
+
+function render() {
+  const c = cid(), s = state[c];
+  $("cellName").textContent = "— " + c + (s.skip ? " (skipped)" : s.done ? " (done)" : "");
+  D.labels.forEach((k, i) => { const b = $("lab_" + k); b.checked = s.labels[k]; b.disabled = s.skip; });
+  const walkOff = s.labels.walkable || s.skip;
+  $("reasons").classList.toggle("off", walkOff);
+  D.walkFail.forEach(k => { const b = $("why_" + k); b.checked = s.reasons[k]; b.disabled = walkOff; });
+  if ($("notes").value !== s.notes) $("notes").value = s.notes;
+  const done = D.cells.filter(x => state[x].done).length;
+  $("progress").textContent = done + " of " + D.cells.length + " cells done" + (dirty ? " (unsaved changes)" : "");
+  draw();
+}
+
+function touch() { state[cid()].done = true; dirty = true; backup(); render(); }
+function backup() { try { localStorage.setItem("heartwood-labels", JSON.stringify(D.cells.map(stateToRow))); } catch (e) {} }
+function move(i) { cur = Math.max(0, Math.min(D.cells.length - 1, i)); render(); }
+
+async function save() {
+  try {
+    const res = await fetch("/save", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({rows: D.cells.map(stateToRow)})});
+    const out = await res.json();
+    if (!res.ok) throw new Error(out.error || res.status);
+    dirty = false; $("status").textContent = "Saved " + out.saved + " at " + new Date().toLocaleTimeString();
+  } catch (e) {
+    $("status").textContent = "Save failed (" + e.message + "). Use Download CSV instead.";
+  }
+  render();
+}
+
+function csv() {
+  const f = ["cell_id", "row", "col", ...D.labels, ...D.walkFail.map(k => "walk_fail_" + k), "notes"];
+  const q = v => /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v;
+  return [f.join(","), ...D.cells.map(c => { const r = stateToRow(c); return f.map(k => q(String(r[k] ?? ""))).join(","); })].join("\n") + "\n";
+}
+
+function download() {
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([csv()], {type: "text/csv"}));
+  a.download = "labels.csv"; a.click(); URL.revokeObjectURL(a.href);
+}
+
+function toggleLabel(k) { const s = state[cid()]; if (s.skip) return; s.labels[k] = !s.labels[k]; touch(); }
+function toggleReason(k) { const s = state[cid()]; if (s.skip || s.labels.walkable) return; s.reasons[k] = !s.reasons[k]; touch(); }
+
+function build() {
+  D.labels.forEach((k, i) => {
+    const l = document.createElement("label");
+    l.innerHTML = '<input type="checkbox" id="lab_' + k + '"> ' + NAMES[k] + ' <kbd>' + (i + 1) + '</kbd>';
+    $("labelBoxes").appendChild(l);
+    l.querySelector("input").addEventListener("change", () => toggleLabel(k));
+  });
+  D.walkFail.forEach((k, i) => {
+    const l = document.createElement("label");
+    l.innerHTML = '<input type="checkbox" id="why_' + k + '"> ' + REASONS[k] + ' <kbd>' + REASON_KEYS[i].toUpperCase() + '</kbd>';
+    $("reasonBoxes").appendChild(l);
+    l.querySelector("input").addEventListener("change", () => toggleReason(k));
+  });
+  $("notes").addEventListener("input", e => { state[cid()].notes = e.target.value; touch(); });
+  $("done").onclick = () => { touch(); save(); move(cur + 1); };
+  $("skip").onclick = () => { const s = state[cid()]; s.skip = !s.skip; touch(); };
+  $("clear").onclick = () => { state[cid()] = rowToState({}); dirty = true; backup(); render(); };
+  $("save").onclick = save;
+  $("export").onclick = download;
+  $("showGrid").onchange = draw; $("showAuthored").onchange = draw;
+  $("scene").addEventListener("click", e => {
+    const r = e.target.getBoundingClientRect(), C = D.cell * S;
+    const x = Math.floor((e.clientX - r.left) / C), y = Math.floor((e.clientY - r.top) / C);
+    if (x >= 0 && y >= 0 && x < D.cols && y < D.rows) move(y * D.cols + x);
+  });
+  document.addEventListener("keydown", e => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") { e.preventDefault(); save(); return; }
+    if (e.target.tagName === "TEXTAREA") { if (e.key === "Escape") e.target.blur(); return; }
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    const k = e.key.toLowerCase();
+    if (k === "arrowright") move(cur + 1);
+    else if (k === "arrowleft") move(cur - 1);
+    else if (k === "arrowdown") move(cur + D.cols);
+    else if (k === "arrowup") move(cur - D.cols);
+    else if (k === "enter") { touch(); save(); move(cur + 1); }
+    else if (k >= "1" && k <= "5") toggleLabel(D.labels[+k - 1]);
+    else if (REASON_KEYS.includes(k)) toggleReason(D.walkFail[REASON_KEYS.indexOf(k)]);
+    else if (k === "k") $("skip").click();
+    else if (k === "n") { e.preventDefault(); $("notes").focus(); }
+    else if (k === "g") { $("showGrid").checked = !$("showGrid").checked; draw(); }
+    else if (k === "o") { $("showAuthored").checked = !$("showAuthored").checked; draw(); }
+    else return;
+    e.preventDefault();
+  });
+  window.addEventListener("beforeunload", e => { if (dirty) { e.preventDefault(); e.returnValue = ""; } });
+}
+
+(async function init() {
+  D = await (await fetch("/data.json")).json();
+  for (const r of D.current) state[r.cell_id] = rowToState(r);
+  img = new Image();
+  img.onload = () => { build(); const first = D.cells.findIndex(c => !state[c].done); move(first < 0 ? 0 : first); };
+  img.src = "/source.png";
+})();
+</script>
+</body>
+</html>

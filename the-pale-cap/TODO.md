@@ -22,6 +22,9 @@ in [PLAYTEST.md](PLAYTEST.md). These are priorities, not promised release scope.
 
 - [ ] Expand the scene review dataset across biomes; retain human corrections,
   disputed bounds, before/after controls and failed candidates.
+- [ ] Hand-label Heartwood cells and score Jev against them
+  ([calibration eval](../evals/judge_calibration/README.md)); extend to other
+  scenes only after approved live runs.
 - [ ] Make fixed/dynamic art and sprite layering consistent without losing
   readable walkable space or interaction targets.
 - [ ] Test menu boundaries, audio quality and physical save retention separately
