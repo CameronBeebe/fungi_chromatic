@@ -295,6 +295,176 @@
       "id": "60",
       "name": "Inspect cursor y",
       "symbol": "var_inspect_cursor_y"
+    },
+    {
+      "id": "61",
+      "name": "Moss x",
+      "symbol": "var_moss_x"
+    },
+    {
+      "id": "62",
+      "name": "Moss y",
+      "symbol": "var_moss_y"
+    },
+    {
+      "id": "63",
+      "name": "Moss intent",
+      "symbol": "var_moss_intent"
+    },
+    {
+      "id": "64",
+      "name": "Moss bag",
+      "symbol": "var_moss_bag"
+    },
+    {
+      "id": "65",
+      "name": "Moss trust",
+      "symbol": "var_moss_trust"
+    },
+    {
+      "id": "66",
+      "name": "Moss gifts",
+      "symbol": "var_moss_gifts"
+    },
+    {
+      "id": "67",
+      "name": "Moss shared",
+      "symbol": "var_moss_shared"
+    },
+    {
+      "id": "68",
+      "name": "Moss revision",
+      "symbol": "var_moss_revision"
+    },
+    {
+      "id": "69",
+      "name": "Moss target",
+      "symbol": "var_moss_target"
+    },
+    {
+      "id": "70",
+      "name": "Moss progress",
+      "symbol": "var_moss_progress"
+    },
+    {
+      "id": "71",
+      "name": "Moss joined",
+      "symbol": "var_moss_joined"
+    },
+    {
+      "id": "72",
+      "name": "Moss initialized",
+      "symbol": "var_moss_initialized"
+    },
+    {
+      "id": "73",
+      "name": "Pip x",
+      "symbol": "var_pip_x"
+    },
+    {
+      "id": "74",
+      "name": "Pip y",
+      "symbol": "var_pip_y"
+    },
+    {
+      "id": "75",
+      "name": "Pip intent",
+      "symbol": "var_pip_intent"
+    },
+    {
+      "id": "76",
+      "name": "Pip bag",
+      "symbol": "var_pip_bag"
+    },
+    {
+      "id": "77",
+      "name": "Pip trust",
+      "symbol": "var_pip_trust"
+    },
+    {
+      "id": "78",
+      "name": "Pip gifts",
+      "symbol": "var_pip_gifts"
+    },
+    {
+      "id": "79",
+      "name": "Pip shared",
+      "symbol": "var_pip_shared"
+    },
+    {
+      "id": "80",
+      "name": "Pip revision",
+      "symbol": "var_pip_revision"
+    },
+    {
+      "id": "81",
+      "name": "Pip target",
+      "symbol": "var_pip_target"
+    },
+    {
+      "id": "82",
+      "name": "Pip progress",
+      "symbol": "var_pip_progress"
+    },
+    {
+      "id": "83",
+      "name": "Pip joined",
+      "symbol": "var_pip_joined"
+    },
+    {
+      "id": "84",
+      "name": "Pip initialized",
+      "symbol": "var_pip_initialized"
+    },
+    {
+      "id": "85",
+      "name": "Agent result",
+      "symbol": "var_agent_result"
+    },
+    {
+      "id": "86",
+      "name": "Agent choice",
+      "symbol": "var_agent_choice"
+    },
+    {
+      "id": "87",
+      "name": "Agent command",
+      "symbol": "var_agent_command"
+    },
+    {
+      "id": "88",
+      "name": "Agent expected revision",
+      "symbol": "var_agent_expected_revision"
+    },
+    {
+      "id": "89",
+      "name": "Agent slot",
+      "symbol": "var_agent_slot"
+    },
+    {
+      "id": "90",
+      "name": "Agent sequence",
+      "symbol": "var_agent_sequence"
+    },
+    {
+      "id": "91",
+      "name": "Agent consumed",
+      "symbol": "var_agent_consumed"
+    },
+    {
+      "id": "92",
+      "name": "Agent status",
+      "symbol": "var_agent_status"
+    },
+    {
+      "id": "93",
+      "name": "Agent Bram x",
+      "symbol": "var_agent_bram_x"
+    },
+    {
+      "id": "94",
+      "name": "Agent Bram y",
+      "symbol": "var_agent_bram_y"
     }
   ],
   "constants": []

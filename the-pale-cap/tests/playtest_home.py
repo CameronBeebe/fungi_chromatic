@@ -202,7 +202,7 @@ with tempfile.TemporaryDirectory() as tmp:
     ram = Path(str(r) + ".ram")
     assert ram.exists(), "No battery file generated"
     data = ram.read_bytes()
-    assert data[:4] == b"PCH1" and data[54] == 0xA5, "No committed home record"
+    assert data[:4] == b"PCH1" and data[14 + 2 * data[5]] == 0xA5, "No committed home record"
     assert int.from_bytes(data[46:48], "little") == 2, "Fork not in saved stash"
     (out / "saved-home.ram").write_bytes(data)
     p = PyBoy(str(r), window="null", sound_emulated=False)

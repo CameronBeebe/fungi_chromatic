@@ -8,6 +8,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 env = {k: v for k, v in os.environ.items() if k not in ("TYPESAFE_API_KEY", "XAI_API_KEY")}
 commands = [
+    [sys.executable, "the-pale-cap/tests/test_agents.py"],
     [sys.executable, "the-pale-cap/tests/test_home_save.py"],
     [sys.executable, "the-pale-cap/tests/test_inventory.py"],
     [sys.executable, "-m", "unittest", "discover", "-s", "the-pale-cap/tools", "-p", "test_*.py"],

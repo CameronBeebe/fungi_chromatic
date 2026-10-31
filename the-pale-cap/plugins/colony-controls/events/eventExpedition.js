@@ -1,6 +1,48 @@
+const agentRuntime=(()=>{
+// Stable IDs; compiler aliases are resolved individually, never assumed contiguous.
+const bases=[61,73], names=['MOSS','PIP'];
+function call(h,slot,op,command=0) {
+  const ids=[...Array.from({length:12},(_,i)=>bases[slot]+i),93,94,0,21,22,23,24,25,26,27,28,85,89,87,88,90,91,92];
+  for(const id of ids.reverse())h._stackPushConst(h.getVariableAlias(String(id)));
+  h._stackPushConst(command);h._stackPushConst(slot);h._stackPushConst(op);
+  h._callNative('ff_agents');h._stackPop(33);
+}
+function menu(h,slot) {
+  const base=bases[slot], v=id=>h.getVariableAlias(String(id));
+  const next=()=>h.getNextLabel(), label=l=>h._label(l), jump=l=>h._jump(l);
+  const eq=(id,n,l)=>h._ifConst('.EQ',v(id),n,l,0);
+  const draw=lines=>{
+    h._overlayClear(0,0,20,18,'.UI_COLOR_WHITE',true,false);
+    h._overlayMoveTo(0,0,'.OVERLAY_SPEED_INSTANT');h._overlaySetScroll(0,0,20,18,'.UI_COLOR_WHITE');h._setTextLayer('.TEXT_LAYER_WIN');
+    const rows=Array(17).fill('');for(const [y,t]of lines)rows[y]=' '+t;
+    h.textDraw(rows.join('\n'),0,0,'overlay');h._overlayWait(true,['.UI_WAIT_WINDOW','.UI_WAIT_TEXT']);
+  };
+  h.actorSetById('bram');h.actorGetPosition('93','94','tiles');
+  const root=next(),close=next(),remember=next(),shared=next(),choices=next(),accepted=next();
+  label(root);
+  h._ifConst('.GT',v(base+5),0,remember,0);h._ifConst('.GT',v(base+6),0,shared,0);
+  draw([[1,names[slot]],[3,'Let me carry my'],[4,'own weight.'],[7,`My fungi: $${base+3}$`],[10,'A: Make a plan'],[12,'B: Back']]);jump(choices);
+  label(remember);draw([[1,names[slot]],[3,'You shared with'],[4,'me. I remember.'],[7,`My fungi: $${base+3}$`],[10,'A: Make a plan'],[12,'B: Back']]);jump(choices);
+  label(shared);draw([[1,names[slot]],[3,'We both brought'],[4,'something home.'],[7,`My fungi: $${base+3}$`],[10,'A: Make a plan'],[12,'B: Back']]);
+  label(choices);h._choice(v(86),['.UI_MENU_CANCEL_B','.UI_MENU_SET_START'],1);h._menuItem(0,10,1,1,1,1);eq(86,0,close);
+  draw([[1,names[slot]],[3,'Stay with Bram'],[4,'Gather nearby'],[5,'Wait here'],[6,'Share one fungus'],[7,'Join us'],[8,'Go your own way'],[9,'Give one fungus'],[12,'A: Ask  B: Back']]);
+  h._choice(v(86),['.UI_MENU_CANCEL_B','.UI_MENU_SET_START'],7);
+  for(let i=0;i<7;i++)h._menuItem(0,3+i,i+1,i+1,i?i:7,i===6?1:i+2);
+  eq(86,0,close);
+  const actions=Array.from({length:7},next), result=next();
+  for(let i=0;i<7;i++)eq(86,i+1,actions[i]);jump(close);
+  actions.forEach((l,i)=>{label(l);call(h,slot,2,i+1);jump(result);});
+  label(result);h._ifConst('.GT',v(85),0,accepted,0);
+  draw([[1,names[slot]],[4,'Not from here,'],[5,'or not enough'],[6,'to spare.'],[9,'Come closer for'],[10,'gifts or joining.'],[14,'A/B: Back']]);h.inputAwait(['a','b']);jump(root);
+  label(accepted);draw([[1,names[slot]],[4,'All right.'],[6,'Watch what I do.'],[9,`My fungi: $${base+3}$`],[11,'Bram fungi: $00$'],[14,'A/B: Back']]);h.inputAwait(['a','b']);jump(close);
+  label(close);
+}
+return {call,menu,bases};
+
+})();
 const FIELD='12f07015-0a42-504a-8d39-3f689e13ad3a';
-// Version 1 home save schema. Semantic values only, never VM execution contexts.
-const saveIds=[0,1,3,5,7,9,10,11,17,21,22,23,24,25,26,27,28,49,50,53];
+// Version 2 home save schema (version 1 reads migrate with empty agent records). Semantic values only, never VM execution contexts.
+const saveIds=[0,1,3,5,7,9,10,11,17,21,22,23,24,25,26,27,28,49,50,53,...Array.from({length:24},(_,i)=>61+i)];
 module.exports={
  id:'EVENT_EXPEDITION',name:'Expedition: home, bag and inspection',groups:['EVENT_GROUP_SCREEN'],
  fields:[{key:'mode',label:'Mode',type:'select',defaultValue:'menu',options:[['menu','Bag menu'],['home','Home'],['arrive','Return home'],['inspect','Illustrated inspection'],['pickup','Receive item']]}],
@@ -13,7 +55,7 @@ module.exports={
   const mutate=op=>{for(const id of [0,53,49,50])h._stackPushConst(v(id));h._stackPushConst(op);h._callNative('ff_inventory');h._stackPop(5);};
   if(input.mode==='pickup'){const done=next();eq(49,1,done);eq(49,2,done);set(49,1);label(done);return;}
   // Returning home is a real scene transition, after the final order was removed.
-  if(input.mode==='arrive') {set(48,1);travel('root-hearth');return;}
+  if(input.mode==='arrive') {agentRuntime.call(h,0,3);agentRuntime.call(h,1,3);set(48,1);travel('root-hearth');return;}
   if(input.mode==='inspect'){
    h._overlayMoveTo(0,18,'.OVERLAY_SPEED_INSTANT');
    const flow=op=>{h._stackPushConst(op);h._callNative('ff_gillsong');h._stackPop(1);};
@@ -29,6 +71,7 @@ module.exports={
   };
   const choose=ys=>{set(51,1);h._choice(v(51),['.UI_MENU_CANCEL_B','.UI_MENU_SET_START'],ys.length);ys.forEach((y,i)=>h._menuItem(1,y,i+1,i+1,i?i:ys.length,i===ys.length-1?1:i+2));};
   const note=lines=>{draw([[1,'THE PALE CAP'],...lines,[16,'A/B Back']]);h.inputAwait(['a','b']);};
+  const companions=next(),moss=next(),pip=next();
   const root=next(),home=next(),bag=next(),stash=next(),ret=next(),depart=next(),equip=next(),deposit=next(),withdraw=next(),close=next(),take=next(),inspect=next(),saving=next(),homeOptions=next();
   if(input.mode==='home'){
    hearth(0);
@@ -43,7 +86,10 @@ module.exports={
    for(const id of [36,37,38,39,40,41,42])h._stackPushConst(v(id));h._stackPushConst(0);h._stackPushConst(0);h._stackPushConst(0);h._callNative('ff_controls');h._stackPop(10);
   }
   label(root);eq(48,1,home);
-  draw([[1,'EXPEDITION'],[3,'Fungi: $00$'],[6,'Bag'],[9,'Return home'],[13,'Seek Luma'],[16,'A Choose  B Back']]);choose([6,9]);eq(51,1,bag);eq(51,2,ret);jump(close);
+  draw([[1,'EXPEDITION'],[3,'Fungi: $00$'],[6,'Bag'],[9,'Return home'],[12,'Companions'],[16,'A Choose  B Back']]);choose([6,9,12]);eq(51,1,bag);eq(51,2,ret);eq(51,3,companions);jump(close);
+  label(companions);draw([[1,'COMPANIONS'],[5,'Moss'],[8,'Pip'],[12,'A Talk  B Back']]);choose([5,8]);eq(51,1,moss);eq(51,2,pip);jump(root);
+  label(moss);agentRuntime.menu(h,0);jump(close);
+  label(pip);agentRuntime.menu(h,1);jump(close);
   label(home);draw([[1,'ROOT HEARTH'],[3,'Bag   Home   Exit']],true);set(51,1);h._choice(v(51),['.UI_MENU_SET_START'],3);h._menuItem(1,3,3,2,1,1);h._menuItem(7,3,1,3,2,2);h._menuItem(14,3,2,1,3,3);eq(51,1,bag);eq(51,2,homeOptions);jump(depart);
   label(homeOptions);draw([[1,'ROOT HEARTH'],[4,'Stash'],[6,'Store all'],[8,'Take supplies'],[10,'Save'],[12,'Back'],[16,'A Choose  B Back']]);choose([4,6,8,10,12]);eq(51,1,stash);eq(51,2,deposit);eq(51,3,take);eq(51,4,saving);jump(home);
   label(saving);save(2);const saved=next();eq(54,1,saved);note([[5,'Could not save'],[8,'Previous record'],[9,'kept intact.']]);jump(homeOptions);label(saved);note([[5,'Hideout saved'],[8,'Next boot starts'],[9,'here at home.']]);jump(homeOptions);
